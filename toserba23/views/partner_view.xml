@@ -1,0 +1,64 @@
+<odoo>
+<data>
+	<!-- Partner list view definition -->
+	<record model="ir.ui.view" id="partner_tree_view_custom">
+		<field name="name">res.partner_tree_view_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_tree"/>
+		<field name="arch" type="xml">
+			<field name="display_name" position="before">
+				<field name="ref"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Partner form view definition -->
+	<record model="ir.ui.view" id="view_partner_form_custom">
+		<field name="name">base.view_partner_form_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<field name="lang" position="after">
+				<field name="x_call_freq" attrs="{'invisible': [('customer', '!=', True)]}"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Form view invoiced button definition -->
+	<record model="ir.ui.view" id="partner_view_buttons_custom">
+		<field name="name">res.partner_view_buttons_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="account.partner_view_buttons"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div/button/div/span[2]" position="replace">
+				<span class="o_stat_text">Total Faktur</span>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Partner search view definition -->
+	<record model="ir.ui.view" id="view_res_partner_filter_custom">
+		<field name="name">base.view_res_partner_filter_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_res_partner_filter"/>
+		<field name="arch" type="xml">
+			<filter name="salesperson" position="before">
+				<filter name="x_call_freq" string="To Call" context="{'group_by': 'x_call_freq'}"/>
+				<separator/>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Only allow customer view record rule definition -->
+	<record id="toserba23.block_vendor_view_rule" model="ir.rule">
+		<field name="name">Block vendor view</field>
+		<field name="model_id" ref="base.model_res_partner"/>
+		<field name="groups" eval="[(4, ref('toserba23.block_vendor_view'))]"/>
+		<field name="perm_read" eval="1"/>
+		<field name="perm_write" eval="0"/>
+		<field name="perm_create" eval="0"/>
+		<field name="perm_unlink" eval="0"/>
+		<field name="domain_force">['|',('supplier','=',False),('customer','=',True)]</field>
+	</record>
+</data>
+</odoo>

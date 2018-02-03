@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<record id="purchase.action_report_purchase_order" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+	<record id="purchase.report_purchase_quotation" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+</data>
+</odoo>

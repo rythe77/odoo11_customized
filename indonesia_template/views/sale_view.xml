@@ -1,0 +1,140 @@
+<odoo>
+<data>
+	<!-- Main quotation list view definition -->
+	<record model="ir.ui.view" id="view_quotation_tree_inherited">
+		<field name="name">sale.view_quotation_tree_inherited</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_quotation_tree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="delete">false</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main order list view definition -->
+	<record model="ir.ui.view" id="sale_order_tree_view_inherited">
+		<field name="name">sale.sale_order_tree_view_inherited</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="delete">false</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherited">
+		<field name="name">sale.view_order_form_inherited</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<form position="attributes">
+				<attribute name="delete">false</attribute>
+			</form>
+			<xpath expr="/form/header/button[@name='action_quotation_send'][1]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_quotation_send'][2]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_quotation_send'][3]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_quotation_send'][4]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='print_quotation'][1]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='print_quotation'][2]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_confirm'][1]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_confirm'][2]" position="attributes">
+				<attribute name="states">draft,sent</attribute>
+				<attribute name="class">btn-primary</attribute>
+			</xpath>
+			<field name="date_order" position="attributes">
+				<attribute name="readonly">1</attribute>
+				<attribute name="attrs"></attribute>
+			</field>
+			<field name="validity_date" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="pricelist_id" position="attributes">
+				<attribute name="options">{'no_create': True}</attribute>
+			</field>
+			<field name="user_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+				<attribute name="options">{'no_create': True}</attribute>
+			</field>
+			<field name="user_id" position="after">
+				<field name="create_uid" string="Created by" readonly="1" attrs="{'invisible': [('create_uid', '=', False)]}" options="{'no_create': True}"/>
+			</field>
+			<field name="team_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+			<field name="fiscal_position_id" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<xpath expr="/form/sheet/notebook/page/group/field[@name='amount_untaxed']" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/group/field[@name='amount_tax']" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='tax_id']" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_sales_order_filter">
+		<field name="name">sale.view_sales_order_filter_replace_unneeded</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_sales_order_filter"/>
+		<field name="arch" type="xml">
+			<filter name="activities_my" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="message_needaction" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_overdue" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_today" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_upcoming_all" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Hide quotation sent search view -->
+	<record model="ir.ui.view" id="view_sales_order_filter_hide_unneeded">
+		<field name="name">sale.sale_order_view_search_inherit_quotation_hide_unneeded</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+		<field name="arch" type="xml">
+			<filter name="sent" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Main menu view definition -->
+	<record id="sale.menu_sale_invoicing" model="ir.ui.menu">
+		<field name="groups_id" eval="[(6,0,[ref('extra_menu_view')])]"/>
+	</record>
+	<record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('extra_menu_view')])]"/>
+	</record>
+</data>
+</odoo>

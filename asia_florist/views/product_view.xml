@@ -1,0 +1,30 @@
+<odoo>
+<data>
+	<!-- Hide product sales & inventory tab form view definition -->
+	<record model="ir.ui.view" id="product_template_form_view_custom">
+		<field name="name">product.product_template_form_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_form_view"/>
+		<field name="arch" type="xml">
+			<page name="sales" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+			<page name="inventory" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+		</field>
+	</record>
+
+	<!-- Hide product invoicing tab form view definition -->
+	<record model="ir.ui.view" id="account_product_template_form_view_custom">
+		<field name="name">account.product_template_form_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="account.product_template_form_view"/>
+		<field name="arch" type="xml">
+			<page name="invoicing" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+		</field>
+	</record>
+</data>
+</odoo>

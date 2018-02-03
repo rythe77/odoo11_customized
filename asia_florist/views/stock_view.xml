@@ -1,0 +1,105 @@
+<odoo>
+<data>
+	<!-- Main order list view definition -->
+	<record model="ir.ui.view" id="vpicktree_custom">
+		<field name="name">sale.vpicktree_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.vpicktree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="delete">false</attribute>
+				<attribute name="create">false</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="stock_picking_form_view_custom">
+		<field name="name">stock.view_picking_form_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<button name="%(stock.act_stock_return_picking)d" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="action_cancel" position="attributes">
+				<attribute name="groups">stock.group_stock_manager</attribute>
+			</button>
+			<button name="do_unreserve" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="button_scrap" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="button_scrap" position="after">
+				<button name="%(report_custom_delivery)d" string="Cetak" attrs="{'invisible': ['|', ('state', '!=', 'done'), ('is_locked', '=', False)]}" type="action" class="oe_highlight" groups="stock.group_stock_user"/>
+			</button>
+			<button name="action_toggle_is_locked" position="replace"/>
+			<button name="action_toggle_is_locked" position="replace"/>
+			<form position="attributes">
+				<attribute name="create">false</attribute>
+			</form>
+			<field name="partner_id" position="attributes">
+				<attribute name="context">{'show_address': 1}</attribute>
+				<attribute name="options">{&quot;always_reload&quot;: True}</attribute>
+				<attribute name="string">Sender</attribute>
+			</field>
+			<field name="partner_id" position="before">
+				<field name="x_delivery_name"/>
+				<field name="x_delivery_address"/>
+				<field name="x_delivery_city"/>
+				<field name="x_event_notes"/>
+			</field>
+			<field name="origin" position="after">
+				<field name="create_uid" string="Created by" readonly="1"/>
+				<field name="x_worker"/>
+				<field name="x_driver"/>
+			</field>
+			<page name="extra" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_picking_internal_search_custom">
+		<field name="name">stock.view_picking_internal_search_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_internal_search"/>
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<filter string="Scheduled today" domain="[('scheduled_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('scheduled_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Scheduled tomorrow" domain="[('scheduled_date', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('scheduled_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Scheduled for the next week" domain="[('scheduled_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('scheduled_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<separator/>
+			</field>
+			<filter name="late" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</filter>
+			<filter name="backorder" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Main menu view definition -->
+	<record model="ir.ui.menu" id="stock.menu_action_inventory_form">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="stock.menu_stock_scrap">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="stock.menu_procurement_compute">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="stock.menu_stock_inventory_control">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="stock.menu_warehouse_report">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="stock.menu_stock_config_settings">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+</data>
+</odoo>

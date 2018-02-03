@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_saleorder_summary"
+		model="sale.order"
+		string="Rekap Order Penjualan"
+		name="asia_florist.report_saleorder_summarysheet"
+		file="asia_florist.report_saleorder_summarysheet"
+		print_report_name="'Rekap - %s' % (object.name)" 
+		report_type="qweb-pdf"
+		groups="sales_team.group_sale_manager"
+	/>
+
+	<template id="report_saleorder_summarysheet">
+		<t t-call="web.html_container">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
+						Dicetak tanggal: 
+						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+					</div>
+					<div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
+						Rekapan Order Penjualan Untuk:
+					</div>
+					<div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
+					</div>
+				</div>
+			</div>
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<table class="table table-condensed table table-striped">
+							<thead>
+								<tr style="font:10px lucida-console,sans-serif;">
+									<th><strong>Tanggal Acara</strong></th>
+									<th><strong>No. Order</strong></th>
+									<th><strong>Nama Pemesan</strong></th>
+									<th><strong>Alamat Pemesan</strong></th>
+									<th><strong>Kepada Yth</strong></th>
+									<th><strong>Alamat Pengiriman</strong></th>
+									<th><strong>Total Harga</strong></th>
+									<th><strong>Item</strong></th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<tr t-foreach="docs" t-as="o" style="font:10px lucida-console,sans-serif;">
+									<td>
+										<span t-field="o.requested_date"/>
+									</td>
+									<td>
+										<span t-field="o.name"/>
+									</td>
+									<td>
+										<span t-field="o.partner_id"/>
+									</td>
+									<td>
+										<span t-field="o.x_partner_address"/>
+									</td>
+									<td>
+										<span t-field="o.x_delivery_name"/>
+									</td>
+									<td>
+										<span t-field="o.x_delivery_address"/>,
+										<span t-field="o.x_delivery_city"/>
+									</td>
+									<td>
+										<span t-field="o.amount_total"/>
+									</td>
+									<td>
+										<t t-foreach="o.order_line" t-as="line">
+											<span t-field="line.product_id"/>, 
+											<span t-field="line.product_uom_qty"/>
+											<span t-field="line.product_uom"/>
+											<br/>
+										</t>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_picking"
+		model="stock.picking"
+		string="Pengaturan/Penerimaan Barang"
+		name="toserba23.report_custom_pickingslip"
+		file="toserba23.pengaturan_barang"
+		print_report_name="'Pengaturan Barang - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_pickingslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23.report_custom_picking_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_picking_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<div class="col-xs-6" style="background-color:#212121; height: 80px; border-radius: 5px">
+						<img style="position:absolute; top:10px; left:30px; max-height: 60px;" src='/toserba23/static/src/img/logo_only_inverse.png'/>
+						<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+							<span style="font:25px lucida-console,sans-serif !important;" t-field="company.partner_id"/><br/>
+							<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.street"></span>
+							<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.city"></span>
+							<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.phone"/>
+						</div>
+					</div>
+					<div class="col-xs-6 text-center mb8" style="height: 80px;">
+						<div style="position:relative; top:10px; col-xs-6 text-center;">
+							<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
+								<t t-if="o.picking_type_id.code=='incoming'">
+									<b>
+										PENERIMAAN BARANG
+									</b>
+								</t>
+								<t t-if="o.picking_type_id.code=='internal'">
+									<b>
+										TRANSFER ANTAR GUDANG
+									</b>
+								</t>
+								<t t-if="o.picking_type_id.code=='outgoing'">
+									<b>
+										PENGATURAN BARANG
+									</b>
+								</t>
+							</span><br/>
+							<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.name"/></b>
+						</div>
+					</div>
+
+					<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+						<thead style="font:14px lucida-console,sans-serif;">
+							<tr>
+								<td class="col-xs-4">
+									No Order : 
+									<span t-if="o.origin" t-field="o.origin"/>
+								</td>
+								<td class="col-xs-5">
+									<t t-if="o.picking_type_id.code=='incoming' and o.partner_id" name="customer_address" groups="toserba23.view_vendor">
+										Pemasok : 
+										<span t-field="o.partner_id" name="partner_header"/>
+										<span t-field="o.partner_id.phone"/>
+									</t>
+									<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+										Transfer antar gudang
+									</t>
+									<t t-if="o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+										Pelanggan : 
+										<span t-field="o.partner_id" name="partner_header"/>
+										<span t-field="o.partner_id.phone"/>
+									</t>
+								</td>
+								<td class="col-xs-3 text-right"><t name="td_sched_date_h">
+									<t name="td_sched_date">
+										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
+										<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+									</t>
+								</t></td>
+							</tr>
+							<tr>
+								<td class="col-xs-4">
+									Kendaraan : 
+									<span t-if="o.x_vehicle_notes" t-field="o.x_vehicle_notes"/>
+								</td>
+								<td class="col-xs-5">
+									Keterangan : 
+									<span t-if="o.x_notes" t-field="o.x_notes"/>
+								</td>
+								<td class="col-xs-3">
+								</td>
+							</tr>
+							<t t-if="o.picking_type_id.code=='outgoing' and o.use_transporter and o.transporter_id">
+								<tr>
+									<td  colspan="3" class="col-xs-12">
+										Kirim ekspedisi : 
+										<span t-field="o.transporter_id.name"/>;
+										<t t-if="o.transporter_id.street"><span t-field="o.transporter_id.street"/>,</t>
+										<t t-if="o.transporter_id.street2"><span t-field="o.transporter_id.street2"/>,</t>
+										<t t-if="o.transporter_id.city"><span t-field="o.transporter_id.city"/>,</t>
+										<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/>;</t>
+										<t t-if="o.transporter_id.phone"><span t-field="o.transporter_id.phone"/>;</t>
+										<t t-if="o.transporter_id.mobile"><span t-field="o.transporter_id.mobile"/></t>
+									</td>
+								</tr>
+							</t>
+						</thead>
+					</table>
+
+					<table class="table table-condensed table table-striped" t-if="o.move_lines">
+						<thead style="background-color:#212121;" >
+							<tr>
+								<th><font color="#fff"><strong>Nama Barang</strong></font></th>
+								<th><font color="#fff"><strong>Keterangan Khusus</strong></font></th>
+								<th class="text-right"><font color="#fff"><strong>Jumlah</strong></font></th>
+								<th t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+									<font color="#fff"><strong>Jumlah Dikirim</strong></font>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.move_lines" t-as="move">
+								<td>
+									<t t-if="not move.product_id.categ_id.is_warranty">**</t>
+									<span t-field="move.product_id"/>
+								</td>
+								<td><span t-field="move.product_desc"/></td>
+								<td class="text-right">
+									<span t-field="move.product_uom_qty"/>
+									<span t-field="move.product_uom"/>
+								</td>
+								<td t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+									<span t-field="move.quantity_done"/>
+									<span t-field="move.product_uom"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p t-if="not all([l.product_id.categ_id.is_warranty for l in o.move_lines])">
+						**Barang tidak digaransi
+					</p>
+					<p t-if="o.backorder_id">
+						Pengiriman ini adalah backorder dari <t t-esc="o.backorder_id.name"/>.
+					</p>
+					<p t-if="backorder">
+						Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia.
+					</p>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>

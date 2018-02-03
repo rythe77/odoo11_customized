@@ -1,0 +1,69 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="stock_picking_tree_view_inherited">
+		<field name="name">product.stock_picking_tree_view_inherited</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.vpicktree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="delete">false</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="stock_picking_form_view_inherited">
+		<field name="name">stock.view_picking_form_inherited</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<form position="attributes">
+				<attribute name="delete">false</attribute>
+			</form>
+			<button name="do_print_picking" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</button>
+			<button name="%(stock.action_report_delivery)d" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</button>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_picking_internal_search_inherited">
+		<field name="name">stock.view_picking_internal_search_inherited</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_internal_search"/>
+		<field name="arch" type="xml">
+			<filter name="draft" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="available" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="waiting" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="confirmed" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="done" position="before">
+				<filter name="not_done" string="Not Done" domain="[('state','not in', ('done','cancel'))]" help="Picking not done yet"/>
+			</filter>
+			<filter name="activities_my" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_overdue" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_today" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_upcoming_all" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+		</field>
+	</record>
+</data>
+</odoo>

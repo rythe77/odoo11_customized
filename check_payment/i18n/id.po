@@ -1,0 +1,126 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* check_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-09 11:11+0000\n"
+"PO-Revision-Date: 2017-12-09 19:14+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: check_payment
+#: model:ir.ui.view,arch_db:check_payment.view_account_payment_search_check_payment
+msgid "Clearing Transfer"
+msgstr "Transfer Kliring"
+
+#. module: check_payment
+#: model:ir.actions.act_window,help:check_payment.action_account_giro_payments
+#: model:ir.actions.act_window,help:check_payment.action_account_giro_payments_payable
+msgid "Click to register a payment"
+msgstr "Klik untuk merekam pembayaran"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_payment_due_date
+#: model:ir.model.fields,field_description:check_payment.field_account_register_payments_due_date
+msgid "Due Date"
+msgstr "Tanggal Jatuh Tempo"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_journal_is_giro
+msgid "Giro Account"
+msgstr "Akun Giro"
+
+#. module: check_payment
+#: model:ir.ui.view,arch_db:check_payment.view_account_payment_form_check_payment
+msgid "Giro Clearing"
+msgstr "Kliring Giro"
+
+#. module: check_payment
+#: model:ir.ui.view,arch_db:check_payment.view_account_payment_search_check_payment
+msgid "Giro Not Cleared"
+msgstr "Giro Belum Kliring"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_payment_numbering
+#: model:ir.model.fields,field_description:check_payment.field_account_register_payments_numbering
+msgid "Giro Number"
+msgstr "Nomor Giro"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_payment_is_giro_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_register_payments_is_giro_payment
+msgid "Giro Payment"
+msgstr "Pembayaran Giro"
+
+#. module: check_payment
+#: model:ir.actions.act_window,name:check_payment.action_account_giro_payments
+#: model:ir.actions.act_window,name:check_payment.action_account_giro_payments_payable
+#: model:ir.ui.menu,name:check_payment.menu_action_account_giro_payments_payable
+#: model:ir.ui.menu,name:check_payment.menu_action_account_giro_payments_receivable
+msgid "Giro Payments"
+msgstr "Pembayaran Giro"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_payment_is_giro_cleared
+msgid "Is Cleared"
+msgstr "Sudah Kliring"
+
+#. module: check_payment
+#: model:ir.model,name:check_payment.model_account_journal
+msgid "Journal"
+msgstr "Jurnal"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_journal_linked_bank_account
+msgid "Linked Bank Account"
+msgstr "Akun Bank Terkait"
+
+#. module: check_payment
+#: model:ir.model.fields,field_description:check_payment.field_account_payment_linked_giro_id
+msgid "Linked Giro ID"
+msgstr "Giro Terkait"
+
+#. module: check_payment
+#: model:ir.ui.view,arch_db:check_payment.view_account_payment_search_check_payment
+msgid "Not Giro"
+msgstr "Bukan Giro"
+
+#. module: check_payment
+#: code:addons/check_payment/models/account.py:38
+#, python-format
+msgid "Only a posted payment can be cleared. Trying to clear a payment in state %s."
+msgstr "Hanya pembayaran giro sudah terekam yang dapat dikliring. Pembayaran ini dalam status %s."
+
+#. module: check_payment
+#: model:ir.model,name:check_payment.model_account_payment
+msgid "Payments"
+msgstr "Pembayaran"
+
+#. module: check_payment
+#: model:ir.actions.act_window,help:check_payment.action_account_giro_payments
+#: model:ir.actions.act_window,help:check_payment.action_account_giro_payments_payable
+msgid ""
+"Payments are used to register liquidity movements (send, collect or transfer money).\n"
+"\t\t\t\tYou can then process those payments by your own means or by using installed facilities."
+msgstr ""
+"Pembayaran digunakan untuk merekam pergerakan likuiditas (mengirim, menerima atau transfer uang).\n"
+"\t\t\t\tAnda kemudian dapat memproses pembayaran tersebut."
+
+#. module: check_payment
+#: model:ir.model,name:check_payment.model_account_register_payments
+msgid "Register payments on multiple invoices"
+msgstr "Rekam pembayaran pada beberapa faktur"
+
+#. module: check_payment
+#: model:ir.ui.view,arch_db:check_payment.view_account_payment_invoice_form_check_payment_clearing
+msgid "Validate"
+msgstr "Validasi"

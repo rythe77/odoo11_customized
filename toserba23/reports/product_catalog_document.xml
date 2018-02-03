@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_product_catalog"
+		model="product.template"
+		string="Katalog Produk"
+		name="toserba23.report_product_katalogsheet"
+		file="toserba23.katalog_produk"
+		print_report_name="'Katalog Produk - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="sales_team.group_sale_manager"
+	/>
+
+	<template id="report_product_katalogsheet">
+		<t t-call="web.html_container">
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<div class="col-xs-6 mb 16" style="background-color:#212121; height: 80px; border-radius: 5px">
+							<img style="position:absolute; top:10px; left:30px; max-height: 60px;" src='/toserba23/static/src/img/logo_only_inverse.png'/>
+							<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+								<span style="font:25px lucida-console,sans-serif !important;" t-esc="user.company_id.partner_id.name"/><br/>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
+							</div>
+						</div>
+						<div class="col-xs-6 text-center mb16" style="height: 80px;">
+							<div style="position:relative; top:10px; col-xs-6 text-center;">
+								<span style="font:25px lucida-console,sans-serif !important; position:relative; top:-5px;">
+									<span><b>Katalog Produk</b></span>
+								</span><br/>
+								<span style="font:20px lucida-console,sans-serif !important; border-top: 1px double #212121; ">
+									Dibuat tanggal: 
+									<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+								</span>
+							</div>
+						</div>
+						<table class="table table-condensed table table-striped" style="border: 1px double #212121;border-radius: 10px">
+							<thead style="background-color:#212121; color:#FFFFFF">
+								<tr style="font:16px lucida-console,sans-serif;">
+									<th><strong>Nama Barang</strong></th>
+									<th><strong>Harga Jual</strong></th>
+									<th><strong>Harga Grosir</strong></th>
+									<th><strong>Harga Toko</strong></th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<tr t-foreach="docs" t-as="o" style="font:14px lucida-console,sans-serif;">
+									<td>
+										<span t-field="o.name"/>
+									</td>
+									<td>
+										<span t-field="o.list_price"/>
+									</td>
+									<td>
+										<span t-field="o.x_harga_grosir"/>
+									</td>
+									<td>
+										<span t-field="o.x_harga_toko"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

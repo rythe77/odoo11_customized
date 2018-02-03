@@ -1,0 +1,39 @@
+<odoo>
+<data>
+	<!-- Purchase price view definition -->
+	<record model="ir.ui.view" id="sale_margin_sale_order_line_form_custom">
+		<field name="name">sale_margin.sale_margin_sale_order_line_form_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+				<attribute name="groups">hide_confidential_info.view_cost_price</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Purchase price view definition -->
+	<record model="ir.ui.view" id="sale_margin_sale_order_line_custom">
+		<field name="name">sale_margin.sale_margin_sale_order_line_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
+		<field name="arch" type="xml">
+			<field name="purchase_price" position="attributes">
+				<attribute name="groups">hide_confidential_info.view_cost_price</attribute>
+			</field>
+		</field>
+	</record>
+	
+	<!-- Sale margin view definition -->
+	<record model="ir.ui.view" id="sale_margin_sale_order_custom">
+		<field name="name">sale_margin.sale_margin_sale_order_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+		<field name="arch" type="xml">
+			<field name="margin" position="attributes">
+				<attribute name="groups">hide_confidential_info.view_cost_price</attribute>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

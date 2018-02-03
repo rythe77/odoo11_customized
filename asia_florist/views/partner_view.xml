@@ -1,0 +1,27 @@
+<odoo>
+<data>
+	<!-- Hide customer sales & purchases tab form view definition -->
+	<record model="ir.ui.view" id="view_partner_form_custom">
+		<field name="name">base.view_partner_form_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<page name="sales_purchases" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+		</field>
+	</record>
+
+	<!-- Hide customer invoicing tab form view definition -->
+	<record model="ir.ui.view" id="view_partner_property_form_custom">
+		<field name="name">account.view_partner_property_form_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="account.view_partner_property_form"/>
+		<field name="arch" type="xml">
+			<page name="accounting" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</page>
+		</field>
+	</record>
+</data>
+</odoo>

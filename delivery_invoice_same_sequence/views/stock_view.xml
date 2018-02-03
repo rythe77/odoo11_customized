@@ -1,0 +1,14 @@
+<odoo>
+<data>
+	<record id="view_stock_return_picking_form_make_readonly" model="ir.ui.view">
+		<field name="name">stock_account.view_stock_return_picking_form_make_readonly</field>
+		<field name="inherit_id" ref="stock_account.view_stock_return_picking_form_inherit_stock_account"/>
+		<field name="model">stock.return.picking</field>
+		<field name="arch" type="xml">
+			<field name="to_refund" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

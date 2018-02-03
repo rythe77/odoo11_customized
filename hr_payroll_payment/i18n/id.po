@@ -1,0 +1,155 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_payroll_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-07 09:39+0000\n"
+"PO-Revision-Date: 2018-01-07 17:41+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: hr_payroll_payment
+#: model:ir.ui.view,arch_db:hr_payroll_payment.hr_payroll_register_payment_view_form
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,help:hr_payroll_payment.field_hr_payroll_register_payment_wizard_company_id
+msgid "Company related to this journal"
+msgstr "Perusahaan yang terkait dengan jurnal ini"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: hr_payroll_payment
+#: model:ir.ui.view,arch_db:hr_payroll_payment.hr_payroll_register_payment_view_form
+msgid "Draft Payment"
+msgstr "Rancangan Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payslip_is_paid
+msgid "Has been Paid"
+msgstr "Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_hide_payment_method
+msgid "Hide Payment Method"
+msgstr "Sembunyikan Cara Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model,name:hr_payroll_payment.model_hr_payroll_register_payment_wizard
+msgid "Hr Payroll Register Payment wizard"
+msgstr "Hr Payroll Register Payment wizard"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_communication
+msgid "Memo"
+msgstr "Memo"
+
+#. module: hr_payroll_payment
+#: model:ir.ui.view,arch_db:hr_payroll_payment.payslip_filter_needs_payment
+msgid "Needs Payment"
+msgstr "Belum Dibayar"
+
+#. module: hr_payroll_payment
+#: model:ir.ui.view,arch_db:hr_payroll_payment.payslip_filter_needs_payment
+msgid "Needs Payment Slip"
+msgstr "Slip Belum Dibayar"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_partner_id
+msgid "Partner"
+msgstr "Rekanan"
+
+#. module: hr_payroll_payment
+#: model:ir.model,name:hr_payroll_payment.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Slip Gaji"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_amount
+msgid "Payment Amount"
+msgstr "Jumlah Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_payment_date
+msgid "Payment Date"
+msgstr "Tanggal Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_journal_id
+msgid "Payment Method"
+msgstr "Payment Method"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,field_description:hr_payroll_payment.field_hr_payroll_register_payment_wizard_payment_method_id
+msgid "Payment Type"
+msgstr "Tipe Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.actions.act_window,name:hr_payroll_payment.hr_payroll_register_payment_wizard_action
+#: model:ir.ui.view,arch_db:hr_payroll_payment.hr_payroll_register_payment_view_form
+#: model:ir.ui.view,arch_db:hr_payroll_payment.hr_payslip_form
+msgid "Register Payment"
+msgstr "Rekam Pembayaran"
+
+#. module: hr_payroll_payment
+#: model:ir.model.fields,help:hr_payroll_payment.field_hr_payroll_register_payment_wizard_hide_payment_method
+msgid "Technical field used to hide the payment method if the selected journal has only one available which is 'manual'"
+msgstr "Kolom teknis yang digunakan untuk menyembunyikan cara pembayaran jika jurnal yang dipilih hanya memiliki satu yang tersedia, yaitu 'manual'"
+
+#. module: hr_payroll_payment
+#: model:ir.ui.view,arch_db:hr_payroll_payment.hr_payroll_register_payment_view_form
+msgid "Validate"
+msgstr "Validasi"

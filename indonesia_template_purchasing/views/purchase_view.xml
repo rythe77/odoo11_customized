@@ -1,0 +1,74 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="purchase_order_form_inherited">
+		<field name="name">purchase.purchase_order_form_inherited</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<form position="attributes">
+				<attribute name="delete">false</attribute>
+			</form>
+			<button name="action_rfq_send" position="replace"/>
+			<button name="action_rfq_send" position="replace"/>
+			<button name="action_rfq_send" position="replace"/>
+			<button name="print_quotation" position="replace"/>
+			<button name="print_quotation" position="replace"/>
+			<button name="button_confirm" position="replace"/>
+			<button name="button_confirm" position="attributes">
+				<attribute name="states">draft,sent</attribute>
+				<attribute name="class">oe_highlight</attribute>
+			</button>
+			<field name="date_order" position="attributes">
+				<attribute name="readonly">1</attribute>
+				<attribute name="attrs"></attribute>
+			</field>
+			<field name="date_planned" position="after">
+				<field name="create_uid" string="Created by" readonly="1" attrs="{'invisible': [('create_uid', '=', False)]}" options="{'no_create': True}"/>
+			</field>
+			<field name="incoterm_id" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="fiscal_position_id" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="date_approve" position="attributes">
+				<attribute name="attrs">{'invisible': [('date_approve', '=', False)]}</attribute>
+			</field>
+			<field name="amount_untaxed" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="amount_tax" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='taxes_id']" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_purchase_order_filter_inherited">
+		<field name="name">purchase.view_purchase_order_filter_inherited</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="arch" type="xml">
+			<filter name="activities_my" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="message_needaction" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_overdue" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_today" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_upcoming_all" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+		</field>
+	</record>
+</data>
+</odoo>

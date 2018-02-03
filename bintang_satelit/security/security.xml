@@ -1,0 +1,7 @@
+<odoo>
+<data>
+	<record id="complex_menu" model="res.groups">
+		<field name="name">Show Complex Menu</field>
+	</record>
+</data>
+</odoo>

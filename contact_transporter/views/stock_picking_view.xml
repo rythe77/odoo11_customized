@@ -1,0 +1,19 @@
+<odoo>
+<data>
+	<!-- Add transporter input in DO form view -->
+	<record model="ir.ui.view" id="stock_picking_form_view_add_transporter">
+		<field name="name">stock.view_picking_form_add_transporter</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/group/group[2]" position="inside">
+				<label for="use_transporter" string="Use Transporter?"/>
+				<div>
+					<field name="use_transporter"/>
+					<field name="transporter_id" domain="[('transporter','=',True)]" context="{'show_address': 1}" options="{'no_create': 1}" attrs="{'invisible': [('use_transporter', '!=', True)]}"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

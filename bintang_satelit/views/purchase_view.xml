@@ -1,0 +1,18 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="purchase_order_form_custom">
+		<field name="name">purchase.purchase_order_form_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<button name="button_done" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+			<button name="button_unlock" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+		</field>
+	</record>
+</data>
+</odoo>

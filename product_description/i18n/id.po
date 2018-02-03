@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_description
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-29 07:53+0000\n"
+"PO-Revision-Date: 2017-10-29 15:55+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: product_description
+#: model:ir.model,name:product_description.model_procurement_rule
+msgid "Procurement Rule"
+msgstr "Aturan Pengadaan"
+
+#. module: product_description
+#: model:ir.model,name:product_description.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Detail Order Penjualan"
+
+#. module: product_description
+#: model:ir.model.fields,help:product_description.field_sale_order_line_product_desc
+#: model:ir.model.fields,help:product_description.field_stock_move_product_desc
+msgid "Special request from customer regarding the purchase of this product"
+msgstr "Permintaan khusus dari pelanggan mengenai pembelian produk ini"
+
+#. module: product_description
+#: model:ir.model.fields,field_description:product_description.field_sale_order_line_product_desc
+#: model:ir.model.fields,field_description:product_description.field_stock_move_product_desc
+msgid "Specific Request"
+msgstr "Permintaan khusus"
+
+#. module: product_description
+#: model:ir.model,name:product_description.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stok"
+
+#. module: product_description
+#: model:ir.ui.view,arch_db:product_description.view_order_form_add_prod_desc
+msgid "e.g. red color, big size, etc"
+msgstr "mis: warna merah, ukuran besar, dll"

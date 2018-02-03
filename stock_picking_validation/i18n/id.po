@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_picking_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-15 00:22+0000\n"
+"PO-Revision-Date: 2018-01-15 08:22+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: stock_picking_validation
+#: model:ir.actions.act_window,help:stock_picking_validation.action_picking_tree_waiting_validation
+msgid "Click here to create a new transfer."
+msgstr "Klik di sini untuk membuat transfer baru."
+
+#. module: stock_picking_validation
+#: model:ir.model.fields,field_description:stock_picking_validation.field_stock_picking_type_count_picking_waiting_validation
+msgid "Count Picking Waiting Validation"
+msgstr "Transfer Tunggu Validasi"
+
+#. module: stock_picking_validation
+#: model:ir.ui.view,arch_db:stock_picking_validation.view_picking_form_add_validation
+msgid "Do Transfer"
+msgstr "Selesaikan"
+
+#. module: stock_picking_validation
+#: model:ir.ui.view,arch_db:stock_picking_validation.view_picking_internal_search_custom
+msgid "Picking not done yet"
+msgstr "Pengambilan belum selesai"
+
+#. module: stock_picking_validation
+#: model:ir.ui.view,arch_db:stock_picking_validation.view_picking_form_add_validation
+msgid "Redo Transfer"
+msgstr "Perbaiki"
+
+#. module: stock_picking_validation
+#: model:ir.model.fields,field_description:stock_picking_validation.field_stock_picking_show_do_transfer
+msgid "Show Do Transfer"
+msgstr "Tampilkan Selesaikan"
+
+#. module: stock_picking_validation
+#: model:ir.model.fields,field_description:stock_picking_validation.field_stock_picking_show_redo_transfer
+msgid "Show Redo Transfer"
+msgstr "Tampilkan Perbaiki"
+
+#. module: stock_picking_validation
+#: model:ir.model.fields,help:stock_picking_validation.field_stock_picking_show_do_transfer
+msgid "Technical field used to compute whether the do transfer should be shown."
+msgstr "Kolom teknis yang digunakan untuk menentukan apakah tombol selesaikan ditampilkan."
+
+#. module: stock_picking_validation
+#: model:ir.model.fields,help:stock_picking_validation.field_stock_picking_show_redo_transfer
+msgid "Technical field used to compute whether the redo transfer should be shown."
+msgstr "Kolom teknis yang digunakan untuk menentukan apakah tombol perbaiki ditampilkan."
+
+#. module: stock_picking_validation
+#: model:ir.model,name:stock_picking_validation.model_stock_picking_type
+msgid "The operation type determines the picking view"
+msgstr "Tipe operasi menentukan tampilan pengambilan"
+
+#. module: stock_picking_validation
+#: model:ir.model,name:stock_picking_validation.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: stock_picking_validation
+#: model:ir.ui.view,arch_db:stock_picking_validation.view_picking_internal_search_custom
+msgid "Tunggu Validasi"
+msgstr "Tunggu Validasi"
+
+#. module: stock_picking_validation
+#: model:ir.actions.act_window,name:stock_picking_validation.action_picking_tree_waiting_validation
+#: model:ir.ui.view,arch_db:stock_picking_validation.stock_picking_type_kanban_custom
+msgid "Waiting Validation"
+msgstr "Tunggu Validasi"
+
+#. module: stock_picking_validation
+#: model:ir.actions.act_window,help:stock_picking_validation.action_picking_tree_waiting_validation
+msgid "You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker."
+msgstr "Anda dapat mengerjakannya segera atau tandai sebagai Todo untuk diproses belakangan. Gunakan scanner untuk validasi jumlah transfer dengan lebih cepat."

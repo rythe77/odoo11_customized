@@ -1,0 +1,39 @@
+<odoo>
+<data>
+	<!-- sale_order_date order list view definition -->
+	<record model="ir.ui.view" id="view_order_tree_add_date">
+		<field name="name">sale.view_order_tree_add_date</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="confirmation_date" position="after">
+				<field name="requested_date"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- sale_order_date quotation list view definition -->
+	<record model="ir.ui.view" id="view_quotation_tree_add_date">
+		<field name="name">sale.view_quotation_tree_add_date</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_quotation_tree"/>
+		<field name="arch" type="xml">
+			<field name="date_order" position="after">
+				<field name="requested_date"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_add_date">
+		<field name="name">sale_stock.view_order_form_inherit_sale_stock_add_date</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<group name="sale_shipping" position="inside">
+				<field name="requested_date"/>
+			</group>
+		</field>
+	</record>
+</data>
+</odoo>

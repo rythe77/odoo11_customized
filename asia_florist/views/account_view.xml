@@ -1,0 +1,87 @@
+<odoo>
+<data>
+	<!-- Customer invoices list view definition -->
+	<record model="ir.ui.view" id="invoice_tree_custom">
+		<field name="name">account.invoice_tree_custom</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_tree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="delete">false</attribute>
+				<attribute name="create">false</attribute>
+			</tree>
+			<field name="date_due" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Customer Invoices form view definition -->
+	<record model="ir.ui.view" id="invoice_form_custom">
+		<field name="name">account.invoice_form_custom</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<form position="attributes">
+				<attribute name="create">false</attribute>
+			</form>
+			<button name="%(account.action_account_invoice_refund)d" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="action_invoice_open" position="after">
+				<button name="%(report_custom_invoice)d" string="Cetak" attrs="{'invisible': [('state', 'not in', ('open','paid'))]}" type="action" class="oe_highlight" groups="account.group_account_invoice"/>
+			</button>
+			<field name="partner_id" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="partner_id" position="after">
+				<field name="x_invoicing_name" required="1"/>
+				<field name="x_invoicing_address" required="1"/>
+				<field name="x_invoicing_city" string="" required="1"/>
+				<field name="x_delivery_name"/>
+			</field>
+			<field name="payment_term_id" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</field>
+			<field name="date_due" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="journal_id" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Customer payment form view definition -->
+	<record model="ir.ui.view" id="view_account_payment_form_custom">
+		<field name="name">account.view_account_payment_form_custom</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_form"/>
+		<field name="arch" type="xml">
+			<button name="action_draft" position="after">
+				<button name="%(report_custom_payment)d" string="Cetak" attrs="{'invisible': [('state', 'not in', ('posted','reconciled'))]}" type="action" class="oe_highlight" groups="account.group_account_invoice"/>
+			</button>
+			<field name="communication" position="after">
+				<field name="create_uid" readonly="1"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main menu view definition -->
+	<record model="ir.ui.menu" id="account.menu_action_invoice_out_refund">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_payables">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_entries">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_reports">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_configuration">
+		<field name="groups_id" eval="[(6,0,[ref('asia_florist.complex_menu')])]"/>
+	</record>
+</data>
+</odoo>

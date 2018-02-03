@@ -1,0 +1,55 @@
+<odoo>
+<data>
+	<!-- Add transporter page in contact form view -->
+	<record model="ir.ui.view" id="view_partner_form_add_transporter">
+		<field name="name">base.view_partner_form_add_transporter</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<notebook position="inside">
+				<page name="transporter_detail" string="Transporter">
+					<group name="container_row_1">
+						<group string="Transporter" name="transporter">
+							<field name="transporter"/>
+						</group>
+					</group>
+				</page>
+			</notebook>
+		</field>
+	</record>
+
+	<!-- Add transporter to search view definition -->
+	<record model="ir.ui.view" id="view_res_partner_filter_add_transporter">
+		<field name="name">base.view_res_partner_filter_add_transporter</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_res_partner_filter"/>
+		<field name="arch" type="xml">
+			<filter name="supplier" position="after">
+				<filter string="Transporter" name="transporter" domain="[('transporter','=',1), ('parent_id', '=', False)]"/>
+			</filter>
+		</field>
+	</record>
+
+	<!--Supplier menu-->
+	<record id="action_partner_transporter_form" model="ir.actions.act_window">
+		<field name="name">Transporter</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">res.partner</field>
+		<field name="view_type">form</field>
+		<field name="domain">[]</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="context">{'search_default_transporter': 1,'default_customer': 0,'default_supplier': 0, 'default_transporter': 1, 'default_company_type': 'company'}</field>
+		<field name="filter" eval="True"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to add a contact in your address book.
+			</p>
+		</field>
+	</record>
+
+	<menuitem id="menu_transporter_management" name="Transporter"
+		parent="stock.menu_stock_inventory_control"
+		groups="stock.group_stock_manager"
+		action="action_partner_transporter_form" sequence="20"/>
+</data>
+</odoo>

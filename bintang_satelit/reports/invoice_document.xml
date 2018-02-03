@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_invoice_dotM"
+		model="account.invoice"
+		string="Faktur (Printer Pita)"
+		name="bintang_satelit.report_custom_invoiceslip_dotM"
+		file="bintang_satelit.faktur_dotM"
+		report_type="qweb-html"
+		menu="False"
+	/>
+
+	<template id="report_custom_invoiceslip_dotM">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="bintang_satelit.report_custom_invoice_document_dotM" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_invoice_document_dotM">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+	
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-foreach="docs" t-as="o">
+				<div class="page" groups="account.group_account_invoice">
+					<div class="col-xs-6 mt4 text-left" style="font:12px lucida-console,sans-serif;">
+						<t>
+							<strong><div t-field="company.partner_id" style="font:16px lucida-console,sans-serif;font-weight:bold"/></strong>
+						</t>
+	                    <t t-if="company.street"><span t-field="company.street"/>,</t>
+	                    <t t-if="company.street2"><span t-field="company.street2"/></t>
+	                    <t t-if="company.city">
+							<br/>
+	                    	<span t-field="company.city"/>
+	                    </t>
+	                    <t t-if="company.phone">
+							<br/>
+	                    	Telp.: 
+	                    	<span t-field="company.phone"/>
+	                    </t>
+					</div>
+					<div class="col-xs-6 mt4 text-left" style="font:12px lucida-console,sans-serif;">
+						<div class="text-center">
+							<t t-if="o.number">
+								<strong>
+									<b>
+										<span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FAKTUR PENJUALAN No:</span>
+										<span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+										<span t-if="o.type == 'out_invoice' and o.state == 'draft'">KONSEP FAKTUR</span>
+										<span t-if="o.type == 'out_invoice' and o.state == 'cancel'">FAKTUR DIBATALKAN</span>
+										<span t-if="o.type == 'out_refund'">REFUND PENJUALAN No:</span>
+										<span t-if="o.type == 'in_refund'">REFUND PEMBELIAN</span>
+										<span t-if="o.type == 'in_invoice'">FAKTUR PEMBELIAN</span>
+										<span t-field="o.number"/>
+									</b>
+								</strong>
+							</t>
+						</div>
+						<div>
+							<t name="td_sched_date_h" t-if="o.date_invoice">
+								Makassar, 
+								<span t-field="o.date_invoice" t-field-options='{"format": "dd/MM/yyyy"}'/>
+							</t>
+						</div>
+						<div>
+							<t t-if="o.partner_id">
+								Kepada Yth: 
+								<br/>
+								<b><span t-field="o.partner_id"/></b>
+							</t>
+							<t t-if="o.partner_id">
+								<br/>
+								<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+								<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/></t>
+								<br/>
+								<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/></t>
+							</t>
+						</div>
+					</div>
+					<div class="col-xs-6 mb8 text-left" style="font:12px lucida-console,sans-serif;">
+						<t t-if="o.user_id">
+							Sales: 
+							<span t-field="o.user_id"/>
+						</t>
+						<t t-if="o.date_due">
+							<br/>
+							Jatuh Tempo : 
+							<span t-field="o.date_due" t-field-options='{"format": "dd/MM/yyyy"}'/>
+						</t>
+					</div>
+					<div class="col-xs-6 mb8 text-left" style="font:12px lucida-console,sans-serif;">
+						<t t-if="o.x_transporter_note">
+							EXP: 
+							<span t-field="o.x_transporter_note"/>
+						</t>
+					</div>
+					
+					<table class="table table-condensed" style="border-bottom: 1px double #545454; border-top: 1px double #545454;">
+						<thead>
+							<tr style="font:12px lucida-console,sans-serif;">
+								<th>Nama Barang</th>
+								<th class="text-right">Qty</th>
+								<th class="text-right">Harga</th>
+								<th class="text-right">Subtotal</th>
+							</tr>
+						</thead>
+						<tbody class="invoice_tbody">
+							<tr t-foreach="o.invoice_line_ids" t-as="l" style="font:12px lucida-console,sans-serif;">
+								<td><span t-field="l.product_id"/></td>
+								<td class="text-right">
+									<span t-field="l.quantity"/>
+									<span t-field="l.uom_id"/>
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_subtotal_nodiscount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			
+					<div class="row">
+						<div class="col-xs-4 pull-right">
+							<table class="table table-condensed">
+								<tr style="font:12px lucida-console,sans-serif;">
+									<td>Discount</td>
+									<td class="text-right">
+										<t t-if="o.discount_type == 'percent'">
+											<span t-field="o.discount_rate"/> %
+										</t>
+										<t t-if="o.discount_type == 'amount'">
+											<span t-field="o.amount_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+										</t>
+									</td>
+								</tr>
+								<tr class="border-black" style="font:12px lucida-console,sans-serif;">
+									<td><strong>Total</strong></td>
+									<td class="text-right">
+										 <span t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 pull-center text-center" style="font:12px lucida-console,sans-serif;">
+							Hormat Kami,
+						</div>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

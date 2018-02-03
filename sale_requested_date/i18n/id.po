@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_requested_date
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-28 22:54+0000\n"
+"PO-Revision-Date: 2017-10-29 07:02+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: sale_requested_date
+#: model:ir.model.fields,field_description:sale_requested_date.field_sale_order_commitment_date
+msgid "Commitment Date"
+msgstr "Tanggal Komitmen"
+
+#. module: sale_requested_date
+#: model:ir.model.fields,help:sale_requested_date.field_sale_order_requested_date
+msgid ""
+"Date by which the customer has requested the items to be delivered.\n"
+"When this Order gets confirmed, the Delivery Order's expected date will be computed based on this date and the Company's Security Delay.\n"
+"Leave this field empty if you want the Delivery Order to be processed as soon as possible. In that case the expected date will be computed using the default method: based on the Product Lead Times and the Company's Security Delay."
+msgstr ""
+"Tanggal yang diminta pelanggan untuk pengiriman barang.\n"
+"Ketika order penjualan ini dikonfirmasi, perkiraan tanggal surat jalan akan dihitung berdasarkan pada tanggal ini dan Jaminan Penundaan Perusahaan.\n"
+"Tinggalkan kolom ini kosong jika Anda ingin surat jalan diproses secepatnya. Perkiraan tanggal akan dihitung menggunakan metode standar: berdasarkan lead time produk dan Jaminan Penundaan Perusahaan."
+
+#. module: sale_requested_date
+#: model:ir.model.fields,help:sale_requested_date.field_sale_order_commitment_date
+msgid "Date by which the products are sure to be delivered. This is a date that you can promise to the customer, based on the Product Lead Times."
+msgstr "Tanggal di mana produk dengan pasti dapat dikirimkan. Ini adalah tanggal yang dapat Anda janjikan untuk pelanggan, berdasarkan lead time produk."
+
+#. module: sale_requested_date
+#: model:ir.model.fields,help:sale_requested_date.field_sale_order_effective_date
+msgid "Date on which the first Delivery Order was created."
+msgstr "Tanggal di mana surat jalan pertama dibuat."
+
+#. module: sale_requested_date
+#: model:ir.model.fields,field_description:sale_requested_date.field_sale_order_requested_date
+msgid "Delivery Date"
+msgstr "Tanggal Pengiriman"
+
+#. module: sale_requested_date
+#: model:ir.model.fields,field_description:sale_requested_date.field_sale_order_effective_date
+msgid "Effective Date"
+msgstr "Tanggal Efektif"
+
+#. module: sale_requested_date
+#: model:ir.model,name:sale_requested_date.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: sale_requested_date
+#: code:addons/sale_requested_date/models/sale_order.py:57
+#, python-format
+msgid "Requested date is too soon!"
+msgstr "Tanggal pengiriman terlalu cepat!"
+
+#. module: sale_requested_date
+#: model:ir.model,name:sale_requested_date.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Detail Order Penjualan"
+
+#. module: sale_requested_date
+#: code:addons/sale_requested_date/models/sale_order.py:58
+#, python-format
+msgid "The date requested by the customer is sooner than the commitment date. You may be unable to honor the customer's request."
+msgstr "Tanggal pengiriman lebih awal dari tanggal yang pasti dapat dijanjikan ke pelanggan. Anda mungkin tidak dapat memenuhi janji pengiriman ini."

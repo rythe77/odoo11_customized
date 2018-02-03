@@ -1,0 +1,146 @@
+<odoo>
+<data>
+	<!-- Main order list view definition -->
+	<record id="view_order_tree_custom" model="ir.ui.view">
+		<field name="name">sale.order.view_order_tree_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="amount_total" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main quotation list view definition -->
+	<record id="view_quotation_tree_custom" model="ir.ui.view">
+		<field name="name">sale.order.view_quotation_tree_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_quotation_tree"/>
+		<field name="arch" type="xml">
+			<field name="amount_total" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Sale advance order list view definition -->
+	<record id="view_order_tree_add_amount_residual_custom" model="ir.ui.view">
+		<field name="name">sale.order.view_order_tree_add_amount_residual_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_advance_payment.view_order_tree_add_amount_residual"/>
+		<field name="arch" type="xml">
+			<field name="amount_advance" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Sale advance quotation list view definition -->
+	<record id="view_quotation_tree_add_amount_residual_custom" model="ir.ui.view">
+		<field name="name">sale.order.view_quotation_tree_add_amount_residual_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_advance_payment.view_quotation_tree_add_amount_residual"/>
+		<field name="arch" type="xml">
+			<field name="amount_advance" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_order_form_custom">
+		<field name="name">sale.view_order_form_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<button name="action_done" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="action_unlock" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</button>
+			<button name="action_cancel" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<button name="action_draft" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<field name="partner_id" position="attributes">
+				<attribute name="context">{'search_default_customer':1}</attribute>
+				<attribute name="options">{"no_open": True}</attribute>
+			</field>
+			<field name="partner_id" position="after">
+				<field name="x_partner_address" readonly="1" attrs="{'invisible': [('partner_id', '=', False)]}"/>
+			</field>
+			<field name="date_order" position="after">
+				<field name="x_invoicing_name" attrs="{'invisible': [('partner_id', '=', False)]}"/>
+				<field name="x_invoicing_address" attrs="{'invisible': [('partner_id', '=', False)]}"/>
+				<field name="x_invoicing_city" string="" attrs="{'invisible': [('partner_id', '=', False)]}"/>
+			</field>
+			<field name="payment_term_id" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</field>
+			<field name="user_id" position="attributes">
+				<attribute name="string">Admin</attribute>
+			</field>
+			<field name="client_order_ref" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Set requested date to required -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_add_date_custom">
+		<field name="name">sale_requested_date.view_order_form_inherit_sale_stock_add_date_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_requested_date.view_order_form_inherit_sale_stock_add_date"/>
+		<field name="arch" type="xml">
+			<field name="requested_date" position="attributes">
+				<attribute name="required">1</attribute>
+				<attribute name="string">Event Date</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_custom">
+		<field name="name">sale_stock.view_order_form_inherit_sale_stock_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<field name="picking_policy" position="attributes">
+				<attribute name="groups">asia_florist.complex_menu</attribute>
+			</field>
+			<field name="requested_date" position="after">
+				<field name="x_event_notes" required="1"/>
+				<field name="x_delivery_name" required="1"/>
+				<field name="x_delivery_address" required="1"/>
+				<field name="x_delivery_city" required="1"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_sales_order_filter_custom">
+		<field name="name">sale.view_sales_order_filter_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_sales_order_filter"/>
+		<field name="arch" type="xml">
+			<filter name="my_sale_orders_filter" position="attributes">
+				<attribute name="groups">asia_florist.extra_menu_view</attribute>
+			</filter>
+			<field name="product_id" position="after">
+				<filter string="Ordered today" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered yesterday" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered for the last week" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Delivery today" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery tomorrow" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery for the next week" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

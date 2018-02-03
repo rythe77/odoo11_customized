@@ -1,0 +1,27 @@
+<odoo>
+<data>
+	<!-- Main order list view definition -->
+	<record id="view_order_tree_delivery_status" model="ir.ui.view">
+		<field name="name">sale.order.view_order_tree_delivery_status</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="invoice_status" position="before">
+				<field name="delivery_status"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_delivery_status">
+		<field name="name">sale_stock.view_order_form_inherit_sale_stock_delivery_status</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<field name="picking_policy" position="after">
+				<field name="delivery_status" readonly="1"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

@@ -1,0 +1,344 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* asia_florist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-01 09:48+0000\n"
+"PO-Revision-Date: 2017-11-01 17:54+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "<font color=\"#fff\"><strong>Jumlah</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Jumlah</strong></font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "<font color=\"#fff\"><strong>Serial Number</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Nomor Seri</strong></font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "<font color=\"#fff\">Harga Satuan</font>"
+msgstr "<font color=\"#fff\">Harga Satuan</font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "<font color=\"#fff\">Jumlah</font>"
+msgstr "<font color=\"#fff\">Jumlah</font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "<font color=\"#fff\">Nama Barang</font>"
+msgstr "<font color=\"#fff\">Nama Barang</font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "<font color=\"#fff\">Subtotal</font>"
+msgstr "<font color=\"#fff\">Subtotal</font>"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_account_invoice_x_invoicing_address
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_partner_address
+msgid "Address"
+msgstr "Alamat"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Alamat Penagihan"
+msgstr "Alamat Penagihan"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_account_invoice_x_invoicing_city
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_delivery_city
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_delivery_city
+msgid "City"
+msgstr "Kota"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.stock_picking_form_view_custom
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_delivery_address
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_delivery_address
+msgid "Delivery Address"
+msgstr "Alamat Pengiriman"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Delivery for the next week"
+msgstr "Dikirim untuk 1 minggu ke depan"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Delivery today"
+msgstr "Dikirim hari ini"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Delivery tomorrow"
+msgstr "Dikirim besok"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Dikirim Untuk :"
+msgstr "Dikirim Untuk :"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Disc.(%)"
+msgstr "Disk.(%)"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Draft Faktur"
+msgstr "Rancangan Faktur"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_driver
+msgid "Driver"
+msgstr "Pengantar"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_order_form_inherit_sale_stock_add_date_custom
+msgid "Event Date"
+msgstr "Tanggal Acara"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_event_notes
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_event_notes
+msgid "Event Name"
+msgstr "Nama Acara"
+
+#. module: asia_florist
+#: model:ir.actions.report,name:asia_florist.report_custom_invoice
+msgid "Faktur"
+msgstr "Faktur"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Faktur#"
+msgstr "Faktur#"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_delivery_address
+#: model:ir.model.fields,help:asia_florist.field_stock_picking_x_delivery_address
+msgid "Input delivery address here"
+msgstr "Masukkan alamat pengiriman di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_delivery_city
+#: model:ir.model.fields,help:asia_florist.field_stock_picking_x_delivery_city
+msgid "Input delivery city here"
+msgstr "Masukkan kota alamat pengiriman di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_account_invoice_x_invoicing_address
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_invoicing_address
+msgid "Input invoice address here"
+msgstr "Masukkan alamat penagihan di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_event_notes
+#: model:ir.model.fields,help:asia_florist.field_stock_picking_x_event_notes
+msgid "Input name of the event here"
+msgstr "Masukkan nama acara di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_account_invoice_x_invoicing_city
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_invoicing_city
+msgid "Input the city name to put on invoice here"
+msgstr "Masukkan nama kota alamat penagihan di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_delivery_name
+#: model:ir.model.fields,help:asia_florist.field_stock_picking_x_delivery_name
+msgid "Input the name of the package receiver here"
+msgstr "Masukkan nama penerima barang di sini"
+
+#. module: asia_florist
+#: model:ir.model.fields,help:asia_florist.field_account_invoice_x_invoicing_name
+#: model:ir.model.fields,help:asia_florist.field_sale_order_x_invoicing_name
+msgid "Input the name to put on invoice here"
+msgstr "Masukkan nama yang akan tertera pada faktur"
+
+#. module: asia_florist
+#: model:ir.model,name:asia_florist.model_account_invoice
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_invoicing_address
+msgid "Invoice Address"
+msgstr "Alamat Faktur"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_account_invoice_x_invoicing_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_invoicing_name
+msgid "Name on Invoice"
+msgstr "Nama tertera pada Faktur"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "No Order"
+msgstr "No Order"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Ordered for the last week"
+msgstr "Dipesan 1 minggu terakhir"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Ordered today"
+msgstr "Dipesan hari ini"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_sales_order_filter_custom
+msgid "Ordered yesterday"
+msgstr "Dipesan kemarin"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Pekerja :"
+msgstr "Pekerja :"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Pemesan"
+msgstr "Pemesan"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Pengantar :"
+msgstr "Pengantar :"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Penginput :"
+msgstr "Penginput :"
+
+#. module: asia_florist
+#: model:ir.model,name:asia_florist.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_account_invoice_x_delivery_name
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_delivery_name
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_delivery_name
+msgid "Receiver Name"
+msgstr "Nama Penerima"
+
+#. module: asia_florist
+#: model:ir.model,name:asia_florist.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Detail Order Penjualan"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_picking_internal_search_custom
+msgid "Scheduled for the next week"
+msgstr "Pengiriman terjadwal untuk 1 minggu ke depan"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_picking_internal_search_custom
+msgid "Scheduled today"
+msgstr "Pengiriman terjadwal hari ini"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.view_picking_internal_search_custom
+msgid "Scheduled tomorrow"
+msgstr "Pengiriman terjadwal besok"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.stock_picking_form_view_custom
+msgid "Sender"
+msgstr "Pengirim"
+
+#. module: asia_florist
+#: model:res.groups,name:asia_florist.complex_menu
+msgid "Show Complex Menu"
+msgstr "Tampilkan Menu Kompleks"
+
+#. module: asia_florist
+#: model:ir.model,name:asia_florist.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stock"
+
+#. module: asia_florist
+#: model:ir.actions.report,name:asia_florist.report_custom_delivery
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Surat Jalan"
+msgstr "Surat Jalan"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_invoice_document
+msgid "Tanggal Faktur"
+msgstr "Tanggal Faktur"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Terjadwal"
+msgstr "Terjadwal"
+
+#. module: asia_florist
+#: model:ir.model,name:asia_florist.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_stock_picking_x_worker
+msgid "Worker"
+msgstr "Pekerja"
+
+#. module: asia_florist
+#: model:ir.model.fields,field_description:asia_florist.field_sale_order_x_invoicing_city
+msgid "X Invoicing City"
+msgstr "Kota"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Yang Menerima"
+msgstr "Yang Menerima"
+
+#. module: asia_florist
+#: model:ir.ui.view,arch_db:asia_florist.report_custom_delivery_document
+msgid "Yang Mengirim"
+msgstr "Yang Mengirim"

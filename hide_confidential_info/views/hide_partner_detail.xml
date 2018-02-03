@@ -1,0 +1,45 @@
+<openerp>
+	<data>
+		<!-- Main list view definition -->
+		<record model="ir.ui.view" id="hide_partner_detail">
+			<field name="name">res.view.partner.tree.hide_detail</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_tree"/>
+			<field name="arch" type="xml">
+				<field name="phone" position="before">
+					<field name="street" groups="hide_confidential_info.view_partner_detail"/>
+				</field>
+	 			<field name="phone" position="attributes">
+					<attribute name="groups">hide_confidential_info.view_partner_detail</attribute>
+				</field>
+				<field name="phone" position="after">
+					<field name="mobile" groups="hide_confidential_info.view_partner_detail"/>
+				</field>
+	 			<field name="email" position="attributes">
+					<attribute name="groups">hide_confidential_info.view_partner_detail</attribute>
+				</field>
+			</field>
+		</record>
+
+		<!-- Partner search view definition -->
+		<record model="ir.ui.view" id="partner_search_name_or_phone">
+			<field name="name">base.view.res.partner.filter.name_or_phone</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter"/>
+			<field name="arch" type="xml">
+				<field name="name" position="attributes">
+					<attribute name="string">Name/Phone</attribute>
+					<attribute name="filter_domain">['|','|',('name','ilike',self),('phone','ilike',self),('mobile','ilike',self)]</attribute>
+				</field>
+			</field>
+		</record>
+
+		<!-- Main menu view definition -->
+		<record model="ir.ui.menu" id="sale.res_partner_menu">
+			<field name="groups_id" eval="[(6,0,[ref('hide_confidential_info.view_partner_detail')])]"/>
+		</record>
+		<record model="ir.ui.menu" id="account.menu_account_customer">
+			<field name="groups_id" eval="[(6,0,[ref('hide_confidential_info.view_partner_detail')])]"/>
+		</record>
+	</data>
+</openerp>

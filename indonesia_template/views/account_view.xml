@@ -1,0 +1,87 @@
+<openerp>
+<data>
+	<!-- Vendor Bills form view definition -->
+	<record model="ir.ui.view" id="invoice_supplier_form_inherited">
+		<field name="name">account.invoice_supplier_form_inherited</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_supplier_form"/>
+		<field name="arch" type="xml">
+			<field name="invoice_line_tax_ids" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="fiscal_position_id" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="amount_untaxed" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="amount_tax" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="tax_line_ids" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Customer Invoices form view definition -->
+	<record model="ir.ui.view" id="invoice_form_inherited">
+		<field name="name">account.invoice_form_inherited</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<form position="attributes">
+				<attribute name="delete">false</attribute>
+			</form>
+			<xpath expr="/form/header/button[@name='action_invoice_sent'][1]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='action_invoice_sent'][2]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='invoice_print'][1]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<xpath expr="/form/header/button[@name='invoice_print'][2]" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</xpath>
+			<field name="invoice_line_tax_ids" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="fiscal_position_id" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="amount_untaxed" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="amount_tax" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+			<field name="tax_line_ids" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_account_invoice_filter_inherited">
+		<field name="name">account.view_account_invoice_filter_inherited</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+		<field name="arch" type="xml">
+			<filter name="activities_my" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_overdue" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_today" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+			<filter name="activities_upcoming_all" position="attributes">
+				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+			</filter>
+		</field>
+	</record>
+</data>
+</openerp>

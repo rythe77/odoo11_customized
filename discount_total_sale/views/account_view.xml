@@ -1,0 +1,26 @@
+<odoo>
+<data>
+	<!-- Customer Invoices form view definition -->
+	<record model="ir.ui.view" id="invoice_form_add_total_discount">
+		<field name="name">account.invoice_form_add_total_discount</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='amount_untaxed']" position="after">
+				<field name="amount_undiscounted"/>
+				<field name="amount_discount"/>
+			</xpath>
+			<xpath expr="//field[@name='comment']" position="before">
+				<div>
+					<label for="discount_type" string="Discount Type :"/>
+					<field name="discount_type" class="oe_inline"/>
+				</div>
+				<div>
+					<label for="discount_rate" string="Discount Rate :"/>
+					<field name="discount_rate" class="oe_inline"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

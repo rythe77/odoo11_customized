@@ -1,0 +1,7 @@
+<odoo>
+	<data>
+		<record id="extra_menu_view" model="res.groups">
+			<field name="name">Show Also Unneeded Menu</field>
+		</record>
+	</data>
+</odoo>

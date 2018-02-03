@@ -1,0 +1,249 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* attendances_based_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-11 08:24+0000\n"
+"PO-Revision-Date: 2017-12-11 16:27+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.hr_contract_view_form_add_detail
+msgid "<span>/ hari</span>"
+msgstr "<span>/ hari</span>"
+
+#. module: attendances_based_payroll
+#: code:addons/attendances_based_payroll/models/hr_attendance.py:28
+#, python-format
+msgid "Absen masuk hanya bisa dilakukan antara pukul 07:00-12:00"
+msgstr "Absen masuk hanya bisa dilakukan antara pukul 07:00-12:00"
+
+#. module: attendances_based_payroll
+#: code:addons/attendances_based_payroll/models/hr_attendance.py:33
+#, python-format
+msgid "Absen pulang hanya bisa dilakukan setelah pukul 13:00"
+msgstr "Absen pulang hanya bisa dilakukan setelah pukul 13:00"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_amount
+msgid "Amount"
+msgstr "Jumlah"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_attendance
+msgid "Attendance"
+msgstr "Absensi"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+msgid "Category"
+msgstr "Kategori"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_fine_category
+msgid "Category of Fine Records"
+msgstr "Kategori Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.actions.act_window,help:attendances_based_payroll.hr_fine_view_action
+msgid "Create employee fine record here"
+msgstr "Tambahkan karyawan baru di sini"
+
+#. module: attendances_based_payroll
+#: model:ir.actions.act_window,help:attendances_based_payroll.hr_fine_category_view_action
+msgid "Create fine category here"
+msgstr "Tambahkan kategori denda di sini"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_create_uid
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_create_date
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+msgid "Current Month"
+msgstr "Bulan Berjalan"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_display_name
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_employee
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_calendar
+msgid "Employee Attendances"
+msgstr "Absensi Karyawan"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_calendar_view
+msgid "Employee Fine"
+msgstr "Denda Karyawan"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_employee_id
+msgid "Employee Name"
+msgstr "Nama Karyawan"
+
+#. module: attendances_based_payroll
+#: model:ir.actions.act_window,name:attendances_based_payroll.hr_fine_view_action
+#: model:ir.ui.menu,name:attendances_based_payroll.fine_menu
+#: model:ir.ui.menu,name:attendances_based_payroll.hr_fine_menu
+msgid "Fine"
+msgstr "Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_amount
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_payslip_worked_days_fine_amount
+msgid "Fine Amount"
+msgstr "Besar Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.actions.act_window,name:attendances_based_payroll.hr_fine_category_view_action
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_id_5922
+#: model:ir.ui.menu,name:attendances_based_payroll.hr_fine_category_menu
+msgid "Fine Category"
+msgstr "Kategori Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_category_form_view
+msgid "Fine Category Form"
+msgstr "Formulir Kategori Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_category_tree_view
+msgid "Fine Category Tree"
+msgstr "Daftar Kategori Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_form_view
+msgid "Fine Form"
+msgstr "Formulir Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_fine
+msgid "Fine Records of Employee"
+msgstr "Data Denda Karyawan"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_tree_view
+msgid "Fine Tree"
+msgstr "Daftar Denda"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_search_additional
+msgid "For the Last 2 Weeks"
+msgstr "2 Minggu Terakhir"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_search_additional
+msgid "For the Last Month"
+msgstr "1 Bulan Terakhir"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_search_additional
+msgid "For the Last Week"
+msgstr "1 Minggu Terakhir"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+msgid "Group By"
+msgstr "Dikelompokkan menurut"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_employee_hr_fine_id
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_hr_fine_id
+msgid "Hr Fine"
+msgstr "Hr Fine"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_id
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_id
+msgid "ID"
+msgstr "ID"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine___last_update
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_write_uid
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_write_date
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_name
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_calendar
+msgid "Overtime"
+msgstr "Lembur"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_attendance_overtime_hours
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_payslip_worked_days_overtime_hours
+msgid "Overtime (hours)"
+msgstr "Lembur (jam)"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Slip Gaji"
+
+#. module: attendances_based_payroll
+#: model:ir.model,name:attendances_based_payroll.model_hr_payslip_worked_days
+msgid "Payslip Worked Days"
+msgstr "Jumlah Hari Kerja Slip Gaji"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_date_input
+msgid "Record Date"
+msgstr "Tanggal Pencatatan"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_payslip_worked_days_rule_violation
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_hr_payslip_form_add_overtime
+msgid "Rule Violation"
+msgstr "Pelanggaran"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
+msgid "Today"
+msgstr "Hari Ini"

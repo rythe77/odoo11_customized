@@ -1,0 +1,83 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_picking_form_add_validation">
+		<field name="name">stock.view_picking_form_add_validation</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<header position="inside">
+				<field name="show_do_transfer" invisible="1"/>
+				<field name="show_redo_transfer" invisible="1"/>
+				<button name="action_transfer" attrs="{'invisible': [('show_do_transfer', '=', False)]}" string="Do Transfer" type="object" class="oe_highlight" groups="base.group_user"/>
+				<button name="redo_transfer" attrs="{'invisible': [('show_redo_transfer', '=', False)]}" string="Redo Transfer" type="object" groups="base.group_user"/>
+			</header>
+			<field name="state" position="attributes">
+				<attribute name="statusbar_visible">"draft,confirmed,partially_available,assigned,waiting_validation,done"</attribute>
+			</field>
+			<field name="move_lines" position="attributes">
+				<attribute name="attrs">{'readonly': [('state', 'in', ('cancel', 'done', 'waiting_validation'))]}</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_picking_internal_search_custom">
+		<field name="name">stock.view_picking_internal_search_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_internal_search"/>
+		<field name="arch" type="xml">
+			<filter name="done" position="before">
+				<filter name="waiting_validation" string="Tunggu Validasi" domain="[('state','=', 'waiting_validation')]" help="Picking not done yet"/>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Inventory dashboard view definition -->
+	<record model="ir.ui.view" id="stock_picking_type_kanban_custom">
+		<field name="name">stock.stock_picking_type_kanban_custom</field>
+		<field name="model">stock.picking.type</field>
+		<field name="inherit_id" ref="stock.stock_picking_type_kanban"/>
+		<field name="arch" type="xml">
+			<xpath expr="/kanban/field[@name='count_picking_backorders']" position="after">
+				<field name="count_picking_waiting_validation"/>
+			</xpath>
+			<xpath expr="/kanban/templates/t/div/div/div[2]/div/div[2]/div[4]" position="after">
+				<div t-if="record.count_picking_waiting_validation.raw_value > 0" class="row">
+					<div class="col-xs-9">
+						<a name="get_action_picking_tree_waiting_validation" type="object">
+							Waiting Validation
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<field name="count_picking_waiting_validation"/>
+					</div>
+				</div>
+			</xpath>
+		</field>
+	</record>
+	<record id="action_picking_tree_waiting_validation" model="ir.actions.act_window">
+		<field name="name">Waiting Validation</field>
+		<field name="res_model">stock.picking</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,calendar</field>
+		<field name="domain"></field>
+		<field name="context">{
+				'search_default_picking_type_id': [active_id],
+				'default_picking_type_id': active_id,
+				'contact_display': 'partner_address',
+				'search_default_waiting_validation': 1,
+			}
+		</field>
+		<field name="search_view_id" ref="stock.view_picking_internal_search"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a new transfer.
+			</p><p>
+				You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker.
+			</p>
+		</field>
+	</record>
+</data>
+</odoo>

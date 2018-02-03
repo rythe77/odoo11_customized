@@ -1,0 +1,64 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_order_form_custom">
+		<field name="name">sale.view_order_form_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<button name="action_done" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+			<button name="action_unlock" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+			<button name="action_cancel" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+			<button name="action_draft" position="attributes">
+				<attribute name="groups">bintang_satelit.complex_menu</attribute>
+			</button>
+			<button name="action_confirm" position="after">
+				<button name="%(report_custom_saleorder_dotM)d" string="Cetak" attrs="{'invisible': ['|', ('state', '!=', 'sale')]}" type="action" class="oe_highlight" groups="stock.group_stock_user"/>
+			</button>
+			<field name="partner_id" position="attributes">
+				<attribute name="options">{"no_open": True}</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_custom">
+		<field name="name">sale_stock.view_order_form_inherit_sale_stock_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<field name="requested_date" position="after">
+				<field name="x_transporter_note"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_sales_order_filter_custom">
+		<field name="name">sale.view_sales_order_filter_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_sales_order_filter"/>
+		<field name="arch" type="xml">
+			<filter name="my_sale_orders_filter" position="attributes">
+				<attribute name="groups">bintang_satelit.extra_menu_view</attribute>
+			</filter>
+			<field name="product_id" position="after">
+				<filter string="Ordered today" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered yesterday" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered for the last week" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Delivery today" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery tomorrow" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery for the next week" domain="[('requested_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('requested_date', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

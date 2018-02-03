@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Main order list view definition -->
+    <record id="view_order_tree_add_amount_residual" model="ir.ui.view">
+      <field name="name">sale.order.order_tree.add_amount_residual</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_tree"/>
+      <field name="arch" type="xml">
+ 		<field name="amount_total" position="after">
+			<field name="amount_advance" widget="monetary"/>
+		</field>
+      </field>
+    </record>
+
+    <!-- Main quotation list view definition -->
+    <record id="view_quotation_tree_add_amount_residual" model="ir.ui.view">
+      <field name="name">sale.order.quot_tree.add_amount_residual</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_quotation_tree"/>
+      <field name="arch" type="xml">
+ 		<field name="amount_total" position="after">
+			<field name="amount_advance" widget="monetary"/>
+		</field>
+      </field>
+    </record>
+
+    <record id="view_order_form_change_button" model="ir.ui.view">
+        <field name="name">sale.order.form.change_button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <button name="action_done" position="after">
+                <button name="%(action_view_account_voucher_wizard)d" string="Pay sale advanced"
+                    type="action" groups="account.group_account_invoice" attrs="{'invisible': ['|',('state', 'in', ['done','cancel']),('invoice_status', 'in', ['invoiced'])]}"/>
+            </button>
+            <notebook position="inside">
+                <page string="Payment Advances" groups="account.group_account_invoice">
+                    <field name="account_payment_ids" nolabel="1" colspan="4" context="{'form_view_ref': 'account.view_account_payment_form','tree_view_ref': 'account.view_account_payment_tree'}"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

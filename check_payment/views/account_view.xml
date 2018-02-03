@@ -1,0 +1,160 @@
+<odoo>
+<data>
+	<!-- Bank accounts form view definition -->
+	<record model="ir.ui.view" id="view_account_bank_journal_form_check_payment">
+		<field name="name">account.view_account_bank_journal_form_check_payment</field>
+		<field name="model">account.journal</field>
+		<field name="inherit_id" ref="account.view_account_bank_journal_form"/>
+		<field name="arch" type="xml">
+		<field name="outbound_payment_method_ids" position="after">
+			<field name="is_giro"/>
+			<field name="linked_bank_account" domain="[('type','in',['bank'])]" attrs="{'invisible':[('is_giro', '==', False)]}"/>
+		</field>
+	</field>
+	</record>
+
+	<!-- Giro payments tree view definition -->
+	<record model="ir.ui.view" id="view_account_supplier_payment_tree_check_payment">
+		<field name="name">account.view_account_supplier_payment_tree_check_payment</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+		<field name="arch" type="xml">
+			<field name="payment_method_id" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="payment_date" position="after">
+				<field name="due_date"/>
+				<field name="numbering"/>
+			</field>
+			<field name="state" position="after">
+				<field name="is_giro_cleared"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Register payments invoice form view definition -->
+	<record model="ir.ui.view" id="view_account_payment_invoice_form_check_payment">
+		<field name="name">account.view_account_payment_invoice_form_check_payment</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+		<field name="arch" type="xml">
+			<field name="journal_id" position="after">
+				<field name="is_giro_payment" invisible="1"/>
+				<field name="due_date" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+				<field name="numbering" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Register giro clearing form view definition -->
+	<record model="ir.ui.view" id="view_account_payment_invoice_form_check_payment_clearing">
+		<field name="name">account.view_account_payment_invoice_form_check_payment_clearing</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<button name="action_validate_invoice_payment" position="replace">
+				<button string="Validate" name="post" type="object" class="btn-primary"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Register payments multiple invoices form view definition -->
+	<record model="ir.ui.view" id="view_account_payment_from_check_payment">
+		<field name="name">account.view_account_payment_from_invoices_check_payment</field>
+		<field name="model">account.register.payments</field>
+		<field name="inherit_id" ref="account.view_account_payment_from_invoices"/>
+		<field name="arch" type="xml">
+			<field name="journal_id" position="after">
+				<field name="is_giro_payment" invisible="1"/>
+				<field name="due_date" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+				<field name="numbering" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Register payments form view definition -->
+	<record model="ir.ui.view" id="view_account_payment_form_check_payment">
+		<field name="name">account.view_account_payment_form_check_payment</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_form"/>
+		<field name="arch" type="xml">
+			<field name="journal_id" position="after">
+				<field name="is_giro_payment" invisible="1"/>
+				<field name="linked_giro_id" attrs="{'invisible':['|',('is_giro_payment', '==', True),('linked_giro_id', '==', False)]}"/>
+				<field name="is_giro_cleared" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+				<field name="due_date" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+				<field name="numbering" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
+			</field>
+			<button name="post" position="after">
+				<button name="giro_clearing" string="Giro Clearing" class="oe_highlight" type="object" attrs="{'invisible':['|', ('state', 'not in', ('posted')), '|', ('is_giro_payment', '!=', True), ('is_giro_cleared', '=', True)]}"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Payment search view definition -->
+	<record model="ir.ui.view" id="view_account_payment_search_check_payment">
+		<field name="name">account.view_account_payment_search_check_payment</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_search"/>
+		<field name="arch" type="xml">
+			<field name="company_id" position="after">
+				<field name="numbering"/>
+				<field name="journal_id"/>
+				<filter name="not_giro" string="Not Giro" domain="[('is_giro_payment', '=', False),('linked_giro_id', '=', False)]"/>
+				<filter name="giro_not_cleared" string="Giro Not Cleared" domain="[('is_giro_payment', '=', True), ('is_giro_cleared', '=', False)]"/>
+				<filter name="clearing_transfer" string="Clearing Transfer" domain="[('linked_giro_id', '!=', False)]"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Giro payments window action definition -->
+	<record id="action_account_giro_payments" model="ir.actions.act_window">
+		<field name="name">Giro Payments</field>
+		<field name="res_model">account.payment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer', 'search_default_giro_not_cleared': 1}</field>
+		<field name="domain">[('partner_type', '=', 'customer'),'|',('is_giro_payment', '=', True),('linked_giro_id', '!=', False)]</field>
+		<field name="view_id" ref="view_account_supplier_payment_tree_check_payment"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to register a payment
+			</p><p>
+				Payments are used to register liquidity movements (send, collect or transfer money).
+				You can then process those payments by your own means or by using installed facilities.
+			</p>
+		</field>
+	</record>
+	<record id="action_account_giro_payments_payable" model="ir.actions.act_window">
+		<field name="name">Giro Payments</field>
+		<field name="res_model">account.payment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'default_payment_type': 'outbound', 'default_partner_type': 'supplier', 'search_default_giro_not_cleared': 1}</field>
+		<field name="domain">[('partner_type', '=', 'supplier'),'|',('is_giro_payment', '=', True),('linked_giro_id', '!=', False)]</field>
+		<field name="view_id" ref="view_account_supplier_payment_tree_check_payment"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to register a payment
+			</p><p>
+				Payments are used to register liquidity movements (send, collect or transfer money).
+				You can then process those payments by your own means or by using installed facilities.
+			</p>
+		</field>
+	</record>
+
+	<!-- Not giro payments window action definition -->
+	<record id="account.action_account_payments" model="ir.actions.act_window">
+		<field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer', 'search_default_not_giro': 1}</field>
+	</record>
+	<record id="account.action_account_payments_payable" model="ir.actions.act_window">
+		<field name="context">{'default_payment_type': 'outbound', 'default_partner_type': 'supplier', 'search_default_not_giro': 1}</field>
+	</record>
+
+	<!-- Giro payments menu -->
+	<menuitem action="action_account_giro_payments" id="menu_action_account_giro_payments_receivable" parent="account.menu_finance_receivables_documents" sequence="21"/>
+	<menuitem action="action_account_giro_payments_payable" id="menu_action_account_giro_payments_payable" parent="account.menu_finance_payables_documents" sequence="21"/>
+</data>
+</odoo>

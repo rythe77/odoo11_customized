@@ -1,0 +1,19 @@
+<odoo>
+<data>
+	<!-- Add transporter input in PO form view -->
+	<record model="ir.ui.view" id="purchase_order_form_add_transporter">
+		<field name="name">purchase.purchase_order_form_add_transporter</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/notebook/page[2]/group/group[1]" position="inside">
+				<label for="use_transporter" string="Use Transporter?"/>
+				<div>
+					<field name="use_transporter"/>
+					<field name="transporter_id" domain="[('transporter','=',True)]" context="{'show_address': 1}" options="{'no_create': 1}" attrs="{'invisible': [('use_transporter', '!=', True)]}"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

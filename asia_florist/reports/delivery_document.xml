@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_delivery"
+		model="stock.picking"
+		string="Surat Jalan"
+		name="asia_florist.report_custom_deliveryslip"
+		file="asia_florist.surat_jalan"
+		print_report_name="'Surat Jalan - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		menu="False"
+	/>
+
+	<template id="report_custom_deliveryslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="asia_florist.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_delivery_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+		<div class="header">
+			<div class="row">
+				<div class="col-xs-5">
+					<img src='/asia_florist/static/src/img/logo_asia_florist.jpg' style="max-height: 110px;" />
+				</div>
+				<div class="col-xs-4 text-center">
+					<br/><br/><br/>
+					<b><ins><span style="font:18px lucida-console,sans-serif !important;">SURAT JALAN</span></ins></b><br/>
+					<b><span style="font:15px lucida-console,sans-serif !important;" t-field="o.name"/></b>
+				</div>
+				<div class="col-xs-3 text-right" style="font:10px lucida-console,sans-serif !important; max-height: 110px;">
+					<br/><br/>
+					<span style="font:20px lucida-console,sans-serif !important;" t-field="company.partner_id" /><br/>
+					<span style="font:12px lucida-console,sans-serif;" t-field="company.partner_id.street" /><br/>
+					<span style="font:12px lucida-console,sans-serif;" t-field="company.partner_id.street2"/>
+					<span style="font:12px lucida-console,sans-serif;" t-field="company.partner_id.city" /><br/>
+					<!-- span style="font:12px lucida-console,sans-serif;" t-field="company.partner_id.country_id" /><br/-->
+					<span style="font:12px lucida-console,sans-serif;" t-field="company.partner_id.phone" /><br/>
+				</div>
+			</div>
+		</div>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<table class="table table-condensed table table-striped" style=" table-layout:fixed;">
+						<thead style="background-color:#212121; font:14px lucida-console,sans-serif;">
+							<tr>
+								<th width="30px" style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important;" class="col-xs-5">
+									Kepada Yth. <span t-field="o.x_delivery_name"/>
+								</th>
+								<th width="30px" style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important;" class="col-xs-5">
+									Dari: <span t-field="o.partner_id"/>
+								</th>
+								<th width="20px" style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important;" class="col-xs-2">
+									Tanggal
+								</th>
+							</tr>
+						</thead>
+						<tbody style="font:12px lucida-console,sans-serif;">
+							<tr>
+								<td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+									Alamat :<br/>
+									<div t-field="o.x_delivery_address"/>
+									<div t-field="o.x_delivery_city"/>
+								</td>
+								<td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+									Alamat :<br/>
+									<div t-field="o.partner_id.street"/>
+									<div t-field="o.partner_id.city"/>
+								</td>
+								<td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+									<div t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-condensed table table-striped" t-if="o.move_lines">
+						<thead style="background-color:#212121;" >
+							<tr>
+								<th><font color="#fff"><strong>Nama Barang</strong></font></th>
+								<th><font color="#fff"><strong>Keterangan Khusus</strong></font></th>
+								<th class="text-right"><font color="#fff"><strong>Jumlah</strong></font></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.move_lines" t-as="move">
+								<td><span t-field="move.product_id"/></td>
+								<td><span t-field="move.product_desc"/></td>
+								<td class="text-right">
+									<span t-field="move.product_uom_qty"/>
+									<span t-field="move.product_uom"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="col-xs-2 text-center" style="border-bottom: 2px solid black">
+						Penerima,
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+					</div>
+					<div class="col-xs-10 text-center">
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>

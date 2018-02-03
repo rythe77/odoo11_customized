@@ -1,0 +1,46 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_order_form_add_total_discount">
+		<field name="name">sale.view_order_form_add_total_discount</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='sale_total']" position="after">
+				<group name="discount" colspan="2">
+					<field name="discount_type"/>
+					<field name="discount_rate"/>
+				</group>
+			</xpath>
+			<xpath expr="//field[@name='amount_tax']" position="after">
+				<field name="amount_undiscounted" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+				<field name="amount_discount" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+			</xpath>
+			<xpath expr="//label[@for='amount_total']" position="after">
+				<button name="button_dummy"
+					states="draft,sent" string="(update)" type="object" class="oe_edit_only oe_link"/>
+			</xpath>
+			<!-- xpath expr="//group[@name='sale_total']" position="replace">
+				<group col="4">
+					<group name="discount" colspan="2">
+						<field name="discount_type"/>
+						<field name="discount_rate"/>
+					</group>
+					<group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+						<field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+						<field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+						<field name="amount_undiscounted" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						<field name="amount_discount" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						<div class="oe_subtotal_footer_separator oe_inline">
+							<label for="amount_total" />
+							<button name="button_dummy"
+								states="draft,sent" string="(update)" type="object" class="oe_edit_only oe_link"/>
+						</div>
+						<field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					</group>
+				</group>
+			</xpath-->
+		</field>
+	</record>
+</data>
+</odoo>

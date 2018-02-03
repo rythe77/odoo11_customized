@@ -1,0 +1,132 @@
+<odoo>
+<data>
+	<!-- Main quotation list view definition -->
+	<record model="ir.ui.view" id="view_quotation_tree_custom">
+		<field name="name">sale.view_quotation_tree_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_quotation_tree"/>
+		<field name="arch" type="xml">
+			<field name="date_order" position="replace"/>
+			<field name="user_id" position="replace"/>
+			<field name="requested_date" position="replace"/>
+			<field name="name" position="before">
+				<field name="date_order"/>
+				<field name="requested_date"/>
+			</field>
+			<field name="name" position="after">
+				<field name="user_id"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main order list view definition -->
+	<record model="ir.ui.view" id="sale_order_tree_view_custom">
+		<field name="name">sale.sale_order_tree_view_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="confirmation_date" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="user_id" position="replace"/>
+			<field name="requested_date" position="replace"/>
+			<field name="name" position="before">
+				<field name="date_order"/>
+				<field name="requested_date"/>
+			</field>
+			<field name="name" position="after">
+				<field name="user_id"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="sale_order_form_view_custom">
+		<field name="name">sale.sale_order_form_view_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<button name="action_confirm" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+			</button>
+			<button name="action_draft" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<button name="action_cancel" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<button name="action_done" position="attributes">
+				<attribute name="groups">toserba23.lock_button_on_document</attribute>
+			</button>
+			<button name="action_unlock" position="attributes">
+				<attribute name="groups">toserba23.lock_button_on_document</attribute>
+			</button>
+			<button name="action_cancel" position="after">
+				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['sale','done','cancel'])]}" groups="sales_team.group_sale_manager"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Modify Create Invoice button form view definition -->
+	<record model="ir.ui.view" id="sale_management_order_view_form_custom">
+		<field name="name">sale_management.sale_order_view_form_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_management.sale_order_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//button[1]" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</xpath>
+			<xpath expr="//button[2]" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_custom">
+		<field name="name">sale_margin.view_order_form_inherit_sale_stock_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<field name="picking_policy" position="attributes">
+				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Show shipping notes -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_add_date_custom">
+		<field name="name">sale_requested_date.view_order_form_inherit_sale_stock_add_date_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_requested_date.view_order_form_inherit_sale_stock_add_date"/>
+		<field name="arch" type="xml">
+			<field name="requested_date" position="after">
+				<field name="x_vehicle_notes"/>
+				<field name="x_notes"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_sales_order_filter_custom">
+		<field name="name">sale.view_sales_order_filter_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_sales_order_filter"/>
+		<field name="arch" type="xml">
+			<field name="product_id" position="after">
+				<filter string="Ordered today" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered yesterday" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered for the last week" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Delivery not done" name="delivery_status" domain="[('delivery_status', 'in', ('none_delivered','partially_delivered'))]"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main menu view definition -->
+	<record model="ir.ui.menu" id="sales_team.menu_sale_config">
+		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>
+	</record>
+</data>
+</odoo>

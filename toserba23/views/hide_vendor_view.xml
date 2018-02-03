@@ -1,0 +1,18 @@
+<odoo>
+<data>
+	<!-- Purchase tab on product form view definition -->
+	<record model="ir.ui.view" id="supplier_product_form_view_custom">
+		<field name="name">product.supplier_product_form_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
+		<field name="arch" type="xml">
+			<page name="purchase" position="attributes">
+				<attribute name="groups">toserba23.view_vendor</attribute>
+			</page>
+			<field name="seller_ids" position="attributes">
+				<attribute name="groups">toserba23.view_vendor</attribute>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

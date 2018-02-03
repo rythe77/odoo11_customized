@@ -1,0 +1,884 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* toserba23
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-05 04:54+0000\n"
+"PO-Revision-Date: 2018-01-05 12:55+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "**Barang tidak digaransi"
+msgstr "**Barang tidak digaransi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tPENERIMAAN BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tPENERIMAAN BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tPENGATURAN BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tPENGATURAN BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN INTERNAL\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN INTERNAL\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT TERIMA BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT TERIMA BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tTRANSFER ANTAR GUDANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tTRANSFER ANTAR GUDANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "<b>NOTA KONTAN</b>"
+msgstr "<b>NOTA KONTAN</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "<b>TITIPAN BARANG</b>"
+msgstr "<b>TITIPAN BARANG</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "<font color=\"#fff\"><strong>Jumlah Dikirim</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Jumlah Dikirim</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "<font color=\"#fff\"><strong>Jumlah</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Jumlah</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.partner_view_buttons_custom
+msgid "<span class=\"o_stat_text\">Total Faktur</span>"
+msgstr "<span class=\"o_stat_text\">Total Faktur</span>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Katalog Produk</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Katalog Produk</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "<span><b>PENAWARAN HARGA</b></span>"
+msgstr "<span><b>PENAWARAN HARGA</b></span>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>CATATAN KREDIT PEMASOK</strong>"
+msgstr "<strong>CATATAN KREDIT PEMASOK</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>CATATAN KREDIT</strong>"
+msgstr "<strong>CATATAN KREDIT</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>FAKTUR DIBATALKAN</strong>"
+msgstr "<strong>FAKTUR DIBATALKAN</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>FAKTUR</strong>"
+msgstr "<strong>FAKTUR</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid "<strong>Harga Grosir</strong>"
+msgstr "<strong>Harga Grosir</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid "<strong>Harga Jual</strong>"
+msgstr "<strong>Harga Jual</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid "<strong>Harga Toko</strong>"
+msgstr "<strong>Harga Toko</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>KONSEP FAKTUR</strong>"
+msgstr "<strong>KONSEP FAKTUR</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid "<strong>Nama Barang</strong>"
+msgstr "<strong>Nama Barang</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>TAGIHAN PEMASOK</strong>"
+msgstr "<strong>TAGIHAN PEMASOK</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia."
+msgstr "Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia."
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Alamat :"
+msgstr "Alamat :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+msgid "Alamat Pemasok :"
+msgstr "Alamat Pemasok :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+msgid "Alamat Pengiriman :"
+msgstr "Alamat Pengiriman :"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_pricelist_tree
+#: model:ir.ui.menu,name:toserba23.menu_action_pricelist_tree
+msgid "Artikel Daftar Harga"
+msgstr "Artikel Daftar Harga"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "BS-CKL"
+msgstr "BS-CKL"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "BS-PRL"
+msgstr "BS-PRL"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_category_is_warranty
+msgid "Barang Garansi"
+msgstr "Barang Garansi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_inventory_filter_custom
+msgid "Belum Validasi"
+msgstr "Belum Validasi"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.block_vendor_view
+msgid "Block Vendor View"
+msgstr "Blok Tampilan Pemasok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Bulukumba"
+msgstr "Bulukumba"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
+msgid "Click to define a new product."
+msgstr "Klik untuk menambahkan produk baru."
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_account_invoice_x_collector
+#: model:ir.model.fields,field_description:toserba23.field_account_payment_x_collector
+#: model:ir.model.fields,field_description:toserba23.field_account_register_payments_x_collector
+#: model:ir.ui.view,arch_db:toserba23.invoice_form_custom
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_form_custom
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_from_invoices_custom
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_invoice_form_custom
+msgid "Collector"
+msgstr "Penagih"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Created for the last week"
+msgstr "Dibuat 1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Created today"
+msgstr "Dibuat hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Created yesterday"
+msgstr "Dibuat kemarin"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_qty_available_0
+#: model:ir.model.fields,help:toserba23.field_product_product_x_qty_available_98
+msgid "Current quantity of products in stock location 0.\n"
+msgstr "Jumlah produk di lokasi ini adalah 0.\n"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_qty_available_1
+#: model:ir.model.fields,help:toserba23.field_product_product_x_qty_available_99
+msgid "Current quantity of products in stock location 1.\n"
+msgstr "Jumlah produk di lokasi ini adalah 1.\n"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+msgid "Delivery for the next week"
+msgstr "Pengiriman 1 minggu ke depan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_sales_order_filter_custom
+msgid "Delivery not done"
+msgstr "Pengiriman belum selesai"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+msgid "Delivery today"
+msgstr "Pengiriman hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+msgid "Delivery tomorrow"
+msgstr "Pengiriman besok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_inventory_filter_custom
+msgid "Dibatalkan"
+msgstr "Dibatalkan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
+msgid "Dibuat tanggal:"
+msgstr "Dibuat tanggal:"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Disc.(%)"
+msgstr "Disk.(%)"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_purchase_order_line_x_discount
+msgid "Discount (%)"
+msgstr "Diskon(%)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Due for the next week"
+msgstr "Jatuh tempo 1 minggu ke depan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Due today"
+msgstr "Jatuh tempo hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Due tomorrow"
+msgstr "Jatuh tempo besok"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_invoice
+msgid "Faktur"
+msgstr "Faktur"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_virtual_available_0
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_virtual_available_1
+msgid "Forecast Quantity"
+msgstr "Jumlah Perkiraan"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_virtual_available_0
+msgid "Forecast quantity (computed as Quantity On Hand - Outgoing + Incoming) in stock location 0\n"
+msgstr "Jumlah perkiraan (dihitung sebagai Jumlah di Tangan - Keluar + Masuk) pada lokasi stok 0\n"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_virtual_available_1
+msgid "Forecast quantity (computed as Quantity On Hand - Outgoing + Incoming) in stock location 1\n"
+msgstr "Jumlah perkiraan (dihitung sebagai Jumlah di Tangan - Keluar + Masuk) pada lokasi stok 1\n"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_move_tree_custom
+msgid "From"
+msgstr "Dari"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Grosir"
+msgstr "Grosir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Harga"
+msgstr "Harga"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_bulukumba
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_bulukumba
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Bulukumba"
+msgstr "Harga Bulukumba"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Display (ter-input otomatis dari pembelian minimal terkecil)"
+msgstr "Harga Display (ter-input otomatis dari pembelian minimal terkecil)"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_grosir
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_grosir
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Grosir"
+msgstr "Harga Grosir"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_promo
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_promo
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Promo"
+msgstr "Harga Promo"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_toko
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_toko
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Toko"
+msgstr "Harga Toko"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "Harga jual"
+msgstr "Harga jual"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_incoming_qty_0
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_incoming_qty_1
+msgid "Incoming"
+msgstr "Barang Masuk"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_supplierinfo
+msgid "Information about a product vendor"
+msgstr "Informasi mengenai pemasok produk"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_account_invoice
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Jatuh Tempo :"
+msgstr "Jatuh Tempo :"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_product_catalog
+msgid "Katalog Produk"
+msgstr "Katalog Produk"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "Keluar"
+msgstr "Keluar"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Kendaraan :"
+msgstr "Kendaraan :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Keterangan :"
+msgstr "Keterangan :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Kirim ekspedisi :"
+msgstr "Kirim ekspedisi :"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "Less Urgent"
+msgstr "Penting"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "Masuk"
+msgstr "Masuk"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Nama :"
+msgstr "Nama :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Nama Barang"
+msgstr "Nama Barang"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "No Order :"
+msgstr "No Order :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+msgid "Not Done"
+msgstr "Belum Selesai"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "Not Urgent"
+msgstr "Tidak Perlu"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_saleorder
+msgid "Order Penjualan"
+msgstr "Order Penjualan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+#: model:ir.ui.view,arch_db:toserba23.view_sales_order_filter_custom
+msgid "Ordered for the last week"
+msgstr "Dipesan 1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+#: model:ir.ui.view,arch_db:toserba23.view_sales_order_filter_custom
+msgid "Ordered today"
+msgstr "Dipesan hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+#: model:ir.ui.view,arch_db:toserba23.view_sales_order_filter_custom
+msgid "Ordered yesterday"
+msgstr "Dipesan kemarin"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_pricelist_item_x_notes
+#: model:ir.model.fields,field_description:toserba23.field_product_supplierinfo_x_notes
+#: model:ir.model.fields,field_description:toserba23.field_purchase_order_x_notes
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_x_notes
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_x_notes
+#: model:ir.ui.view,arch_db:toserba23.product_supplierinfo_form_view_custom
+msgid "Other Notes"
+msgstr "Keterangan Lain"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_outgoing_qty_0
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_outgoing_qty_1
+msgid "Outgoing"
+msgstr "Barang Keluar"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "PRL*"
+msgstr "PRL*"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Paid for the last week"
+msgstr "Dibayar 1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Paid today"
+msgstr "Dibayar hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Paid yesterday"
+msgstr "Dibayar kemarin"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_account_payment
+msgid "Payments"
+msgstr "Pembayaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Pelanggan :"
+msgstr "Pelanggan :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_template_search_view_custom
+msgid "Pemasok"
+msgstr "Pemasok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Pemasok :"
+msgstr "Pemasok :"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_picking
+msgid "Pengaturan/Penerimaan Barang"
+msgstr "Pengaturan/Penerimaan Barang"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Pengiriman ini adalah backorder dari"
+msgstr "Pengiriman ini adalah backorder dari"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "Prediksi"
+msgstr "Prediksi"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_pricelist_item
+msgid "Pricelist item"
+msgstr "Artikel Daftar Harga"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_product
+msgid "Product"
+msgstr "Produk"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.menu_product_category_config_stock_inherited
+msgid "Product Categories"
+msgstr "Kategori Produk"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_category
+msgid "Product Category"
+msgstr "Kategori Produk"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.product_template_price_view_action
+#: model:ir.ui.menu,name:toserba23.menu_product_template_price_view_action
+msgid "Product Prices"
+msgstr "Harga Produk"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_product_qty_tree
+#: model:ir.ui.menu,name:toserba23.menu_product_product_qty_check_action
+msgid "Product Quantity"
+msgstr "Qty"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_template
+msgid "Product Template"
+msgstr "Templete produk"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Promo"
+msgstr "Promo"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_promo_cash
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_promo_cash
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Promo Cash"
+msgstr "Promo Cash"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_purchase_order
+msgid "Purchase Order"
+msgstr "Order Pembelian"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Baris Order Pembelian"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
+msgid "Purchase order whose invoice not yet done"
+msgstr "Order Pembelian yang belum difakturkan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Qty"
+msgstr "Jml"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "Qty PRL"
+msgstr "Qty PRL"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "Qty WH"
+msgstr "Qty WH"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_qty_available_0
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_qty_available_1
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_qty_available_98
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_qty_available_99
+msgid "Quantity On Hand"
+msgstr "Kuantitas Di Tangan"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_incoming_qty_0
+#: model:ir.model.fields,help:toserba23.field_product_product_x_incoming_qty_1
+msgid "Quantity of products that are planned to arrive.\n"
+msgstr "Jumlah produk yang dijadwalkan akan tiba.\n"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_product_x_outgoing_qty_0
+#: model:ir.model.fields,help:toserba23.field_product_product_x_outgoing_qty_1
+msgid "Quantity of products that are planned to leave.\n"
+msgstr "Jumlah produk yang dijadwalkan akan dikirim.\n"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_account_register_payments
+msgid "Register payments on multiple invoices"
+msgstr "Rekam pembayaran pada beberapa faktur"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Sales :"
+msgstr "Sales :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Scheduled for the next week"
+msgstr "Dijadwalkan 1 minggu ke depan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Scheduled today"
+msgstr "Dijadwalkan hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Scheduled tomorrow"
+msgstr "Dijadwalkan besok"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.lock_button_on_document
+msgid "Show Lock/Unlock Button on Documents"
+msgstr "Tampilkan Tombol Kunci/Buka Pada Dokumen"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.show_unnecessary_field
+msgid "Show Unnecessary Fields"
+msgstr "Tampilkan Kolom yang Tidak Perlu"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_call_freq
+#: model:ir.model.fields,help:toserba23.field_res_users_x_call_freq
+msgid "Show how urgent it is to call the customer"
+msgstr "Menampilkan seberapa penting untuk menghubungi pelanggan"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stock"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "Stok CKL"
+msgstr "Stok CKL"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
+msgid "Stok PRL"
+msgstr "Stok PRL"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_delivery
+msgid "Surat Jalan"
+msgstr "Surat Jalan"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
+msgid "The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc."
+msgstr "Detail produk mempunyai informasi untuk menyederhanakan proses penjualan: harga, catatan pada penawaran, data akuntansi, metode pengadaan, dll."
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_move_tree_custom
+msgid "To"
+msgstr "Kepada"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_call_freq
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_call_freq
+#: model:ir.ui.view,arch_db:toserba23.view_res_partner_filter_custom
+msgid "To Call"
+msgstr "Akan Ditelpon"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Toko"
+msgstr "Toko"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Transfer antar gudang"
+msgstr "Transfer antar gudang"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "Urgent"
+msgstr "Sangat Penting"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Validated for the last week"
+msgstr "Divalidasi 1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Validated today"
+msgstr "Divalidasi hari ini"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Validated yesterday"
+msgstr "Divalidasi kemarin"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_purchase_order_x_vehicle_notes
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_x_vehicle_notes
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_x_vehicle_notes
+msgid "Vehicle Notes"
+msgstr "Kendaraan"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.view_configuration_menu
+msgid "View Configuration Menu"
+msgstr "Tampilkan Menu Konfigurasi"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.view_vendor
+msgid "View Vendor"
+msgstr "Tampilkan Pemasok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "WH*"
+msgstr "WH*"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
+msgid "You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers."
+msgstr "Anda harus menetapkan produk untuk semua yang Anda jual, apakah produk fisik maupun produk konsumsi, maupun jasa yang Anda tawarkan untuk pelanggan."
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "common"
+msgstr "Biasa"

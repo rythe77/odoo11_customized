@@ -1,0 +1,256 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="product_tree_view_custom">
+		<field name="name">product.product_tree_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_tree_view"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="colors">red:qty_available &lt;= 0</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Price product list view definition -->
+	<record model="ir.ui.view" id="product_tree_price_view">
+		<field name="name">product.product_tree_price_view</field>
+		<field name="model">product.template</field>
+		<field name="arch" type="xml">
+			<tree colors="red:qty_available &lt;= 0">
+				<field name="sequence" widget="handle"/>
+				<field name="default_code"/>
+				<field name="name"/>
+				<field name="list_price"/>
+				<field name="x_harga_grosir" string="Grosir"/>
+				<field name="x_harga_toko" string="Toko"/>
+				<field name="x_harga_bulukumba" string="Bulukumba"/>
+				<field name="x_harga_promo" string="Promo"/>
+				<field name="x_promo_cash"/>
+				<field name="standard_price" groups="purchase.group_purchase_user"/>
+				<field name="qty_available"/>
+				<field name="virtual_available"/>
+				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
+				<field name="active" invisible="1"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Product.product list view definition -->
+	<record model="ir.ui.view" id="product_product_tree_view_custom">
+		<field name="name">product.product_product_tree_view_custom</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_product_tree_view"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="colors">red:qty_available &lt;= 0</attribute>
+				<attribute name="create">false</attribute>
+				<attribute name="edit">false</attribute>
+				<attribute name="delete">false</attribute>
+			</tree>
+			<field name="uom_id" position="replace"/>
+			<field name="lst_price" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="default_code" position="before">
+				<field name="x_qty_available_0" string="Qty WH"/>
+				<field name="x_virtual_available_0" string="WH*"/>
+			</field>
+			<field name="name" position="after">
+				<field name="x_qty_available_1" string="Qty PRL"/>
+				<field name="x_virtual_available_1" string="PRL*"/>
+				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
+			</field>
+			<field name="uom_id" position="after">
+				<field name="x_harga_toko" string="Toko" widget='monetary'/>
+				<field name="x_harga_bulukumba" string="Bulukumba"/>
+				<field name="lst_price" string="Harga jual"/>
+				<field name="x_harga_grosir" string="Grosir" widget='monetary'/>
+				<field name="x_harga_promo" string="Promo"/>
+				<field name="x_promo_cash"/>
+			</field>
+			<field name="barcode" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Product.product list view for quantity check definition -->
+	<record model="ir.ui.view" id="product_product_tree_view_for_qtycheck_custom">
+		<field name="name">product.product_product_tree_view_for_qtycheck_custom</field>
+		<field name="model">product.product</field>
+		<field name="arch" type="xml">
+			<tree create="false" edit="false" delete="false">
+				<field name="x_qty_available_0" string="Stok CKL"/>
+				<field name="x_incoming_qty_0" string="Masuk"/>
+				<field name="x_outgoing_qty_0" string="Keluar"/>
+				<field name="x_virtual_available_0" string="Prediksi"/>
+				<field name="x_qty_available_98" string="BS-CKL"/>
+				<field name="default_code"/>
+				<field name="name"/>
+				<field name="x_qty_available_99" string="BS-PRL"/>
+				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
+				<field name="x_qty_available_1" string="Stok PRL"/>
+				<field name="x_incoming_qty_1" string="Masuk"/>
+				<field name="x_outgoing_qty_1" string="Keluar"/>
+				<field name="x_virtual_available_1" string="Prediksi"/>
+				<field name="product_tmpl_id" invisible="1"/>
+				<field name="active" invisible="1"/>
+				<field name="barcode" invisible="1"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="product_template_form_view_custom">
+		<field name="name">product.product_template_form_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_form_view"/>
+		<field name="arch" type="xml">
+			<div name="pricelist_item" position="after">
+				<group name="display_price" string="Harga Display (ter-input otomatis dari pembelian minimal terkecil)">
+					<label for="standard_price" groups="purchase.group_purchase_user"/>
+					<div name="standard_price_uom" groups="purchase.group_purchase_user">
+						<field name="standard_price" widget='monetary' options="{'currency_field': 'currency_id'}" class="oe_inline"/>
+					</div>
+					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					<field name="x_harga_grosir" string="Harga Grosir" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					<field name="x_harga_toko" string="Harga Toko" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					<field name="x_harga_bulukumba" string="Harga Bulukumba" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					<field name="x_harga_promo" string="Harga Promo" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+					<field name="x_promo_cash" string="Promo Cash" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+				</group>
+			</div>
+			<div name="pricelist_item" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman</attribute>
+			</div>
+			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/field[@name='list_price']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/div[@name='standard_price_uom']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/label" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page[@name='sales']/div/field/tree/field[@name='min_quantity']" position="after">
+				<field name="x_notes"/>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Product template search view definition -->
+	<record model="ir.ui.view" id="product_template_search_view_custom">
+		<field name="name">product.product_template_search_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_search_view"/>
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="seller_ids" string="Pemasok"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Product view from sale menu definition -->
+	<record id="product.product_template_action" model="ir.actions.act_window">
+		<field name="name">Products</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.template</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="product.product_template_tree_view"/>
+		<field name="context">{"search_default_filter_to_sell":1}</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to define a new product.
+			</p><p>
+				You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers.
+			</p><p>
+				The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc.
+			</p>
+		</field>
+	</record>
+
+	<!-- Product price view from sale menu definition -->
+	<record id="product_template_price_view_action" model="ir.actions.act_window">
+		<field name="name">Product Prices</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.template</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="product_tree_price_view"/>
+		<field name="context">{"search_default_filter_to_sell":1}</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to define a new product.
+			</p><p>
+				You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers.
+			</p><p>
+				The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc.
+			</p>
+		</field>
+	</record>
+
+	<!-- Product view from purchase menu definition -->
+	<record id="purchase.product_normal_action_puchased" model="ir.actions.act_window">
+		<field name="name">Products</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.template</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="product.product_template_tree_view"/>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="context">{"search_default_filter_to_purchase":1}</field>
+		<field name="search_view_id" eval="False"/> <!-- Force empty -->
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to define a new product.
+			</p><p>
+				You must define a product for everything you purchase, whether
+				it's a physical product, a consumable or services you buy to
+				subcontractors.
+			</p><p>
+				The product form contains detailed information to improve the
+				purchase process: prices, procurement logistics, accounting data,
+				available vendors, etc.
+			</p>
+		</field>
+	</record>
+
+	<!-- Product view from stock menu definition -->
+	<record id="stock.product_template_action_product" model="ir.actions.act_window">
+		<field name="name">Products</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.template</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="product.product_template_tree_view"/>
+		<field name="context">{"search_default_consumable": 1, 'default_type': 'product'}</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to define a new product.
+			</p>
+		</field>
+	</record>
+
+	<!-- Product.product list view for qty check action on stock menu definition -->
+	<record id="action_product_qty_tree" model="ir.actions.act_window">
+		<field name="name">Product Quantity</field>
+		<field name="res_model">product.product</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree</field>
+		<field name="context">{'tree_view_ref':'product_product_tree_view_for_qtycheck_custom'}</field>
+		<field name="view_id" ref="product_product_tree_view_for_qtycheck_custom"/>
+	</record>
+
+	<menuitem id="menu_product_template_price_view_action"
+		action="product_template_price_view_action"
+		parent="sale.product_menu_catalog"
+		groups="sales_team.group_sale_salesman"
+		sequence="5" name="Product Prices"/>
+	<menuitem id="menu_product_product_qty_check_action"
+		action="action_product_qty_tree"
+		parent="stock.menu_stock_inventory_control"
+		groups="stock.group_stock_user"
+		sequence="2" name="Product Quantity"/>
+</data>
+</odoo>

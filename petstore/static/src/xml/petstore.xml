@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+	<t t-name="HomePageTemplate">
+		<div style="background-color: red;">This is some simple HTML, <t t-esc="widget.name"/>!</div>
+	</t>
+</templates>

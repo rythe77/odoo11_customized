@@ -1,0 +1,75 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* deliver_auto_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-08 08:56+0000\n"
+"PO-Revision-Date: 2017-11-08 16:57+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,field_description:deliver_auto_invoice.field_res_config_settings_auto_validate_invoice
+msgid "Auto validate invoice"
+msgstr "Otomatis validasi vaktur"
+
+#. module: deliver_auto_invoice
+#: model:ir.ui.view,arch_db:deliver_auto_invoice.res_config_settings_view_form_auto_validate
+msgid "Automatically validate created invoice when validating stock transfer"
+msgstr "Validasi faktur yang dibuat ketika memvalidasi transfer stok secara otomatis"
+
+#. module: deliver_auto_invoice
+#: model:ir.model,name:deliver_auto_invoice.model_account_invoice
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,help:deliver_auto_invoice.field_stock_picking_invoice_id
+msgid "Invoice related to this picking"
+msgstr "Faktur terkait dengan pengambilan ini"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,help:deliver_auto_invoice.field_res_config_settings_auto_validate_invoice
+msgid "Otherwise created invoice will remain in draft state"
+msgstr "Jika tidak, faktur akan dibiarkan dalam status rancangan"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,help:deliver_auto_invoice.field_account_invoice_picking_id
+msgid "Picking related to this invoice"
+msgstr "Pengambilan terkait dengan faktur ini"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,field_description:deliver_auto_invoice.field_stock_picking_invoice_id
+msgid "Related Invoice"
+msgstr "Faktur Terkait"
+
+#. module: deliver_auto_invoice
+#: model:ir.model.fields,field_description:deliver_auto_invoice.field_account_invoice_picking_id
+msgid "Related Picking"
+msgstr "Pengambilan Terkait"
+
+#. module: deliver_auto_invoice
+#: code:addons/deliver_auto_invoice/models/purchase_order.py:51
+#: code:addons/deliver_auto_invoice/models/purchase_order.py:55
+#, python-format
+msgid "There is no invoicable line."
+msgstr "Tidak ada baris yang dapat difakturkan."
+
+#. module: deliver_auto_invoice
+#: model:ir.model,name:deliver_auto_invoice.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: deliver_auto_invoice
+#: model:ir.model,name:deliver_auto_invoice.model_res_config_settings
+msgid "res.config.settings"
+msgstr "res.config.settings"

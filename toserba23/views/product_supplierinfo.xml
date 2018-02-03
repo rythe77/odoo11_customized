@@ -1,0 +1,30 @@
+<openerp>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="product_supplierinfo_tree_view_custom">
+		<field name="name">product.product_supplierinfo_tree_view_custom</field>
+		<field name="model">product.supplierinfo</field>
+		<field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+		<field name="arch" type="xml">
+			<field name="price" position="after">
+				<field name="x_notes"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="product_supplierinfo_form_view_custom">
+		<field name="name">product.product_supplierinfo_form_view_custom</field>
+		<field name="model">product.supplierinfo</field>
+		<field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+		<field name="arch" type="xml">
+			<field name="product_tmpl_id" position="before">
+				<label for="x_notes" string="Other Notes"/>
+				<div>
+					<field name="x_notes"/>
+				</div>
+			</field>
+		</field>
+	</record>
+</data>
+</openerp>

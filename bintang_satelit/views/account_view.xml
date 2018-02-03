@@ -1,0 +1,15 @@
+<odoo>
+<data>
+	<!-- Customer Invoices form view definition -->
+	<record model="ir.ui.view" id="invoice_form_custom">
+		<field name="name">account.invoice_form_custom</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<button name="action_invoice_open" position="after">
+				<button name="%(report_custom_invoice_dotM)d" string="Cetak" attrs="{'invisible': [('state', 'not in', ('open','paid'))]}" type="action" groups="account.group_account_invoice"/>
+			</button>
+		</field>
+	</record>
+</data>
+</odoo>

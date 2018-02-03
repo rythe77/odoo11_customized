@@ -1,0 +1,19 @@
+<odoo>
+<data>
+	<!-- Add transporter input in SO form view -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_add_transporter">
+		<field name="name">sale_margin.view_order_form_inherit_sale_stock_add_transporter</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+		<field name="arch" type="xml">
+			<group name="sale_shipping" position="inside">
+				<label for="use_transporter" string="Use Transporter?"/>
+				<div>
+					<field name="use_transporter"/>
+					<field name="transporter_id" domain="[('transporter','=',True)]" context="{'show_address': 1}" options="{'no_create': 1}" attrs="{'invisible': [('use_transporter', '!=', True)]}"/>
+				</div>
+			</group>
+		</field>
+	</record>
+</data>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+<data>
+	<!-- Main order list view definition -->
+	<record id="purchase_order_tree_delivery_status" model="ir.ui.view">
+		<field name="name">purchase.purchase_order_tree_delivery_status</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="state" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="invoice_status" position="before">
+				<field name="delivery_status"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Shipping information view definition -->
+	<record model="ir.ui.view" id="purchase_order_form_delivery_status">
+		<field name="name">purchase.purchase_order_form_delivery_status</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<field name="invoice_status" position="before">
+				<field name="delivery_status" readonly="1"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

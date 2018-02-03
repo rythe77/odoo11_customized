@@ -1,0 +1,381 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bintang_satelit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-07 11:38+0000\n"
+"PO-Revision-Date: 2017-11-07 19:41+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "&amp;bull;"
+msgstr "&amp;bull;"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\tTelp.:"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\tTelp.:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tEmail:"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\tEmail:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tJatuh Tempo :"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\tJatuh Tempo :"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tTelp.:"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\tTelp.:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid ""
+"<br/>\n"
+"\t                    \tTelp.:"
+msgstr ""
+"<br/>\n"
+"\t                    \tTelp.:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "<span groups=\"modification.can_print_saleorder\">ORDER PENJUALAN - </span>"
+msgstr "<span groups=\"modification.can_print_saleorder\">ORDER PENJUALAN - </span>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "<strong>Jumlah</strong>"
+msgstr "<strong>Jumlah</strong>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid ""
+"<strong>Kepada Yth: </strong>\n"
+"\t\t\t\t\t\t\t\t<br/>"
+msgstr ""
+"<strong>Kepada Yth: </strong>\n"
+"\t\t\t\t\t\t\t\t<br/>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "<strong>Keterangan</strong>"
+msgstr "<strong>Keterangan</strong>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "<strong>Nama Barang</strong>"
+msgstr "<strong>Nama Barang</strong>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "<strong>Subtotal: </strong>"
+msgstr "<strong>Subtotal: </strong>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.invoice_form_custom
+#: model:ir.ui.view,arch_db:bintang_satelit.stock_picking_form_view_custom
+#: model:ir.ui.view,arch_db:bintang_satelit.view_order_form_custom
+msgid "Cetak"
+msgstr "Cetak"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Delivery for the next week"
+msgstr "Dikirim untuk 1 minggu ke depan"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Delivery today"
+msgstr "Dikirim hari ini"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Delivery tomorrow"
+msgstr "Dikirim besok"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Disc"
+msgstr "Disk"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "Discount"
+msgstr "Diskon"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "EXP:"
+msgstr "EXP:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "FAKTUR DIBATALKAN"
+msgstr "FAKTUR DIBATALKAN"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "FAKTUR PEMBELIAN"
+msgstr "FAKTUR PEMBELIAN"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "FAKTUR PENJUALAN No:"
+msgstr "FAKTUR PENJUALAN No:"
+
+#. module: bintang_satelit
+#: model:ir.actions.report,name:bintang_satelit.report_custom_invoice_dotM
+msgid "Faktur (Printer Pita)"
+msgstr "Faktur (Printer Pita)"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "Harga"
+msgstr "Harga"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Harga Satuan"
+msgstr "Harga Satuan"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "Hormat Kami,"
+msgstr "Hormat Kami,"
+
+#. module: bintang_satelit
+#: model:ir.model.fields,help:bintang_satelit.field_sale_order_x_transporter_note
+#: model:ir.model.fields,help:bintang_satelit.field_stock_picking_x_transporter_note
+msgid "Input the name of the package transporter here"
+msgstr "Masukkan nama ekspedisi di sini"
+
+#. module: bintang_satelit
+#: model:ir.model.fields,help:bintang_satelit.field_stock_picking_x_salesperson_id
+msgid "Input the name of the salesperson here"
+msgstr "Masukkan nama sales di sini"
+
+#. module: bintang_satelit
+#: model:ir.model,name:bintang_satelit.model_account_invoice
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "KONSEP FAKTUR"
+msgstr "KONSEP FAKTUR"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid ""
+"Kepada Yth: \n"
+"\t\t\t\t\t\t\t\t<br/>"
+msgstr ""
+"Kepada Yth: \n"
+"\t\t\t\t\t\t\t\t<br/>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "Kepala Gudang,"
+msgstr "Kepala Gudang,"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Makassar,"
+msgstr "Makassar,"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Nama Barang"
+msgstr "Nama Barang"
+
+#. module: bintang_satelit
+#: model:ir.actions.report,name:bintang_satelit.report_custom_saleorder_dotM
+msgid "Nota Order Penjualan (Printer Pita)"
+msgstr "Nota Order Penjualan (Printer Pita)"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Ordered for the last week"
+msgstr "Dipesan 1 minggu terakhir"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Ordered today"
+msgstr "Dipesan hari ini"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_sales_order_filter_custom
+msgid "Ordered yesterday"
+msgstr "Dipesan kemarin"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "PENAWARAN HARGA -"
+msgstr "PENAWARAN HARGA -"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "Penerima,"
+msgstr "Penerima,"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "Pengantar,"
+msgstr "Pengantar,"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid ""
+"Pengiriman dari:\n"
+"\t\t\t\t\t\t\t\t<br/>"
+msgstr ""
+"Pengiriman dari:\n"
+"\t\t\t\t\t\t\t\t<br/>"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Qty"
+msgstr "Qty"
+
+#. module: bintang_satelit
+#: model:ir.model,name:bintang_satelit.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "REFUND PEMBELIAN"
+msgstr "PENGEMBALIAN DANA PEMBELIAN"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "REFUND PENJUALAN No:"
+msgstr "PENGEMBALIAN DANA PENJUALAN No:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+msgid "SURAT JALAN No:"
+msgstr "SURAT JALAN No:"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Sales :"
+msgstr "Sales :"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_delivery_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+msgid "Sales:"
+msgstr "Sales:"
+
+#. module: bintang_satelit
+#: model:ir.model.fields,field_description:bintang_satelit.field_stock_picking_x_salesperson_id
+msgid "Salesperson"
+msgstr "Penjual"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Satuan"
+msgstr "Satuan"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_picking_internal_search_custom
+msgid "Scheduled for the next week"
+msgstr "Pengiriman terjadwal untuk 1 minggu ke depan"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_picking_internal_search_custom
+msgid "Scheduled today"
+msgstr "Pengiriman terjadwal hari ini"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.view_picking_internal_search_custom
+msgid "Scheduled tomorrow"
+msgstr "Pengiriman terjadwal besok"
+
+#. module: bintang_satelit
+#: model:res.groups,name:bintang_satelit.complex_menu
+msgid "Show Complex Menu"
+msgstr "Tampilkan Menu Kompleks"
+
+#. module: bintang_satelit
+#: model:ir.model,name:bintang_satelit.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stok"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_invoice_document_dotM
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: bintang_satelit
+#: model:ir.actions.report,name:bintang_satelit.report_custom_delivery_dotM
+msgid "Surat Jalan (Printer Pita)"
+msgstr "Surat Jalan (Printer Pita)"
+
+#. module: bintang_satelit
+#: model:ir.ui.view,arch_db:bintang_satelit.report_custom_saleorder_document_dotM
+msgid "Syarat Pembayaran :"
+msgstr "Syarat Pembayaran :"
+
+#. module: bintang_satelit
+#: model:ir.model,name:bintang_satelit.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: bintang_satelit
+#: model:ir.model.fields,field_description:bintang_satelit.field_account_invoice_x_transporter_note
+#: model:ir.model.fields,field_description:bintang_satelit.field_sale_order_x_transporter_note
+#: model:ir.model.fields,field_description:bintang_satelit.field_stock_picking_x_transporter_note
+msgid "Transporter Name"
+msgstr "Nama Ekspedisi"

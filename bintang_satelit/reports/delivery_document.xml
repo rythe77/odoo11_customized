@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_delivery_dotM"
+		model="stock.picking"
+		string="Surat Jalan (Printer Pita)"
+		name="bintang_satelit.report_custom_deliveryslip_dotM"
+		file="bintang_satelit.surat_jalan_dotM"
+		report_type="qweb-html"
+		menu="False"
+	/>
+
+	<template id="report_custom_deliveryslip_dotM">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="bintang_satelit.report_custom_delivery_document_dotM" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_delivery_document_dotM">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-foreach="docs" t-as="o">
+				<div class="page" groups="stock.group_stock_user">
+					<div class="col-xs-6 mt4 text-left" style="font:12px lucida-console,sans-serif;">
+						<t>
+							<strong><div t-field="company.partner_id" style="font:16px lucida-console,sans-serif;font-weight:bold"/></strong>
+						</t>
+	                    <t t-if="company.street"><span t-field="company.street"/>,</t>
+	                    <t t-if="company.street2"><span t-field="company.street2"/></t>
+	                    <t t-if="company.city">
+							<br/>
+	                    	<span t-field="company.city"/>
+	                    </t>
+	                    <t t-if="company.phone">
+							<br/>
+	                    	Telp.: 
+	                    	<span t-field="company.phone"/>
+	                    </t>
+					</div>
+					<div class="col-xs-6 mt4 text-left" style="font:12px lucida-console,sans-serif;">
+						<div class="text-center">
+							<t t-if="o.name">
+								<strong>
+								SURAT JALAN No: 
+								<span t-field="o.name"/>
+								</strong>
+							</t>
+						</div>
+						<div>
+							<t name="td_sched_date_h" t-if="o.scheduled_date">
+								Makassar, 
+								<span t-field="o.scheduled_date" t-field-options='{"format": "dd/MM/yyyy"}'/>
+							</t>
+						</div><div>
+							<t t-if="o.picking_type_id.code=='incoming' and o.partner_id" name="customer_address">
+								Pengiriman dari:
+								<br/>
+								<span t-field="o.partner_id"/>
+							</t>
+							<t t-if="o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+								Kepada Yth: 
+								<br/>
+								<b><span t-field="o.partner_id"/></b>
+							</t>
+							<t t-if="o.picking_type_id.code!='internal' and o.partner_id">
+								<br/>
+								<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+								<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/></t>
+								<br/>
+								<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/></t>
+							</t>
+						</div>
+					</div>
+					<div class="col-xs-6 mb8 text-left" style="font:12px lucida-console,sans-serif;">
+						<t t-if="o.x_salesperson_id">
+							Sales: 
+							<span t-field="o.x_salesperson_id"/>
+						</t>
+					</div>
+					<div class="col-xs-6 mb8 text-left" style="font:12px lucida-console,sans-serif;">
+						<t t-if="o.x_transporter_note">
+							EXP: 
+							<span t-field="o.x_transporter_note"/>
+						</t>
+					</div>
+				
+					<table class="table table-condensed" style="border-bottom: 1px double #545454; border-top: 1px double #545454;">
+						<thead>
+							<tr style="font:12px lucida-console,sans-serif;">
+								<th><strong>Nama Barang</strong></th>
+								<th><strong>Jumlah</strong></th>
+								<th><strong>Keterangan</strong></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.move_lines" t-as="move" style="font:12px lucida-console,sans-serif;">
+								<td><span t-field="move.product_id"/></td>
+								<td>
+									<span t-field="move.product_uom_qty"/>
+									<span t-field="move.product_uom"/>
+								</td>
+								<td><span t-field="move.product_desc"/></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="col-xs-3 text-center" style="font:12px lucida-console,sans-serif;">
+						Penerima,
+					</div>
+					<div class="col-xs-3 text-center" style="font:12px lucida-console,sans-serif;">
+						Kepala Gudang,
+					</div>
+					<div class="col-xs-3 text-center" style="font:12px lucida-console,sans-serif;">
+						Pengantar,
+					</div>
+					<div class="col-xs-3 text-center" style="font:12px lucida-console,sans-serif;">
+						Hormat Kami,
+					</div>
+				</div>
+			</t>
+		 </t>
+	</template>
+</data>
+</odoo>

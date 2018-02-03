@@ -1,0 +1,7 @@
+<odoo>
+<data>
+	<record id="unblock_batch_invoices" model="res.groups">
+		<field name="name">Unblock Batch Invoices (not recommended)</field>
+	</record>
+</data>
+</odoo>
