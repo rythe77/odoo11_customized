@@ -18,5 +18,8 @@
 		<record id="show_unnecessary_field" model="res.groups">
 			<field name="name">Show Unnecessary Fields</field>
 		</record>
+		<record id="lock_price" model="res.groups">
+			<field name="name">Lock Price Option</field>
+		</record>
 	</data>
 </odoo>
