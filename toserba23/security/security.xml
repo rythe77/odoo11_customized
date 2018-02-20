@@ -1,22 +1,46 @@
 <?xml version="1.0"?>
 <odoo>
-	<data>
-		<record id="view_vendor" model="res.groups">
-			<field name="name">View Vendor</field>
-			<field name="users" eval="[(4, ref('base.user_root'))]"/>
-		</record>
-		<record id="block_vendor_view" model="res.groups">
-			<field name="name">Block Vendor View</field>
-		</record>
-		<record id="view_configuration_menu" model="res.groups">
-			<field name="name">View Configuration Menu</field>
-			<field name="users" eval="[(4, ref('base.user_root'))]"/>
-		</record>
-		<record id="lock_button_on_document" model="res.groups">
-			<field name="name">Show Lock/Unlock Button on Documents</field>
-		</record>
-		<record id="show_unnecessary_field" model="res.groups">
-			<field name="name">Show Unnecessary Fields</field>
-		</record>
-	</data>
+<data>
+	<record id="view_vendor" model="res.groups">
+		<field name="name">View Vendor</field>
+		<field name="users" eval="[(4, ref('base.user_root'))]"/>
+	</record>
+	<record id="block_vendor_view" model="res.groups">
+		<field name="name">Block Vendor View</field>
+	</record>
+	<record id="view_configuration_menu" model="res.groups">
+		<field name="name">View Configuration Menu</field>
+		<field name="users" eval="[(4, ref('base.user_root'))]"/>
+	</record>
+	<record id="lock_button_on_document" model="res.groups">
+		<field name="name">Show Lock/Unlock Button on Documents</field>
+	</record>
+	<record id="show_unnecessary_field" model="res.groups">
+		<field name="name">Show Unnecessary Fields</field>
+	</record>
+	<record id="lock_price" model="res.groups">
+		<field name="name">Lock Price Option</field>
+	</record>
+
+	<!-- View invoice access -->
+    <record id="group_account_invoice_view" model="res.groups">
+        <field name="name">Akses Lihat Faktur Penjualan</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_account_invoice_purchase_view" model="res.groups">
+        <field name="name">Akses Lihat Faktur Pembelian</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+	<!-- Purchasing menu access separation -->
+    <record id="group_account_invoice_purchase" model="res.groups">
+        <field name="name">Tagihan Pembelian</field>
+        <field name="implied_ids" eval="[(4, ref('group_account_invoice_purchase_view'))]"/>
+    </record>
+    <record id="account.group_account_invoice" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_account_invoice_view'))]"/>
+    </record>
+    <record id="account.group_account_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_account_invoice_purchase'))]"/>
+    </record>
+</data>
 </odoo>

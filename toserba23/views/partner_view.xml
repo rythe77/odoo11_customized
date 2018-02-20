@@ -23,6 +23,10 @@
 			</field>
 		</field>
 	</record>
+    <record id="account.view_partner_property_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="groups_id" eval="[(4, ref('group_account_invoice_view'))]"/>
+    </record>
 
 	<!-- Form view invoiced button definition -->
 	<record model="ir.ui.view" id="partner_view_buttons_custom">
@@ -42,6 +46,10 @@
 		<field name="model">res.partner</field>
 		<field name="inherit_id" ref="base.view_res_partner_filter"/>
 		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="street" string="Alamat" filter_domain="['|',('street','ilike',self),('street2','ilike',self)]"/>
+				<field name="city" string="Kota" filter_domain="[('city','ilike',self)]"/>
+			</field>
 			<filter name="salesperson" position="before">
 				<filter name="x_call_freq" string="To Call" context="{'group_by': 'x_call_freq'}"/>
 				<separator/>

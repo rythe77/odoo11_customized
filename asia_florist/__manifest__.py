@@ -51,7 +51,7 @@
         'backend_theme_v11',
         'login_user_detail',
         'total_payable_receivable',
-        'web_disable_export_delete_button',
+        #'web_disable_export_delete_button',
         'indonesia_template',
         'sale_requested_date',
         'sale_advance_payment',
