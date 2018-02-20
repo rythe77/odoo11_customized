@@ -27,6 +27,8 @@
             - Sistem absensi dan gaji kustom toserba 23
             - Kustomisasi dokumen katalog produk
             - Lock price unit edit based on groups and also limit pricelist option for that group
+            - Partner summary report for use by marketing department
+            - Separate groups access for purchasing in account module, also setup view only groups access
         Todo:
             - DO line cant be deleted if not in draft status
             - DO should group same item together
@@ -138,6 +140,7 @@
         'reports/picking_document.xml',
         'reports/invoice_document.xml',
         'reports/product_catalog_document.xml',
+        'reports/partner_summary.xml',
     ],
     'demo': [
         #'demo/demo.xml',

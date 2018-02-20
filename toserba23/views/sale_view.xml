@@ -141,6 +141,11 @@
 	<record model="ir.ui.menu" id="sales_team.menu_sale_config">
 		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>
 	</record>
+	<menuitem id="menu_product_product_qty_check_action_salemenu"
+		action="action_product_qty_tree"
+		parent="sale.product_menu_catalog"
+		groups="sales_team.group_sale_salesman_all_leads"
+		sequence="10" name="Jumlah Produk"/>
 
 	<!-- Limit pricelist option rule -->
 	<record id="limit_pricelist_option_rule" model="ir.rule">

@@ -37,7 +37,7 @@
 				<field name="origin"/>
 			</field>
 			<field name="user_id" position="after">
-				<field name="partner_id" groups="toserba23.view_vendor"/>
+				<field name="partner_id"/>
 			</field>
 		</field>
 	</record>
@@ -154,6 +154,16 @@
 	<!-- Main menu view definition -->
 	<record model="ir.ui.menu" id="account.menu_finance_configuration">
 		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>
+	</record>
+	<!-- Purchasing menu access separation -->
+	<record model="ir.ui.menu" id="account.menu_finance">
+		<field name="groups_id" eval="[(4, ref('toserba23.group_account_invoice_view')),(4, ref('toserba23.group_account_invoice_purchase_view'))]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_receivables">
+		<field name="groups_id" eval="[(6,0,[ref('toserba23.group_account_invoice_view')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="account.menu_finance_payables">
+		<field name="groups_id" eval="[(6,0,[ref('toserba23.group_account_invoice_purchase_view')])]"/>
 	</record>
 </data>
 </odoo>

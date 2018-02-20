@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_partner_summary"
+		model="res.partner"
+		string="Rekap Rekanan"
+		name="toserba23.report_partner_summarysheet"
+		file="toserba23.report_partner_summarysheet"
+		print_report_name="'Rekap - %s' % (object.name)" 
+		report_type="qweb-pdf"
+		groups="sales_team.group_sale_salesman_all_leads"
+	/>
+
+	<template id="report_partner_summarysheet">
+		<t t-call="web.html_container">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
+						Dicetak tanggal: 
+						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+					</div>
+					<div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
+						Rekapan Rekanan Untuk:
+					</div>
+					<div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
+					</div>
+				</div>
+			</div>
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<table class="table table-condensed table table-striped">
+							<thead>
+								<tr style="font:10px lucida-console,sans-serif;">
+									<th><strong>Referensi Internal</strong></th>
+									<th><strong>Nama</strong></th>
+									<th><strong>Alamat</strong></th>
+									<th><strong>No Telp</strong></th>
+									<th><strong>Ponsel</strong></th>
+									<th class="col-xs-5"><strong>Keterangan</strong></th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<tr t-foreach="docs" t-as="o" style="font:10px lucida-console,sans-serif;">
+									<td>
+										<span t-field="o.ref"/>
+									</td>
+									<td>
+										<span t-field="o.display_name"/>
+									</td>
+									<td>
+										<span t-field="o.street"/>
+										<span t-field="o.street2"/>
+										<span t-field="o.city"/>
+									</td>
+									<td>
+										<span t-field="o.phone"/>
+									</td>
+									<td>
+										<span t-field="o.mobile"/>
+									</td>
+									<td>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>
