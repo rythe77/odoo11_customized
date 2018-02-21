@@ -49,7 +49,7 @@
 
 	<menuitem id="menu_transporter_management" name="Transporter"
 		parent="stock.menu_stock_inventory_control"
-		groups="stock.group_stock_manager"
+		groups="stock.group_stock_user"
 		action="action_partner_transporter_form" sequence="20"/>
 </data>
 </odoo>
