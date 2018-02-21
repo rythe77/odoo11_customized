@@ -64,6 +64,13 @@
 			<button name="action_cancel" position="after">
 				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['sale','done','cancel'])]}" groups="sales_team.group_sale_manager"/>
 			</button>
+			<field name="user_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+				<attribute name="options">{'no_create': True}</attribute>
+			</field>
+			<field name="team_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+			</field>
 		</field>
 	</record>
 
