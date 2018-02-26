@@ -103,7 +103,7 @@
     'depends': [
         'base','sale','stock','account','purchase','sale_margin',
         'backend_theme_v11',
-        'login_user_detail',
+        #'login_user_detail',
         #'web_disable_export_delete_button',
         #'total_payable_receivable',
         'hr_payroll_payment',
