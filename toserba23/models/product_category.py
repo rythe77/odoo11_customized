@@ -7,3 +7,4 @@ class ProductCategory(models.Model):
     
     # Create new fields
     is_warranty = fields.Boolean(string='Barang Garansi', index=False, default=True)
+    responsible_id = fields.Many2one('res.users', string='Responsible', default=lambda self: self.env.uid, required=True)

@@ -8,6 +8,7 @@
 		<field name="arch" type="xml">
 			<field name="parent_id" position="after">
 				<field name="is_warranty"/>
+				<field name="responsible_id"/>
 			</field>
 		</field>
 	</record>

@@ -8,6 +8,7 @@ class Product(models.Model):
     _inherit = 'product.template'
 
     #Modify existing fields
+    responsible_id = fields.Many2one('res.users', string='Responsible', related='categ_id.responsible_id', default=lambda self: self.env.uid, required=True, readonly=True)
     list_price = fields.Float(
         'Sale Price', default=1.0, compute='_copy_pricelist', readonly=True, store=True,
         digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman",
