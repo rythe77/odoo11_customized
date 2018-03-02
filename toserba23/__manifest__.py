@@ -138,6 +138,7 @@
         'reports/saleorder_document.xml',
         'reports/delivery_document.xml',
         'reports/picking_document.xml',
+        'reports/picking_document_incl_supplier.xml',
         'reports/invoice_document.xml',
         'reports/product_catalog_document.xml',
         'reports/partner_summary.xml',

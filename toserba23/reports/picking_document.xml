@@ -114,7 +114,7 @@
 										<t t-if="o.transporter_id.street"><span t-field="o.transporter_id.street"/>,</t>
 										<t t-if="o.transporter_id.street2"><span t-field="o.transporter_id.street2"/>,</t>
 										<t t-if="o.transporter_id.city"><span t-field="o.transporter_id.city"/>,</t>
-										<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/>;</t>
+										<t t-if="o.transporter_id.country_id"><span t-field="o.transporter_id.country_id"/>;</t>
 										<t t-if="o.transporter_id.phone"><span t-field="o.transporter_id.phone"/>;</t>
 										<t t-if="o.transporter_id.mobile"><span t-field="o.transporter_id.mobile"/></t>
 									</td>
