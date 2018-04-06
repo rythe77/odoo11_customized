@@ -1,0 +1,55 @@
+<odoo>
+<data>
+	<!-- int.transporter main tree view definition -->
+	<record model="ir.ui.view" id="int_transporter_tree_view">
+		<field name="name">contact_transporter.int_transporter_tree_view</field>
+		<field name="model">int.transporter</field>
+		<field name="arch" type="xml">
+			<tree string="Internal Transporter Tree">
+				<field name="name"/>
+				<field name="reg_number"/>
+				<field name="responsible_id"/>
+				<field name="contact"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- int.transporter main form view definition -->
+	<record model="ir.ui.view" id="int_transporter_form_view">
+		<field name="name">contact_transporter.int_transporter_form_view</field>
+		<field name="model">int.transporter</field>
+		<field name="arch" type="xml">
+			<form string="Fine Form">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="reg_number"/>
+					</group>
+					<group>
+						<field name="responsible_id"/>
+						<field name="contact"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- int.transporter window action -->
+	<record model="ir.actions.act_window" id="int_transporter_view_action">
+		<field name="name">Internal Transporter</field>
+		<field name="res_model">int.transporter</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create internal transporter here
+			</p>
+		</field>
+	</record>
+
+	<menuitem id="menu_internal_transporter_management" name="Internal Transporter"
+		parent="stock.menu_stock_inventory_control"
+		groups="stock.group_stock_user"
+		action="int_transporter_view_action" sequence="30"/>
+</data>
+</odoo>
