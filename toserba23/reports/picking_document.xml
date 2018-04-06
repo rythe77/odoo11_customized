@@ -106,6 +106,17 @@
 								<td class="col-xs-3">
 								</td>
 							</tr>
+							<t t-if="o.int_transporter_id">
+								<tr>
+									<td  colspan="3" class="col-xs-12">
+										Pengantaran : 
+										<span t-field="o.int_transporter_id.name"/>
+										(<span t-field="o.int_transporter_id.reg_number"/>);
+										<span t-field="o.int_transporter_id.responsible_id.name"/>
+										(<span t-field="o.int_transporter_id.contact"/>)
+									</td>
+								</tr>
+							</t>
 							<t t-if="o.picking_type_id.code=='outgoing' and o.use_transporter and o.transporter_id">
 								<tr>
 									<td  colspan="3" class="col-xs-12">

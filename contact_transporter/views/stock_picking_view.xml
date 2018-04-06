@@ -12,6 +12,7 @@
 					<field name="use_transporter"/>
 					<field name="transporter_id" domain="[('transporter','=',True)]" context="{'show_address': 1}" options="{'no_create': 1}" attrs="{'invisible': [('use_transporter', '!=', True)]}"/>
 				</div>
+				<field name="int_transporter_id" string="Internal Transporter" options="{'no_create': 1}"/>
 			</xpath>
 		</field>
 	</record>

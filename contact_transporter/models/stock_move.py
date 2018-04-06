@@ -16,5 +16,6 @@ class StockMove(models.Model):
                 vals.update({
                     'use_transporter': sale_obj.use_transporter,
                     'transporter_id': sale_obj.transporter_id.id,
+                    'int_transporter_id': sale_obj.int_transporter_id.id,
                     })
         return vals

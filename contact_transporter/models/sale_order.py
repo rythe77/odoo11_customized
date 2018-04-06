@@ -10,3 +10,5 @@ class SaleOrder(models.Model):
         states={'sale': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]})
     transporter_id = fields.Many2one("res.partner",
         states={'sale': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]})
+    int_transporter_id = fields.Many2one("int.transporter",
+        states={'sale': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]})

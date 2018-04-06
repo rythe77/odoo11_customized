@@ -12,3 +12,6 @@ class StockPicking(models.Model):
     transporter_id = fields.Many2one("res.partner",
         states={'done': [('readonly', True)], 'cancel': [('readonly', True)],
         'waiting_validation': [('readonly', True)]})
+    int_transporter_id = fields.Many2one("int.transporter",
+        states={'done': [('readonly', True)], 'cancel': [('readonly', True)],
+        'waiting_validation': [('readonly', True)]})
