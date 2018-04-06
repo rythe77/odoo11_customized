@@ -1,19 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* contact_transporter
+# 	* contact_transporter
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-03 05:47+0000\n"
-"PO-Revision-Date: 2017-12-03 05:47+0000\n"
+"POT-Creation-Date: 2018-04-06 01:20+0000\n"
+"PO-Revision-Date: 2018-04-06 09:42+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: contact_transporter
 #: model:ir.model.fields,help:contact_transporter.field_res_partner_transporter
@@ -32,10 +34,84 @@ msgid "Contact"
 msgstr "Kontak"
 
 #. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_contact
+msgid "Contact Number"
+msgstr "Nomor Kontak"
+
+#. module: contact_transporter
+#: model:ir.actions.act_window,help:contact_transporter.int_transporter_view_action
+msgid "Create internal transporter here"
+msgstr "Buat perangkat pengantaran baru di sini"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: contact_transporter
+#: model:ir.ui.view,arch_db:contact_transporter.int_transporter_form_view
+msgid "Fine Form"
+msgstr "Formulir Denda"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_id
+msgid "ID"
+msgstr "ID"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_sale_order_int_transporter_id
+#: model:ir.model.fields,field_description:contact_transporter.field_stock_picking_int_transporter_id
+msgid "Int Transporter"
+msgstr "Pengantaran"
+
+#. module: contact_transporter
+#: model:ir.actions.act_window,name:contact_transporter.int_transporter_view_action
+#: model:ir.ui.menu,name:contact_transporter.menu_internal_transporter_management
+#: model:ir.ui.view,arch_db:contact_transporter.stock_picking_form_view_add_transporter
+#: model:ir.ui.view,arch_db:contact_transporter.view_order_form_inherit_sale_stock_add_transporter
+msgid "Internal Transporter"
+msgstr "Pengantaran"
+
+#. module: contact_transporter
+#: model:ir.ui.view,arch_db:contact_transporter.int_transporter_tree_view
+msgid "Internal Transporter Tree"
+msgstr "Bagan Pengantaran"
+
+#. module: contact_transporter
 #: model:ir.model.fields,field_description:contact_transporter.field_res_partner_transporter
 #: model:ir.model.fields,field_description:contact_transporter.field_res_users_transporter
 msgid "Is a Transporter"
 msgstr "Ekspedisi"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_name
+msgid "Name"
+msgstr "Nama"
 
 #. module: contact_transporter
 #: model:ir.model,name:contact_transporter.model_purchase_order
@@ -48,9 +124,19 @@ msgid "Quotation"
 msgstr "Penawaran"
 
 #. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_reg_number
+msgid "Registration Number"
+msgstr "Nomor Polisi"
+
+#. module: contact_transporter
+#: model:ir.model.fields,field_description:contact_transporter.field_int_transporter_responsible_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: contact_transporter
 #: model:ir.model,name:contact_transporter.model_stock_move
 msgid "Stock Move"
-msgstr "Pergerakan Stock"
+msgstr "Pergerakan Stok"
 
 #. module: contact_transporter
 #: model:ir.model,name:contact_transporter.model_stock_picking
@@ -78,3 +164,7 @@ msgstr "Ekspedisi"
 msgid "Use Transporter?"
 msgstr "Pakai Ekspedisi?"
 
+#. module: contact_transporter
+#: model:ir.model,name:contact_transporter.model_int_transporter
+msgid "int.transporter"
+msgstr "int.transporter"
