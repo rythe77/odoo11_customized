@@ -1,0 +1,15 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="sale_order_form_view_check_credit_limit">
+		<field name="name">sale.sale_order_form_view_check_credit_limit</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<button name="action_confirm" position="before">
+				<button name="action_confirm_limited" string="Confirm Sale" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['draft','sent'])]}" groups="sales_team.group_sale_salesman_all_leads"/>
+			</button>
+		</field>
+	</record>
+</data>
+</odoo>

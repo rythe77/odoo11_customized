@@ -1,0 +1,19 @@
+<odoo>
+<data>
+	<!-- Add debit-credit amount to partner form view definition -->
+	<record model="ir.ui.view" id="view_partner_form_add_debit_credit">
+		<field name="name">base.view_partner_form_add_debit_credit</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="account.view_partner_property_form"/>
+		<field name="arch" type="xml">
+			<field name="trust" position="after">
+				<field name="credit" groups="sales_team.group_sale_salesman_all_leads"/>
+				<field name="credit_limit" string="Receivable Limit" groups="sales_team.group_sale_manager" help="Maximum credit that this customer is allowed for. If the current credit exceeds the limit, sale quotation confirmation is blocked. Zero limit means no limit"/>
+			</field>
+			<field name="currency_id" position="after">
+				<field name="debit" groups="purchase.group_purchase_user"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

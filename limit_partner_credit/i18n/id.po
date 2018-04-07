@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* limit_partner_credit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-07 02:14+0000\n"
+"PO-Revision-Date: 2018-04-07 10:14+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: limit_partner_credit
+#: code:addons/limit_partner_credit/models/sale_order.py:18
+#, python-format
+msgid ""
+"Cannot confirm the quotation because the customer exceed the credit limit!\n"
+"\n"
+"                                        This customer current credit is Rp %d, including the current quotation, the total is Rp %d.\n"
+"                                        The credit limit is Rp %d."
+msgstr ""
+"Tidak dapat mengkonfirmasi penawaran karena pelanggan ini melewati batas piutang!\n"
+"\n"
+"                                        Piutang pelanggan ini pada saat ini adalah sebesar Rp %d, termasuk dengan penawaran ini totalnya adalah Rp %d.\n"
+"                                        Batas piutang untuk pelanggan ini adalah sebesar Rp %d."
+
+#. module: limit_partner_credit
+#: model:ir.ui.view,arch_db:limit_partner_credit.sale_order_form_view_check_credit_limit
+msgid "Confirm Sale"
+msgstr "Konfirmasi Penjualan"
+
+#. module: limit_partner_credit
+#: model:ir.model,name:limit_partner_credit.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: limit_partner_credit
+#: model:ir.ui.view,arch_db:limit_partner_credit.view_partner_form_add_debit_credit
+msgid "Maximum credit that this customer is allowed for. If the current credit exceeds the limit, sale quotation confirmation is blocked. Zero limit means no limit"
+msgstr "Batas piutang maksimum untuk pelanggan ini. Jika jumlah piutang saat ini melebihi batas piutang maksimum, maka konfirmasi penawaran akan terblok. Memasukkan angka 0 artinya tidak ada limit."
+
+#. module: limit_partner_credit
+#: model:ir.model,name:limit_partner_credit.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: limit_partner_credit
+#: model:ir.ui.view,arch_db:limit_partner_credit.view_partner_form_add_debit_credit
+msgid "Receivable Limit"
+msgstr "Batas Piutang"

@@ -29,7 +29,11 @@
             - Lock price unit edit based on groups and also limit pricelist option for that group
             - Partner summary report for use by marketing department
             - Separate groups access for purchasing in account module, also setup view only groups access
+            - Add credit limit for customer
+            - 
         Todo:
+            - Stock inventory for a category should also include sub category
+            - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - DO line cant be deleted if not in draft status
             - DO should group same item together
             - Auto create invoice for purchasing
@@ -119,6 +123,7 @@
         'stock_picking_validation',
         'check_payment',
         'attendances_based_payroll',
+        'limit_partner_credit',
     ],
 
     'data': [
