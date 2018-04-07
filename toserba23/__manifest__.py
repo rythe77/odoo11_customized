@@ -123,6 +123,7 @@
         'check_payment',
         'attendances_based_payroll',
         'limit_partner_credit',
+        'stock_inventory_subcateg',
     ],
 
     'data': [
