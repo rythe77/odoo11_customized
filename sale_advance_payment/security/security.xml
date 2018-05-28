@@ -3,5 +3,8 @@
 	<record id="unblock_batch_invoices" model="res.groups">
 		<field name="name">Unblock Batch Invoices (not recommended)</field>
 	</record>
+	<record id="show_advance_payments" model="res.groups">
+		<field name="name">Show advance payment for non-accounting</field>
+	</record>
 </data>
 </odoo>

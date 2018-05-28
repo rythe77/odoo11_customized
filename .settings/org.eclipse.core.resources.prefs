@@ -11,6 +11,7 @@ encoding//limit_partner_credit/__manifest__.py=utf-8
 encoding//limit_partner_credit/models/__init__.py=utf-8
 encoding//limit_partner_credit/models/res_partner.py=utf-8
 encoding//limit_partner_credit/models/sale_order.py=utf-8
+encoding//sale_advance_payment/__manifest__.py=utf-8
 encoding//stock_inventory_subcateg/__manifest__.py=utf-8
 encoding//stock_inventory_subcateg/models/__init__.py=utf-8
 encoding//stock_inventory_subcateg/models/stock_inventory.py=utf-8

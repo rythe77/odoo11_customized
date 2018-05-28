@@ -21,8 +21,8 @@
     'depends': ['base','sale','account'],
 
     'data': [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
         'wizard/sale_advance_payment_wzd_view.xml',
         'views/sale_view.xml',
     ],

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-28 04:26+0000\n"
-"PO-Revision-Date: 2017-10-28 12:28+0800\n"
+"POT-Creation-Date: 2018-05-26 07:32+0000\n"
+"PO-Revision-Date: 2018-05-26 15:33+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: sale_advance_payment
 #: code:addons/sale_advance_payment/wizard/sale_advance_payment_wzd.py:98
@@ -109,17 +109,17 @@ msgstr "Jurnal"
 #. module: sale_advance_payment
 #: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard___last_update
 msgid "Last Modified on"
-msgstr "Terakhir Diubah pada"
+msgstr "Terakhir diubah pada"
 
 #. module: sale_advance_payment
 #: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard_write_uid
 msgid "Last Updated by"
-msgstr "Terakhir Diperbarui oleh"
+msgstr "Terakhir diperbarui oleh"
 
 #. module: sale_advance_payment
 #: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard_write_date
 msgid "Last Updated on"
-msgstr "Terakhir Diperbarui pada"
+msgstr "Terakhir diperbarui pada"
 
 #. module: sale_advance_payment
 #: model:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
@@ -145,7 +145,7 @@ msgstr "Pembayaran Uang Muka"
 #. module: sale_advance_payment
 #: model:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
 msgid "Payment Method"
-msgstr "Metode pembayaran"
+msgstr "Cara Pembayaran"
 
 #. module: sale_advance_payment
 #: model:ir.model,name:sale_advance_payment.model_account_payment
@@ -171,6 +171,11 @@ msgstr "Jumlah sisa"
 #: model:ir.model.fields,field_description:sale_advance_payment.field_account_payment_sale_id
 msgid "Sale"
 msgstr "Penjualan"
+
+#. module: sale_advance_payment
+#: model:res.groups,name:sale_advance_payment.show_advance_payments
+msgid "Show advance payment for non-accounting"
+msgstr "Tampilkan pembayaran uang muka untuk non-akuntan"
 
 #. module: sale_advance_payment
 #: model:res.groups,name:sale_advance_payment.unblock_batch_invoices

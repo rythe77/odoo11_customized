@@ -30,8 +30,9 @@
             - Partner summary report for use by marketing department
             - Separate groups access for purchasing in account module, also setup view only groups access
             - Add credit limit for customer
-            - Stock inventory for a category should also include sub category
+            - Stock inventory for a category also include sub category
         Todo:
+            - create SO link from DO form page
             - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - DO line cant be deleted if not in draft status
             - DO should group same item together
@@ -105,7 +106,7 @@
 
     'depends': [
         'base','sale','stock','account','purchase','sale_margin',
-        'backend_theme_v11',
+        #'backend_theme_v11',
         #'login_user_detail',
         #'web_disable_export_delete_button',
         #'total_payable_receivable',
@@ -127,8 +128,8 @@
     ],
 
     'data': [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
         'views/sale_view.xml',
         'views/sale_margin_view.xml',
         'views/purchase_view.xml',

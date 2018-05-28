@@ -29,6 +29,9 @@
 						<field name="date_input"/>
 						<field name="amount"/>
 					</group>
+					<group>
+						<field name="create_uid" readonly="1"/>
+					</group>
 				</sheet>
 			</form>
 		</field>
@@ -127,10 +130,13 @@
 
 	<!-- fine menu -->
 	<menuitem id="fine_menu" name="Fine"
+			groups="toserba23.group_fine_creation"
 			parent="hr_attendance.menu_hr_attendance_root"/>
 	<menuitem id="hr_fine_menu" name="Fine" parent="fine_menu"
+			groups="toserba23.group_fine_creation"
 			action="hr_fine_view_action"/>
 	<menuitem id="hr_fine_category_menu" name="Fine Category" parent="fine_menu"
+			groups="hr_attendance.group_hr_attendance_manager"
 			action="hr_fine_category_view_action"/>
 </data>
 </odoo>

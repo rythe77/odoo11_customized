@@ -42,5 +42,10 @@
     <record id="account.group_account_manager" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('group_account_invoice_purchase'))]"/>
     </record>
+	<!-- View invoice access -->
+    <record id="group_fine_creation" model="res.groups">
+        <field name="name">Akses Pencatatan Pelanggaran</field>
+        <field name="implied_ids" eval="[(5, ref('hr_attendance.group_hr_attendance_manager'))]"/>
+    </record>
 </data>
 </odoo>

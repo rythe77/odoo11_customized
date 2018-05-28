@@ -125,7 +125,7 @@
 							<tr t-foreach="o.order_line" t-as="order">
 								<td>
 									<t t-if="not order.product_id.categ_id.is_warranty">**</t>
-									<span t-field="order.name"/>
+									<span t-field="order.product_id"/>
 								</td>
 								<td class="text-right">
 									<span t-field="order.product_uom_qty"/>

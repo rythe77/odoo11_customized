@@ -28,6 +28,8 @@
 		<field name="inherit_id" ref="stock.view_picking_internal_search"/>
 		<field name="arch" type="xml">
 			<filter name="done" position="before">
+				<filter name="waiting" string="Menunggu" domain="[('state','in', ('draft', 'waiting', 'confirmed'))]" help="Picking not done yet"/>
+				<filter name="assigned" string="Siap" domain="[('state','=', 'assigned')]" help="Picking not done yet"/>
 				<filter name="waiting_validation" string="Tunggu Validasi" domain="[('state','=', 'waiting_validation')]" help="Picking not done yet"/>
 			</filter>
 		</field>

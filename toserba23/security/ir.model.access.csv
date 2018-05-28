@@ -6,7 +6,7 @@ sale_stock.access_sale_order_stock_worker,sale.order stock worker,sale.model_sal
 stock.access_stock_picking_user,stock.picking user,stock.model_stock_picking,stock.group_stock_user,1,1,1,0
 toserba23.access_stock_picking_salesman_all,toserba23.stock_picking salesman_all,stock.model_stock_picking,sales_team.group_sale_salesman_all_leads,1,1,1,0
 sale_stock.access_stock_picking_salesman,stock_picking salesman,stock.model_stock_picking,sales_team.group_sale_salesman,1,0,0,0
-stock.access_stock_inventory_user,stock.inventory user,stock.model_stock_inventory,stock.group_stock_user,1,1,0,0
+stock.access_stock_inventory_user,stock.inventory user,stock.model_stock_inventory,stock.group_stock_user,1,1,1,0
 stock.access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,stock.group_stock_manager,1,1,1,1
 stock.access_stock_scrap_user,stock.scrap.user,stock.model_stock_scrap,stock.group_stock_user,1,0,0,0
 toserba23.access_stock_scrap_manager,stock.scrap.manager,stock.model_stock_scrap,stock.group_stock_manager,1,1,1,1
@@ -20,6 +20,7 @@ stock_account.access_account_invoice_user,account_invoice stock user,account.mod
 purchase.access_account_invoice_purchase,account_invoice purchase,account.model_account_invoice,purchase.group_purchase_user,0,0,0,0
 purchase.access_account_invoice_purchase_manager,account_invoice purchase manager,account.model_account_invoice,purchase.group_purchase_manager,1,1,1,0
 access_tsb23_hr_payroll_hr_fine,access_tsb23_hr_payroll_hr_fine manager,attendances_based_payroll.model_hr_fine,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_tsb23_hr_payroll_hr_fine_creation_only,access_tsb23_hr_payroll_hr_fine creator,attendances_based_payroll.model_hr_fine,toserba23.group_fine_creation,1,0,1,0
 access_tsb23_hr_payroll_hr_fine_categories,access_tsb23_hr_payroll_hr_fine_cateogries manager,attendances_based_payroll.model_hr_fine_category,hr_attendance.group_hr_attendance_manager,1,1,1,1
 access_tsb23_hr_payroll_hr_fine_user,access_tsb23_hr_payroll_hr_fine user,attendances_based_payroll.model_hr_fine,hr_payroll.group_hr_payroll_user,1,1,1,1
 access_tsb23_hr_payroll_hr_fine_categories_user,access_tsb23_hr_payroll_hr_fine_cateogries user,attendances_based_payroll.model_hr_fine_category,hr_payroll.group_hr_payroll_user,1,1,1,1

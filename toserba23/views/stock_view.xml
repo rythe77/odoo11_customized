@@ -6,6 +6,9 @@
 		<field name="model">stock.picking</field>
 		<field name="inherit_id" ref="stock.vpicktree"/>
 		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="default_order">name desc</attribute>
+			</tree>
 			<field name="scheduled_date" position="replace"/>
 			<field name="origin" position="replace"/>
 			<field name="name" position="before">
@@ -107,6 +110,12 @@
 		<field name="model">stock.move</field>
 		<field name="inherit_id" ref="stock.view_move_tree"/>
 		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="default_order">date desc</attribute>
+			</tree>
+			<field name="date" position="attributes">
+				<attribute name="groups"></attribute>
+			</field>
 			<field name="location_id" position="replace"/>
 			<field name="location_dest_id" position="replace"/>
 			<field name="reference" position="after">
@@ -118,6 +127,13 @@
 			<field name="state" position="after">
 				<field name="location_id" groups="stock.group_stock_multi_locations" string="From"/>
 				<field name="location_dest_id" groups="stock.group_stock_multi_locations" string="To"/>
+			</field>
+			<field name="product_uom_qty" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="product_uom_qty" position="after">
+				<field name="ordered_qty" string="Qty Pesan"/>
+				<field name="quantity_done" string="Qty Terkirim"/>
 			</field>
 		</field>
 	</record>

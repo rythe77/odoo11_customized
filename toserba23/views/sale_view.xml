@@ -12,6 +12,7 @@
 			<field name="name" position="before">
 				<field name="date_order"/>
 				<field name="requested_date"/>
+				<field name="warehouse_id"/>
 			</field>
 			<field name="name" position="after">
 				<field name="user_id"/>
@@ -33,6 +34,7 @@
 			<field name="name" position="before">
 				<field name="date_order"/>
 				<field name="requested_date"/>
+				<field name="warehouse_id"/>
 			</field>
 			<field name="name" position="after">
 				<field name="user_id"/>
