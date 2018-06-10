@@ -2,11 +2,11 @@
 <odoo>
 <data>
 	<record id="view_vendor" model="res.groups">
-		<field name="name">View Vendor</field>
+		<field name="name">Akses Tampilan Pemasok</field>
 		<field name="users" eval="[(4, ref('base.user_root'))]"/>
 	</record>
 	<record id="block_vendor_view" model="res.groups">
-		<field name="name">Block Vendor View</field>
+		<field name="name">Blokir Akses Pemasok</field>
 	</record>
 	<record id="view_configuration_menu" model="res.groups">
 		<field name="name">View Configuration Menu</field>
@@ -47,5 +47,9 @@
         <field name="name">Akses Pencatatan Pelanggaran</field>
         <field name="implied_ids" eval="[(5, ref('hr_attendance.group_hr_attendance_manager'))]"/>
     </record>
+	<!-- View advance payment access -->
+	<record id="show_advance_payments" model="res.groups">
+		<field name="name">Show advance payment for non-accounting</field>
+	</record>
 </data>
 </odoo>

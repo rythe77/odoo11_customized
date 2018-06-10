@@ -138,6 +138,14 @@
 							</tr>
 						</table>
 					</div>
+					<table class="table-condensed" style="min-width: 200px;max-width: 400px;">
+						<tr>
+							<td><strong>Terbilang : </strong></td>
+							<td style="border-bottom: 2px solid black; background-color:#BCBCBC;">
+								<strong><span style="font:14px lucida-console,sans-serif !important;" t-esc="o.amount_to_text(o.amount_total)"/></strong>
+							</td>
+						</tr>
+					</table>
 					<p t-if="o.comment">
 						<span t-field="o.comment"/>
 					</p>

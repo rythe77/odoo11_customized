@@ -27,7 +27,7 @@
 				<field name="x_harga_bulukumba" string="Bulukumba"/>
 				<field name="x_harga_promo" string="Promo"/>
 				<field name="x_promo_cash"/>
-				<field name="standard_price" groups="purchase.group_purchase_user"/>
+				<field name="standard_price" groups="hide_confidential_info.view_cost_price"/>
 				<field name="qty_available"/>
 				<field name="virtual_available"/>
 				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>

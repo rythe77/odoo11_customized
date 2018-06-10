@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-29 07:53+0000\n"
-"PO-Revision-Date: 2017-10-29 15:55+0800\n"
+"POT-Creation-Date: 2018-06-07 06:06+0000\n"
+"PO-Revision-Date: 2018-06-07 14:07+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,12 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: product_description
 #: model:ir.model,name:product_description.model_procurement_rule
 msgid "Procurement Rule"
 msgstr "Aturan Pengadaan"
+
+#. module: product_description
+#: model:ir.model,name:product_description.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Detail Order Pembelian"
 
 #. module: product_description
 #: model:ir.model,name:product_description.model_sale_order_line
@@ -34,6 +39,12 @@ msgid "Special request from customer regarding the purchase of this product"
 msgstr "Permintaan khusus dari pelanggan mengenai pembelian produk ini"
 
 #. module: product_description
+#: model:ir.model.fields,help:product_description.field_purchase_order_line_product_desc
+msgid "Special request regarding the purchase of this product"
+msgstr "Permintaan khusus untuk pembelian barang ini"
+
+#. module: product_description
+#: model:ir.model.fields,field_description:product_description.field_purchase_order_line_product_desc
 #: model:ir.model.fields,field_description:product_description.field_sale_order_line_product_desc
 #: model:ir.model.fields,field_description:product_description.field_stock_move_product_desc
 msgid "Specific Request"
@@ -45,6 +56,7 @@ msgid "Stock Move"
 msgstr "Pergerakan Stok"
 
 #. module: product_description
+#: model:ir.ui.view,arch_db:product_description.purchase_order_form_add_prod_desc
 #: model:ir.ui.view,arch_db:product_description.view_order_form_add_prod_desc
 msgid "e.g. red color, big size, etc"
 msgstr "mis: warna merah, ukuran besar, dll"

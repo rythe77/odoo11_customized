@@ -23,7 +23,7 @@
             - Field2 custom dari sales order, delivery order, dan faktur
             - Custom form dan tree view untuk sales order, delivery order, dan faktur
             - Atur hak akses untuk masing2 tombol tampilan formulir
-            - Kustomisasi dokumen SO, DO & Picking, & Invoice
+            - Kustomisasi dokumen SO, DO & Picking, Invoice, & Stock Inventry
             - Sistem absensi dan gaji kustom toserba 23
             - Kustomisasi dokumen katalog produk
             - Lock price unit edit based on groups and also limit pricelist option for that group
@@ -31,16 +31,20 @@
             - Separate groups access for purchasing in account module, also setup view only groups access
             - Add credit limit for customer
             - Stock inventory for a category also include sub category
+            - Kustomisasi dokumen koreksi persediaan
+            - Kustomisasi dokumen slip gaji
+            - Kustomisasi dokumen transfer massal BS
         Todo:
+            - Vita account error when given access to sale order
+            - search view timeline is weird
+            - Button for auto creation of BS out from BS in
             - create SO link from DO form page
             - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - DO line cant be deleted if not in draft status
             - DO should group same item together
-            - Auto create invoice for purchasing
             - Upload product image
             - Automatic email and sms system
             - Kode barang tidak usah dimunculkan di dokumen cetak
-            - Kustomisasi dokumen koreksi persediaan
             - Product duplicate should also duplicate pricelist
             - sales commission system
             - (???) Product variant for color management
@@ -125,6 +129,7 @@
         'attendances_based_payroll',
         'limit_partner_credit',
         'stock_inventory_subcateg',
+        'sale_advance_payment',
     ],
 
     'data': [
@@ -144,10 +149,16 @@
         'reports/saleorder_document.xml',
         'reports/delivery_document.xml',
         'reports/picking_document.xml',
-        'reports/picking_document_incl_supplier.xml',
+        'reports/pick_delivery_set_document.xml',
+        #'reports/picking_document_incl_supplier.xml',
+        'reports/inventory_document.xml',
         'reports/invoice_document.xml',
         'reports/product_catalog_document.xml',
         'reports/partner_summary.xml',
+        'reports/payslip_document.xml',
+        'reports/mass_picking_document.xml',
+        'reports/mass_delivery_document.xml',
+        'reports/mass_pick_delivery_set_document.xml',
     ],
     'demo': [
         #'demo/demo.xml',

@@ -1,0 +1,18 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="purchase_order_form_add_prod_desc">
+		<field name="name">purchase.purchase_order_form_add_prod_desc</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='name']" position="after">
+				<field name="product_desc" placeholder="e.g. red color, big size, etc"/>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='name']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

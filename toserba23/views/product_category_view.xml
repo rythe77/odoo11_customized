@@ -1,5 +1,17 @@
 <odoo>
 <data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="product_category_list_view_custom">
+		<field name="name">account.product_category_list_view_custom</field>
+		<field name="model">product.category</field>
+		<field name="inherit_id" ref="product.product_category_list_view"/>
+		<field name="arch" type="xml">
+			<field name="display_name" position="after">
+				<field name="responsible_id" string="Penanggung Jawab"/>
+				<field name="is_warranty"/>
+			</field>
+		</field>
+	</record>
 	<!-- Main form view definition -->
 	<record model="ir.ui.view" id="product_category_form_view_custom">
 		<field name="name">account.product_category_form_view_custom</field>
@@ -8,7 +20,18 @@
 		<field name="arch" type="xml">
 			<field name="parent_id" position="after">
 				<field name="is_warranty"/>
-				<field name="responsible_id"/>
+				<field name="responsible_id" string="Penanggung Jawab"/>
+			</field>
+		</field>
+	</record>
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="product_category_form_search_custom">
+		<field name="name">account.product_category_form_search_custom</field>
+		<field name="model">product.category</field>
+		<field name="inherit_id" ref="product.product_category_search_view"/>
+		<field name="arch" type="xml">
+			<field name="parent_id" position="after">
+				<field name="responsible_id" string="Penanggung Jawab"/>
 			</field>
 		</field>
 	</record>

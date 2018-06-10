@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_set_document"
+		model="stock.picking"
+		string="Set Pengaturan 1 + Surat Jalan 2"
+		name="toserba23.report_custom_setslip"
+		file="toserba23.set_document"
+		print_report_name="'Set Pengaturan + Surat Jalan - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_setslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23.report_custom_picking_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

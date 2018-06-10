@@ -15,23 +15,33 @@ class StockPicking(models.Model):
     @api.multi
     def action_done(self):
         """
-            On transfer, also validate created invoice
+            On transfer validation, auto created invoice
         """
         return_val = super(StockPicking, self).action_done()
-        invoice_sale_ids = []
+        sale_ids = []
+        purchase_ids = []
         invoice_ids = []
         for rec in self:
             _logger.debug("Stock Picking Code: %s", rec.picking_type_id.code)
             if rec.sale_id:
                 if rec.sale_id.invoice_status == 'to invoice':
-                    invoice_sale_ids.append(rec.sale_id.id)
+                    sale_ids.append(rec.sale_id.id)
+            elif rec.purchase_id:
+                if rec.purchase_id.invoice_status == 'to invoice':
+                    purchase_ids.append(rec.purchase_id.id)
 
-        if invoice_sale_ids:
-            invoice_sales = self.env['sale.order'].browse(invoice_sale_ids)
+        if sale_ids:
+            sales_order = self.env['sale.order'].browse(sale_ids)
             if rec.picking_type_id.code == 'outgoing':
-                invoice_ids = invoice_sales.action_invoice_create()
+                invoice_ids = sales_order.action_invoice_create()
             elif rec.picking_type_id.code == 'incoming':
-                invoice_ids = invoice_sales.action_invoice_create(final=True)
+                invoice_ids = sales_order.action_invoice_create(final=True)
+        elif purchase_ids:
+            purchase_order = self.env['purchase.order'].browse(purchase_ids)
+            if rec.picking_type_id.code == 'incoming':
+                invoice_ids = purchase_order.action_invoice_create()
+            elif rec.picking_type_id.code == 'outgoing':
+                invoice_ids = purchase_order.action_invoice_create(final=True)
 
         #link created invoice to this picking
         for rec in self:

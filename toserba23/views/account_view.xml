@@ -51,7 +51,7 @@
 			<field name="partner_id" position="attributes">
 				<attribute name="groups">toserba23.view_vendor</attribute>
 			</field>
-			<field name="journal_id" position="attributes">
+			<!-- field name="journal_id" position="attributes">
 				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
 			</field>
 			<field name="account_id" position="attributes">
@@ -59,7 +59,7 @@
 			</field>
 			<field name="date" position="attributes">
 				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
-			</field>
+			</field-->
 		</field>
 	</record>
 
@@ -69,12 +69,12 @@
 		<field name="model">account.invoice</field>
 		<field name="inherit_id" ref="account.invoice_form"/>
 		<field name="arch" type="xml">
-			<field name="journal_id" position="attributes">
+			<!-- field name="journal_id" position="attributes">
 				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
 			</field>
 			<field name="account_id" position="attributes">
 				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
-			</field>
+			</field-->
 			<field name="team_id" position="after">
 				<field name="x_collector" string="Collector"/>
 			</field>

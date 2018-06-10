@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_mass_custom_set_document"
+		model="stock.picking"
+		string="Set Pengaturan Massal 1 + Surat Jalan Massal 2 (Untuk BS out)"
+		name="toserba23.report_mass_custom_setslip"
+		file="toserba23.mass_set_document"
+		print_report_name="'Set Pengaturan + Surat Jalan Massal - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_mass_custom_setslip">
+		<t t-call="web.html_container">
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+
+				<div class="page">
+					<p style="page-break-after:always;"/>
+					<div class="oe_structure"/>
+					<div class="row">
+						<div class="col-xs-6 mb 16" style="background-color:#212121; height: 80px; border-radius: 5px">
+							<img style="position:absolute; top:10px; left:30px; max-height: 60px;" src='/toserba23/static/src/img/logo_only_inverse.png'/>
+							<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+								<span style="font:25px lucida-console,sans-serif !important;" t-esc="user.company_id.partner_id.name"/><br/>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
+							</div>
+						</div>
+						<div class="col-xs-6 text-center mb16" style="height: 80px;">
+							<div style="position:relative; top:10px; col-xs-6 text-center;">
+								<span style="font:25px lucida-console,sans-serif !important; position:relative; top:-5px;">
+									<span><b>Pengaturan Massal</b></span>
+								</span><br/>
+								<span style="font:20px lucida-console,sans-serif !important; border-top: 1px double #212121; ">
+									Dibuat tanggal: 
+									<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+								</span>
+							</div>
+						</div>
+						<div t-foreach="docs" t-as="o">
+							<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+								<thead style="font:14px lucida-console,sans-serif;">
+									<tr>
+										<td class="col-xs-4">
+											No Transfer : 
+											<span t-if="o.name" t-field="o.name"/>
+										</td>
+										<td class="col-xs-4">
+											<t t-if="o.picking_type_id.code=='incoming' or o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+												Rekanan : 
+												<span t-field="o.partner_id" name="partner_header"/>
+											</t>
+											<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+												Transfer antar gudang
+											</t>
+										</td>
+										<td class="col-xs-4 text-right"><t name="td_sched_date_h">
+											<t name="td_sched_date">
+												Terjadwal : 
+												<t t-if="user.company_id.partner_id.city"><span t-field="user.company_id.partner_id.city"/>, </t>
+												<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+											</t>
+										</t></td>
+									</tr>
+									<tr>
+										<td class="col-xs-4">
+											Kendaraan : 
+											<span t-if="o.x_vehicle_notes" t-field="o.x_vehicle_notes"/>
+										</td>
+										<td colspan="2" class="col-xs-8">
+											Keterangan : 
+											<span t-if="o.x_notes" t-field="o.x_notes"/>
+										</td>
+									</tr>
+								</thead>
+							</table>
+
+							<table class="table table-condensed table table-striped" t-if="o.move_lines">
+								<thead style="background-color:#FFFFFF;" >
+									<tr>
+										<th><font color="#000"><strong>Nama Barang</strong></font></th>
+										<th><font color="#000"><strong>Keterangan Khusus</strong></font></th>
+										<th class="text-right"><font color="#000"><strong>Jumlah</strong></font></th>
+										<th t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<font color="#000"><strong>Jumlah Dikirim</strong></font>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.move_lines" t-as="move">
+										<td>
+											<span t-field="move.product_id"/>
+										</td>
+										<td><span t-field="move.product_desc"/></td>
+										<td class="text-right">
+											<span t-field="move.product_uom_qty"/>
+											<span t-field="move.product_uom"/>
+										</td>
+										<td t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<span t-field="move.quantity_done"/>
+											<span t-field="move.product_uom"/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="page">
+					<p style="page-break-after:always;"/>
+					<div class="oe_structure"/>
+					<div class="row">
+						<div class="col-xs-6 mb 16" style="background-color:#212121; height: 80px; border-radius: 5px">
+							<img style="position:absolute; top:10px; left:30px; max-height: 60px;" src='/toserba23/static/src/img/logo_only_inverse.png'/>
+							<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+								<span style="font:25px lucida-console,sans-serif !important;" t-esc="user.company_id.partner_id.name"/><br/>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
+							</div>
+						</div>
+						<div class="col-xs-6 text-center mb16" style="height: 80px;">
+							<div style="position:relative; top:10px; col-xs-6 text-center;">
+								<span style="font:25px lucida-console,sans-serif !important; position:relative; top:-5px;">
+									<span><b>Surat Jalan Massal</b></span>
+								</span><br/>
+								<span style="font:20px lucida-console,sans-serif !important; border-top: 1px double #212121; ">
+									Dibuat tanggal: 
+									<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+								</span>
+							</div>
+						</div>
+						<div t-foreach="docs" t-as="o">
+							<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+								<thead style="font:14px lucida-console,sans-serif;">
+									<tr>
+										<td class="col-xs-4">
+											No Transfer : 
+											<span t-if="o.name" t-field="o.name"/>
+										</td>
+										<td class="col-xs-4">
+											<t t-if="o.picking_type_id.code=='incoming' or o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+												Rekanan : 
+												<span t-field="o.partner_id" name="partner_header"/>
+											</t>
+											<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+												Transfer antar gudang
+											</t>
+										</td>
+										<td class="col-xs-4 text-right"><t name="td_sched_date_h">
+											<t name="td_sched_date">
+												Terjadwal : 
+												<t t-if="user.company_id.partner_id.city"><span t-field="user.company_id.partner_id.city"/>, </t>
+												<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+											</t>
+										</t></td>
+									</tr>
+									<tr>
+										<td class="col-xs-12" colspan="3">
+											<t t-if="o.picking_type_id.code=='incoming' or o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+												Alamat : 
+												<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+												<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/>,</t>
+												<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/>,</t>
+												<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/></t>
+											</t>
+											<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+												Transfer antar gudang
+											</t>
+										</td>
+									</tr>
+								</thead>
+							</table>
+
+							<table class="table table-condensed table table-striped" t-if="o.move_lines">
+								<thead style="background-color:#FFFFFF;" >
+									<tr>
+										<th><font color="#000"><strong>Nama Barang</strong></font></th>
+										<th class="text-right"><font color="#000"><strong>Jumlah</strong></font></th>
+										<th t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<font color="#000"><strong>Jumlah Dikirim</strong></font>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.move_lines" t-as="move">
+										<td>
+											<span t-field="move.product_id"/>
+										</td>
+										<td class="text-right">
+											<span t-field="move.product_uom_qty"/>
+											<span t-field="move.product_uom"/>
+										</td>
+										<td t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<span t-field="move.quantity_done"/>
+											<span t-field="move.product_uom"/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="page">
+					<p style="page-break-after:always;"/>
+					<div class="oe_structure"/>
+					<div class="row">
+						<div class="col-xs-6 mb 16" style="background-color:#212121; height: 80px; border-radius: 5px">
+							<img style="position:absolute; top:10px; left:30px; max-height: 60px;" src='/toserba23/static/src/img/logo_only_inverse.png'/>
+							<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+								<span style="font:25px lucida-console,sans-serif !important;" t-esc="user.company_id.partner_id.name"/><br/>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
+							</div>
+						</div>
+						<div class="col-xs-6 text-center mb16" style="height: 80px;">
+							<div style="position:relative; top:10px; col-xs-6 text-center;">
+								<span style="font:25px lucida-console,sans-serif !important; position:relative; top:-5px;">
+									<span><b>Surat Jalan Massal</b></span>
+								</span><br/>
+								<span style="font:20px lucida-console,sans-serif !important; border-top: 1px double #212121; ">
+									Dibuat tanggal: 
+									<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+								</span>
+							</div>
+						</div>
+						<div t-foreach="docs" t-as="o">
+							<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+								<thead style="font:14px lucida-console,sans-serif;">
+									<tr>
+										<td class="col-xs-4">
+											No Transfer : 
+											<span t-if="o.name" t-field="o.name"/>
+										</td>
+										<td class="col-xs-4">
+											<t t-if="o.picking_type_id.code=='incoming' or o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+												Rekanan : 
+												<span t-field="o.partner_id" name="partner_header"/>
+											</t>
+											<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+												Transfer antar gudang
+											</t>
+										</td>
+										<td class="col-xs-4 text-right"><t name="td_sched_date_h">
+											<t name="td_sched_date">
+												Terjadwal : 
+												<t t-if="user.company_id.partner_id.city"><span t-field="user.company_id.partner_id.city"/>, </t>
+												<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+											</t>
+										</t></td>
+									</tr>
+									<tr>
+										<td class="col-xs-12" colspan="3">
+											<t t-if="o.picking_type_id.code=='incoming' or o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+												Alamat : 
+												<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+												<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/>,</t>
+												<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/>,</t>
+												<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/></t>
+											</t>
+											<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
+												Transfer antar gudang
+											</t>
+										</td>
+									</tr>
+								</thead>
+							</table>
+
+							<table class="table table-condensed table table-striped" t-if="o.move_lines">
+								<thead style="background-color:#FFFFFF;" >
+									<tr>
+										<th><font color="#000"><strong>Nama Barang</strong></font></th>
+										<th class="text-right"><font color="#000"><strong>Jumlah</strong></font></th>
+										<th t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<font color="#000"><strong>Jumlah Dikirim</strong></font>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.move_lines" t-as="move">
+										<td>
+											<span t-field="move.product_id"/>
+										</td>
+										<td class="text-right">
+											<span t-field="move.product_uom_qty"/>
+											<span t-field="move.product_uom"/>
+										</td>
+										<td t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
+											<span t-field="move.quantity_done"/>
+											<span t-field="move.product_uom"/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

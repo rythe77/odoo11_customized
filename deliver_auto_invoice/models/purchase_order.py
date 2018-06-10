@@ -2,6 +2,10 @@
 
 import logging
 from odoo import api, fields, models, _
+from odoo.tools import float_is_zero
+import datetime
+import pytz
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -9,39 +13,57 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     @api.multi
+    def _prepare_invoice(self):
+        """
+        Prepare the dict of values to create the new invoice for a purchase order. This method may be
+        overridden to implement custom invoice generation (making sure to call super() to establish
+        a clean extension chain).
+        """
+        # get current logged in user's timezone
+        local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
+
+        self.ensure_one()
+        journal_id = self.env['account.journal'].search([('type', '=', 'purchase')], limit=1).id
+        if not journal_id:
+            raise UserError(_('Please define an accounting purchase journal for this company.'))
+        invoice_vals = {
+            'name': self.partner_ref or '',
+            'origin': self.name,
+            'type': 'in_invoice',
+            'account_id': self.partner_id.property_account_payable_id.id,
+            'partner_id': self.partner_id.id,
+            'journal_id': journal_id,
+            'currency_id': self.currency_id.id,
+            'comment': self.notes,
+            'payment_term_id': self.payment_term_id.id,
+            'fiscal_position_id': self.fiscal_position_id.id or self.partner_id.property_account_position_id.id,
+            'company_id': self.company_id.id,
+            'purchase_id': self.id,
+            'date_invoice':pytz.utc.localize(datetime.datetime.now()).astimezone(local).strftime('%Y-%m-%d'),
+        }
+        return invoice_vals
+
+    @api.multi
     def action_invoice_create(self, grouped=False, final=False):
         """
-        Create the invoice associated to the SO.
-        :param grouped: if True, invoices are grouped by SO id. If False, invoices are grouped by
+        Create the invoice associated to the PO.
+        :param grouped: if True, invoices are grouped by PO id. If False, invoices are grouped by
                         (partner_invoice_id, currency)
         :param final: if True, refunds will be generated if necessary
         :returns: list of created invoices
         """
         inv_obj = self.env['account.invoice']
-        precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         invoices = {}
         references = {}
         for order in self:
-            group_key = order.id if grouped else (order.partner_invoice_id.id, order.currency_id.id)
-            for line in order.order_line.sorted(key=lambda l: l.qty_to_invoice < 0):
-                if float_is_zero(line.qty_to_invoice, precision_digits=precision):
-                    continue
-                if group_key not in invoices:
-                    inv_data = order._prepare_invoice()
-                    invoice = inv_obj.create(inv_data)
-                    references[invoice] = order
-                    invoices[group_key] = invoice
-                elif group_key in invoices:
-                    vals = {}
-                    if order.name not in invoices[group_key].origin.split(', '):
-                        vals['origin'] = invoices[group_key].origin + ', ' + order.name
-                    if order.client_order_ref and order.client_order_ref not in invoices[group_key].name.split(', ') and order.client_order_ref != invoices[group_key].name:
-                        vals['name'] = invoices[group_key].name + ', ' + order.client_order_ref
-                    invoices[group_key].write(vals)
-                if line.qty_to_invoice > 0:
-                    line.invoice_line_create(invoices[group_key].id, line.qty_to_invoice)
-                elif line.qty_to_invoice < 0 and final:
-                    line.invoice_line_create(invoices[group_key].id, line.qty_to_invoice)
+            group_key = order.id if grouped else (order.partner_id.id, order.currency_id.id)
+            if any(line.qty_received - line.qty_invoiced > 0 for line in order.order_line):
+                inv_data = order._prepare_invoice()
+                invoice = inv_obj.create(inv_data)
+                #create invoice line using account.invoice method
+                invoice.purchase_order_change()
+                references[invoice] = order
+                invoices[group_key] = invoice
 
             if references.get(invoices.get(group_key)):
                 if order not in references[invoices[group_key]]:
@@ -55,12 +77,9 @@ class PurchaseOrder(models.Model):
                 raise UserError(_('There is no invoicable line.'))
             # If invoice is negative, do a refund invoice instead
             if invoice.amount_untaxed < 0:
-                invoice.type = 'out_refund'
+                invoice.type = 'in_refund'
                 for line in invoice.invoice_line_ids:
                     line.quantity = -line.quantity
-            # Use additional field helper function (for account extensions)
-            for line in invoice.invoice_line_ids:
-                line._set_additional_fields(invoice)
             # Necessary to force computation of taxes. In account_invoice, they are triggered
             # by onchanges, which are not triggered when doing a create.
             invoice.compute_taxes()

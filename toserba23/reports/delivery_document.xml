@@ -73,14 +73,14 @@
 									<span t-if="o.origin" t-field="o.origin"/>
 								</td>
 								<td class="col-xs-5">
-									<t t-if="o.picking_type_id.code=='incoming' and o.partner_id" name="customer_address" groups="toserba23.view_vendor">
-										Pemasok : 
-										<span t-field="o.partner_id" name="partner_header"/>
-									</t>
 									<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
 										Transfer antar gudang
 									</t>
-									<t t-if="o.picking_type_id.code=='outgoing' and o.partner_id" name="customer_address">
+									<t t-if="not o.picking_type_id.code=='internal' and o.partner_id and o.partner_id.supplier and not o.partner_id.customer" name="customer_address" groups="toserba23.view_vendor">
+										Pemasok : 
+										<span t-field="o.partner_id" name="partner_header"/>
+									</t>
+									<t t-if="not o.picking_type_id.code=='internal' and o.partner_id and o.partner_id.customer" name="customer_address">
 										Nama : 
 										<span t-field="o.partner_id" name="partner_header"/>
 									</t>
