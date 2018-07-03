@@ -2,6 +2,9 @@
 
 from odoo import models, fields, api, SUPERUSER_ID
 import odoo.addons.decimal_precision as dp
+from odoo.exceptions import UserError, AccessError
+import datetime
+import pytz
 
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
@@ -31,6 +34,24 @@ class PurchaseOrder(models.Model):
         for item in self:
             item.invoice_status = 'invoiced'
             item.delivery_status = 'delivered'
+
+    # When "Confirm PO" button is pressed, automatically update product purchasing price for the particular supplier
+    @api.multi
+    def _add_supplier_to_product(self):
+        # Add the partner in the supplier list of the product if the supplier is not registered for
+        # this product. We limit to 10 the number of suppliers for a product to avoid the mess that
+        # could be caused for some generic products ("Miscellaneous").
+        res=super(PurchaseOrder,self)._add_supplier_to_product()
+        # get current logged in user's timezone
+        local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
+
+        for line in self.order_line:
+            # Do not add a contact as a supplier
+            partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
+            if partner in line.product_id.seller_ids.mapped('name'):
+                for seller_id in line.product_id.seller_ids.filtered(lambda r: r.name == partner):
+                    seller_id.price = line.price_unit
+                    seller_id.date_start = pytz.utc.localize(datetime.datetime.now()).astimezone(local).strftime('%Y-%m-%d')
 
 
 class PurchaseOrderLine(models.Model):

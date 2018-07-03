@@ -34,7 +34,13 @@
             - Kustomisasi dokumen koreksi persediaan
             - Kustomisasi dokumen slip gaji
             - Kustomisasi dokumen transfer massal BS
+            - product purchase price and start date automatically updated when purchase order is confirmed
         Todo:
+            - Sistem lembur 3 jam pertama Rp 5000, jam berikutnya Rp 10000
+            - Sistem bonus bulanan & bonus jabatan di kontrak?
+            - Mau bikin tombol retur pembayaran
+            - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
+            - Tanggal terjadwal di DO susah tersimpan
             - Vita account error when given access to sale order
             - search view timeline is weird
             - Button for auto creation of BS out from BS in

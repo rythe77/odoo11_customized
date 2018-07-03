@@ -93,6 +93,18 @@
 		</field>
 	</record>
 
+	<!-- Payments list view definition -->
+	<record model="ir.ui.view" id="view_account_payment_tree_custom">
+		<field name="name">account.view_account_payment_tree_custom</field>
+		<field name="model">account.payment</field>
+		<field name="inherit_id" ref="account.view_account_payment_tree"/>
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="move_name"/>
+			</field>
+		</field>
+	</record>
+
 	<!-- Register payments form view definition -->
 	<record model="ir.ui.view" id="view_account_payment_form_custom">
 		<field name="name">account.view_account_payment_form_custom</field>
@@ -101,6 +113,9 @@
 		<field name="arch" type="xml">
 			<field name="communication" position="after">
 				<field name="x_collector" string="Collector"/>
+			</field>
+			<field name="journal_id" position="after">
+				<field name="move_name"/>
 			</field>
 		</field>
 	</record>
