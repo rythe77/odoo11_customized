@@ -15,6 +15,7 @@ class HrPayslipInherit(models.Model):
             data.update({
                 'number_of_days':workedDays_overtime[0],
                 'overtime_hours':workedDays_overtime[1],
+                'overtime_hours_late':workedDays_overtime[2],
                 'rule_violation':amount_fines[0],
                 'fine_amount':amount_fines[1]*(-1),
             })
@@ -24,5 +25,6 @@ class HrPayslipWorkedDaysInherit(models.Model):
     _inherit = 'hr.payslip.worked_days'
     
     overtime_hours = fields.Float(string='Overtime (hours)', store=True)
+    overtime_hours_late = fields.Float(string='Late Overtime (hours)', store=True)
     rule_violation = fields.Float(string='Rule Violation', store=True)
     fine_amount = fields.Float(string='Fine Amount', store=True)

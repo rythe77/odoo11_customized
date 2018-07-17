@@ -45,8 +45,12 @@ class AccountVoucherWizard(models.TransientModel):
 
         amount_total = sale.amount_resisual
 
+        journal_id = self.env['account.journal'].search([('type', '=', 'cash')], limit=1).id
+
         if 'amount_total' in fields:
             res.update({'amount_total': amount_total,
+                        'amount_advance': amount_total,
+                        'journal_id': journal_id,
                         'currency_id': sale.pricelist_id.currency_id.id})
 
         return res

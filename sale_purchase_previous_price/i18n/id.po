@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_purchase_previous_price
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-17 13:32+0000\n"
+"PO-Revision-Date: 2018-07-17 21:35+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: sale_purchase_previous_price
+#: model:ir.ui.view,arch_db:sale_purchase_previous_price.last_sale_product_prices_view
+#: model:ir.ui.view,arch_db:sale_purchase_previous_price.last_sale_product_purchase_prices_view
+msgid "Last Product Prices"
+msgstr "Riwayat Transaksi"
+
+#. module: sale_purchase_previous_price
+#: model:ir.ui.view,arch_db:sale_purchase_previous_price.purchase_order_form_view_previous_price
+#: model:ir.ui.view,arch_db:sale_purchase_previous_price.sale_order_form_view_previous_price
+msgid "Past Price"
+msgstr "Riwayat Harga"
+
+#. module: sale_purchase_previous_price
+#: code:addons/sale_purchase_previous_price/models/sale_order.py:49
+#, python-format
+msgid "Purchase History"
+msgstr "Riwayat Pembelian"
+
+#. module: sale_purchase_previous_price
+#: model:ir.model,name:sale_purchase_previous_price.model_purchase_order
+msgid "Purchase Order"
+msgstr "Order Pembelian"
+
+#. module: sale_purchase_previous_price
+#: model:ir.model,name:sale_purchase_previous_price.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: sale_purchase_previous_price
+#: code:addons/sale_purchase_previous_price/models/sale_order.py:25
+#, python-format
+msgid "Sales History"
+msgstr "Riwayat Penjualan"

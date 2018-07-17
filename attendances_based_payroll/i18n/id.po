@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 08:24+0000\n"
-"PO-Revision-Date: 2017-12-11 16:27+0800\n"
+"POT-Creation-Date: 2018-07-04 00:17+0000\n"
+"PO-Revision-Date: 2018-07-04 08:18+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: attendances_based_payroll
 #: model:ir.ui.view,arch_db:attendances_based_payroll.hr_contract_view_form_add_detail
@@ -23,13 +23,13 @@ msgid "<span>/ hari</span>"
 msgstr "<span>/ hari</span>"
 
 #. module: attendances_based_payroll
-#: code:addons/attendances_based_payroll/models/hr_attendance.py:28
+#: code:addons/attendances_based_payroll/models/hr_attendance.py:29
 #, python-format
 msgid "Absen masuk hanya bisa dilakukan antara pukul 07:00-12:00"
 msgstr "Absen masuk hanya bisa dilakukan antara pukul 07:00-12:00"
 
 #. module: attendances_based_payroll
-#: code:addons/attendances_based_payroll/models/hr_attendance.py:33
+#: code:addons/attendances_based_payroll/models/hr_attendance.py:34
 #, python-format
 msgid "Absen pulang hanya bisa dilakukan setelah pukul 13:00"
 msgstr "Absen pulang hanya bisa dilakukan setelah pukul 13:00"
@@ -123,7 +123,7 @@ msgstr "Besar Denda"
 
 #. module: attendances_based_payroll
 #: model:ir.actions.act_window,name:attendances_based_payroll.hr_fine_category_view_action
-#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_id_5922
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_id_5850
 #: model:ir.ui.menu,name:attendances_based_payroll.hr_fine_category_menu
 msgid "Fine Category"
 msgstr "Kategori Denda"
@@ -174,7 +174,7 @@ msgstr "1 Minggu Terakhir"
 #. module: attendances_based_payroll
 #: model:ir.ui.view,arch_db:attendances_based_payroll.fine_search_view
 msgid "Group By"
-msgstr "Dikelompokkan menurut"
+msgstr "Dikelompokkan berdasarkan"
 
 #. module: attendances_based_payroll
 #: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_employee_hr_fine_id
@@ -205,6 +205,17 @@ msgstr "Terakhir diperbarui oleh"
 #: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_write_date
 msgid "Last Updated on"
 msgstr "Terakhir diperbarui pada"
+
+#. module: attendances_based_payroll
+#: model:ir.ui.view,arch_db:attendances_based_payroll.view_attendance_calendar
+msgid "Late Overtime"
+msgstr "Lembur Malam"
+
+#. module: attendances_based_payroll
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_attendance_overtime_hours_late
+#: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_payslip_worked_days_overtime_hours_late
+msgid "Late Overtime (hours)"
+msgstr "Lembur Malam (jam)"
 
 #. module: attendances_based_payroll
 #: model:ir.model.fields,field_description:attendances_based_payroll.field_hr_fine_category_name

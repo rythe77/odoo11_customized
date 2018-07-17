@@ -8,6 +8,7 @@
 		<field name="arch" type="xml">
 			<field name="check_out" position="after">
 				<field name="overtime_hours"/>
+				<field name="overtime_hours_late"/>
 			</field>
 		</field>
 	</record>
@@ -52,6 +53,7 @@
 		<field name="arch" type="xml">
 			<field name="number_of_hours" position="after">
 				<field name="overtime_hours"/>
+				<field name="overtime_hours_late"/>
 				<field name="rule_violation" string="Rule Violation"/>
 			</field>
 			<field name="number_of_hours" position="attributes">
@@ -83,6 +85,7 @@
 			<calendar string="Employee Attendances" date_start="check_in" date_stop="check_out" color="employee_id" mode="week">
 				<field name="employee_id"/>
 				<field name="overtime_hours" string="Overtime"/>
+				<field name="overtime_hours_late" string="Late Overtime"/>
 			</calendar>
 		</field>
 	</record>

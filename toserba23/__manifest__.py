@@ -36,8 +36,9 @@
             - Kustomisasi dokumen transfer massal BS
             - product purchase price and start date automatically updated when purchase order is confirmed
         Todo:
-            - Sistem lembur 3 jam pertama Rp 5000, jam berikutnya Rp 10000
-            - Sistem bonus bulanan & bonus jabatan di kontrak?
+            - pembayaran di muka untuk pembelian
+            - pak ilham tidak bisa lihat stok pada tanggal tertentu
+            - sari selesaikan dokumen transfer untuk diantar belakangan, tapi tanggalnya selalu ikut tanggal selesai
             - Mau bikin tombol retur pembayaran
             - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
             - Tanggal terjadwal di DO susah tersimpan
@@ -152,11 +153,12 @@
         'views/product_pricelist_item.xml',
         'views/product_supplierinfo.xml',
         'views/hide_vendor_view.xml',
+        'reports/master_template.xml',
         'reports/saleorder_document.xml',
         'reports/delivery_document.xml',
         'reports/picking_document.xml',
+        'reports/picking_document_incl_supplier.xml',
         'reports/pick_delivery_set_document.xml',
-        #'reports/picking_document_incl_supplier.xml',
         'reports/inventory_document.xml',
         'reports/invoice_document.xml',
         'reports/product_catalog_document.xml',

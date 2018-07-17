@@ -10,6 +10,7 @@ class HrAttendance(models.Model):
     _inherit = 'hr.attendance'
     
     overtime_hours = fields.Float(string='Overtime (hours)', compute='_compute_overtime_hours', store=True, readonly=True)
+    overtime_hours_late = fields.Float(string='Late Overtime (hours)', compute='_compute_overtime_hours', store=True, readonly=True)
 
     @api.constrains('check_in', 'check_out')
     def _check_validity_check_in_check_out(self):
@@ -36,6 +37,8 @@ class HrAttendance(models.Model):
     def _compute_overtime_hours(self):
         """ Compute overtime working hours for each attendance record.
         Check-out over the working hours will be considered overtime in 1 hour increment.
+        Overtime is divided into two tiers, with two models of payslip calculation.
+        The first model is overtime for less than 4 hours. The second model is for 4 hours or more.
         """
         # get current logged in user's timezone
         local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
@@ -54,19 +57,24 @@ class HrAttendance(models.Model):
                             delta = check_out.hour + check_out.minute/float(60) + 24 - work_hours.hour_to
                         else:
                             delta = 0
-                        attendance.overtime_hours = round(delta)
+                        if round(delta) < 4:
+                            attendance.overtime_hours = round(delta)
+                        else:
+                            attendance.overtime_hours = 3
+                            attendance.overtime_hours_late = round(delta) - 3
 
     @api.multi
     def get_working_days(self, employee_id, date_from, date_to):
         """ Compute working days between two dates on the input.
         Also return aggregated overtime work hours in each attendance record.
         Attendance records count between input dates are considered valid working days.
-        Return a list with 2 data, number of attendance records and aggregated overtime work hours
+        Return a list with 3 data, number of attendance records and aggregated overtime work hours & late overtime
         """
         # get current logged in user's timezone
         local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
 
         overtime_hours = 0
+        overtime_hours_late = 0
         date_from_utc = local.localize(datetime.combine(datetime.strptime(date_from, '%Y-%m-%d'),time.min)).astimezone(pytz.utc).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         date_to_utc = local.localize(datetime.combine(datetime.strptime(date_to, '%Y-%m-%d'),time.max)).astimezone(pytz.utc).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         attendances = self.env['hr.attendance'].search([
@@ -76,7 +84,8 @@ class HrAttendance(models.Model):
             ])
         for attendance in attendances:
             overtime_hours+=attendance['overtime_hours']
-        return [len(attendances),overtime_hours]
+            overtime_hours_late+=attendance['overtime_hours_late']
+        return [len(attendances),overtime_hours, overtime_hours_late]
     
     @api.multi
     def auto_check_out(self):

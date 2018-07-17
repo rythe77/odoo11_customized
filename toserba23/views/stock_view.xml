@@ -96,7 +96,7 @@
 				<attribute name="groups">stock.group_stock_manager</attribute>
 			</xpath>
 			<xpath expr="//button[@name='action_cancel_draft'][2]" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">stock.group_stock_user</attribute>
 			</xpath>
 		</field>
 	</record>
