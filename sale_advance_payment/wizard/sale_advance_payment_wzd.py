@@ -28,7 +28,7 @@ class AccountVoucherWizard(models.TransientModel):
         if self.env.context.get('active_id', False):
             order = self.env["sale.order"].\
                 browse(self.env.context['active_id'])
-            if self.amount_advance > order.amount_resisual:
+            if self.amount_advance > order.amount_resisual*1.05:
                 raise exceptions.ValidationError(_("Amount of advance is "
                                                    "greater than residual "
                                                    "amount on sale"))

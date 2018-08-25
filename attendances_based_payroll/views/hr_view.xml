@@ -55,6 +55,7 @@
 				<field name="overtime_hours"/>
 				<field name="overtime_hours_late"/>
 				<field name="rule_violation" string="Rule Violation"/>
+				<field name="fine_amount" string="Fine Amount"/>
 			</field>
 			<field name="number_of_hours" position="attributes">
 				<attribute name="invisible">1</attribute>

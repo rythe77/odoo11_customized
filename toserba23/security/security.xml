@@ -21,6 +21,9 @@
 	<record id="lock_price" model="res.groups">
 		<field name="name">Lock Price Option</field>
 	</record>
+	<record id="lock_invoice_payment_date" model="res.groups">
+		<field name="name">Kunci Tanggal Faktur dan Pembayaran</field>
+	</record>
 
 	<!-- View invoice access -->
     <record id="group_account_invoice_view" model="res.groups">
@@ -41,6 +44,10 @@
     </record>
     <record id="account.group_account_manager" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('group_account_invoice_purchase'))]"/>
+    </record>
+	<!-- Accounting report access -->
+    <record id="group_account_report_access" model="res.groups">
+        <field name="name">Akses Laporan Akuntansi</field>
     </record>
 	<!-- View invoice access -->
     <record id="group_fine_creation" model="res.groups">

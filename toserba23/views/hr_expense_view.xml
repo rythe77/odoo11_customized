@@ -1,0 +1,51 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="view_hr_expense_sheet_tree_custom">
+		<field name="name">hr_expense.view_hr_expense_sheet_tree_custom</field>
+		<field name="model">hr.expense.sheet</field>
+		<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_tree"/>
+		<field name="arch" type="xml">
+			<field name="employee_id" position="after">
+	        	<field name="bank_journal_id"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_hr_expense_sheet_form_custom">
+		<field name="name">hr_expense.view_hr_expense_sheet_form_custom</field>
+		<field name="model">hr.expense.sheet</field>
+		<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+		<field name="arch" type="xml">
+			<button name="action_sheet_move_create" position="attributes">
+				<attribute name="groups">account.group_account_invoice</attribute>
+			</button>
+			<!-- Add total amount field -->
+			<field name="expense_line_ids" position="after">
+	            <group class="oe_subtotal_footer oe_right" colspan="2" name="expense_total">
+	                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+	                    <label for="total_amount"/>
+	                </div>
+	                <field name="total_amount" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+	            </group>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_hr_expense_sheet_filter_custom">
+		<field name="name">hr_expense.view_hr_expense_sheet_filter_custom</field>
+		<field name="model">hr.expense.sheet</field>
+		<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_filter"/>
+		<field name="arch" type="xml">
+			<filter name="submitted" position="before">
+				<filter string="Hari ini" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Kemarin" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="1 minggu terakhir" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+			</filter>
+		</field>
+	</record>
+</data>
+</odoo>

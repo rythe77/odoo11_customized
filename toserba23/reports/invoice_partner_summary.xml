@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_invoice_partner_summary"
+		model="account.invoice"
+		string="Rekap Faktur/Tagihan (Per Rekanan)"
+		name="toserba23.report_invoice_partner_summarysheet"
+		file="toserba23.report_invoice_partner_summarysheet"
+		print_report_name="'Rekap - %s' % (object.name)" 
+		report_type="qweb-pdf"
+	/>
+
+	<template id="report_invoice_partner_summarysheet">
+		<t t-call="web.html_container">
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<t t-set="invoice_partner" t-value="[]"/>						
+						<t t-foreach="docs" t-as="o">
+						    <t t-set="invoice_partner" t-value="invoice_partner+[o.partner_id]"/>
+						    <t t-set="currency" t-value="o.currency_id"/>
+						</t>
+						<t t-foreach="set(invoice_partner)" t-as="partner">
+							<div style="page-break-inside: avoid">
+							    <div>
+							    	<strong t-esc="partner.name"/>
+									(Dicetak pada 
+									<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>)
+							    </div>
+								<table class="table table-condensed table table-striped">
+									<thead>
+										<tr style="font:10px lucida-console,sans-serif;">
+											<th><strong>Tanggal Faktur</strong></th>
+											<th><strong>Jatuh Tempo</strong></th>
+											<th><strong>Nomor</strong></th>
+											<th><strong>Jumlah</strong></th>
+											<th><strong>Belum Dibayar</strong></th>
+										</tr>
+									</thead>
+									<tbody class="invoice_tbody">
+										<t t-set="invoices_amount_total" t-value="0"/>
+										<t t-set="invoices_residual" t-value="0"/>
+									    <t t-foreach="docs" t-as="o">
+									        <t t-if="partner.id==o.partner_id.id">
+												<tr style="font:10px lucida-console,sans-serif;">
+													<td>
+														<span t-field="o.date_invoice"/>
+													</td>
+													<td>
+														<span t-field="o.date_due"/>
+													</td>
+													<td>
+														<span t-field="o.number"/>
+													</td>
+													<td>
+														<span t-field="o.amount_total"/>
+														<t t-set="invoices_amount_total" t-value="invoices_amount_total+o.amount_total"/>						
+													</td>
+													<td>
+														<span t-field="o.residual"/>
+														<t t-set="invoices_residual" t-value="invoices_residual+o.residual"/>						
+													</td>
+												</tr>
+									        </t>
+									    </t>
+										<tr style="font:10px lucida-console,sans-serif;">
+											<td>
+											</td>
+											<td>
+											</td>
+											<td>
+												<strong>Total</strong>
+											</td>
+											<td>
+												<strong><span t-esc="invoices_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+											</td>
+											<td>
+												<strong><span t-esc="invoices_residual" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</t>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

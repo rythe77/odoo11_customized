@@ -25,13 +25,13 @@ class HrAttendance(models.Model):
             if attendance.check_in:
                 # convert check in/out time to local timezone
                 check_in = pytz.utc.localize(datetime.strptime(attendance.check_in, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local)
-                if check_in.hour < 7 or check_in.hour >= 12:
-                    raise exceptions.ValidationError(_('Absen masuk hanya bisa dilakukan antara pukul 07:00-12:00'))
+                if check_in.hour < 7 or check_in.hour >= 15:
+                    raise exceptions.ValidationError(_('Absen masuk hanya bisa dilakukan antara pukul 07:00-15:00'))
                 if attendance.check_out:
                     # convert check in/out time to local timezone
                     check_out = pytz.utc.localize(datetime.strptime(attendance.check_out, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local)
-                    if check_out.hour < 13 and check_out.hour >= 7:
-                        raise exceptions.ValidationError(_('Absen pulang hanya bisa dilakukan setelah pukul 13:00'))
+                    if check_out.hour < 15 and check_out.hour >= 7:
+                        raise exceptions.ValidationError(_('Absen pulang hanya bisa dilakukan setelah pukul 15:00'))
 
     @api.depends('check_out')
     def _compute_overtime_hours(self):
@@ -59,6 +59,7 @@ class HrAttendance(models.Model):
                             delta = 0
                         if round(delta) < 4:
                             attendance.overtime_hours = round(delta)
+                            attendance.overtime_hours_late = 0
                         else:
                             attendance.overtime_hours = 3
                             attendance.overtime_hours_late = round(delta) - 3

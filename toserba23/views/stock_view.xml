@@ -12,7 +12,7 @@
 			<field name="scheduled_date" position="replace"/>
 			<field name="origin" position="replace"/>
 			<field name="name" position="before">
-				<field name="date"/>
+				<!-- field name="date"/-->
 				<field name="scheduled_date"/>
 				<field name="date_done"/>
 			</field>
@@ -21,6 +21,9 @@
 			</field>
 			<field name="partner_id" position="before">
 				<field name="x_notes"/>
+			</field>
+			<field name="backorder_id" position="after">
+				<field name="priority"/>
 			</field>
 		</field>
 	</record>
@@ -174,6 +177,9 @@
 				<filter string="Validated yesterday" domain="[('date_done', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_done', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
 				<filter string="Validated for the last week" domain="[('date_done', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_done', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
 				<separator/>
+				<filter name="urgent" string="Mendesak" domain="[('priority', '=', 2),('state', 'not in', ('done', 'cancel'))]"/>
+				<filter name="very_urgent" string="Sangat Mendesak" domain="[('priority', '=', 3),('state', 'not in', ('done', 'cancel'))]"/>
+				<separator/>
 			</field>
 		</field>
 	</record>
@@ -200,12 +206,29 @@
 		<field name="arch" type="xml">
 			<xpath expr="/kanban/field[@name='count_picking_backorders']" position="after">
 				<field name="count_picking_not_done"/>
+				<field name="count_picking_urgent"/>
+				<field name="count_picking_very_urgent"/>
 			</xpath>
 			<button name="get_action_picking_tree_ready" position="after">
 				<button name="get_action_picking_tree_not_done" type="object" class="btn btn-primary">
 					<span><t t-esc="record.count_picking_not_done.value"/> Belum Selesai</span>
 				</button>
+				<button name="get_action_picking_tree_very_urgent" type="object" class="btn btn-primary">
+					<span><t t-esc="record.count_picking_very_urgent.value"/> Sangat Mendesak</span>
+				</button>
 			</button>
+			<xpath expr="/kanban/templates/t/div/div/div[2]/div/div[2]/div[4]" position="after">
+				<div t-if="record.count_picking_urgent.raw_value > 0" class="row">
+					<div class="col-xs-9">
+						<a name="get_action_picking_tree_urgent" type="object">
+							Mendesak
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<field name="count_picking_urgent"/>
+					</div>
+				</div>
+			</xpath>
 		</field>
 	</record>
 	<record id="action_picking_tree_not_done" model="ir.actions.act_window">
@@ -220,6 +243,52 @@
 				'default_picking_type_id': active_id,
 				'contact_display': 'partner_address',
 				'search_default_not_done': 1,
+			}
+		</field>
+		<field name="search_view_id" ref="stock.view_picking_internal_search"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a new transfer.
+			</p><p>
+				You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker.
+			</p>
+		</field>
+	</record>
+	<record id="action_picking_tree_urgent" model="ir.actions.act_window">
+		<field name="name">Mendesak</field>
+		<field name="res_model">stock.picking</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,calendar</field>
+		<field name="domain"></field>
+		<field name="context">{
+				'search_default_picking_type_id': [active_id],
+				'default_picking_type_id': active_id,
+				'contact_display': 'partner_address',
+				'search_default_urgent': 1,
+			}
+		</field>
+		<field name="search_view_id" ref="stock.view_picking_internal_search"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a new transfer.
+			</p><p>
+				You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker.
+			</p>
+		</field>
+	</record>
+	<record id="action_picking_tree_very_urgent" model="ir.actions.act_window">
+		<field name="name">Sangat Mendesak</field>
+		<field name="res_model">stock.picking</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,calendar</field>
+		<field name="domain"></field>
+		<field name="context">{
+				'search_default_picking_type_id': [active_id],
+				'default_picking_type_id': active_id,
+				'contact_display': 'partner_address',
+				'search_default_very_urgent': 1,
 			}
 		</field>
 		<field name="search_view_id" ref="stock.view_picking_internal_search"/>

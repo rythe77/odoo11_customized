@@ -19,11 +19,15 @@ class StockPickingType(models.Model):
     _inherit = 'stock.picking.type'
 
     count_picking_not_done = fields.Integer(compute='_compute_picking_count')
+    count_picking_urgent = fields.Integer(compute='_compute_picking_count')
+    count_picking_very_urgent = fields.Integer(compute='_compute_picking_count')
 
     def _compute_picking_count(self):
         super(StockPickingType,self)._compute_picking_count()
         domains = {
             'count_picking_not_done': [('state', 'not in', ('done', 'cancel'))],
+            'count_picking_urgent': [('priority', '=', 2)],
+            'count_picking_very_urgent': [('priority', '=', 3)],
         }
         for field in domains:
             data = self.env['stock.picking'].read_group(domains[field] +
@@ -38,3 +42,9 @@ class StockPickingType(models.Model):
 
     def get_action_picking_tree_not_done(self):
         return self._get_action('toserba23.action_picking_tree_not_done')
+
+    def get_action_picking_tree_urgent(self):
+        return self._get_action('toserba23.action_picking_tree_urgent')
+
+    def get_action_picking_tree_very_urgent(self):
+        return self._get_action('toserba23.action_picking_tree_very_urgent')

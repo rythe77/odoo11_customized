@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_expense.action_report_hr_expense_sheet" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+    <report
+        id="report_custom_hr_expense_sheet"
+        string="Laporan Pengeluaran"
+        model="hr.expense.sheet"
+        report_type="qweb-pdf"
+        name="toserba23.report_expense_sheetslip"
+        file="toserba23.expense_sheet"
+        print_report_name="'Pengeluaran - %s - %s' % (object.employee_id.name, (object.name).replace('/', ''))"
+    />
+
+    <template id="report_expense_sheetslip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="indonesia_template.custom_external_layout">
+                    <div class="page">
+						<div class="oe_structure"/>
+						<div class="row">
+							<t t-call="toserba23.user_company_header"/>
+							<div class="col-xs-6 text-center mb8" style="height: 80px;">
+								<div style="position:relative; top:10px; col-xs-6 text-center;">
+									<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
+				                        <b>Laporan Pengeluaran</b>
+									</span><br/>
+									<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.name"/></b>
+								</div>
+							</div>
+		
+							<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+								<thead style="font:14px lucida-console,sans-serif;">
+									<tr>
+										<td class="col-xs-4">
+											Karyawan : 
+											<span t-if="o.employee_id.name" t-field="o.employee_id.name"/>
+										</td>
+										<td class="col-xs-4">
+											Divalidasi Oleh : 
+											<span t-if="o.responsible_id" t-field="o.responsible_id"/>
+										</td>
+										<td class="col-xs-4 text-right">
+										<t t-if="o.company_id.partner_id.city"><span t-field="o.company_id.partner_id.city"/>, </t>
+											<span t-field="o.accounting_date" t-field-options='{"format": "d MMMM y"}'/>
+										</td>
+									</tr>
+								</thead>
+							</table>
+		
+							<table class="table table-condensed table table-striped" t-if="o.expense_line_ids">
+								<thead style="background-color:#212121;" >
+									<tr>
+										<th><font color="#fff"><strong>Tanggal</strong></font></th>
+										<th><font color="#fff"><strong>Nama</strong></font></th>
+										<th class="text-center"><font color="#fff"><strong>Ref.</strong></font></th>
+										<th><font color="#fff"><strong>Harga Satuan</strong></font></th>
+										<th><font color="#fff"><strong>Pajak</strong></font></th>
+										<th class="text-center"><font color="#fff"><strong>Qty</strong></font></th>
+										<th class="text-right"><font color="#fff"><strong>Subtotal</strong></font></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.expense_line_ids" t-as="line">
+	                                    <td><span t-field="line.date"/></td>
+	                                    <td>
+	                                        <span t-field="line.name"/> 
+	                                        <span t-field="line.description"/><br/>
+	                                        <span t-field="line.analytic_account_id.name"/>
+	                                    </td>
+	                                    <td style="text-center">
+	                                        <span t-field="line.reference"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="line.unit_amount"/>
+	                                    </td>
+	                                    <td>
+	                                        <t t-foreach="line.tax_ids" t-as="tax">
+	                                          <t t-if="tax.description">
+	                                            <span t-field="tax.description"/>
+	                                          </t>
+	                                          <t t-if="not tax.description">
+	                                            <span t-field="tax.name"/>
+	                                          </t>
+	                                        </t>
+	                                    </td>
+	                                    <td class="text-center">
+	                                        <span t-field="line.quantity"/>
+	                                    </td>
+	                                    <td class="text-right">
+	                                        <span t-field="line.total_amount"
+	                                            t-options='{"widget": "monetary", "display_currency": line.currency_id}'/>
+	                                    </td>
+									</tr>
+								</tbody>
+							</table>
+
+	                        <div class="row">
+	                            <div class="col-xs-4 pull-right">
+	                                <table class="table table-condensed">
+	                                    <tr class="border-black">
+	                                        <td><strong>Total</strong></td>
+	                                        <td class="text-right">
+	                                            <span t-field="o.total_amount"
+	                                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                        <p>Sertifikasi jujur dan sesuai standar,<br/>(Tanggal dan tanda tangan).<br/><br/></p>
+						</div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

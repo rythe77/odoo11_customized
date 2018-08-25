@@ -110,5 +110,13 @@
 	<record model="ir.ui.menu" id="purchase.menu_purchase_config">
 		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>
 	</record>
+
+	<!-- Katalog harga supplier -->
+	<menuitem id="katalog_menu" name="Katalog"
+			groups="purchase.group_purchase_user"
+			parent="purchase.menu_purchase_root"/>
+	<menuitem id="product_supplierinfo_menu" name="Daftar Harga Supplier" parent="katalog_menu"
+			groups="purchase.group_purchase_user"
+			action="product.product_supplierinfo_type_action"/>
 </data>
 </odoo>

@@ -4,12 +4,12 @@
 	<report
 		id="report_custom_picking_supplier"
 		model="stock.picking"
-		string="Pengaturan/Penerimaan Barang (Supplier)"
+		string="Penerimaan Barang"
 		name="toserba23.report_custom_pickingslip_supplier"
 		file="toserba23.pengaturan_barang_supplier"
 		print_report_name="'Pengaturan Barang - %s - %s' % ('', object.name)"
 		report_type="qweb-pdf"
-		groups="block_vendor_view"
+		groups="stock.group_stock_user"
 	/>
 
 	<template id="report_custom_pickingslip_supplier">

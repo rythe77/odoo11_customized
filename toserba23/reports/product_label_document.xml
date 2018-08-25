@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<record id="product.report_product_label" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+	<record id="product.report_product_template_label" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+	<report
+		id="report_product_label"
+		model="product.template"
+		string="Label Produk"
+		name="toserba23.report_product_labelsheet"
+		file="toserba23.label_produk"
+		print_report_name="'Label Produk - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="sales_team.group_sale_salesman_all_leads"
+	/>
+
+	<template id="report_product_labelsheet">
+		<t t-call="web.html_container">
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+		            <t t-foreach="docs" t-as="product">
+					    <div class="col-xs-6" style="padding:0;">
+					        <table style="border-spacing:0;margin-bottom:0;height:200px;" class="table">
+					            <thead>
+					                <tr style="width: 3in;">
+					                    <td style="border: 2px solid black;width: 2.63in;" colspan="2" class="col-xs-8 danger">
+					                        <t t-if="product.default_code">
+					                            [<strong t-field="product.default_code"/>]
+					                        </t>
+					                        <strong t-field="product.name"/>
+					                    </td>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr style="width: 1in;">
+					                    <td style="border: 2px solid black;text-align: center; vertical-align: middle;" class="col-xs-5">
+					                        <img t-if="product.qr_code" t-att-src="'data:image/png;base64,%s' % to_text(product.qr_code)" style="width:120px;height:120px;"/>
+					                    </td>
+					                    <td style="border: 2px solid black; text-align: center;" class="col-xs-7">
+					                        <h4>
+					                            <strong t-field="product.company_id.currency_id.symbol"/>
+					                            <strong t-field="product.list_price"/>
+					                        </h4>
+					                    </td>
+					                </tr>
+					            </tbody>
+					        </table>
+					    </div>
+		            </t>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

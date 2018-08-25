@@ -8,7 +8,7 @@
 		<field name="arch" type="xml">
 			<field name="trust" position="after">
 				<field name="credit" groups="sales_team.group_sale_salesman_all_leads"/>
-				<field name="credit_limit" string="Receivable Limit" groups="sales_team.group_sale_manager" help="Maximum credit that this customer is allowed for. If the current credit exceeds the limit, sale quotation confirmation is blocked. Zero limit means no limit"/>
+				<field name="credit_limit" string="Receivable Limit" groups="sales_team.group_sale_salesman_all_leads" help="Maximum credit that this customer is allowed for. If the current credit exceeds the limit, sale quotation confirmation is blocked. Zero limit means no limit"/>
 			</field>
 			<field name="currency_id" position="after">
 				<field name="debit" groups="purchase.group_purchase_user"/>

@@ -116,11 +116,12 @@
     'version': '0.1',
 
     'depends': [
-        'base','sale','stock','account','purchase','sale_margin',
+        'base','sale','stock','account','purchase','sale_margin','hr_expense',
         #'backend_theme_v11',
         #'login_user_detail',
         #'web_disable_export_delete_button',
         #'total_payable_receivable',
+        'odoo_qr_code',
         'hr_payroll_payment',
         'indonesia_template',
         'indonesia_template_purchasing',
@@ -137,6 +138,7 @@
         'limit_partner_credit',
         'stock_inventory_subcateg',
         'sale_advance_payment',
+        'sale_purchase_previous_price',
     ],
 
     'data': [
@@ -153,6 +155,7 @@
         'views/product_pricelist_item.xml',
         'views/product_supplierinfo.xml',
         'views/hide_vendor_view.xml',
+        'views/hr_expense_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml',
         'reports/delivery_document.xml',
@@ -161,12 +164,16 @@
         'reports/pick_delivery_set_document.xml',
         'reports/inventory_document.xml',
         'reports/invoice_document.xml',
+        'reports/invoice_summary.xml',
+        'reports/invoice_partner_summary.xml',
         'reports/product_catalog_document.xml',
+        'reports/product_label_document.xml',
         'reports/partner_summary.xml',
         'reports/payslip_document.xml',
         'reports/mass_picking_document.xml',
         'reports/mass_delivery_document.xml',
         'reports/mass_pick_delivery_set_document.xml',
+        'reports/expense_sheet_document.xml',
     ],
     'demo': [
         #'demo/demo.xml',

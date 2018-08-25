@@ -29,3 +29,21 @@ class SaleOrderInherit(models.Model):
         for item in self:
             item.invoice_status = 'invoiced'
             item.delivery_status = 'delivered'
+
+    @api.multi
+    def action_check_product_qty(self):
+        rel_view_id = self.env.ref(
+            'toserba23.product_product_tree_view_for_qtycheck_custom')
+        sale_lines = self.env['sale.order.line'].search([('order_id', '=', self.id)])
+        product_ids = [sale_line.product_id.id for sale_line in sale_lines]
+        if not product_ids:
+            raise Warning("Tidak ada produk yang diinput!")
+        else:
+            return {
+                'domain': [('id', 'in', product_ids)],
+                'views': [(rel_view_id.id, 'tree')],
+                'name': 'Cek Qty Produk',
+                'res_model': 'product.product',
+                'view_id': False,
+                'type': 'ir.actions.act_window',
+            }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_invoice_summary"
+		model="account.invoice"
+		string="Rekap Faktur/Tagihan"
+		name="toserba23.report_invoice_summarysheet"
+		file="toserba23.report_invoice_summarysheet"
+		print_report_name="'Rekap - %s' % (object.name)" 
+		report_type="qweb-pdf"
+	/>
+
+	<template id="report_invoice_summarysheet">
+		<t t-call="web.html_container">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
+						Dicetak tanggal: 
+						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+					</div>
+					<div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
+						Rekapan Faktur
+					</div>
+					<div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
+					</div>
+				</div>
+			</div>
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<table class="table table-condensed table table-striped">
+							<thead>
+								<tr style="font:10px lucida-console,sans-serif;">
+									<th><strong>Tanggal Faktur</strong></th>
+									<th><strong>Tanggal Jatuh Tempo</strong></th>
+									<th><strong>Nomor</strong></th>
+									<th><strong>Dokumen Sumber</strong></th>
+									<th><strong>Rekanan</strong></th>
+									<th><strong>Total</strong></th>
+									<th><strong>Belum Dibayar</strong></th>
+									<th><strong>Status</strong></th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<tr t-foreach="docs" t-as="o" style="font:10px lucida-console,sans-serif;">
+									<td>
+										<span t-field="o.date_invoice"/>
+									</td>
+									<td>
+										<span t-field="o.date_due"/>
+									</td>
+									<td>
+										<span t-field="o.number"/>
+									</td>
+									<td>
+										<span t-field="o.origin"/>
+									</td>
+									<td>
+										<span t-field="o.partner_id"/>
+									</td>
+									<td>
+										<span t-field="o.amount_total"/>
+									</td>
+									<td>
+										<span t-field="o.residual"/>
+									</td>
+									<td>
+										<span t-field="o.state"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>
