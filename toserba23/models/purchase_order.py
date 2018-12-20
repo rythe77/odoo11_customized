@@ -44,14 +44,16 @@ class PurchaseOrder(models.Model):
         res=super(PurchaseOrder,self)._add_supplier_to_product()
         # get current logged in user's timezone
         local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
+        today = pytz.utc.localize(datetime.datetime.now()).astimezone(local).strftime('%Y-%m-%d')
 
         for line in self.order_line:
             # Do not add a contact as a supplier
             partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
             if partner in line.product_id.seller_ids.mapped('name'):
                 for seller_id in line.product_id.seller_ids.filtered(lambda r: r.name == partner):
-                    seller_id.price = line.price_unit
-                    seller_id.date_start = pytz.utc.localize(datetime.datetime.now()).astimezone(local).strftime('%Y-%m-%d')
+                    if seller_id.date_start and seller_id.date_start <= today and not seller_id.date_end:
+                        seller_id.price = line.price_unit
+                        seller_id.date_start = today
 
 
 class PurchaseOrderLine(models.Model):

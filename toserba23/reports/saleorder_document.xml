@@ -9,7 +9,7 @@
 		file="toserba23.order_penjualan"
 		print_report_name="'Order Penjualan - %s - %s' % (object.partner_id.name or '', object.name)"
 		report_type="qweb-pdf"
-		groups="sales_team.group_sale_salesman_all_leads"
+		groups="toserba23.group_sale_order_view"
 	/>
 
 	<template id="report_custom_saleorderslip">
@@ -63,7 +63,7 @@
 								<td class="col-xs-3 text-right"><t name="td_conf_date_h">
 									<t name="td_conf_date">
 										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
-										<span t-field="o.confirmation_date" t-field-options='{"format": "d MMMM y"}'/>
+										<span t-field="o.confirmation_date" t-field-options='{"format": "d MMM y"}'/>
 									</t>
 								</t></td>
 							</tr>

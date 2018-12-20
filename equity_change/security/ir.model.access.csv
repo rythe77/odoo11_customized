@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+equity_change.access_right_equity_holder_user,equity_change.access_right_equity_holder user,equity_change.model_equity_holder_account,account.group_account_user,1,0,0,0
+equity_change.access_right_equity_holder_manager,equity_change.access_right_equity_holder manager,equity_change.model_equity_holder_account,account.group_account_manager,1,1,1,1

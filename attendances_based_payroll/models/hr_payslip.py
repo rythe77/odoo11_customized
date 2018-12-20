@@ -12,13 +12,14 @@ class HrPayslipInherit(models.Model):
         workedDays_overtime = self.employee_id.attendance_ids.get_working_days(self.employee_id, date_from, date_to)
         amount_fines = self.employee_id.hr_fine_id.get_total_fines(self.employee_id, date_from, date_to)
         for data in res:
-            data.update({
-                'number_of_days':workedDays_overtime[0],
-                'overtime_hours':workedDays_overtime[1],
-                'overtime_hours_late':workedDays_overtime[2],
-                'rule_violation':amount_fines[0],
-                'fine_amount':amount_fines[1]*(-1),
-            })
+            if data.get('code') == 'WORK100':
+                data.update({
+                    'number_of_days':workedDays_overtime[0],
+                    'overtime_hours':workedDays_overtime[1],
+                    'overtime_hours_late':workedDays_overtime[2],
+                    'rule_violation':amount_fines[0],
+                    'fine_amount':amount_fines[1]*(-1),
+                })
         return res
 
 class HrPayslipWorkedDaysInherit(models.Model):

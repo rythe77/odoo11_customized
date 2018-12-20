@@ -42,6 +42,24 @@
 		</field>
 	</record>
 
+	<!-- Cek product qty sale line list view definition -->
+	<record model="ir.ui.view" id="sale_order_line_tree_view_custom">
+		<field name="name">sale.sale_order_line_tree_view_custom</field>
+		<field name="model">sale.order.line</field>
+		<field name="arch" type="xml">
+	        <tree string="Cek Qty">
+	            <field name="product_id"/>
+	            <field name="product_uom_qty" string="Qty Pesanan"/>
+	            <field name="x_qty_on_draft"/>
+	            <field name="x_qty_ckl"/>
+	            <field name="x_qty2_ckl"/>
+	            <field name="x_qty_prl"/>
+	            <field name="x_qty2_prl"/>
+	            <field name="product_uom"/>
+	        </tree>
+		</field>
+	</record>
+
 	<!-- Main form view definition -->
 	<record model="ir.ui.view" id="sale_order_form_view_custom">
 		<field name="name">sale.sale_order_form_view_custom</field>
@@ -78,6 +96,18 @@
 			<!-- Add check product qty button -->
 			<button name="action_view_invoice" position="after">
 	            <button name="action_check_product_qty" string="Cek Qty Produk" type="object" class="oe_stat_button" icon="fa-building-o"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Modify confirm sale button access right definition -->
+	<record model="ir.ui.view" id="sale_order_form_view_check_credit_limit_custom">
+		<field name="name">sale.sale_order_form_view_check_credit_limit_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="limit_partner_credit.sale_order_form_view_check_credit_limit"/>
+		<field name="arch" type="xml">
+			<button name="action_confirm_limited" position="attributes">
+				<attribute name="groups">toserba23.group_sale_supervisor</attribute>
 			</button>
 		</field>
 	</record>
@@ -173,5 +203,44 @@
 		<field name="perm_unlink" eval="0"/>
 		<field name="domain_force">[('name','ilike','')]</field>
 	</record>
+
+	<!--Customer menu-->
+	<record id="action_partner_form_custom" model="ir.actions.act_window">
+	    <field name="name">Customers</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">res.partner</field>
+	    <field name="view_type">form</field>
+	    <field name="view_mode">kanban,tree,form</field>
+		<field name="context">{'search_default_customer': 1,'default_customer': 1,'default_supplier': 0, 'default_transporter': 0, 'default_company_type': 'company'}</field>
+		<field name="domain">[('customer','=',True)]</field>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	        Click to add a contact in your address book.
+	      </p><p>
+	        Odoo helps you easily track all activities related to
+	        a customer: discussions, history of business opportunities,
+	        documents, etc.
+	      </p>
+	    </field>
+	</record>
+	<menuitem id="sale.res_partner_menu"
+	    parent="sale.sale_order_menu"
+	    action="toserba23.action_partner_form_custom"
+	    sequence="3" groups="toserba23.group_sale_order_view"/>
+
+	<!-- Reorder sales menu access -->
+	<menuitem id="sale.sale_order_menu"
+	    parent="sale.sale_menu_root"
+	    sequence="2"
+	    groups="toserba23.group_sale_order_view"/>
+	<menuitem id="sale.menu_sale_quotations"
+	        action="sale.action_quotations"
+	        parent="sale.sale_order_menu"
+	        sequence="1" groups="toserba23.group_sale_order_view"/>
+	<menuitem id="sale.menu_sale_order"
+	    name="Orders"
+	    action="sale.action_orders"
+	    parent="sale.sale_order_menu"
+	    sequence="2" groups="toserba23.group_sale_order_view"/>
 </data>
 </odoo>

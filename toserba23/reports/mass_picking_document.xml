@@ -52,7 +52,7 @@
 											<t name="td_sched_date">
 												Terjadwal : 
 												<t t-if="user.company_id.partner_id.city"><span t-field="user.company_id.partner_id.city"/>, </t>
-												<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+												<span t-field="o.scheduled_date" t-field-options='{"format": "d MMM y"}'/>
 											</t>
 										</t></td>
 									</tr>

@@ -1,0 +1,1564 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rma_rythe
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-17 04:39+0000\n"
+"PO-Revision-Date: 2018-10-17 12:54+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_invoice_count
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_invoice_count
+msgid "# of Invoices"
+msgstr "# Faktur"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_rmain_count
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_picking_rmain_count
+msgid "# of RMA-IN"
+msgstr "# RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_rmaout_count
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_picking_rmaout_count
+msgid "# of RMA-OUT"
+msgstr "# RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_action
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_action
+msgid "Action"
+msgstr "Tindakan"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_afterpurchase
+msgid "After-Purchase"
+msgstr "Purna Beli"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_aftersale
+msgid "After-Sale"
+msgstr "Purna Jual"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Approve"
+msgstr "Setuju"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+#: selection:rma.rma,state:0 selection:rma.rma.line,state:0
+msgid "Approved"
+msgstr "Disetujui"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_invoiced_qty
+msgid "Billed Qty"
+msgstr "Qty Difakturkan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_product_replacement_view_form
+#: model:ir.ui.view,arch_db:rma_rythe.rma_service_product_view_form
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_send_form
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_transfer_form
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_create_form
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_receive_form
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_refund_form
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Change to Refund"
+msgstr "Ubah ke Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Change to Replace"
+msgstr "Ubah ke Ganti Produk"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_reason_action
+msgid "Click to create a rma reason."
+msgstr "Klik untuk membuat alasan rma baru."
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_date_closed
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_date_closed
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+#: selection:rma.rma,state:0 selection:rma.rmaout,state:0
+msgid "Closed"
+msgstr "Ditutup"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Closed or Rejected"
+msgstr "Ditutup atau Ditolak"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_company_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_company_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_company_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_config_rma_purchase
+#: model:ir.ui.menu,name:rma_rythe.menu_config_rma_sale
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Confirm"
+msgstr "Konfirmasi"
+
+#. module: rma_rythe
+#: selection:rma.rmaout,state:0 selection:rma.rmaout.line,state:0
+msgid "Confirmed"
+msgstr "Dikonfirmasi"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_partner_tree_hide
+msgid "Contacts"
+msgstr "Daftar kontak"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:151
+#: code:addons/rma_rythe/models/rmaout.py:126
+#, python-format
+msgid "Copying document disabled."
+msgstr "Fungsi penggandaan dokumen dinonaktifkan."
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Create Invoice"
+msgstr "Buat Faktur"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.act_create_rma_out
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_create_form
+msgid "Create RMA-OUT"
+msgstr "Buat RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_receive_form
+msgid "Create Receive"
+msgstr "Buat Penerimaan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_refund_form
+msgid "Create Refund"
+msgstr "Buat Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_transfer_form
+msgid "Create Transfer"
+msgstr "Buat Transfer Internal"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_reason_action
+msgid ""
+"Create rma reason to help clasify handling process.\n"
+"\t      \tFor example: Need for repair, etc."
+msgstr ""
+"Buat alasan rma untuk membantu klasifikasi proses penanganan\n"
+"t      tMisalnya: Pengembalian Dana, dll"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_create_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_create_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_rma_partner_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_rma_partner_id
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Customer"
+msgstr "Pelanggan"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_rma_rma
+msgid "Customer RMA"
+msgstr "RMA Pelanggan"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_rma_rma_line
+msgid "Customer RMA Line Service"
+msgstr "Baris Servis RMA Pelanggan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.invoice_line_tree_view_custom
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_date_deadline
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+msgid "Deadline"
+msgstr "Tenggat Waktu"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_name
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_dst_warehouse_id
+msgid "Destination Warehouse"
+msgstr "Gudang Tujuan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+msgid "Done"
+msgstr "Selesai"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+#: selection:rma.rma,state:0 selection:rma.rma.line,state:0
+#: selection:rma.rmaout,state:0 selection:rma.rmaout.line,state:0
+msgid "Draft"
+msgstr "Rancangan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_partner_email
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_partner_email
+msgid "Email"
+msgstr "Email"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Follow-Up"
+msgstr "Follow-Up"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Green 1, Back panel 1, etc"
+msgstr "Hijau 1, Dinding belakang 1, etc"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Group By"
+msgstr "Dikelompokkan berdasarkan"
+
+#. module: rma_rythe
+#: selection:rma.rma,priority:0
+msgid "High"
+msgstr "Tinggi"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:141
+#: code:addons/rma_rythe/models/rmaout.py:116
+#, python-format
+msgid "In order to delete a RMA, you must cancel it first."
+msgstr "Untuk menghapus RMA, Anda harus menolaknya terlebih dahulu."
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Incoming Shipments"
+msgstr "Pengiriman Barang Masuk"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_account_invoice
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_account_invoice_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_invoice_line_id
+msgid "Invoice Line"
+msgstr "Baris Faktur"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.invoice_line_tree_view_custom
+msgid "Invoice Lines"
+msgstr "Baris Faktur"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Invoiced Qty"
+msgstr "Qty Difakturkan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_product_invoiced_qty
+msgid "Invoiced Quantity"
+msgstr "Qty Difakturkan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Invoices"
+msgstr "Faktur"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard___last_update
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_write_uid
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_write_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_rmain_transfer_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_rmain_send_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_rmaout_create_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_rmaout_receive_line
+msgid "Lines"
+msgstr "Baris"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_rmaout_line_ids
+msgid "Linked RMA-OUT Line"
+msgstr "Baris RMA-OUT Terkait"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_rma_line
+#: model:ir.model,name:rma_rythe.model_rma_rmaout_line
+msgid "List of product to return"
+msgstr "Daftar produk yang dikembalikan"
+
+#. module: rma_rythe
+#: selection:rma.rma,priority:0
+msgid "Low"
+msgstr "Rendah"
+
+#. module: rma_rythe
+#: model:res.groups,name:rma_rythe.group_rma_manager
+#: model:res.groups,name:rma_rythe.group_rmaout_manager
+msgid "Manager"
+msgstr "Manajer"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_int_transfer_wizard_line_name
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_name
+#: model:ir.model.fields,help:rma_rythe.field_rma_rmaout_line_name
+#: model:ir.model.fields,help:rma_rythe.field_rma_send_wizard_line_name
+#: model:ir.model.fields,help:rma_rythe.field_rmaout_create_wizard_line_name
+#: model:ir.model.fields,help:rma_rythe.field_rmaout_receive_wizard_line_name
+msgid "More precise description of the problem"
+msgstr "Deskripsi masalah barang"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_display_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_display_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: rma_rythe
+#: selection:rma.rma,priority:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Not Done"
+msgstr "Belum Selesai"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Number"
+msgstr "Nomor"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:694
+#, python-format
+msgid "Only a rma line with repair action can have product service"
+msgstr "Hanya baris rma dengan tindakan perbaiki yang dapat melakukan servis produk"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:677
+#, python-format
+msgid "Only a rma line with replace action can have product replacement"
+msgstr "Hanya baris rma dengan tindakan tukar yang dapat melakukan penukaran produk"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Only invoice created whithin 1 year will appear in the selection above"
+msgstr "Hanya faktur yang dibuat 1 tahun terakhir yang akan muncul dalam pilihan di atas"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Other"
+msgstr "Lainnya"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Other Information"
+msgstr "Informasi Lainnya"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_partner_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_partner_id
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Partner"
+msgstr "Rekanan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_partner_email
+#: model:ir.model.fields,help:rma_rythe.field_rma_rmaout_partner_email
+msgid "Partner email"
+msgstr "Email rekanan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_partner_phone
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_partner_phone
+msgid "Phone"
+msgstr "Telepon"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:297
+#: code:addons/rma_rythe/models/rmaout.py:236
+#, python-format
+msgid "Picking type can not be internal"
+msgstr "Tipe transfer tidak boleh internal"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:364
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:164
+#, python-format
+msgid "Please define an accounting purchase journal for this company."
+msgstr "Silahkan atur jurnal pembelian akuntansi untuk perusahaan ini."
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_priority
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+msgid "Priority"
+msgstr "Prioritas"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_process_status
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_process_status
+msgid "Process Status"
+msgstr "Status Proses"
+
+#. module: rma_rythe
+#: selection:rma.rma.line,process_status:0
+#: selection:rma.rmaout.line,process_status:0
+msgid "Processed"
+msgstr "Selesai"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+#: selection:rma.rma,state:0 selection:rma.rma.line,process_status:0
+#: selection:rma.rmaout,state:0 selection:rma.rmaout.line,process_status:0
+msgid "Processing"
+msgstr "Sedang proses"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_group_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_group_id
+msgid "Procurement Group"
+msgstr "Grup Pengadaan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_product_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_product_id
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+msgid "Product"
+msgstr "Produk"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_product_replacement_wizard_action
+#: model:ir.ui.view,arch_db:rma_rythe.rma_product_replacement_view_form
+msgid "Product Replacements"
+msgstr "Penukaran Produk"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_service_product_wizard_action
+#: model:ir.ui.view,arch_db:rma_rythe.rma_service_product_view_form
+msgid "Product Service"
+msgstr "Servis Produk"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_service_product_wizard_product_id
+msgid "Product to be Serviced"
+msgstr "Produk untuk diservis"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_quantity
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_product_returned_qty
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_product_returned_qty
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_quantity
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_quantity
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_quantity
+msgid "Quantity"
+msgstr "Jumlah"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rma_service_product.py:20
+#, python-format
+msgid "Quantity must be positive!"
+msgstr "Qty harus positif!"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_product_invoiced_qty
+msgid "Quantity of product invoiced"
+msgstr "Qty produk telah difakturkan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_product_replacement_wizard_replace_product_qty
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_replace_product_qty
+msgid "Quantity of product replaced"
+msgstr "Qty produk telah diganti"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_product_returned_qty
+#: model:ir.model.fields,help:rma_rythe.field_rma_rmaout_line_product_returned_qty
+msgid "Quantity of product returned"
+msgstr "Qty produk telah dikembalikan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_service_product_wizard_service_qty
+msgid "Quantity of product serviced"
+msgstr "Qty produk telah diservis"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_qty_to_receive
+msgid "Quantity to Receive"
+msgstr "Qty akan diterima"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_qty_to_send
+msgid "Quantity to Send"
+msgstr "Qty akan dikirim"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Quantity:"
+msgstr "Jumlah:"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_rma
+#: model:ir.ui.menu,name:rma_rythe.rma_menu_root
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_tree_view
+msgid "RMA"
+msgstr "RMA"
+
+#. module: rma_rythe
+#: model:ir.module.category,name:rma_rythe.module_category_afterpurchase
+msgid "RMA Afterpurchase"
+msgstr "RMA Purna Beli"
+
+#. module: rma_rythe
+#: model:ir.module.category,name:rma_rythe.module_category_aftersale
+msgid "RMA Aftersale"
+msgstr "RMA Purna Jual"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_date
+msgid "RMA Date"
+msgstr "Tanggal RMA"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "RMA Details"
+msgstr "Detail RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_warehouse_rma_in_type_id
+msgid "RMA In Type"
+msgstr "Tipe RMA masuk"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_warehouse_rma_int_type_id
+msgid "RMA Internal Type"
+msgstr "Tipe RMA Internal"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_line_tree_view
+msgid "RMA Line"
+msgstr "Baris RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_date
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_date
+msgid "RMA Line Date"
+msgstr "Tanggal Baris RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_rma_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_rma_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_rmaout_line
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_rma_line_id
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "RMA Lines"
+msgstr "Baris RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_rma_line_follow
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_rmaout_line_follow
+msgid "RMA Lines Follow Up"
+msgstr "Follow-up Baris RMA"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "RMA Lines Operation"
+msgstr "Operasi Baris RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_warehouse_lot_rma_id
+msgid "RMA Location"
+msgstr "Lokasi RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_note
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_note
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "RMA Note"
+msgstr "Catatan RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_code
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_code
+msgid "RMA Number"
+msgstr "Nomor RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_warehouse_rma_out_type_id
+msgid "RMA Out Type"
+msgstr "Tipe RMA Keluar"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_product_replacement_view_form
+msgid "RMA Product Replacement"
+msgstr "Penukaran Produk RMA"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_product_replacement_wizard
+msgid "RMA Product Replacement Wizard"
+msgstr "Wisaya Penukaran Produk RMA"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_service_product_view_form
+msgid "RMA Product Service"
+msgstr "Servis Produk RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_rma_reason_id
+msgid "RMA Reason"
+msgstr "Alasan RMA"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_reason_action
+#: model:ir.model,name:rma_rythe.model_rma_reason
+#: model:ir.ui.menu,name:rma_rythe.menu_rma_reason-act
+#: model:ir.ui.view,arch_db:rma_rythe.rma_reason_form
+#: model:ir.ui.view,arch_db:rma_rythe.rma_reason_tree
+msgid "RMA Reasons"
+msgstr "Alasan RMA"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_rma_id
+msgid "RMA Reference"
+msgstr "Referensi RMA"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_service_product_wizard
+msgid "RMA Service Product Wizard"
+msgstr "Wisaya Servis Produk RMA"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_rma_view_act
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_rmain_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_rmain_count
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_picking_rmain_id
+#: model:ir.ui.view,arch_db:rma_rythe.invoice_form_rma_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.stock_picking_form_rma_view
+msgid "RMA-IN"
+msgstr "RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+msgid "RMA-IN Date by Month"
+msgstr "Tanggal RMA-IN Menurut Bulan"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_int_transfer_wizard
+msgid "RMA-IN Internal Transfer Wizard"
+msgstr "Wisaya Transfer Internal RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_rma_line_view_act
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_line_rmain_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_rmain_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_rmain_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_rmain_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_rmain_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_move_rmain_line_id
+msgid "RMA-IN Line"
+msgstr "Baris RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+msgid "RMA-IN Month"
+msgstr "Bulan RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.act_send_rma_in
+#: model:ir.model,name:rma_rythe.model_rma_send_wizard
+msgid "RMA-IN Send Wizard"
+msgstr "Wisaya Pengiriman RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.act_transfer_rma_in
+msgid "RMA-IN Transfer Wizard"
+msgstr "Wisaya Transfer RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.rma_rmaout_view_act
+#: model:ir.model,name:rma_rythe.model_rma_rmaout
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_rmaout_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_rmaout_count
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_picking_rmaout_id
+#: model:ir.ui.view,arch_db:rma_rythe.invoice_form_rma_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_tree_view
+#: model:ir.ui.view,arch_db:rma_rythe.stock_picking_form_rma_view
+msgid "RMA-OUT"
+msgstr "RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rmaout_create_wizard
+msgid "RMA-OUT Create Wizard"
+msgstr "Wisaya Pembuatan RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "RMA-OUT Date by Month"
+msgstr "Tanggal RMA-OUT Berdasarkan Bulan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "RMA-OUT Details"
+msgstr "Detail RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_account_invoice_line_rmaout_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_rmaout_line_id
+#: model:ir.model.fields,field_description:rma_rythe.field_stock_move_rmaout_line_id
+msgid "RMA-OUT Line"
+msgstr "Baris RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "RMA-OUT Lines"
+msgstr "Baris RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "RMA-OUT Month"
+msgstr "Bulan RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.act_receive_rma_out
+#: model:ir.model,name:rma_rythe.model_rmaout_receive_wizard
+msgid "RMA-OUT Receive Wizard"
+msgstr "Wisaya Penerimaan RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_rmaout_id
+msgid "RMA-OUT Reference"
+msgstr "Referensi RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,name:rma_rythe.act_refund_rma_out
+msgid "RMA-OUT Refund Wizard"
+msgstr "Wisaya Pengembalian Dana RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Reason:"
+msgstr "Alasan:"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_description
+msgid "Reasons Description"
+msgstr "Deskripsi Alasan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_reason_name
+msgid "Reasons Name"
+msgstr "Nama Alasan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_received_qty
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_received_qty
+msgid "Received Qty"
+msgstr "Qty Diterima"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_picking_count
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_picking_count
+msgid "Receptions"
+msgstr "Penerimaan"
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_rma_line_view_act
+msgid "Record and track your customers' RMA Line related to service."
+msgstr "Telusuri baris servis pelanggan Anda."
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_rma_view_act
+msgid "Record and track your customers' RMA."
+msgstr "Rekam dan telusuri RMA pelanggan Anda."
+
+#. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_rmaout_view_act
+msgid "Record and track your vendors' RMA."
+msgstr "Rekam dan telusuri RMA pemasok Anda."
+
+#. module: rma_rythe
+#: selection:rma.reason,action:0
+msgid "Refund"
+msgstr "Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_refund_line_ids
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_refund_line_ids
+msgid "Refund Line"
+msgstr "Baris Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:rma.reason,name:rma_rythe.rma_reason4
+msgid "Refund Product"
+msgstr "Pengembalian Dana Produk"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_refund_qty
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_refund_qty
+msgid "Refund Qty"
+msgstr "Qty Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_invoice_ids
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_invoice_ids
+msgid "Refunds"
+msgstr "Pengembalian Dana"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Reject"
+msgstr "Tolak"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+#: selection:rma.rma,state:0 selection:rma.rma.line,state:0
+#: selection:rma.rmaout,state:0 selection:rma.rmaout.line,state:0
+msgid "Rejected"
+msgstr "Ditolak"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_rmain_ids
+msgid "Related RMA-IN"
+msgstr "RMA-IN Terkait"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_rmaout_ids
+msgid "Related RMA-OUT"
+msgstr "RMA-OUT Terkait"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_picking_ids
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_picking_ids
+msgid "Related Stock Picking"
+msgstr "Transfer Terkait"
+
+#. module: rma_rythe
+#: selection:rma.reason,action:0
+msgid "Repair"
+msgstr "Servis"
+
+#. module: rma_rythe
+#: model:rma.reason,name:rma_rythe.rma_reason3
+msgid "Repair Product"
+msgstr "Servis Produk"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: selection:rma.reason,action:0
+msgid "Replace"
+msgstr "Ganti"
+
+#. module: rma_rythe
+#: selection:rma.reason,action:0
+msgid "Replace Part"
+msgstr "Ganti Komponen"
+
+#. module: rma_rythe
+#: model:rma.reason,name:rma_rythe.rma_reason2
+msgid "Replace Part(s)"
+msgstr "Ganti Komponen"
+
+#. module: rma_rythe
+#: model:rma.reason,name:rma_rythe.rma_reason1
+msgid "Replace Product"
+msgstr "Ganti Produk"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Replace Product Information"
+msgstr "Informasi Penggantian Produk"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_product_replacement_wizard_replace_product_qty
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_product_qty
+msgid "Replace Quantity"
+msgstr "Qty Penggantian"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_unit_sale_price
+msgid "Replace Unit Sale Price"
+msgstr "Harga Produk Penggantian"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replaced_qty
+msgid "Replaced Qty"
+msgstr "Qty Penggantian"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_product_id
+msgid "Replacement Product"
+msgstr "Produk Pengganti"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_replace_product_id
+msgid "Replacement product"
+msgstr "Produk pengganti"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_move_ids
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_move_ids
+msgid "Reservation"
+msgstr "Reservasi"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_user_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_user_id
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Responsible"
+msgstr "Penanggung jawab"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Responsible User"
+msgstr "Penanggung Jawab"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_create_form
+msgid "Return Partner"
+msgstr "Rekanan Retur"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Return Product Information"
+msgstr "Informasi Pengembalian Produk"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Return Qty"
+msgstr "Qty Dikembalikan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Returned Qty"
+msgstr "Qty Dikembalikan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_product_replacement_wizard_product_id
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_product_id
+#: model:ir.model.fields,help:rma_rythe.field_rma_rmaout_line_product_id
+msgid "Returned product"
+msgstr "Produk yang dikembalikan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_rmain_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_rmain_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_rmain_id
+msgid "Rmain"
+msgstr "Rmain"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_rmaout_id
+msgid "Rmaout"
+msgstr "Rmaout"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_team_id
+msgid "Sales Channel"
+msgstr "Saluran Penjualan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_product_replacement_view_form
+#: model:ir.ui.view,arch_db:rma_rythe.rma_service_product_view_form
+msgid "Save"
+msgstr "Simpan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+msgid "Search RMA-IN"
+msgstr "Cari RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+msgid "Search RMA-IN Line"
+msgstr "Cari Baris RMA-IN"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Search RMA-OUT"
+msgstr "Cari RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_sent_qty
+msgid "Sent Qty"
+msgstr "Qty Dikirim"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_prodlot_id
+msgid "Serial/Lot number"
+msgstr "Serial/Lot number"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_line_tree_view
+msgid "Service"
+msgstr "Servis"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_service_product_wizard_service_qty
+msgid "Service Quantity"
+msgstr "Qty Servis"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_serviced_qty
+msgid "Serviced Qty"
+msgstr "Qty Servis"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_services_purchase
+#: model:ir.ui.menu,name:rma_rythe.menu_services_sale
+msgid "Services"
+msgstr "Servis"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Set to Draft"
+msgstr "Set ke Rancangan"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Shipment"
+msgstr "Pengiriman"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_show_button_create_invoice
+msgid "Show Button Create Invoice"
+msgstr "Tampilkan Tombol Buat Faktur"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_show_button_receive_refund
+msgid "Show Button Receive Refund"
+msgstr "Tampilkan Tombol Terima dan Buat Faktur"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_show_button_replace
+msgid "Show Button Replace"
+msgstr "Tampilkan Tombol Ganti"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_src_warehouse_id
+msgid "Source Warehouse"
+msgstr "Gudang Sumber"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_state
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_state
+msgid "State"
+msgstr "Status"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_state
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_state
+msgid "Status"
+msgstr "Status"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stock"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_name
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_name
+msgid "Subject"
+msgstr "Subjek"
+
+#. module: rma_rythe
+#: model:res.groups,name:rma_rythe.group_rma_supervisor
+#: model:res.groups,name:rma_rythe.group_rmaout_supervisor
+msgid "Supervisor"
+msgstr "Supervisor"
+
+#. module: rma_rythe
+#: sql_constraint:rma.rma:0 sql_constraint:rma.rmaout:0
+msgid "The code must be unique!"
+msgstr "Kode harus unik!"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_create_wizard.py:98
+#, python-format
+msgid "The line (%s) already has associated rma-out line"
+msgstr "Baris (%s) telah diasosiasikan dengan sebuah baris RMA-OUT"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_invoice_line_id
+msgid "The origin invoice line related to the returned product"
+msgstr "Baris faktur asal yang terkait dengan produk yang dikembalikan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_prodlot_id
+msgid "The serial/lot of the returned product"
+msgstr "Nomor seri/lot dari produk yang dikembalikan"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:422
+#: code:addons/rma_rythe/models/rma.py:426
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:188
+#, python-format
+msgid "There is no invoicable line."
+msgstr "Tidak ada baris yang dapat difakturkan."
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:160
+#: code:addons/rma_rythe/models/rmaout.py:135
+#, python-format
+msgid "There is no warehouse for the current user's company."
+msgstr "Tidak ada gudang untuk perusahaan pengguna saat ini."
+
+#. module: rma_rythe
+#: selection:rma.rma.line,process_status:0
+#: selection:rma.rmaout.line,process_status:0
+msgid "To Process"
+msgstr "Akan Diproses"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rma_service_product.py:22
+#, python-format
+msgid "Total service quantity will be larger than the received quantity. Please check that you serviced the correct quantities!"
+msgstr "Total qty yang akan diservis lebih besar dari jumlah yang diterima. Silahkan periksan ulang jumlah yang telah Anda servis!"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_stock_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_send_form
+msgid "Transfer Replace"
+msgstr "Transfer Penggantian"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:269
+#: code:addons/rma_rythe/models/rmaout.py:203
+#, python-format
+msgid "Unable to cancel RMA %s as some receptions have already been done."
+msgstr "Tidak dapat membatalkan RMA %s karena sebagian produk telah diterima."
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:272
+#: code:addons/rma_rythe/models/rmaout.py:206
+#, python-format
+msgid "Unable to cancel this RMA. You must first cancel related invoice."
+msgstr "Tidak dapat membatalkan RMA ini. Anda harus membatalkan faktur terkait terlebih dahulu."
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_unit_purchase_price
+msgid "Unit Purchase Price"
+msgstr "Harga Pembelian Satuan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_unit_sale_price
+msgid "Unit Sale Price"
+msgstr "Harga Penjualan Satuan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_uom_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_product_uom
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_product_uom
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_product_uom
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_uom_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_uom_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_uom_id
+msgid "Unit of Measure"
+msgstr "Satuan"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rmaout_line_unit_purchase_price
+msgid "Unit purchase price of the product"
+msgstr "Harga pembelian satuan dari produk tersebut"
+
+#. module: rma_rythe
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_replace_unit_sale_price
+#: model:ir.model.fields,help:rma_rythe.field_rma_rma_line_unit_sale_price
+msgid "Unit sale price of the product"
+msgstr "Harga penjualan satuan dari produk tersebut"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "UoM"
+msgstr "Satuan"
+
+#. module: rma_rythe
+#: model:res.groups,name:rma_rythe.group_rma_user
+#: model:res.groups,name:rma_rythe.group_rmaout_user
+msgid "User"
+msgstr "Pengguna"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_partner_id
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Vendor"
+msgstr "Pemasok"
+
+#. module: rma_rythe
+#: model:ir.ui.menu,name:rma_rythe.menu_rma_rmaout
+msgid "Vendor RMA"
+msgstr "RMA Pemasok"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_stock_warehouse
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_warehouse_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_warehouse_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_warehouse_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_warehouse_id
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
+msgid "Warehouse"
+msgstr "Gudang"
+
+#. module: rma_rythe
+#: model:rma.reason,description:rma_rythe.rma_reason2
+msgid "Warranty product parts damaged or missing"
+msgstr "Produk bergaransi yang dikembalikan untuk tukar komponen"
+
+#. module: rma_rythe
+#: model:rma.reason,description:rma_rythe.rma_reason4
+msgid "Warranty product returned for refund"
+msgstr "Produk bergaransi yang dikembalikan untuk pengembalian dana"
+
+#. module: rma_rythe
+#: model:rma.reason,description:rma_rythe.rma_reason3
+msgid "Warranty product returned for repair"
+msgstr "Produk bergaransi yang dikembalikan untuk servis"
+
+#. module: rma_rythe
+#: model:rma.reason,description:rma_rythe.rma_reason1
+msgid "Warranty product returned for replacement"
+msgstr "Produk bergaransi yang dikembalikan untuk diganti"
+
+#. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_int_transfer_wizard_line_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_send_wizard_line_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_create_wizard_line_wizard_id
+#: model:ir.model.fields,field_description:rma_rythe.field_rmaout_receive_wizard_line_wizard_id
+msgid "Wizard"
+msgstr "Wisaya"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:732
+#, python-format
+msgid "You can only change repair action to replace action when the service is not done yet!"
+msgstr "Anda hanya dapat mengganti tindakan servis ke tindakan ganti jika servisnya belum dilakukan!"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:742
+#, python-format
+msgid "You can only change replace action to refund action                if all related replacement transfer is not yet created or already cancelled"
+msgstr "Anda hanya dapat mengubah tindakan ganti ke tindakan pengembalian dana                jika semua transfer terkait dengan penggantian belum dibuat atau sudah dibatalkan"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:54
+#, python-format
+msgid "You either input negative qty or qty different than the replacement plan"
+msgstr "Anda telah memasukkan qty negatif atau qty yang berbeda dari rencana penggantian"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:47
+#, python-format
+msgid "You either input negative qty or qty greater than the quantity you should receive"
+msgstr "Anda mungkin memasukkan qty negatif atau qty penerimaan total yang lebih besar dari qty yang seharusnya Anda terima"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:77
+#, python-format
+msgid "You either input negative qty or qty greater than the quantity you should refund"
+msgstr "Anda mungkin memasukkan qty negatif atau qty penerimaan total yang lebih besar dari qty yang seharusnya Anda kirim"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:43
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:48
+#, python-format
+msgid "You either input negative qty or qty greater than the quantity you should send"
+msgstr "Anda telah memasukkan qty negatif atau qty yang lebih besar dari yang seharusnya Anda kirim"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_create_wizard.py:38
+#, python-format
+msgid "You may only create RMA-OUT for already received goods"
+msgstr "Anda hanya dapat membuat RMA-OUT untuk produk yang telah diterima"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_create_wizard.py:30
+#, python-format
+msgid "You may only create RMA-OUT for one RMA-IN at a time!"
+msgstr "Anda hanya dapat menghapus RMA-OUT untuk satu RMA-IN pada saat yang bersamaan!"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:105
+#, python-format
+msgid "You may only create receive for a single RMA-OUT at a time!"
+msgstr "Anda hanya dapat membuat penerimaan untuk satu RMA-OUT pada saat yang bersamaan!"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:113
+#, python-format
+msgid "You may only create receive for already sent goods"
+msgstr "Anda hanya dapat membuat penerimaan untuk barang yang sudah dikirim"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:71
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:81
+#, python-format
+msgid "You may only create transfer for a single RMA-IN at a time!"
+msgstr "Anda hanya dapat membuat transfer untuk satu RMA-IN pada saat yang bersamaan!"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:83
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:89
+#, python-format
+msgid "You may only create transfer for processing lines"
+msgstr "Anda hanya dapat membuat transfer untuk baris pada status sedang proses"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rma.py:291
+#, python-format
+msgid "You must set a Customer Location for this partner %s"
+msgstr "Anda harus mengatur Lokasi Pelanggan untuk rekanan %s"
+
+#. module: rma_rythe
+#: code:addons/rma_rythe/models/rmaout.py:230
+#, python-format
+msgid "You must set a Supplier Location for this partner %s"
+msgstr "Anda harus mengatur Lokasi Pemasok untuk rekanan %s"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_int_transfer_wizard_line
+msgid "rma.int.transfer.wizard.line"
+msgstr "rma.int.transfer.wizard.line"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rma_send_wizard_line
+msgid "rma.send.wizard.line"
+msgstr "rma.send.wizard.line"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rmaout_create_wizard_line
+msgid "rmaout.create.wizard.line"
+msgstr "rmaout.create.wizard.line"
+
+#. module: rma_rythe
+#: model:ir.model,name:rma_rythe.model_rmaout_receive_wizard_line
+msgid "rmaout.receive.wizard.line"
+msgstr "rmaout.receive.wizard.line"
+
+#. module: rma_rythe
+#: model:res.groups,comment:rma_rythe.group_rma_manager
+#: model:res.groups,comment:rma_rythe.group_rma_supervisor
+#: model:res.groups,comment:rma_rythe.group_rma_user
+#: model:res.groups,comment:rma_rythe.group_rmaout_manager
+#: model:res.groups,comment:rma_rythe.group_rmaout_supervisor
+#: model:res.groups,comment:rma_rythe.group_rmaout_user
+msgid "the user will have access to all records in the rma application."
+msgstr "pengguna ini akan memiliki akses ke semua dokumen di aplikasi ini."

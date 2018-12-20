@@ -62,14 +62,14 @@
 								<td class="col-xs-3 text-right"><t name="td_conf_date_h">
 									<t name="td_conf_date">
 										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
-										<span t-field="o.date_invoice" t-field-options='{"format": "d MMMM y"}'/>
+										<span t-field="o.date_invoice" t-field-options='{"format": "d MMM y"}'/>
 									</t>
 								</t></td>
 							</tr>
 							<tr>
 								<td class="col-xs-4">
 									Jatuh Tempo : 
-									<span t-if="o.date_due" t-field="o.date_due" t-field-options='{"format": "d MMMM y"}'/>
+									<span t-if="o.date_due" t-field="o.date_due" t-field-options='{"format": "d MMM y"}'/>
 								</td>
 								<td class="col-xs-8" colspan="2">
 									<t t-if="o.partner_id">

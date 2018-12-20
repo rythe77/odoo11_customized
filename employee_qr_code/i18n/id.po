@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* employee_qr_code
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-26 12:31+0000\n"
+"PO-Revision-Date: 2018-09-26 20:32+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: employee_qr_code
+#: model:ir.ui.view,arch_db:employee_qr_code.print_employee_badge
+msgid "Company Logo"
+msgstr "Logo Perusahaan"
+
+#. module: employee_qr_code
+#: model:ir.model,name:employee_qr_code.model_hr_employee
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: employee_qr_code
+#: model:ir.actions.report,name:employee_qr_code.hr_employee_print_badge
+msgid "Employee Badge"
+msgstr "Lencana Karyawan"
+
+#. module: employee_qr_code
+#: model:ir.model.fields,help:employee_qr_code.field_hr_employee_employee_qr_code
+msgid "ID used for employee identification."
+msgstr "ID yang digunakan untuk identifikasi karyawan."
+
+#. module: employee_qr_code
+#: model:ir.model.fields,field_description:employee_qr_code.field_hr_employee_employee_qr_code
+#: model:ir.model.fields,field_description:employee_qr_code.field_hr_employee_qr_code
+#: model:ir.ui.view,arch_db:employee_qr_code.employee_qr_code
+msgid "QR Code"
+msgstr "Kode QR"
+
+#. module: employee_qr_code
+#: model:ir.model.fields,field_description:employee_qr_code.field_hr_employee_qr_code_name
+msgid "Qr Code Name"
+msgstr "Nama Kode QR"

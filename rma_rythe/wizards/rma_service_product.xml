@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard view to register product service -->
+    <record id="rma_service_product_view_form" model="ir.ui.view">
+        <field name="name">rma.service.product.wizard.form</field>
+        <field name="model">rma.service.product.wizard</field>
+        <field name="arch" type="xml">
+            <form string="RMA Product Service">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Product Service</h1>
+                    </div>
+                    <group>
+						<field name="product_id" options="{'no_create': True, 'no_open': True}"/>
+						<field name="service_qty"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string='Save' name="service_product" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to launch Wizard for product service -->
+    <record id="rma_service_product_wizard_action" model="ir.actions.act_window">
+        <field name="name">Product Service</field>
+        <field name="res_model">rma.service.product.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="rma_service_product_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

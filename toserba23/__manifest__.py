@@ -35,28 +35,27 @@
             - Kustomisasi dokumen slip gaji
             - Kustomisasi dokumen transfer massal BS
             - product purchase price and start date automatically updated when purchase order is confirmed
+            - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
         Todo:
+            - Sistem daftar harga lebih kompleks
+            - Nisa mau dibatasi ubah harga di faktur
             - pembayaran di muka untuk pembelian
             - pak ilham tidak bisa lihat stok pada tanggal tertentu
             - sari selesaikan dokumen transfer untuk diantar belakangan, tapi tanggalnya selalu ikut tanggal selesai
             - Mau bikin tombol retur pembayaran
             - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
             - Tanggal terjadwal di DO susah tersimpan
-            - Vita account error when given access to sale order
-            - search view timeline is weird
-            - Button for auto creation of BS out from BS in
-            - create SO link from DO form page
-            - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - DO line cant be deleted if not in draft status
             - DO should group same item together
             - Upload product image
+            - Dasbor persediaan 3 kolom saja
+            - Supervisor bisa tambah produk, khusus nama produk dan kodenya
             - Automatic email and sms system
-            - Kode barang tidak usah dimunculkan di dokumen cetak
             - Product duplicate should also duplicate pricelist
             - sales commission system
-            - (???) Product variant for color management
             - Kalo tidak ada 0,5 nya hilangkan saja komanya
             - Sales group automatically fills in based on customer
+            - Super call on method, should not list "administrator" as the document creator
         Not Todo:
             - Customize tree view column width
             - stock user can do backorder
@@ -116,12 +115,14 @@
     'version': '0.1',
 
     'depends': [
-        'base','sale','stock','account','purchase','sale_margin','hr_expense',
+        'base','sale','stock','account','purchase','sale_margin','hr_expense', 'hr_payroll', 'crm',
         #'backend_theme_v11',
         #'login_user_detail',
         #'web_disable_export_delete_button',
         #'total_payable_receivable',
-        'odoo_qr_code',
+        'web_m2x_options',
+        'restrict_saleprice_change',
+        'employee_qr_code',
         'hr_payroll_payment',
         'indonesia_template',
         'indonesia_template_purchasing',
@@ -139,6 +140,8 @@
         'stock_inventory_subcateg',
         'sale_advance_payment',
         'sale_purchase_previous_price',
+        'equity_change',
+        'rma_rythe',
     ],
 
     'data': [
@@ -156,11 +159,15 @@
         'views/product_supplierinfo.xml',
         'views/hide_vendor_view.xml',
         'views/hr_expense_view.xml',
+        'views/hr_view.xml',
+        'views/hr_payroll_view.xml',
+        'views/crm_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml',
+        'reports/invoice_proforma_document.xml',
         'reports/delivery_document.xml',
         'reports/picking_document.xml',
-        'reports/picking_document_incl_supplier.xml',
+        #'reports/picking_document_incl_supplier.xml',
         'reports/pick_delivery_set_document.xml',
         'reports/inventory_document.xml',
         'reports/invoice_document.xml',
@@ -173,7 +180,9 @@
         'reports/mass_picking_document.xml',
         'reports/mass_delivery_document.xml',
         'reports/mass_pick_delivery_set_document.xml',
+        'reports/mass_payslip_document.xml',
         'reports/expense_sheet_document.xml',
+        'reports/rma_label_document.xml',
     ],
     'demo': [
         #'demo/demo.xml',

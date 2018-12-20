@@ -3,6 +3,11 @@ stock.access_product_template_stock_user,product.template stock user,product.mod
 purchase.access_purchase_order_stock_worker,purchase.order,purchase.model_purchase_order,stock.group_stock_user,1,0,0,0
 toserba23.access_purchase_order_stock_manager,toserba23.purchase.order,purchase.model_purchase_order,stock.group_stock_manager,1,0,0,0
 sale_stock.access_sale_order_stock_worker,sale.order stock worker,sale.model_sale_order,stock.group_stock_user,1,0,0,0
+toserba23.access_sale_order_view_only,sale.order view only,sale.model_sale_order,toserba23.group_sale_order_view,1,0,0,0
+toserba23.access_sale_order_line_view_only,sale.order.line view only,sale.model_sale_order_line,toserba23.group_sale_order_view,1,0,0,0
+toserba23.access_stock_picking_view_only,stock.picking view only,stock.model_stock_picking,toserba23.group_sale_order_view,1,0,0,0
+toserba23.access_stock_move_view_only,stock.move view only,stock.model_stock_move,toserba23.group_sale_order_view,1,0,0,0
+toserba23.access_account_invoice_view_only,account.invoice view only,account.model_account_invoice,toserba23.group_sale_order_view,1,0,0,0
 stock.access_stock_picking_user,stock.picking user,stock.model_stock_picking,stock.group_stock_user,1,1,1,0
 toserba23.access_stock_picking_salesman_all,toserba23.stock_picking salesman_all,stock.model_stock_picking,sales_team.group_sale_salesman_all_leads,1,1,1,0
 sale_stock.access_stock_picking_salesman,stock_picking salesman,stock.model_stock_picking,sales_team.group_sale_salesman,1,0,0,0
@@ -27,3 +32,19 @@ access_tsb23_hr_payroll_hr_fine_categories_user,access_tsb23_hr_payroll_hr_fine_
 base.access_ir_sequence_group_user,ir_sequence group_user,base.model_ir_sequence,base.group_user,1,1,0,0
 mail.access_mail_tracking_value_user,mail.tracking.value.user,mail.model_mail_tracking_value,base.group_user,1,1,1,0
 toserba23.access_payment_non_accounting,toserba23.access_payment_non_accounting,account.model_account_payment,toserba23.show_advance_payments,1,0,0,0
+hr.access_hr_employee_system_user,hr.employee system user,hr.model_hr_employee,base.group_user,1,0,0,0
+hr.access_hr_employee_user,hr.employee user,hr.model_hr_employee,hr.group_hr_user,1,0,0,0
+toserba23.access_hr_employee_manager,hr.employee manager,hr.model_hr_employee,hr.group_hr_manager,1,1,1,1
+hr.access_hr_department_employee,hr.department.employee,hr.model_hr_department,base.group_user,1,0,0,0
+hr.access_hr_department_user,hr.department.user,hr.model_hr_department,hr.group_hr_user,1,0,0,0
+toserba23.access_hr_department_manager,hr.department.manager,hr.model_hr_department,hr.group_hr_manager,1,1,1,1
+toserba23.access_product_product_stock_supervisor,product.product stock_supervisor,product.model_product_product,toserba23.group_stock_supervisor,1,1,0,0
+toserba23.access_prices_history_stock_supervisor,prices.history stock supervisor,product.model_product_price_history,toserba23.group_stock_supervisor,1,1,1,0
+toserba23.access_account_move_stock_supervisor,account.move stock supervisor,account.model_account_move,toserba23.group_stock_supervisor,1,1,1,0
+toserba23.access_account_move_line_stock_supervisor,account.move.line stock supervisor,account.model_account_move_line,toserba23.group_stock_supervisor,1,0,1,0
+toserba23.access_account_account_type_stock_supervisor,account.account.type stock supervisor,account.model_account_account_type,toserba23.group_stock_supervisor,1,0,0,0
+toserba23.access_account_asset_depreciation_line_stock_supervisor,account.asset.depreciation.line stock supervisor,account_asset.model_account_asset_depreciation_line,toserba23.group_stock_supervisor,1,0,0,0
+toserba23.access_account_analytic_line_stock_supervisor,account.analytic.line stock supervisor,account.model_account_analytic_line,toserba23.group_stock_supervisor,1,0,0,0
+hr_attendance.access_hr_attendance_system_user,hr.attendance.system.user,hr_attendance.model_hr_attendance,base.group_user,1,0,0,0
+hr_attendance.access_hr_attendance_user,hr.attendance.user,hr_attendance.model_hr_attendance,hr_attendance.group_hr_attendance_user,1,1,1,0
+toserba23.access_hr_attendance_manager,hr.attendance.manager,hr_attendance.model_hr_attendance,hr_attendance.group_hr_attendance_manager,1,1,1,1

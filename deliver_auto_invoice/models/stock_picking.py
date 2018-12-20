@@ -10,12 +10,12 @@ class StockPicking(models.Model):
 
     invoice_id = fields.Many2one(
         'account.invoice', 'Related Invoice',
-        help="Invoice related to this picking")
+        copy=False, help="Invoice related to this picking")
 
     @api.multi
     def action_done(self):
         """
-            On transfer validation, auto created invoice
+            On transfer validation, auto create invoice
         """
         return_val = super(StockPicking, self).action_done()
         sale_ids = []
@@ -33,15 +33,15 @@ class StockPicking(models.Model):
         if sale_ids:
             sales_order = self.env['sale.order'].browse(sale_ids)
             if rec.picking_type_id.code == 'outgoing':
-                invoice_ids = sales_order.action_invoice_create()
+                invoice_ids = sales_order.sudo().action_invoice_create()
             elif rec.picking_type_id.code == 'incoming':
-                invoice_ids = sales_order.action_invoice_create(final=True)
+                invoice_ids = sales_order.sudo().action_invoice_create(final=True)
         elif purchase_ids:
             purchase_order = self.env['purchase.order'].browse(purchase_ids)
             if rec.picking_type_id.code == 'incoming':
-                invoice_ids = purchase_order.action_invoice_create()
+                invoice_ids = purchase_order.sudo().action_invoice_create()
             elif rec.picking_type_id.code == 'outgoing':
-                invoice_ids = purchase_order.action_invoice_create(final=True)
+                invoice_ids = purchase_order.sudo().action_invoice_create(final=True)
 
         #link created invoice to this picking
         for rec in self:
@@ -52,5 +52,5 @@ class StockPicking(models.Model):
         invoices = self.env['account.invoice'].browse(invoice_ids)
         for invoice in invoices:
             if self.env['ir.config_parameter'].sudo().get_param('auto_validate_invoice.auto_validate_invoice', default=False):
-                invoice.action_invoice_open()
+                invoice.sudo().action_invoice_open()
         return return_val

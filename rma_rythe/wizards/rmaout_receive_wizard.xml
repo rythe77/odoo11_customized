@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rmaout_receive_form" model="ir.ui.view">
+        <field name="name">Receive RMA-OUT</field>
+        <field name="model">rmaout.receive.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="rmaout_receive_line" nolabel="1">
+                        <tree editable="top" create="0">
+                            <field name="product_id"  options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1" groups="product.group_uom"/>
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="warehouse_id" options="{'no_create': True, 'no_open': True}"
+                    	required="1"/>
+                </group>
+                <footer>
+                    <button name="create_pickingin" string="Create Receive" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	<record model="ir.actions.act_window" id="act_receive_rma_out">
+		<field name="name">RMA-OUT Receive Wizard</field>
+		<field name="res_model">rmaout.receive.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+			(0, 0, {'view_mode': 'form', 'view_id': ref('view_rmaout_receive_form')}),
+			]"/>
+	</record>
+
+    <record id="view_rmaout_refund_form" model="ir.ui.view">
+        <field name="name">Refund RMA-OUT</field>
+        <field name="model">rmaout.receive.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="rmaout_receive_line" nolabel="1">
+                        <tree editable="top" create="0">
+                            <field name="product_id"  options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1" groups="product.group_uom"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="create_refund" string="Create Refund" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	<record model="ir.actions.act_window" id="act_refund_rma_out">
+		<field name="name">RMA-OUT Refund Wizard</field>
+		<field name="res_model">rmaout.receive.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+			(0, 0, {'view_mode': 'form', 'view_id': ref('view_rmaout_refund_form')}),
+			]"/>
+	</record>
+</odoo>

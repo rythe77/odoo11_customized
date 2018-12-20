@@ -109,10 +109,10 @@
 		<field name="arch" type="xml">
 			<div name="pricelist_item" position="after">
 				<group name="display_price" string="Harga Display (ter-input otomatis dari pembelian minimal terkecil)">
-					<label for="standard_price" groups="purchase.group_purchase_user"/>
+					<!-- label for="standard_price" groups="purchase.group_purchase_user"/>
 					<div name="standard_price_uom" groups="purchase.group_purchase_user">
 						<field name="standard_price" widget='monetary' options="{'currency_field': 'currency_id'}" class="oe_inline"/>
-					</div>
+					</div-->
 					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					<field name="x_harga_grosir" string="Harga Grosir" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					<field name="x_harga_toko" string="Harga Toko" widget='monetary' options="{'currency_field': 'currency_id'}"/>
@@ -128,10 +128,10 @@
 				<attribute name="invisible">1</attribute>
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/div[@name='standard_price_uom']" position="attributes">
-				<attribute name="invisible">1</attribute>
+				<attribute name="groups">purchase.group_purchase_user</attribute>
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/label" position="attributes">
-				<attribute name="invisible">1</attribute>
+				<attribute name="groups">purchase.group_purchase_user</attribute>
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page[@name='sales']/div/field/tree/field[@name='min_quantity']" position="after">
 				<field name="x_notes"/>

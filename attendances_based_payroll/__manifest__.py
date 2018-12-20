@@ -16,7 +16,7 @@
     'category': 'Human Resources',
     'version': '1.0',
 
-    'depends': ['base', 'hr_attendance', 'hr_payroll'],
+    'depends': ['base', 'hr_attendance', 'hr_payroll', 'hr_payroll_payment'],
 
     'data': [
         #'security/ir.model.access.csv',

@@ -43,7 +43,7 @@
 										</td>
 										<td class="col-xs-4 text-right">
 										<t t-if="o.company_id.partner_id.city"><span t-field="o.company_id.partner_id.city"/>, </t>
-											<span t-field="o.accounting_date" t-field-options='{"format": "d MMMM y"}'/>
+											<span t-field="o.accounting_date" t-field-options='{"format": "d MMM y"}'/>
 										</td>
 									</tr>
 								</thead>

@@ -199,13 +199,13 @@
 		<field name="inherit_id" ref="account.view_account_invoice_filter"/>
 		<field name="arch" type="xml">
 			<filter name="draft" position="before">
-				<filter string="Created today" domain="[('date_invoice', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_invoice', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
-				<filter string="Created yesterday" domain="[('date_invoice', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_invoice', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
-				<filter string="Created for the last week" domain="[('date_invoice', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_invoice', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Created today" domain="[('date_invoice', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_invoice', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter string="Created yesterday" domain="[('date_invoice', '&gt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')),('date_invoice', '&lt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="Created for the last week" domain="[('date_invoice', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('date_invoice', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
 				<separator/>
-				<filter string="Due today" domain="[('date_due', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_due', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
-				<filter string="Due tomorrow" domain="[('date_due', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('date_due', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
-				<filter string="Due for the next week" domain="[('date_due', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_due', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<filter string="Due today" domain="[('date_due', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter string="Due tomorrow" domain="[('date_due', '&gt;=', (datetime.date.today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="Due for the next week" domain="[('date_due', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=6)).strftime('%Y-%m-%d 23:59:59'))]"/>
 				<separator/>
 			</filter>
 			<field name="partner_id" position="after">
@@ -221,14 +221,66 @@
 		<field name="inherit_id" ref="account.view_account_payment_search"/>
 		<field name="arch" type="xml">
 			<field name="company_id" position="after">
-				<filter string="Paid today" domain="[('payment_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('payment_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
-				<filter string="Paid yesterday" domain="[('payment_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('payment_date', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
-				<filter string="Paid for the last week" domain="[('payment_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('payment_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Paid today" domain="[('payment_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('payment_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter string="Paid yesterday" domain="[('payment_date', '&gt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')),('payment_date', '&lt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="Paid for the last week" domain="[('payment_date', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('payment_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter string="Tipe Pembayaran" domain="[]" context="{'group_by': 'payment_type'}"/>
 				<separator/>
 			</field>
 		</field>
 	</record>
 
+	<!-- Acoount.account form view definition -->
+	<record model="ir.ui.view" id="view_account_form_custom">
+		<field name="name">account.view_account_form_custom</field>
+		<field name="model">account.account</field>
+		<field name="inherit_id" ref="account.view_account_form"/>
+		<field name="arch" type="xml">
+			<field name="currency_id" position="attributes">
+				<attribute name="groups">account.group_account_manager</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Account Move form view definition -->
+	<record model="ir.ui.view" id="view_move_form_custom">
+		<field name="name">account.view_move_form_custom</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+			<button name="post" position="attributes">
+				<attribute name="groups">account.group_account_manager</attribute>
+			</button>
+		</field>
+	</record>
+
+	<!-- Account move form view lock date field -->
+	<record model="ir.ui.view" id="view_move_form_custom2">
+		<field name="name">account.view_move_form_custom2</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="groups_id" eval="[(6,0, [ref('toserba23.lock_invoice_payment_date')])]" />
+		<field name="arch" type="xml">
+			<field name="date" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</field>
+			<field name="journal_id" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</field>
+			<field name="line_ids" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Customer menu view definition -->
+	<menuitem id="account.menu_account_customer" name="Customers"
+	    parent="account.menu_finance_receivables_master_data"
+	    action="toserba23.action_partner_form_custom" sequence="100"/>
+	<!-- Vendor menu view definition -->
+	<menuitem id="account.menu_account_supplier" name="Vendors"
+	    parent="account.menu_finance_payables_master_data"
+	    action="toserba23.action_partner_supplier_form_custom" sequence="100"/>
 	<!-- Main menu view definition -->
 	<record model="ir.ui.menu" id="account.menu_finance_configuration">
 		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>

@@ -1,0 +1,20 @@
+<odoo>
+<data>
+    <record id="employee_qr_code" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="qr_code" string="QR Code">
+                    <group>
+                        <group>
+                            <field name="qr_code" widget="image" style="width: 120px; height: 120px;"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</data>
+</odoo>

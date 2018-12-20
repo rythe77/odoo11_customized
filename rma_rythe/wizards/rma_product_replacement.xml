@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard view to register replacement product -->
+    <record id="rma_product_replacement_view_form" model="ir.ui.view">
+        <field name="name">rma.product.replacement.wizard.form</field>
+        <field name="model">rma.product.replacement.wizard</field>
+        <field name="arch" type="xml">
+            <form string="RMA Product Replacement">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Product Replacements</h1>
+                    </div>
+                    <group>
+						<field name="product_id" options="{'no_create': True, 'no_open': True}"/>
+						<field name="replace_product_qty"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string='Save' name="product_replacement" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to launch Wizard for register replacement product -->
+    <record id="rma_product_replacement_wizard_action" model="ir.actions.act_window">
+        <field name="name">Product Replacements</field>
+        <field name="res_model">rma.product.replacement.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="rma_product_replacement_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

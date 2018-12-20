@@ -1,0 +1,53 @@
+<odoo>
+<data>
+	<!-- equity.holder_account main tree view definition -->
+	<record model="ir.ui.view" id="equity_holder_tree_view">
+		<field name="name">equity_change.equity_holder_tree_view</field>
+		<field name="model">equity.holder_account</field>
+		<field name="arch" type="xml">
+			<tree string="Equity Holder Tree">
+				<field name="name"/>
+				<field name="default_credit_account_id"/>
+				<field name="default_debit_account_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- equity.holder_account form view definition -->
+	<record model="ir.ui.view" id="equity_holder_form_view">
+		<field name="name">equity_change.equity_holder_form_view</field>
+		<field name="model">equity.holder_account</field>
+		<field name="arch" type="xml">
+			<form string="Equity Holder Form">
+				<sheet>
+                    <h1 class="mt0">
+						<field name="name" class="oe_inline"/>
+                    </h1>
+					<group>
+						<field name="partner_id"/>
+						<field name="default_credit_account_id"/>
+						<field name="default_debit_account_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- equity.holder_account window action -->
+	<record model="ir.actions.act_window" id="equity_holder_account_view_action">
+		<field name="name">Equity Holder</field>
+		<field name="res_model">equity.holder_account</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create equity holder here
+			</p>
+		</field>
+	</record>
+
+	<menuitem id="menu_equity_holder_management" name="Equity Holder"
+		parent="account.account_management_menu"
+		action="equity_holder_account_view_action" sequence="50"/>
+</data>
+</odoo>

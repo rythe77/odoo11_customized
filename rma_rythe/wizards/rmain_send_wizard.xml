@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rma_send_form" model="ir.ui.view">
+        <field name="name">Send RMA-IN</field>
+        <field name="model">rma.send.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="rmain_send_line" nolabel="1">
+                        <tree editable="top" create="0">
+                            <field name="product_id"  options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1" groups="product.group_uom"/>
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="warehouse_id" options="{'no_create': True, 'no_open': True}"
+                    	required="1"/>
+                </group>
+                <footer>
+                    <button name="create_pickingout" string="Transfer Replace" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	<record model="ir.actions.act_window" id="act_send_rma_in">
+		<field name="name">RMA-IN Send Wizard</field>
+		<field name="res_model">rma.send.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+			(0, 0, {'view_mode': 'form', 'view_id': ref('view_rma_send_form')}),
+			]"/>
+	</record>
+</odoo>

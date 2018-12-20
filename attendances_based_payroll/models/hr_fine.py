@@ -20,10 +20,15 @@ class HrFine(models.Model):
 
 #    name = fields.Char(string='Keterangan', required=True)
     category_id = fields.Many2one('hr.fine_category', string='Fine Category', required=True, ondelete='cascade', index=True)
-    amount = fields.Float(string='Amount', related="category_id.amount", store=True)
+    amount = fields.Float(string='Amount', store=True)
     date_input = fields.Date(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now)
     employee_id = fields.Many2one('hr.employee', string='Employee Name', required=True, index=True)
     
+    @api.onchange('category_id')
+    def category_id_change(self):
+        for fine in self:
+            fine.amount = fine.category_id.amount
+
     @api.multi
     def get_total_fines(self, employee_id, date_from, date_to):
         """ Compute total fines between two dates on the input.
@@ -32,12 +37,10 @@ class HrFine(models.Model):
         local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
 
         amount_fines = 0
-        date_from_utc = local.localize(datetime.combine(datetime.strptime(date_from, '%Y-%m-%d'),time.min)).astimezone(pytz.utc).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
-        date_to_utc = local.localize(datetime.combine(datetime.strptime(date_to, '%Y-%m-%d'),time.max)).astimezone(pytz.utc).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         fines = self.env['hr.fine'].search([
                  ('employee_id', '=', employee_id.id),
-                 ('date_input', '>=', date_from_utc),
-                 ('date_input', '<=', date_to_utc)
+                 ('date_input', '>=', date_from),
+                 ('date_input', '<=', date_to)
              ])
         for data in fines:
             amount_fines+=data['amount']

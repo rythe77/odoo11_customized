@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+	<record model="ir.module.category" id="module_category_aftersale">
+	  <field name="name">RMA Aftersale</field>
+	  <field name="sequence">9</field>
+	</record>
+    <record id="group_rma_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		<field name="category_id" ref="module_category_aftersale"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+    <record id="group_rma_supervisor" model="res.groups">
+        <field name="name">Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('group_rma_user'))]"/>
+		<field name="category_id" ref="module_category_aftersale"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+    <record id="group_rma_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="implied_ids" eval="[(4, ref('group_rma_supervisor'))]"/>
+		<field name="category_id" ref="module_category_aftersale"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+
+	<record model="ir.module.category" id="module_category_afterpurchase">
+	  <field name="name">RMA Afterpurchase</field>
+	  <field name="sequence">9</field>
+	</record>
+    <record id="group_rmaout_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		<field name="category_id" ref="module_category_afterpurchase"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+    <record id="group_rmaout_supervisor" model="res.groups">
+        <field name="name">Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('group_rmaout_user'))]"/>
+		<field name="category_id" ref="module_category_afterpurchase"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+    <record id="group_rmaout_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="implied_ids" eval="[(4, ref('group_rmaout_supervisor'))]"/>
+		<field name="category_id" ref="module_category_afterpurchase"/>
+		<field name="comment">the user will have access to all records in the rma application.</field>
+    </record>
+</data>
+</odoo>

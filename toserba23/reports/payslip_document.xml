@@ -15,7 +15,7 @@
 		file="toserba23.slip_gaji"
 		print_report_name="'Slip Gaji - %s - %s' % (object.employee_id.name or '', object.number)"
 		report_type="qweb-pdf"
-		groups="hr.group_hr_manager"
+		groups="group_hr_payroll_supervisor"
 	/>
 
 	<template id="report_custom_payslip_template">
@@ -44,33 +44,22 @@
 						<div style="position:relative; top:10px; col-xs-6 text-center;">
 							<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
 								<b>
-									SLIP GAJI
+									Slip Gaji <span t-if="o.employee_id" t-field="o.employee_id"/>
 								</b>
 							</span><br/>
-							<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.number"/></b>
+							<span style="font:20px lucida-console,sans-serif !important;">
+								<span t-field="o.number"/>
+								(<span t-field="o.date_from"/> - <span t-field="o.date_to"/>)
+							</span>
 						</div>
 					</div>
 
-					<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+					<!-- table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
 						<thead style="font:14px lucida-console,sans-serif;">
 							<tr>
 								<td class="col-xs-4">
 									Nama : 
 									<span t-if="o.employee_id" t-field="o.employee_id"/>
-								</td>
-								<td class="col-xs-4">
-									No Identifikasi : 
-									<span t-field="o.employee_id.identification_id"/>
-								</td>
-								<td class="col-xs-4 text-right">
-									Akun Bank : 
-									<span t-field="o.employee_id.bank_account_id"/>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-xs-4">
-									Email : 
-									<span t-if="o.employee_id.work_email" t-field="o.employee_id.work_email"/>
 								</td>
 								<td class="col-xs-4">
 									Dari Tanggal : 
@@ -81,8 +70,22 @@
 									<span t-field="o.date_to"/>
 								</td>
 							</tr>
+							<tr>
+								<td class="col-xs-4">
+									Email : 
+									<span t-if="o.employee_id.work_email" t-field="o.employee_id.work_email"/>
+								</td>
+								<td class="col-xs-4">
+									No Identifikasi : 
+									<span t-field="o.employee_id.identification_id"/>
+								</td>
+								<td class="col-xs-4 text-right">
+									Akun Bank : 
+									<span t-field="o.employee_id.bank_account_id"/>
+								</td>
+							</tr>
 						</thead>
-					</table>
+					</table-->
 
 					<table class="table table-condensed table table-striped">
 						<thead style="background-color:#212121;" >
@@ -108,7 +111,12 @@
 						</tbody>
 					</table>
 
-                    <p class="text-right"><strong>Tandatangan yang berwenang</strong></p>
+					<div class="col-xs-8">
+						<strong>Catatan khusus</strong> <p t-if="o.description" t-field="o.description"/>
+					</div>
+					<div class="col-xs-4">
+                    	<p class="text-right"><strong>Tandatangan yang berwenang</strong></p>
+					</div>
 				</div>
 			</div>
 		</t>

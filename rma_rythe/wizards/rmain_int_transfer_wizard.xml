@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rma_transfer_form" model="ir.ui.view">
+        <field name="name">Transfer RMA-IN</field>
+        <field name="model">rma.int.transfer.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="rmain_transfer_line" nolabel="1">
+                        <tree editable="top" create="0">
+                            <field name="product_id"  options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" options="{'no_create': True, 'no_open': True}" force_save="1" readonly="1" groups="product.group_uom"/>
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="src_warehouse_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                    <field name="dst_warehouse_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+                </group>
+                <footer>
+                    <button name="create_picking" string="Create Transfer" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	<record model="ir.actions.act_window" id="act_transfer_rma_in">
+		<field name="name">RMA-IN Transfer Wizard</field>
+		<field name="res_model">rma.int.transfer.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+			(0, 0, {'view_mode': 'form', 'view_id': ref('view_rma_transfer_form')}),
+			]"/>
+	</record>
+</odoo>

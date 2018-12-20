@@ -1,0 +1,29 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_hr_payslip_form_custom">
+		<field name="name">hr_payslip.view_hr_payslip_form_custom</field>
+		<field name="model">hr.payslip</field>
+		<field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+		<field name="arch" type="xml">
+			<button name="action_payslip_done" position="attributes">
+				<attribute name="groups">hr_payroll.group_hr_payroll_manager</attribute>
+			</button>
+			<button name="refund_sheet" position="attributes">
+				<attribute name="groups">hr_payroll.group_hr_payroll_manager</attribute>
+			</button>
+			<button name="action_payslip_draft" position="attributes">
+				<attribute name="groups">hr_payroll.group_hr_payroll_manager</attribute>
+			</button>
+			<button name="action_payslip_cancel" position="attributes">
+				<attribute name="groups">hr_payroll.group_hr_payroll_manager</attribute>
+			</button>
+			<notebook position="after">
+				<div>
+				    <field name="description" placeholder="Catatan lainnya (catatan ini juga akan muncul di slip gaji cetak)..."/>
+				</div>
+			</notebook>
+		</field>
+	</record>
+</data>
+</odoo>

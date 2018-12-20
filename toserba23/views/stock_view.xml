@@ -35,7 +35,7 @@
 		<field name="inherit_id" ref="stock.view_picking_form"/>
 		<field name="arch" type="xml">
 			<button name="button_validate" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">toserba23.group_stock_supervisor</attribute>
 			</button>
 			<button name="do_unreserve" position="attributes">
 				<attribute name="groups">stock.group_stock_manager</attribute>
@@ -47,7 +47,7 @@
 				<attribute name="groups">stock.group_stock_manager</attribute>
 			</button>
 			<button name="%(stock.act_stock_return_picking)d" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">stock.group_stock_user</attribute>
 			</button>
 			<xpath expr="//button[@name='action_toggle_is_locked'][1]" position="attributes">
 				<attribute name="groups">toserba23.lock_button_on_document</attribute>
@@ -61,12 +61,20 @@
 			<button name="redo_transfer" position="attributes">
 				<attribute name="groups">stock.group_stock_manager</attribute>
 			</button>
+			<button name="redo_transfer" position="after">
+				<button name="action_force_status" attrs="{'invisible': [('state', '=', 'done')]}" string="Selesaikan Status" type="object" groups="base.group_no_one"/>
+			</button>
+			<field name="origin" position="after">
+				<field name="sale_id" attrs="{'invisible': [('sale_id', '=', False)]}"/>
+				<field name="purchase_id" attrs="{'invisible': [('purchase_id', '=', False)]}"/>
+			</field>
 			<xpath expr="/form/sheet/group/group[2]" position="inside">
 				<field name="x_vehicle_notes"/>
 				<field name="x_notes"/>
 			</xpath>
 			<field name="partner_id" position="attributes">
-				<attribute name="options">{'no_open': True}</attribute>
+				<attribute name="options">{'no_create_edit': True,'no_quick_create':True,'no_create':True,'no_open':True}</attribute>
+				<attribute name="context">{'tree_view_ref': 'toserba23.view_partner_tree_hide_custom'}</attribute>
 			</field>
 			<xpath expr="/form/sheet/notebook/page[2]/field[@name='move_lines']/tree/field[@name='product_uom_qty']" position="attributes">
 				<attribute name="attrs">{'readonly': ['&amp;', ('is_initial_demand_editable', '=', False), ('parent.state','!=', 'draft')]}</attribute>
@@ -74,7 +82,25 @@
 			<xpath expr="/form/sheet/notebook/page[2]/field[@name='move_lines']/tree/field[@name='reserved_availability']" position="attributes">
 				<attribute name="attrs"></attribute>
 			</xpath>
+			<xpath expr="/form/sheet/group/group[1]/field[@name='location_id']" position="attributes">
+				<attribute name="attrs">{'invisible': [('picking_type_code', '=', 'outgoing')]}</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/group/group[1]/field[@name='location_dest_id']" position="attributes">
+				<attribute name="attrs">{'invisible': [('picking_type_code', '=', 'incoming')]}</attribute>
+			</xpath>
 		</field>
+	</record>
+
+	<!-- Partner tree when clicking on the "search more" button in stock picking -> partner -->
+	<record id="view_partner_tree_hide_custom" model="ir.ui.view">
+	    <field name="name">res.partner.tree_hide_custom</field>
+	    <field name="model">res.partner</field>
+	    <field name="arch" type="xml">
+	        <tree string="Contacts">
+	            <field name="ref"/>
+	            <field name="display_name"/>
+	        </tree>
+	    </field>
 	</record>
 
 	<!-- Backorder confirmation form view definition -->
@@ -83,9 +109,37 @@
 		<field name="model">stock.backorder.confirmation</field>
 		<field name="inherit_id" ref="stock.view_backorder_confirmation"/>
 		<field name="arch" type="xml">
-			<button name="process_cancel_backorder" position="attributes">
-				<attribute name="groups">toserba23.show_unnecessary_field</attribute>
+			<button name="process" position="attributes">
+				<attribute name="groups">stock.group_stock_manager</attribute>
 			</button>
+			<button name="process_cancel_backorder" position="attributes">
+				<attribute name="groups">stock.group_stock_manager</attribute>
+			</button>
+		</field>
+	</record>
+
+	<!-- Overprocessed confirmation form view definition -->
+	<record model="ir.ui.view" id="view_overprocessed_transfer_custom">
+		<field name="name">stock.view_overprocessed_transfer_custom</field>
+		<field name="model">stock.overprocessed.transfer</field>
+		<field name="inherit_id" ref="stock.view_overprocessed_transfer"/>
+		<field name="arch" type="xml">
+			<button name="action_confirm" position="attributes">
+				<attribute name="groups">stock.group_stock_manager</attribute>
+			</button>
+		</field>
+	</record>
+
+	<!-- Inventory adjustment list view definition -->
+	<record model="ir.ui.view" id="view_inventory_tree_custom">
+		<field name="name">stock.view_inventory_tree_custom</field>
+		<field name="model">stock.inventory</field>
+		<field name="inherit_id" ref="stock.view_inventory_tree"/>
+		<field name="arch" type="xml">
+			<field name="date" position="after">
+				<field name="location_id"/>
+				<field name="create_uid"/>
+			</field>
 		</field>
 	</record>
 

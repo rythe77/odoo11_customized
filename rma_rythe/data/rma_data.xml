@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+        <!-- RMA-IN Reasons -->
+        <record model="rma.reason" id="rma_reason1">
+            <field name="name">Replace Product</field>
+            <field name="action">replace</field>
+            <field name="description">Warranty product returned for replacement</field>
+		</record>
+        <record model="rma.reason" id="rma_reason2">
+            <field name="name">Replace Part(s)</field>
+            <field name="action">replace_part</field>
+            <field name="description">Warranty product parts damaged or missing</field>
+		</record>
+        <record model="rma.reason" id="rma_reason3">
+            <field name="name">Repair Product</field>
+            <field name="action">repair</field>
+            <field name="description">Warranty product returned for repair</field>
+		</record>
+        <record model="rma.reason" id="rma_reason4">
+            <field name="name">Refund Product</field>
+            <field name="action">refund</field>
+            <field name="description">Warranty product returned for refund</field>
+		</record>
+
+        <!-- RMA Code -->
+        <record id="sequence_rma_in" model="ir.sequence">
+            <field name="name">RMA-IN Code</field>
+            <field name="code">rma.rma.customer</field>
+            <field eval="3" name="padding" />
+            <field name="prefix">RMA-IN/%(y)s%(month)s/</field>
+        </record>
+        <record id="sequence_rma_out" model="ir.sequence">
+            <field name="name">RMA-OUT Code</field>
+            <field name="code">rma.rma.supplier</field>
+            <field eval="3" name="padding" />
+            <field name="prefix">RMA-OUT/%(y)s%(month)s/</field>
+        </record>
+</data>
+</odoo>

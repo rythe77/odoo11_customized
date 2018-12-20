@@ -30,15 +30,15 @@
 		</field>
 	</record>
 
-	<!--Supplier menu-->
+	<!--Transporter menu-->
 	<record id="action_partner_transporter_form" model="ir.actions.act_window">
 		<field name="name">Transporter</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">res.partner</field>
 		<field name="view_type">form</field>
-		<field name="domain">[]</field>
 		<field name="view_mode">tree,kanban,form</field>
 		<field name="context">{'search_default_transporter': 1,'default_customer': 0,'default_supplier': 0, 'default_transporter': 1, 'default_company_type': 'company'}</field>
+		<field name="domain">[('transporter','=',True)]</field>
 		<field name="filter" eval="True"/>
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">

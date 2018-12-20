@@ -70,7 +70,7 @@
 								<td class="col-xs-3 text-right"><t name="td_sched_date_h">
 									<t name="td_sched_date">
 										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
-										<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+										<span t-field="o.scheduled_date" t-field-options='{"format": "d MMM y"}'/>
 									</t>
 								</t></td>
 							</tr>

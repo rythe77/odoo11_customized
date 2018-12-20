@@ -45,6 +45,21 @@
 		</field>
 	</record>
 
+	<!-- hr.payroll main tree view definition -->
+	<record model="ir.ui.view" id="view_hr_payslip_tree_reference_order">
+		<field name="name">hr_payroll.view_hr_payslip_tree_reference_order</field>
+		<field name="model">hr.payslip</field>
+		<field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="default_order">number desc</attribute>
+			</tree>
+			<field name="state" position="after">
+				<field name="is_paid"/>
+			</field>
+		</field>
+	</record>
+
 	<!-- hr.payroll main form view definition -->
 	<record model="ir.ui.view" id="view_hr_payslip_form_add_overtime">
 		<field name="name">hr_payroll.view_hr_payslip_form_add_overtime</field>

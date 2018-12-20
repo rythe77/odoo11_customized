@@ -1,0 +1,40 @@
+<odoo>
+<data>
+	<!--Customer menu-->
+    <menuitem id="crm.res_partner_menu_crm"
+        parent="crm.crm_menu_root"
+        action="toserba23.action_partner_form_custom"
+        sequence="2"/>
+    <menuitem id="contacts.res_partner_menu_contacts"
+        name="Contacts"
+        action="contacts.action_contacts"
+        parent="contacts.menu_contacts"
+        sequence="2"
+        groups="sales_team.group_sale_manager"/>
+
+	<!--Custom opportunities tree view-->
+    <record id="crm_case_tree_view_oppor_custom" model="ir.ui.view">
+        <field name="name">crm.lead.tree.opportunity_custom</field>
+        <field name="model">crm.lead</field>
+		<field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="default_order">create_date desc</attribute>
+			</tree>
+        </field>
+    </record>
+
+	<!-- Main search view definition -->
+    <record id="view_crm_case_opportunities_filter_custom" model="ir.ui.view">
+        <field name="name">crm.lead.search.opportunity_custom</field>
+        <field name="model">crm.lead</field>
+		<field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+		<field name="arch" type="xml">
+			<filter name="activities_overdue" position="before">
+                <filter string="Belum Ada Aktivitas" name="no_activities"
+                        domain="[('activity_ids', '=', False)]"/>
+			</filter>
+		</field>
+	</record>
+</data>
+</odoo>

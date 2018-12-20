@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<record id="hr_attendance.hr_employee_print_badge" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+	<report
+		id="hr_employee_print_badge"
+		model="hr.employee"
+		string="Employee Badge"
+		name="employee_qr_code.print_employee_badge"
+		file="employee_qr_code.print_employee_badge"
+		print_report_name="'Employee Badge - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="hr.group_hr_manager"
+	/>
+
+	<template id="print_employee_badge">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="employee">
+                    <div class="col-xs-6">
+                        <table style="width:305pt; height:211pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt">
+                            <td style="width:33%;" valign="center">
+                                <table style="width:100pt; height:191pt; margin:10pt;">
+                                    <tr style="height:30%;">
+                                        <td align="center" valign="center">
+                                            <img t-if="employee.company_id and employee.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(employee.company_id.logo)" style="max-width:90%" alt="Company Logo"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:70%;">
+                                        <td align="center" valign="center">
+					                        <img t-if="employee.qr_code" t-att-src="'data:image/png;base64,%s' % to_text(employee.qr_code)" style="max-width:90%;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:67%" valign="center">
+								<span style="font:18px lucida-console,sans-serif !important;" t-field="employee.company_id.partner_id"/><br/>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="employee.company_id.partner_id.street"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="employee.company_id.partner_id.city"></span>
+								<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="employee.company_id.partner_id.phone"/><br/><br/><br/>
+								<span style="font:25px lucida-console,sans-serif; white-space:nowrap;" t-field="employee.name"></span><br/><br/>
+								<span style="font:18px lucida-console,sans-serif; white-space:nowrap;" t-field="employee.job_id.name"/>
+                            </td>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+	</template>
+</data>
+</odoo>

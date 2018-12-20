@@ -80,7 +80,7 @@
 								<td class="col-xs-3 text-right"><t name="td_sched_date_h">
 									<t name="td_sched_date">
 										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
-										<span t-field="o.scheduled_date" t-field-options='{"format": "d MMMM y"}'/>
+										<span t-field="o.scheduled_date" t-field-options='{"format": "d MMM y"}'/>
 									</t>
 								</t></td>
 							</tr>
@@ -150,6 +150,7 @@
 						<thead style="background-color:#212121;" >
 							<tr>
 								<th><font color="#fff"><strong>Nama Barang</strong></font></th>
+								<th><font color="#fff"><strong>Keterangan Khusus</strong></font></th>
 								<th class="text-right"><font color="#fff"><strong>Jumlah</strong></font></th>
 								<th t-if="o.state=='waiting_validation' or o.state=='done'" class="text-right">
 									<font color="#fff"><strong>Jumlah Dikirim</strong></font>
@@ -161,6 +162,9 @@
 								<td>
 									<t t-if="not move.product_id.categ_id.is_warranty">**</t>
 									<span t-field="move.product_id"/>
+								</td>
+								<td>
+									<span t-field="move.product_desc"/>
 								</td>
 								<td class="text-right">
 									<span t-field="move.product_uom_qty"/>

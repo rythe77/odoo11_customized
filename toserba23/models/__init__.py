@@ -10,3 +10,4 @@ from . import stock_move
 from . import account
 from . import product_pricelist_item
 from . import product_supplierinfo
+from . import hr_payslip

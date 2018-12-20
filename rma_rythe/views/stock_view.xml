@@ -1,0 +1,28 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="stock_picking_form_rma_view">
+		<field name="name">stock.view_picking_form_rma_view</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/div[1]" position="inside">
+                <button name="action_view_rmain"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-comments"
+                    attrs="{'invisible': [('rmain_count', '=', 0)]}">
+                    <field name="rmain_count" widget="statinfo" string="RMA-IN"/>
+                </button>
+                <button name="action_view_rmaout"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-comments"
+                    attrs="{'invisible': [('rmaout_count', '=', 0)]}">
+                    <field name="rmaout_count" widget="statinfo" string="RMA-OUT"/>
+                </button>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

@@ -1,5 +1,30 @@
 <odoo>
 <data>
+	<!-- Main expense list view definition -->
+	<record model="ir.ui.view" id="view_expenses_tree_custom">
+		<field name="name">hr_expense.view_expenses_tree_custom</field>
+		<field name="model">hr.expense</field>
+		<field name="inherit_id" ref="hr_expense.view_expenses_tree"/>
+		<field name="arch" type="xml">
+			<field name="employee_id" position="after">
+	        	<field name="product_id"/>
+	        	<field name="account_id"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main expense form view definition -->
+	<record model="ir.ui.view" id="view_hr_expense_form_view_custom">
+		<field name="name">hr_expense.hr_expense_form_view_custom</field>
+		<field name="model">hr.expense</field>
+		<field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
+		<field name="arch" type="xml">
+			<field name="employee_id" position="attributes">
+				<attribute name="groups">toserba23.group_hr_expense_officer</attribute>
+			</field>
+		</field>
+	</record>
+
 	<!-- Main list view definition -->
 	<record model="ir.ui.view" id="view_hr_expense_sheet_tree_custom">
 		<field name="name">hr_expense.view_hr_expense_sheet_tree_custom</field>
@@ -40,12 +65,37 @@
 		<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_filter"/>
 		<field name="arch" type="xml">
 			<filter name="submitted" position="before">
-				<filter string="Hari ini" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
-				<filter string="Kemarin" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
-				<filter string="1 minggu terakhir" domain="[('accounting_date', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('accounting_date', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Hari ini" domain="[('accounting_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('accounting_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter string="Kemarin" domain="[('accounting_date', '&gt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')),('accounting_date', '&lt;=', (datetime.date.today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="1 minggu terakhir" domain="[('accounting_date', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('accounting_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
 				<separator/>
 			</filter>
 		</field>
 	</record>
+
+	<record id="hr_expense_actions_all_to_approve" model="ir.actions.act_window">
+	    <field name="name">Pengeluaran Akan Diajukan</field>
+	    <field name="res_model">hr.expense</field>
+	    <field name="view_mode">tree,form</field>
+	    <field name="search_view_id" ref="hr_expense.view_hr_expense_filter"/>
+		<field name="context">{"search_default_to_report": 1}</field>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	          Create a new expense.<br/>
+	          <!-- Or send receipts to .... -->
+	      </p><p>
+	          Expenses will go through these steps:
+	      </p><ol>
+	          <li>You record expenses</li>
+	          <li>Periodically, you submit expenses report to your manager,</li>
+	          <li>Once approved, your expenses report goes to the accounting,</li>
+	          <li>The accountant validates journal entries and reimburse you.</li>
+	      </ol>
+	    </field>
+	</record>
+
+	<menuitem id="hr_expense.menu_hr_expense_to_approve" name="To Approve" sequence="2" parent="hr_expense.menu_hr_expense_root" groups="toserba23.group_hr_expense_officer"/>
+	<menuitem id="menu_hr_expense_all_to_approve" name="Pengeluaran Akan Diajukan" sequence="0" parent="hr_expense.menu_hr_expense_to_approve"
+	    action="toserba23.hr_expense_actions_all_to_approve"/>
 </data>
 </odoo>

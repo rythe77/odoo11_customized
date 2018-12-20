@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 import time
 
 class StockPicking(models.Model):
@@ -13,6 +14,23 @@ class StockPicking(models.Model):
     x_notes = fields.Char(
         'Other Notes', index=False,
         states={'done': [('readonly', True)], 'cancel': [('readonly', True)], 'waiting_validation': [('readonly', True)]})
+
+    @api.multi
+    def action_done(self):
+        """
+            Do not allow validation for non-manager if this picking is not related to SO or PO or RMA
+        """
+        return_val = super(StockPicking, self).action_done()
+        for rec in self:
+            if not rec.sale_id and not rec.purchase_id  and not rec.rmain_id and not rec.rmaout_id\
+            and not self.env['res.users'].browse(self.env.uid).has_group('stock.group_stock_manager'):
+                raise UserError('Anda hanya diijinkan untuk memvalidasi transfer yang dibuat dari penjualan/pembelian atau RMA')
+        return return_val
+
+    @api.multi
+    def action_force_status(self):
+        self.state = 'done'
+        return True
 
 
 class StockPickingType(models.Model):

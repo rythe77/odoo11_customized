@@ -56,6 +56,10 @@
 			<button name="action_validate_invoice_payment" position="replace">
 				<button string="Validate" name="post" type="object" class="btn-primary"/>
 			</button>
+			<field name="journal_id" position="after">
+				<field name="destination_journal_id"/>
+				<field name="linked_giro_id"/>
+			</field>
 		</field>
 	</record>
 
@@ -80,14 +84,15 @@
 		<field name="inherit_id" ref="account.view_account_payment_form"/>
 		<field name="arch" type="xml">
 			<field name="journal_id" position="after">
-				<field name="is_giro_payment" invisible="1"/>
-				<field name="linked_giro_id" attrs="{'invisible':['|',('is_giro_payment', '==', True),('linked_giro_id', '==', False)]}"/>
+				<field name="is_giro_payment"/>
+				<field name="linked_giro_id" attrs="{'invisible':[('linked_giro_id', '==', False)]}"/>
 				<field name="is_giro_cleared" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
 				<field name="due_date" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
 				<field name="numbering" attrs="{'invisible':[('is_giro_payment', '==', False)]}"/>
 			</field>
 			<button name="post" position="after">
 				<button name="giro_clearing" string="Giro Clearing" class="oe_highlight" type="object" attrs="{'invisible':['|', ('state', 'not in', ('posted')), '|', ('is_giro_payment', '!=', True), ('is_giro_cleared', '=', True)]}"/>
+				<button name="force_clear" string="Force Clearing" type="object" attrs="{'invisible':['|', ('state', 'not in', ('posted')), '|', ('is_giro_payment', '!=', True), ('is_giro_cleared', '=', True)]}"/>
 			</button>
 		</field>
 	</record>
@@ -102,7 +107,7 @@
 				<field name="numbering"/>
 				<field name="journal_id"/>
 				<filter name="not_giro" string="Not Giro" domain="[('is_giro_payment', '=', False),('linked_giro_id', '=', False)]"/>
-				<filter name="giro_not_cleared" string="Giro Not Cleared" domain="[('is_giro_payment', '=', True), ('is_giro_cleared', '=', False)]"/>
+				<filter name="giro_not_cleared" string="Giro Not Cleared" domain="[('is_giro_payment', '!=', False), ('is_giro_cleared', '=', False)]"/>
 				<filter name="clearing_transfer" string="Clearing Transfer" domain="[('linked_giro_id', '!=', False)]"/>
 				<separator/>
 			</field>

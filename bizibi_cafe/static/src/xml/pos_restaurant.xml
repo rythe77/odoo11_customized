@@ -2,14 +2,14 @@
 <templates id="pos_restaurant.template" xml:space="preserve">
     <t t-name="BillReceipt">
         <receipt align='center' width='30' value-thousands-separator='.' value-decimals-separator=','>
-            <t t-if='receipt.company.logo'>
+            <!-- t t-if='receipt.company.logo'>
                 <img t-att-src='receipt.company.logo' />
                 <br/>
             </t>
             <t t-if='!receipt.company.logo'>
                 <h1><t t-esc='receipt.company.name' /></h1>
                 <br/>
-            </t>
+            </t-->
             <div font='b'>
                 <!-- t t-if='receipt.shop.name'>
                     <div><t t-esc='receipt.shop.name' /></div>
@@ -17,11 +17,12 @@
                 <t t-if='receipt.company.contact_address'>
                     <div><t t-esc='receipt.company.contact_address' /></div>
                 </t>
+				<div>Board Game Cafe</div>
                 <t t-if='widget.pos.company.street'>
                     <div><t t-esc='widget.pos.company.street' />, <t t-esc='widget.pos.company.city' /></div>
                 </t>
                 <t t-if='receipt.company.phone'>
-                    <div>Tel:<t t-esc='receipt.company.phone' /></div>
+                    <div><t t-esc='receipt.company.phone' /></div>
                 </t>
                 <t t-if='receipt.company.vat'>
                     <div><t t-esc="receipt.company.country_id.vat_label or 'TIN'"/>:<t t-esc='receipt.company.vat' /></div>
@@ -36,10 +37,10 @@
                     <div><t t-esc='receipt.header' /></div>
                 </t>
                 <t t-if='receipt.cashier'>
-                    <div class='cashier'>
+                    <!--div class='cashier'-->
                         <div>------------------------------------</div>
-                        <div>Served by <t t-esc='receipt.cashier' /></div>
-                    </div>
+                        <!--div>Served by <t t-esc='receipt.cashier' /></div-->
+                    <!--/div-->
                 </t>
             </div>
             <br /><br />
@@ -121,7 +122,8 @@
             </t>
 
             <!-- Footer -->
-            <t t-if='receipt.footer_xml'>
+            <div font='b'>
+			<t t-if='receipt.footer_xml'>
                 <t t-raw='receipt.footer_xml' />
             </t>
 
@@ -131,6 +133,7 @@
                 <br/>
                 <br/>
             </t>
+			</div>
 
             <br/>
             <div font='b'>
@@ -138,6 +141,72 @@
                 <div><t t-esc='receipt.date.localestring' /></div>
             </div>
 
+        </receipt>
+    </t>
+
+    <t t-name="OrderChangeReceipt">
+        <receipt 
+            align='center' 
+            width='30' 
+            size='double-height' 
+            line-ratio='0.4' 
+            value-decimals='3' 
+            value-thousands-separator=''
+            value-autoint='on' 
+        >
+            <div size='normal' ><t t-esc="changes.name" /></div>
+            <t t-if="changes.floor || changes.table">
+                <br />
+                <div><span><t t-esc="changes.floor" /></span> / <span bold='on' size='double'><t t-esc="changes.table"/></span></div>
+            </t>
+            <br />
+            <br />
+            <t t-if="changes.cancelled.length > 0">
+                <div color='red'>
+                    <div bold='on' size='double'>CANCELLED <span bold='off' size='double-height'><t t-esc='changes.time.hours' />:<t t-esc='changes.time.minutes' /></span> </div>
+                    <br />
+                    <br />
+                    <t t-foreach="changes.cancelled" t-as="change">
+                        <line>
+                            <left><value><t t-esc="change.qty" /></value></left>
+                            <right><t t-esc="change.name_wrapped[0]" /></right>
+                        </line>
+                        <t t-call="NameWrapped"/>
+                        <t t-if="change.note">
+                            <line>
+                                <left>NOTE</left>
+                                <right>...</right>
+                            </line>
+                            <div><span font='b' bold='off' line-ratio='0.4' indent='1' width='30'>--- <t t-esc="change.note" /></span></div>
+                            <line></line>
+                        </t>
+                    </t>
+                    <br />
+                    <br />
+                </div>
+            </t>
+            <t t-if="changes.new.length > 0">
+                <div bold='on' size='double'>NEW <span bold='off' size='double-height'><t t-esc='changes.time.hours' />:<t t-esc='changes.time.minutes' /></span> </div>
+                <br />
+                <br />
+                <t t-foreach="changes.new" t-as="change">
+                    <line>
+                        <left><value><t t-esc="change.qty" /></value></left>
+                        <right><t t-esc="change.name_wrapped[0]" /></right>
+                    </line>
+                    <t t-call="NameWrapped"/>
+                    <t t-if="change.note">
+                        <line>
+                            <left>NOTE</left>
+                            <right>...</right>
+                        </line>
+                        <div><span font='b' bold='off' line-ratio='0.4' indent='1' width='30'>--- <t t-esc="change.note" /></span></div>
+                        <line></line>
+                    </t>
+                </t>
+                <br />
+                <br />
+            </t>
         </receipt>
     </t>
 </templates>

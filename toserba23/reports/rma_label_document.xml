@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_rma_label"
+		model="rma.rma"
+		string="Label RMA"
+		name="toserba23.report_rma_labelsheet"
+		file="toserba23.label_rma"
+		print_report_name="'Label RMA - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="rma_rythe.group_rma_user"
+	/>
+
+	<template id="report_rma_labelsheet">
+		<t t-call="web.html_container">
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+		            <t t-foreach="docs" t-as="rma">
+						<t t-set="product_count" t-value="0"/>
+						<t t-foreach="rma.rma_line" t-as="line">
+						    <t t-set="product_count" t-value="product_count+line.received_qty"/>
+						</t>
+						<t t-set="product_count" t-value="int(product_count)"/>
+						<t t-foreach="range(product_count)" t-as="l">
+						    <div class="col-xs-6" style="padding:0;">
+						        <table style="border-spacing:0;margin-bottom:0;" class="table">
+						            <tbody>
+						                <tr style="width: 1in;">
+						                    <td style="border: 2px solid black;text-align: center; vertical-align: middle;" class="col-xs-12">
+						                        <strong t-field="rma.code"/>
+						                        <br/>
+						                        <strong t-field="rma.partner_id"/>
+						                    </td>
+						                </tr>
+						            </tbody>
+						        </table>
+						    </div>
+						</t>
+		            </t>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>
