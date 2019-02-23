@@ -1,0 +1,113 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="purchase_order_tree_view_custom">
+		<field name="name">purchase.purchase_order_tree_view_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="date_order" position="replace"/>
+			<field name="date_planned" position="replace"/>
+			<field name="origin" position="replace"/>
+			<field name="name" position="before">
+				<field name="date_order"/>
+				<field name="create_uid" invisible="1"/>
+				<field name="date_planned" invisible="context.get('quotation_only', False)"/>
+			</field>
+			<field name="name" position="after">
+				<field name="origin"/>
+			</field>
+			<field name="amount_untaxed" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="amount_total" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Add notes in PO form view -->
+	<record model="ir.ui.view" id="purchase_order_form_custom">
+		<field name="name">purchase.purchase_order_form_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/div" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/group" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</xpath>
+			<xpath expr="/form/div" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<div class="oe_chatter" position="replace"/>
+			<xpath expr="/form/sheet/notebook/page[2]/group/group[1]" position="inside">
+				<field name="x_vehicle_notes"/>
+				<field name="x_notes"/>
+			</xpath>
+			<button name="button_confirm" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</button>
+			<button name="button_draft" position="attributes">
+				<attribute name="groups">purchase.group_purchase_manager</attribute>
+			</button>
+			<button name="button_cancel" position="attributes">
+				<attribute name="groups">purchase.group_purchase_manager</attribute>
+			</button>
+			<button name="button_done" position="attributes">
+				<attribute name="groups">anugerah_jaya_express.lock_button_on_document</attribute>
+			</button>
+			<button name="button_unlock" position="attributes">
+				<attribute name="groups">anugerah_jaya_express.lock_button_on_document</attribute>
+			</button>
+			<button name="button_cancel" position="after">
+				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['purchase','done','cancel'])]}" groups="purchase.group_purchase_manager"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_purchase_order_filter_custom">
+		<field name="name">purchase.view_purchase_order_filter_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="arch" type="xml">
+			<field name="create_uid" position="after">
+				<filter string="Ordered today" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered yesterday" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Ordered for the last week" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Delivery today" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery tomorrow" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Delivery for the next week" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter name="not_done" string="Not Done" domain="[('invoice_status','!=', 'invoiced')]" help="Purchase order whose invoice not yet done"/>
+				<separator/>
+			</field>
+			<filter name="invoiced" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</filter>
+			<filter name="not_invoiced" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</filter>
+		</field>
+	</record>
+
+	<!-- Main menu view definition -->
+	<record model="ir.ui.menu" id="purchase.menu_purchase_config">
+		<field name="groups_id" eval="[(6,0,[ref('anugerah_jaya_express.view_configuration_menu')])]"/>
+	</record>
+
+	<!-- Katalog harga supplier -->
+	<menuitem id="katalog_menu" name="Katalog"
+			groups="purchase.group_purchase_user"
+			parent="purchase.menu_purchase_root"/>
+	<menuitem id="product_supplierinfo_menu" name="Daftar Harga Supplier" parent="katalog_menu"
+			groups="purchase.group_purchase_user"
+			action="product.product_supplierinfo_type_action"/>
+</data>
+</odoo>

@@ -9,7 +9,7 @@
 		file="toserba23.faktur"
 		print_report_name="'Faktur - %s - %s' % (object.partner_id.name or '', object.name)"
 		report_type="qweb-pdf"
-		groups="account.group_account_invoice"
+		groups="account.group_account_manager"
 	/>
 
 	<template id="report_custom_invoiceslip">

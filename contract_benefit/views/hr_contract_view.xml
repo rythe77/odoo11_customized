@@ -1,0 +1,19 @@
+<odoo>
+<data>
+	<!-- Add benefit field to contract form view -->
+	<record model="ir.ui.view" id="hr_contract_view_form_add_benefits">
+		<field name="name">hr_contract.hr_contract_view_form_add_benefits</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+		<field name="arch" type="xml">
+			<div name="wage" position="after">
+		        <label for="benefit"/>
+		        <div class="o_row" name="benefit">
+		            <field name="benefit" nolabel="1"/>
+		            <span>/ month</span>
+		        </div>
+			</div>
+		</field>
+	</record>
+</data>
+</odoo>

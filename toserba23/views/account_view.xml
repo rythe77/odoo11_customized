@@ -51,6 +51,9 @@
 			<field name="partner_id" position="attributes">
 				<attribute name="groups">toserba23.view_vendor</attribute>
 			</field>
+			<field name="invoice_line_ids" position="attributes">
+				<attribute name="groups">hide_confidential_info.view_cost_price</attribute>
+			</field>
 			<page name="other_info" position="after">
 				<page name="picking" string="Surat Jalan">
 					<field name="picking_id"/>

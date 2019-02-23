@@ -1,0 +1,45 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="product_tree_view_custom">
+		<field name="name">product.product_tree_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_tree_view"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="colors">red:qty_available &lt;= 0</attribute>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="product_template_form_view_custom">
+		<field name="name">product.product_template_form_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_form_view"/>
+		<field name="arch" type="xml">
+			<div name="pricelist_item" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman</attribute>
+			</div>
+			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/div[@name='standard_price_uom']" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</xpath>
+			<xpath expr="/form/sheet/notebook/page/group/group[@name='group_standard_price']/label" position="attributes">
+				<attribute name="groups">purchase.group_purchase_user</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Product template search view definition -->
+	<record model="ir.ui.view" id="product_template_search_view_custom">
+		<field name="name">product.product_template_search_view_custom</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_search_view"/>
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="seller_ids" string="Pemasok"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

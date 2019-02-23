@@ -1,0 +1,14 @@
+<odoo>
+<data>
+	<!-- Main menu view definition -->
+	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_report">
+		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_user')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_kiosk_mode">
+		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_user')])]"/>
+	</record>
+	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_view_employees_kanban">
+		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_manager')])]"/>
+	</record>
+</data>
+</odoo>

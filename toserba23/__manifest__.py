@@ -36,6 +36,8 @@
             - Kustomisasi dokumen transfer massal BS
             - product purchase price and start date automatically updated when purchase order is confirmed
             - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
+            - Tunjangan jabatan diatur di kontrak
+            - Akses LIHAT absensi untuk petugas penggajian
         Todo:
             - Sistem daftar harga lebih kompleks
             - Nisa mau dibatasi ubah harga di faktur
@@ -54,9 +56,9 @@
             - Product duplicate should also duplicate pricelist
             - sales commission system
             - Kalo tidak ada 0,5 nya hilangkan saja komanya
-            - Sales group automatically fills in based on customer
             - Super call on method, should not list "administrator" as the document creator
         Not Todo:
+            - Sales group automatically fills in based on customer
             - Customize tree view column width
             - stock user can do backorder
             - automatic backorder
@@ -142,6 +144,7 @@
         'sale_purchase_previous_price',
         'equity_change',
         'rma_rythe',
+        'contract_benefit',
     ],
 
     'data': [
@@ -163,7 +166,7 @@
         'views/hr_payroll_view.xml',
         'views/crm_view.xml',
         'reports/master_template.xml',
-        'reports/saleorder_document.xml',
+        'reports/saleorder_document.xml', 
         'reports/invoice_proforma_document.xml',
         'reports/delivery_document.xml',
         'reports/picking_document.xml',

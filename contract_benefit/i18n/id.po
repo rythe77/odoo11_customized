@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* contract_benefit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-05 10:39+0000\n"
+"PO-Revision-Date: 2019-01-05 18:40+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: contract_benefit
+#: model:ir.ui.view,arch_db:contract_benefit.hr_contract_view_form_add_benefits
+msgid "<span>/ month</span>"
+msgstr "<span>/ bulan</span>"
+
+#. module: contract_benefit
+#: model:ir.model,name:contract_benefit.model_hr_contract
+msgid "Employee Contract"
+msgstr "Kontrak Karyawan"
+
+#. module: contract_benefit
+#: model:ir.model.fields,help:contract_benefit.field_hr_contract_benefit
+msgid "Employee's monthly benefits."
+msgstr "Tunjangan jabatan karyawan."
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_contract_benefit
+msgid "Job Benefits"
+msgstr "Tunjangan Jabatan"

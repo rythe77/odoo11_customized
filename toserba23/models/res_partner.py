@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
-
+    
     #Create new fields
     x_call_freq = fields.Selection([
         ('urgent', 'Urgent'),
@@ -12,4 +12,4 @@ class ResPartner(models.Model):
         ('common', 'common'),
         ('not_urgent', 'Not Urgent')],
         string='To Call', default='not_urgent',
-       help="Show how urgent it is to call the customer")
+        help="Show how urgent it is to call the customer")

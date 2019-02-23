@@ -9,10 +9,16 @@ class SaleOrderInherit(models.Model):
     @api.multi
     def action_confirm_limited(self):
         for sale in self:
+            cash_payment = False
+            if any(line_id.value ==  'balance' and line_id.days == 0 for line_id in sale.payment_term_id.line_ids):
+                cash_payment = True
             credit = sale.partner_id.credit
             current_total = sale.amount_total
-            credit_limit = sale.partner_id.credit_limit
-            if credit_limit == 0:
+            if sale.partner_id.parent_id:
+                credit_limit = sale.partner_id.parent_id.credit_limit
+            else:
+                credit_limit = sale.partner_id.credit_limit
+            if credit_limit == 0 or cash_payment:
                 sale.action_confirm()
             elif credit + current_total > credit_limit:
                 raise UserError(_('''Cannot confirm the quotation because the customer exceed the credit limit!\n

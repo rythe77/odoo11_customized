@@ -7,8 +7,11 @@
 	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_kiosk_mode">
 		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_user')])]"/>
 	</record>
+	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_manage_attendances">
+		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_user'),ref('toserba23.group_hr_payroll_supervisor')])]"/>
+	</record>
 	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_view_attendances">
-		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_manager')])]"/>
+		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_manager'),ref('toserba23.group_hr_payroll_supervisor')])]"/>
 	</record>
 	<record model="ir.ui.menu" id="hr_attendance.menu_hr_attendance_view_employees_kanban">
 		<field name="groups_id" eval="[(6,0,[ref('hr_attendance.group_hr_attendance_manager')])]"/>

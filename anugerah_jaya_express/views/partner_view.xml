@@ -1,0 +1,40 @@
+<odoo>
+<data>
+	<!-- Partner list view definition -->
+	<record model="ir.ui.view" id="partner_tree_view_custom">
+		<field name="name">res.partner_tree_view_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_tree"/>
+		<field name="arch" type="xml">
+			<field name="display_name" position="before">
+				<field name="ref"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Form view invoiced button definition -->
+	<record model="ir.ui.view" id="partner_view_buttons_custom">
+		<field name="name">res.partner_view_buttons_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="account.partner_view_buttons"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div/button/div/span[2]" position="replace">
+				<span class="o_stat_text">Total Faktur</span>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Partner search view definition -->
+	<record model="ir.ui.view" id="view_res_partner_filter_custom">
+		<field name="name">base.view_res_partner_filter_custom</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_res_partner_filter"/>
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="street" string="Alamat" filter_domain="['|',('street','ilike',self),('street2','ilike',self)]"/>
+				<field name="city" string="Kota" filter_domain="[('city','ilike',self)]"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

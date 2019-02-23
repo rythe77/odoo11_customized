@@ -16,7 +16,7 @@ class SaleOrderInherit(models.Model):
     x_notes = fields.Char(
         'Other Notes', index=False,
         states={'sale': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]})
-
+    
     def _prepare_invoice(self):
         vals = super(SaleOrderInherit, self)._prepare_invoice()
         # get current logged in user's timezone
