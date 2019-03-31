@@ -211,6 +211,9 @@
 				<filter string="Due for the next week" domain="[('date_due', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=6)).strftime('%Y-%m-%d 23:59:59'))]"/>
 				<separator/>
 			</filter>
+			<filter name="late" position="attributes">
+				<attribute name="domain">['&amp;', ('date_due', '&lt;', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')), ('state', '=', 'open')]</attribute>
+			</filter>
 			<field name="partner_id" position="after">
 				<field name="reference" string="Referensi Pemasok"/>
 			</field>

@@ -1,1 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rjkjy_hr_payroll_hr_fine,access_rjkjy_hr_payroll_hr_fine manager,rejeki_jaya.model_hr_fine,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_rjkjy_hr_payroll_hr_fine_categories,access_rjkjy_hr_payroll_hr_fine_cateogries manager,rejeki_jaya.model_hr_fine_category,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_rjkjy_hr_payroll_hr_fine_user,access_rjkjy_hr_payroll_hr_fine user,rejeki_jaya.model_hr_fine,hr_payroll.group_hr_payroll_user,1,1,1,1
+access_rjkjy_hr_payroll_hr_fine_categories_user,access_rjkjy_hr_payroll_hr_fine_cateogries user,rejeki_jaya.model_hr_fine_category,hr_payroll.group_hr_payroll_user,1,1,1,1
+base.access_ir_sequence_group_user,ir_sequence group_user,base.model_ir_sequence,base.group_user,1,1,0,0
+mail.access_mail_tracking_value_user,mail.tracking.value.user,mail.model_mail_tracking_value,base.group_user,1,1,1,0

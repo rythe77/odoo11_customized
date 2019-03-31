@@ -8,6 +8,8 @@
     'description': """
         Yang dimodifikasi:
             -
+        Todo:
+            - Tampilan data master produk secara default sebaiknya tampilan daftar
     """,
 
     'author': "Ryanto The",
@@ -28,7 +30,7 @@
     ],
 
     'data': [
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/hr_view.xml',
         'views/hr_menu.xml',
         'views/hr_fine_view.xml',

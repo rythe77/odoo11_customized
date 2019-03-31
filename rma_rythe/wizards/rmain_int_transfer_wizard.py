@@ -81,7 +81,7 @@ class RmaInIntTransferWizard(models.TransientModel):
                     'src_warehouse_id': rmain.warehouse_id.id,
                     'dst_warehouse_id': rmain.warehouse_id.id,
                     })
-            if rmain.state not in ['processing']:
+            if rmain.state not in ['processing', 'closed']:
                 raise UserError(_("You may only create transfer for processing lines"))
             for rma_line in rmain.rma_line:
                 line_vals = {

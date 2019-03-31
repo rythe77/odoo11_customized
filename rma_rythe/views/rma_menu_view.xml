@@ -209,7 +209,7 @@
 		                            <field name="action" invisible="1"/>
                                     <button name="get_product_replacement_wizard"
                                     	type="object" icon="fa-cogs" string="Replace"
-                                    	attrs="{'invisible':['|', ('action', 'not in', ('replace')), ('state', 'not in', ('rejected', 'closed'))]}"
+                                    	attrs="{'invisible':['|', ('action', 'not in', ('replace')), ('process_status', 'not in', ('to_process', 'processing'))]}"
                                     	groups="rma_rythe.group_rma_user"/>
                                     <field name="state" readonly="1"/>
                                     <field name="process_status" readonly="1"/>

@@ -1,0 +1,16 @@
+<odoo>
+<data>
+	<!-- Register payment form view lock date field -->
+	<record model="ir.ui.view" id="view_account_voucher_wizard_custom">
+		<field name="name">Advance Payment</field>
+        <field name="model">account.voucher.wizard</field>
+		<field name="inherit_id" ref="sale_advance_payment.view_account_voucher_wizard"/>
+		<field name="groups_id" eval="[(6,0, [ref('toserba23.lock_invoice_payment_date')])]" />
+		<field name="arch" type="xml">
+			<field name="date" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

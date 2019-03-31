@@ -5,7 +5,7 @@
 		<field name="name">hr.fine.fine_tree_view</field>
 		<field name="model">hr.fine</field>
 		<field name="arch" type="xml">
-			<tree string="Fine Tree" default_order="date_input desc">
+			<tree string="Daftar Denda" default_order="date_input desc">
 				<field name="date_input"/>
 				<field name="employee_id"/>
 				<field name="category_id"/>
@@ -19,7 +19,7 @@
 		<field name="name">hr.fine.fine_form_view</field>
 		<field name="model">hr.fine</field>
 		<field name="arch" type="xml">
-			<form string="Fine Form">
+			<form string="Form Dendan">
 				<sheet>
 					<group>
 						<field name="employee_id"/>
@@ -42,7 +42,7 @@
 		<field name="name">hr.fine.fine_calendar_view</field>
 		<field name="model">hr.fine</field>
 		<field name="arch" type="xml">
-			<calendar string="Employee Fine" date_start="date_input" color="employee_id">
+			<calendar string="Denda Karyawan" date_start="date_input" color="employee_id">
 				<field name="employee_id"/>
 				<field name="category_id"/>
 			</calendar>
@@ -57,16 +57,16 @@
 			<search>
 				<field name="employee_id"/>
 				<field name="category_id"/>
-				<filter name="today" string="Today" domain="[('date_input', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
-				<filter name="last_week" string="For the Last Week" domain="[('date_input', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
-				<filter name="last_2_week" string="For the Last 2 Weeks" domain="[('date_input', '&gt;=', (datetime.date.today()-datetime.timedelta(days=13)).strftime('%Y-%m-%d')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter name="today" string="Hari ini" domain="[('date_input', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter name="last_week" string="Sepanjang minggu lalu" domain="[('date_input', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
+				<filter name="last_2_week" string="Sepanjang 2 minggu lalu" domain="[('date_input', '&gt;=', (datetime.date.today()-datetime.timedelta(days=13)).strftime('%Y-%m-%d')),('date_input', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
 				<separator/>
-				<filter name="last_month" string="Last Month" domain="[('date_input', '&gt;=', (datetime.date.today()-relativedelta(months=1)).strftime('%Y-%m-01')),('date_input', '&lt;', datetime.date.today().strftime('%Y-%m-01'))]"/>
-				<filter name="this_month" string="Current Month" domain="[('date_input', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]"/>
+				<filter name="last_month" string="Bulan lalu" domain="[('date_input', '&gt;=', (datetime.date.today()-relativedelta(months=1)).strftime('%Y-%m-01')),('date_input', '&lt;', datetime.date.today().strftime('%Y-%m-01'))]"/>
+				<filter name="this_month" string="Bulan ini" domain="[('date_input', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]"/>
 				<group string="Group By">
-					<filter name="by_category" string="Category"
+					<filter name="by_category" string="Kategori"
 						context="{'group_by': 'category_id'}"/>
-					<filter name="by_employee" string="Employee"
+					<filter name="by_employee" string="Karyawan"
 						context="{'group_by': 'employee_id'}"/>
 				</group>
 			</search>
@@ -78,7 +78,7 @@
 		<field name="name">hr.fine_category.fine_category_tree_view</field>
 		<field name="model">hr.fine_category</field>
 		<field name="arch" type="xml">
-			<tree string="Fine Category Tree">
+			<tree string="Daftar Kategori Denda">
 				<field name="name"/>
 				<field name="amount"/>
 			</tree>
@@ -90,7 +90,7 @@
 		<field name="name">hr.fine_category.fine_category_form_view</field>
 		<field name="model">hr.fine_category</field>
 		<field name="arch" type="xml">
-			<form string="Fine Category Form">
+			<form string="Form Kategori Denda">
 				<sheet>
 					<group>
 						<field name="name"/>
@@ -103,37 +103,37 @@
 
 	<!-- hr.fine window action -->
 	<record model="ir.actions.act_window" id="hr_fine_view_action">
-		<field name="name">Fine</field>
+		<field name="name">Denda</field>
 		<field name="res_model">hr.fine</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">tree,form,calendar</field>
 		<field name="context" eval="{'search_default_this_month': 1}"/>
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
-				Create employee fine record here
+				Buat catatan pelanggaran di sini
 			</p>
 		</field>
 	</record>
 
 	<!-- hr.fine_category window action -->
 	<record model="ir.actions.act_window" id="hr_fine_category_view_action">
-		<field name="name">Fine Category</field>
+		<field name="name">Kategori Denda</field>
 		<field name="res_model">hr.fine_category</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">tree,form</field>
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
-				Create fine category here
+				Buat kategori denda di sini
 			</p>
 		</field>
 	</record>
 
 	<!-- fine menu -->
-	<menuitem id="fine_menu" name="Fine"
+	<menuitem id="fine_menu" name="Denda"
 			parent="hr_attendance.menu_hr_attendance_root"/>
-	<menuitem id="hr_fine_menu" name="Fine" parent="fine_menu"
+	<menuitem id="hr_fine_menu" name="Denda" parent="fine_menu"
 			action="hr_fine_view_action"/>
-	<menuitem id="hr_fine_category_menu" name="Fine Category" parent="fine_menu"
+	<menuitem id="hr_fine_category_menu" name="Kategori Denda" parent="fine_menu"
 			groups="hr_attendance.group_hr_attendance_manager"
 			action="hr_fine_category_view_action"/>
 </data>

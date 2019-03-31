@@ -7,6 +7,7 @@
 		<field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
 		<field name="arch" type="xml">
 			<field name="check_out" position="after">
+				<field name="worked_hours"/>
 				<field name="overtime_hours"/>
 				<field name="overtime_hours_late"/>
 			</field>
@@ -73,7 +74,7 @@
 				<field name="fine_amount" string="Fine Amount"/>
 			</field>
 			<field name="number_of_hours" position="attributes">
-				<attribute name="invisible">1</attribute>
+				<attribute name="invisible">0</attribute>
 			</field>
 		</field>
 	</record>

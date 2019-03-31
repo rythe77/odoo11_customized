@@ -165,6 +165,7 @@
         'views/hr_view.xml',
         'views/hr_payroll_view.xml',
         'views/crm_view.xml',
+        'views/sale_adv_payment_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml', 
         'reports/invoice_proforma_document.xml',
