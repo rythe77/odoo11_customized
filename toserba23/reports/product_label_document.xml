@@ -15,7 +15,7 @@
 		file="toserba23.label_produk"
 		print_report_name="'Label Produk - %s' % (object.name)"
 		report_type="qweb-pdf"
-		groups="sales_team.group_sale_salesman_all_leads"
+		groups="base.group_user"
 	/>
 
 	<template id="report_product_labelsheet">

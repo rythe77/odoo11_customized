@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+other_income.access_right_other_income_user,other_income.access_right_other_income user,other_income.model_other_income_account,account.group_account_user,1,0,0,0
+other_income.access_right_other_income_manager,other_income.access_right_other_income manager,other_income.model_other_income_account,account.group_account_manager,1,1,1,1

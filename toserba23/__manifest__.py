@@ -145,6 +145,7 @@
         'equity_change',
         'rma_rythe',
         'contract_benefit',
+        'other_income',
     ],
 
     'data': [

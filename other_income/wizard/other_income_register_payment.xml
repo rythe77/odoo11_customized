@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard view to register payment -->
+    <record id="other_income_register_payment_view_form" model="ir.ui.view">
+        <field name="name">other.income.register.payment.wizard.form</field>
+        <field name="model">other.income.payment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Other Income Register Payment">
+                <sheet>
+                    <field name="id" invisible="1"/>
+                    <div class="oe_title">
+                        <h1>Other Income</h1>
+                    </div>
+                    <group>
+                        <group>
+							<field name="other_income_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="journal_id" widget="selection"/>
+                            <label for="amount"/>
+                            <div name="amount_div" class="o_row">
+                                <field name="amount"/>
+                                <field name="currency_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_currency"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="payment_date"/>
+                            <field name="label"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string='Create' name="other_income_create" type="object" class="btn-primary"/>
+                    <button string='Create and Post' name="other_income_create_post" type="object" class="btn-primary" groups="account.group_account_invoice"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to launch Wizard for register payment -->
+    <record id="other_income_register_payment_wizard_action" model="ir.actions.act_window">
+        <field name="name">Other Income Payment</field>
+        <field name="res_model">other.income.payment.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="other_income_register_payment_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Button on accounting adviser to launch Wizard for register payment -->
+	<menuitem id="menu_other_income_payment" name="Other Income Payment"
+		parent="account.menu_finance_entries_management"
+		action="other_income_register_payment_wizard_action" sequence="100"
+		groups="account.group_account_user"
+		/>
+</odoo>

@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* other_income
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 04:02+0000\n"
+"PO-Revision-Date: 2019-04-02 12:07+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_register_payment_view_form
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: other_income
+#: model:ir.model.fields,help:other_income.field_other_income_payment_wizard_company_id
+msgid "Company related to this journal"
+msgstr "Perusahaan yang terkait dengan jurnal ini"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_register_payment_view_form
+msgid "Create"
+msgstr "Buat"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_register_payment_view_form
+msgid "Create and Post"
+msgstr "Buat dan Rekam"
+
+#. module: other_income
+#: model:ir.actions.act_window,help:other_income.other_income_account_view_action
+msgid "Create other income account here"
+msgstr "Buat akun pendapatan lain-lain di sini"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_create_uid
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_create_date
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_default_credit_account_id
+msgid "Default Credit Account"
+msgstr "Akun Kredit Standar"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_display_name
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_id
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: other_income
+#: model:ir.model.fields,help:other_income.field_other_income_account_default_credit_account_id
+msgid "It acts as a default account for credit amount"
+msgstr "Sebagai akun standar untuk jumlah kredit"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_label
+msgid "Label"
+msgstr "Label"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account___last_update
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_write_uid
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_write_date
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_account_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: other_income
+#: model:ir.actions.act_window,name:other_income.other_income_account_view_action
+#: model:ir.ui.menu,name:other_income.menu_other_income_management
+#: model:ir.ui.view,arch_db:other_income.other_income_register_payment_view_form
+msgid "Other Income"
+msgstr "Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_form_view
+msgid "Other Income Form"
+msgstr "Form Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.actions.act_window,name:other_income.other_income_register_payment_wizard_action
+#: model:ir.ui.menu,name:other_income.menu_other_income_payment
+msgid "Other Income Payment"
+msgstr "Pembayaran Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.model,name:other_income.model_other_income_payment_wizard
+msgid "Other Income Payment Wizard"
+msgstr "Wisaya Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_register_payment_view_form
+msgid "Other Income Register Payment"
+msgstr "Daftar Pembayaran Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.ui.view,arch_db:other_income.other_income_tree_view
+msgid "Other Income Tree"
+msgstr "Daftar Pendapatan Lain-lain"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_other_income_id
+msgid "Other Income Type"
+msgstr "Tipe Pendapatan"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_amount
+msgid "Payment Amount"
+msgstr "Jumlah Pembayaran"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_payment_date
+msgid "Payment Date"
+msgstr "Tanggal Pembayaran"
+
+#. module: other_income
+#: model:ir.model.fields,field_description:other_income.field_other_income_payment_wizard_journal_id
+msgid "Payment Method"
+msgstr "Metode Pembayaran"
+
+#. module: other_income
+#: model:ir.model,name:other_income.model_other_income_account
+msgid "other.income.account"
+msgstr "other.income.account"

@@ -1,0 +1,50 @@
+<odoo>
+<data>
+	<!-- other.income.account main tree view definition -->
+	<record model="ir.ui.view" id="other_income_tree_view">
+		<field name="name">other_income.other_income_tree_view</field>
+		<field name="model">other.income.account</field>
+		<field name="arch" type="xml">
+			<tree string="Other Income Tree">
+				<field name="name"/>
+				<field name="default_credit_account_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- other.income.account form view definition -->
+	<record model="ir.ui.view" id="other_income_form_view">
+		<field name="name">other_income.other_income_form_view</field>
+		<field name="model">other.income.account</field>
+		<field name="arch" type="xml">
+			<form string="Other Income Form">
+				<sheet>
+                    <h1 class="mt0">
+						<field name="name" class="oe_inline"/>
+                    </h1>
+					<group>
+						<field name="default_credit_account_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- other.income.account window action -->
+	<record model="ir.actions.act_window" id="other_income_account_view_action">
+		<field name="name">Other Income</field>
+		<field name="res_model">other.income.account</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create other income account here
+			</p>
+		</field>
+	</record>
+
+	<menuitem id="menu_other_income_management" name="Other Income"
+		parent="account.account_management_menu"
+		action="other_income_account_view_action" sequence="100"/>
+</data>
+</odoo>

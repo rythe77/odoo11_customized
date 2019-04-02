@@ -1,0 +1,1 @@
+from . import other_income_register_payment
