@@ -188,6 +188,7 @@
         'reports/mass_payslip_document.xml',
         'reports/expense_sheet_document.xml',
         'reports/rma_label_document.xml',
+        'wizard/product_label_print_wizard.xml',
     ],
     'demo': [
         #'demo/demo.xml',

@@ -18,7 +18,7 @@
 				<div class="page">
 					<div class="oe_structure"/>
 					<div class="row">
-						<t t-set="invoice_partner" t-value="[]"/>						
+						<t t-set="invoice_partner" t-value="[]"/>
 						<t t-foreach="docs" t-as="o">
 						    <t t-set="invoice_partner" t-value="invoice_partner+[o.partner_id]"/>
 						    <t t-set="currency" t-value="o.currency_id"/>

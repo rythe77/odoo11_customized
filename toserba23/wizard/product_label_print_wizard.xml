@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- wizard action on product.template -->
+    <act_window id="product_label_print_wizard_action"
+        name="Cetak Label Produk"
+        src_model="product.template"
+        res_model="product.label.print.wizard"
+        view_type="form" view_mode="form"
+        key2="client_action_multi" target="new"
+    />
+
+    <!-- wizard view -->
+    <record id="product_label_print_wizard_view" model="ir.ui.view">
+        <field name="name">Wisaya Cetak Label Produk</field>
+        <field name="model">product.label.print.wizard</field>
+        <field name="arch" type="xml">
+            <form name="Opsi Cetak">
+                <div style="text-align:justify">
+                <label string="Opsi untuk mencetak label dapat diatur di bawah ini."/>
+                </div><hr/>
+                <group name="copy">
+                    <field name="number_of_copy"/>
+                </group>
+                <footer>
+                    <button name="button_export_pdf" string="Cetak Label" type="object" default_focus="1" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
