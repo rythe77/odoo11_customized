@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_invoice"
+		model="account.invoice"
+		string="Faktur - Thermal Printer"
+		name="arayu_clinic.report_custom_invoiceslip"
+		file="arayu_clinic.faktur"
+		print_report_name="'Faktur - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="account.group_account_invoice"
+	/>
+
+	<template id="report_custom_invoiceslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="arayu_clinic.report_custom_invoice_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="custom_external_layout">
+		<t t-name="custom_external_layout">
+			<!-- Multicompany -->
+			<t t-if="not o and doc">
+				<t t-set="o" t-value="doc"/>
+			</t>
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+
+			<div class="article o_report_layout_standard">
+				<t t-raw="0"/>
+			</div>
+		</t>
+	</template>
+
+	<template id="report_custom_invoice_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="arayu_clinic.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<div class="col-xs-12 text-center" style="border-bottom: 1px dotted black">
+						<div style="margin-bottom:6px">
+							<span style="display:block; text-align: center; font:14px lucida-console,sans-serif" t-field="company.partner_id"/>
+						</div>
+						<div style="margin-bottom:6px">
+							<span style="display:block; text-align:center; font:12px lucida-console,sans-serif" t-field="company.partner_id.street"></span>
+							<span style="display:block; text-align:center; font:12px lucida-console,sans-serif" t-field="company.report_header"></span>
+						</div>
+						<div style="margin-bottom:10px; text-align:center; font:12px lucida-console,sans-serif">
+							Phone :
+							<span style="text-align:center" t-field="company.partner_id.phone"/>
+						</div>
+					</div>
+					<div class="col-xs-12 text-center" style="text-align:center; border-top: 1px dotted black; border-bottom: 1px dotted black; margin-top:1px; margin-bottom:1px; padding-top:8px; padding-bottom:8px">
+						<t t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')"><strong>*** FAKTUR ***</strong></t>
+						<t t-if="o.type == 'out_invoice' and o.state == 'draft'"><strong>*** KONSEP FAKTUR ***</strong></t>
+						<t t-if="o.type == 'out_invoice' and o.state == 'cancel'"><strong>*** FAKTUR DIBATALKAN ***</strong></t>
+						<t t-if="o.type == 'out_refund'"><strong>*** CATATAN KREDIT ***</strong></t>
+						<t t-if="o.type == 'in_refund'"><strong>*** CATATAN KREDIT PEMASOK ***</strong></t>
+						<t t-if="o.type == 'in_invoice'"><strong>*** TAGIHAN PEMASOK ***</strong></t>
+					</div>
+					<div class="col-xs-12" style="border-top: 1px dotted black; border-bottom: 1px dotted black; font:14px lucida-console,sans-serif; padding-top:8px; padding-bottom:8px">
+						Tgl :
+						<span t-field="o.date_invoice" t-field-options='{"format": "d MMM y"}'/><br/>
+						Waktu Cetak :
+						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/><br/>
+						No. Faktur :
+						<span t-field="o.number"></span><br/>
+						Kasir :
+						<span t-field="o.user_id"></span><br/>
+						Pelanggan :
+						<span t-field="o.partner_id"/>
+					</div>
+
+					<!-- Is there a discount on at least one line? -->
+					<t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+
+					<table class="table table-condensed" style="padding-top:8px; padding-bottom:8px; font:14px lucida-console,sans-serif">
+						<tbody>
+							<tr t-foreach="o.invoice_line_ids" t-as="l">
+								<td><span t-field="l.product_id"/></td>
+								<td class="text-right">
+									<span t-field="l.price_unit"/>
+									 x
+									<span t-field="l.quantity"/>
+								</td>
+								<td t-if="display_discount" class="text-right">
+									-<span t-field="l.discount"/>%
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_subtotal"
+										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div style="position:relative; float:right; margin-top:1px; padding-top:8px; padding-bottom:8px; border-top: 2px solid black" name="total">
+						<table class="table-condensed" style="min-width: 200px;max-width: 400px; font:14px lucida-console,sans-serif">
+							<tr>
+								<td class="text-left">Total : </td>
+								<td class="text-right">
+									<span t-field="o.amount_total"
+										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-xs-12 text-center" style="border-top: 1px dotted black; margin-top:40px; padding-top:8px; font:14px lucida-console,sans-serif">
+						<span style="display:block; text-align: center" t-field="o.comment"/>
+						<span style="display:block; text-align: center">Terima kasih atas Kunjungan Anda</span>
+					</div>
+					<div class="oe_structure"/>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>
