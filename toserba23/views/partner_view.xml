@@ -21,6 +21,15 @@
 			<field name="lang" position="after">
 				<field name="x_call_freq" attrs="{'invisible': [('customer', '!=', True)]}"/>
 			</field>
+			<group name="purchase" position="after">
+				<group string="Notifikasi" name="notification">
+					<field name="x_notification_method" attrs="{'invisible': [('customer', '!=', True)]}"/>
+					<field name="x_is_notify_so" string="Konfirmasi Order" attrs="{'invisible': [('customer', '!=', True)]}"/>
+					<field name="x_is_notify_do" string="Validasi Surat Jalan" attrs="{'invisible': [('customer', '!=', True)]}"/>
+					<field name="x_is_notify_inv" string="Validasi Faktur" attrs="{'invisible': [('customer', '!=', True)]}"/>
+					<field name="x_is_notify_pay" string="Konfirmasi Pembayaran" attrs="{'invisible': [('customer', '!=', True)]}"/>
+				</group>
+			</group>
 		</field>
 	</record>
     <record id="account.view_partner_property_form" model="ir.ui.view">

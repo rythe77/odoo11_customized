@@ -5,6 +5,7 @@ import datetime
 import pytz
 
 from odoo.addons import decimal_precision as dp
+from odoo.exceptions import UserError
 
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
@@ -51,6 +52,41 @@ class SaleOrderInherit(models.Model):
                 'view_id': False,
                 'type': 'ir.actions.act_window',
             }
+
+    @api.multi
+    def action_confirm(self):
+        """
+            Send notification to customer according to customer settings
+        """
+        vals = super(SaleOrderInherit, self).action_confirm()
+        for order in self:
+            if order.partner_id.x_is_notify_so and order.partner_id.x_notification_method == "email":
+                order.action_send_email()
+        return vals
+
+    @api.multi
+    def action_send_quotation(self):
+        """
+            Manually send quotation to customer
+        """
+        for order in self:
+            if order.partner_id.x_notification_method == "email":
+                order.action_send_email()
+            else:
+                raise UserError(
+                    'Anda belum mengatur metode notifikasi untuk pelanggan ini.\
+                    Silahkan atur metode notifikasi terlebih dahulu di halaman rekanan/pelanggan')
+        return True
+
+    @api.multi
+    def action_send_email(self):
+        for item in self:
+            # Find the e-mail template
+            template = self.env.ref('toserba23.quotation_email_template')
+            # Send out the e-mail template to the user
+            self.env['mail.template'].browse(template.id).send_mail(item.id)
+            # Log a note to the sale order record
+            item.message_post(body="Email notifikasi konfirmasi order sudah dikirimkan ke pelanggan")
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'

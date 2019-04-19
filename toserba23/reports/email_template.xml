@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!--Quotation/Order email template -->
+    <record id="quotation_email_template" model="mail.template">
+        <field name="name">Quotation e-mail template</field>
+        <field name="email_from">${(object.company_id.email and '&quot;Toserba Dua Tiga&quot; &lt;%s&gt;' % (object.company_id.email) or '')|safe}</field>
+        <field name="subject">Toserba Dua Tiga ${object.state in ('draft', 'sent') and 'Penawaran' or 'Order'} (No ${object.name or 'n/a' })</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="body_html"><![CDATA[
+% set access_action = object.with_context(force_website=True).get_access_action()
+% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'
+% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'
+% set pay_sign_name =  object.get_portal_confirmation_action()
+% set access_name = is_online and object.state in ('draft', 'sent') and pay_sign_name in ('pay', 'sign') and 'Accept and %s online' % pay_sign_name or 'View %s' % doc_name
+% set access_url = is_online and object.get_mail_url() or ''
+
+<table width="100%">
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;">
+            <tr>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+                <td align="center"><strong>TOSERBA DUA TIGA</strong></td>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;">
+            <tr>
+                <td style="font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E">
+                    Yth. ${object.partner_id.name}
+                    % if object.partner_id.parent_id:
+                        (<i>${object.partner_id.parent_id.name}</i>)
+                    % endif
+                ,</td>
+            </tr>
+            <tr>
+                <td style="color: #4F4F4F">
+                    % if object.state in ('draft', 'sent'):
+                        Terima kasih atas orderan Anda pada perusahaan kami. Berikut ini ${doc_name} untuk Anda dengan nomor <strong>${object.name}</strong>.<br/>
+                        Jika Anda merasa ada kekeliruan, mohon segera menghubungi Customer Service kami.
+                    % else
+                        ${doc_name} Anda dengan nomor <strong>${object.name}</strong> telah dikonfirmasi.<br/>
+                        Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.<br/>
+                    % endif
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;">
+                <tr>
+                    <td width="220" style="padding: 10px 0; vertical-align: top; line-height: 1.6em;">Nomor ${doc_name} :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;"><span>${object.name}</span></td>
+                </tr>
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Nama :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.partner_id.name}</span></td>
+                </tr>
+            % if object.confirmation_date:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Tanggal Konfirmasi :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_tz(object.confirmation_date)}</span></td>
+                </tr>
+            % endif
+            % if object.payment_term_id:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Jatuh Tempo :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.payment_term_id.name}</span></td>
+                </tr>
+            % endif
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Alamat Pengiriman :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">
+                        ${object.partner_id.street},
+                            % if object.partner_id.street2
+                                ${object.partner_id.street2}
+                            % endif
+                        ${object.partner_id.city}
+                    </td>
+                </tr>
+            % if object.use_transporter and object.transporter_id:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Jasa Ekspedisi :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">
+                        ${object.transporter_id.name}
+                        ( ${object.transporter_id.street},
+                        % if object.transporter_id.street2:
+                            ${object.transporter_id.street2},
+                        % endif
+                        ${object.transporter_id.city},
+                        % if object.transporter_id.phone:
+                            ${object.transporter_id.phone},
+                        % endif
+                        % if object.transporter_id.mobile:
+                            ${object.transporter_id.mobile},
+                        % endif
+                        )
+                    </td>
+                </tr>
+            % endif
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;">
+                <tr>
+                    <td style="padding: 20px 0; font-weight: bold;">Rincian Pesanan</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px 0;">
+                        <table style="border-collapse: collapse; color: #4F4F4F;">
+                            <tr>
+                                <th align="left" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="280">Nama Barang</th>
+                                <th align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="112">Jumlah</th>
+                                <th align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="168">Harga</th>
+                            </tr>
+                            <tbody style="vertical-align: top; line-height: 1.6em;">
+                                % for line in object.order_line:
+                                    <tr>
+                                        <td align="left" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="280">${line.product_id.name}</td>
+                                        <td align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="112">${line.product_uom_qty} ${line.product_uom.name}</td>
+                                        <td align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="168">
+                                            ${format_amount(line.price_unit, line.currency_id)}
+                                            % if line.discount:
+                                                (-${line.discount}%)
+                                            % endif
+                                        </td>
+                                    </tr>
+                                % endfor
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0 0 15px;">
+                        <table style="border-collapse: collapse;">
+                            <tr>
+                                <td align="right" width="392" style="font-weight: bold; padding: 5px 0;">Total: </td>
+                                <td align="right" width="168" style="padding: 5px 0;">${format_amount(object.amount_total, object.pricelist_id.currency_id)}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+        </table>
+    </td></tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;">
+                <tr>
+                    <td style="padding: 10px 0;">
+                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>
+                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <table style="padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;">
+                            <tr>
+                                <td align="center" style="padding: 20px 20px 20px;">
+                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.
+                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.
+                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>
+
+                                    % if object.state not in ('draft', 'sent'):
+                                        Berikut ini akun bank resmi Toserba Dua Tiga<br/>
+                                        <span style="white-space: pre-wrap;">${object.company_id.report_footer}</span>
+                                    % endif
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;">
+                <tr>
+                    <td align="center" style="padding: 10px 0;">
+                        &copy; Toserba Dua Tiga<br/>
+                        ${object.company_id.street}<br/>
+                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>
+                        Telepon : ${object.company_id.phone}<br/>
+                        <span style="white-space: pre-wrap;">${object.company_id.contact_person}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+]]>
+        </field>
+    </record>
+
+    <!--Delivery email template -->
+    <record id="delivery_email_template" model="mail.template">
+        <field name="name">Delivery e-mail template</field>
+        <field name="email_from">${(object.company_id.email and '&quot;Toserba Dua Tiga&quot; &lt;%s&gt;' % (object.company_id.email) or '')|safe}</field>
+        <field name="subject">Toserba Dua Tiga Konfirmasi Pengiriman (No ${object.name or 'n/a' })</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="body_html"><![CDATA[
+<table width="100%">
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;">
+            <tr>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+                <td align="center"><strong>TOSERBA DUA TIGA</strong></td>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;">
+            <tr>
+                <td style="font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E">
+                    Yth. ${object.partner_id.name}
+                    % if object.partner_id.parent_id:
+                        (<i>${object.partner_id.parent_id.name}</i>)
+                    % endif
+                ,</td>
+            </tr>
+            <tr>
+                <td style="color: #4F4F4F">
+                        Pengiriman pesanan Anda dengan nomor <strong>${object.name}</strong> telah terkirim.<br/>
+                    % if object.use_transporter and object.transporter_id:
+                        Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.
+                    % endif
+                    % if object.sale_id:
+                        Pengiriman ini adalah untuk order dengan nomor ${object.sale_id.name}.
+                    % endif
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;">
+                <tr>
+                    <td width="220" style="padding: 10px 0; vertical-align: top; line-height: 1.6em;">Nomor Pengiriman :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;"><span>${object.name}</span></td>
+                </tr>
+            % if object.sale_id:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Nomor Order :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.sale_id.name}</span></td>
+                </tr>
+            % endif
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Nama :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.partner_id.name}</span></td>
+                </tr>
+            % if object.date_done:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Tanggal Pengiriman :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_tz(object.date_done)}</span></td>
+                </tr>
+            % endif
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Alamat Pengiriman :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">
+                        ${object.partner_id.street},
+                            % if object.partner_id.street2
+                                ${object.partner_id.street2}
+                            % endif
+                        ${object.partner_id.city}
+                    </td>
+                </tr>
+            % if object.use_transporter and object.transporter_id:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Jasa Ekspedisi :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">
+                        ${object.transporter_id.name}
+                        ( ${object.transporter_id.street},
+                        % if object.transporter_id.street2:
+                            ${object.transporter_id.street2},
+                        % endif
+                        ${object.transporter_id.city},
+                        % if object.transporter_id.phone:
+                            ${object.transporter_id.phone},
+                        % endif
+                        % if object.transporter_id.mobile:
+                            ${object.transporter_id.mobile},
+                        % endif
+                        )
+                    </td>
+                </tr>
+            % endif
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;">
+                <tr>
+                    <td style="padding: 20px 0; font-weight: bold;">Rincian Pengiriman</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px 0;">
+                        <table style="border-collapse: collapse; color: #4F4F4F;">
+                            <tr>
+                                <th align="left" style="padding: 10px 0; font-weight: bold;" width="380">Nama Barang</th>
+                                <th align="right" style="padding: 10px 0; font-weight: bold;" width="180">Jumlah Terkirim</th>
+                            </tr>
+                            <tbody style="vertical-align: top; line-height: 1.6em;">
+                                % for line in object.move_lines:
+                                    <tr>
+                                        <td align="left" style="padding: 10px 0; border-top: 1px solid #DDDDDD;" width="380">${line.product_id.name}</td>
+                                        <td align="right" style="padding: 10px 0; border-top: 1px solid #DDDDDD;" width="180">${line.quantity_done} ${line.product_uom.name}</td>
+                                    </tr>
+                                % endfor
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                % if object.backorder_id:
+                <tr>
+                    <td style="padding: 0 0 15px;">
+                        <table width="100%" style="border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">
+                                        Pengiriman ini adalah backorder dari <strong>${object.backorder_id.name}</strong>.<br/>
+                                    </td>
+                                </tr>
+                        </table>
+                    </td>
+                </tr>
+                % endif
+        </table>
+    </td></tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;">
+                <tr>
+                    <td style="padding: 10px 0;">
+                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>
+                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;">
+                <tr>
+                    <td align="center" style="padding: 10px 0;">
+                        &copy; Toserba Dua Tiga<br/>
+                        ${object.company_id.street}<br/>
+                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>
+                        Telepon : ${object.company_id.phone}<br/>
+                        <span style="white-space: pre-wrap;">${object.company_id.contact_person}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+]]>
+        </field>
+    </record>
+
+    <!--Invoice reminder email template -->
+    <record id="invoice_email_template" model="mail.template">
+        <field name="name">Invoice e-mail template</field>
+        <field name="email_from">${(object.company_id.email and '&quot;Toserba Dua Tiga&quot; &lt;%s&gt;' % (object.company_id.email) or '')|safe}</field>
+        <field name="subject">Toserba Dua Tiga Informasi Tagihan (No ${object.number or 'n/a' })</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="body_html"><![CDATA[
+<table width="100%">
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;">
+            <tr>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+                <td align="center"><strong>TOSERBA DUA TIGA</strong></td>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;">
+            <tr>
+                <td style="font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E">
+                    Yth. ${object.partner_id.name}
+                    % if object.partner_id.parent_id:
+                        (<i>${object.partner_id.parent_id.name}</i>)
+                    % endif
+                ,</td>
+            </tr>
+            <tr>
+                <td style="color: #4F4F4F">
+                    Faktur tagihan Anda dengan nomor <strong>${object.number}</strong>,<br/>
+                    untuk order nomor <strong>${object.origin}</strong> jatuh tempo pada tanggal tersebut di bawah ini.<br/>
+                    Apabila Anda merasa ada yang tidak cocok, mohon segera menghubungi Customer Service kami.
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;">
+                <tr>
+                    <td width="220" style="padding: 10px 0; vertical-align: top; line-height: 1.6em;">Nomor Faktur :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;"><span>${object.number}</span></td>
+                </tr>
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Nomor Order :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.origin}</span></td>
+                </tr>
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Nama :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.partner_id.name}</span></td>
+                </tr>
+            % if object.date_invoice:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Tanggal Faktur :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}</span></td>
+                </tr>
+            % endif
+            % if object.date_due:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Tanggal Jatuh Tempo :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}</span></td>
+                </tr>
+            % endif
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;">
+                <tr>
+                    <td style="padding: 20px 0; font-weight: bold;">Rincian Faktur</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px 0;">
+                        <table style="border-collapse: collapse; color: #4F4F4F;">
+                            <tr>
+                                <th align="left" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="280">Nama Barang</th>
+                                <th align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="112">Jumlah</th>
+                                <th align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;" width="168">Harga</th>
+                            </tr>
+                            <tbody style="vertical-align: top; line-height: 1.6em;">
+                                % for line in object.invoice_line_ids:
+                                    <tr>
+                                        <td align="left" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="280">${line.product_id.name}</td>
+                                        <td align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="112">${line.quantity} ${line.uom_id.name}</td>
+                                        <td align="right" style="padding: 10px 0; border-bottom: 1px solid #DDDDDD;" width="168">
+                                            ${format_amount(line.price_unit, line.currency_id)}
+                                            % if line.discount:
+                                                (-${line.discount}%)
+                                            % endif
+                                        </td>
+                                    </tr>
+                                % endfor
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0 0 5px;">
+                        <table style="border-collapse: collapse;">
+                            <tr>
+                                <td align="right" width="392" style="font-weight: bold; padding: 5px 0;">Total: </td>
+                                <td align="right" width="168" style="padding: 5px 0;">${format_amount(object.amount_total, object.currency_id)}</td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="392" style="font-weight: bold; padding: 15px 0;">Jumlah Terhutang: </td>
+                                <td align="right" width="168" style="padding: 5px 0;">${format_amount(object.residual, object.currency_id)}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+        </table>
+    </td></tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;">
+                <tr>
+                    <td style="padding: 10px 0;">
+                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>
+                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <table style="padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;">
+                            <tr>
+                                <td align="center" style="padding: 20px 20px 20px;">
+                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.
+                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.
+                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>
+                                    Berikut ini akun bank resmi Toserba Dua Tiga<br/>
+                                    <span style="white-space: pre-wrap;">${object.company_id.report_footer}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;">
+                <tr>
+                    <td align="center" style="padding: 10px 0;">
+                        &copy; Toserba Dua Tiga<br/>
+                        ${object.company_id.street}<br/>
+                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>
+                        Telepon : ${object.company_id.phone}<br/>
+                        <span style="white-space: pre-wrap;">${object.company_id.contact_person}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+]]>
+        </field>
+    </record>
+
+    <!--Payment email template -->
+    <record id="payment_email_template" model="mail.template">
+        <field name="name">Payment e-mail template</field>
+        <field name="email_from">${(object.company_id.email and '&quot;Toserba Dua Tiga&quot; &lt;%s&gt;' % (object.company_id.email) or '')|safe}</field>
+        <field name="subject">Toserba Dua Tiga Konfirmasi Pembayaran (No ${object.name or 'n/a' })</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="body_html"><![CDATA[
+<table width="100%">
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;">
+            <tr>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+                <td align="center"><strong>TOSERBA DUA TIGA</strong></td>
+                <td align="center">
+			        <img style="max-height: 40px;" src='https://i.imgur.com/aj5VrNu.png'/>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;">
+            <tr>
+                <td style="font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E">
+                    Yth. ${object.partner_id.name}
+                    % if object.partner_id.parent_id:
+                        (<i>${object.partner_id.parent_id.name}</i>)
+                    % endif
+                ,</td>
+            </tr>
+            <tr>
+                <td style="color: #4F4F4F">
+                    Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.<br/>
+                    Pembayaran menggunakan ${object.journal_id.name} telah kami terima.<br/>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-bottom: 3px solid #C9C9C9;">
+                <tr>
+                    <td width="220" style="padding: 10px 0; vertical-align: top; line-height: 1.6em;">Referensi Pembayaran :</td>
+                    <td width="340" style="padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;"><span>${object.name}</span></td>
+                </tr>
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Total Pembayaran :</td>
+                    <td width="340" style="font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_amount(object.amount, object.currency_id)}</span></td>
+                </tr>
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Metode Pembayaran :</td>
+                    <td width="340" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.journal_id.name}</span></td>
+                </tr>
+            % if object.payment_date:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Tanggal Pembayaran :</td>
+                    <td width="340" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}</span></td>
+                </tr>
+            % endif
+            % if object.communication:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Keterangan :</td>
+                    <td width="340" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.communication}</span></td>
+                </tr>
+            % endif
+            % if object.x_collector:
+                <tr>
+                    <td width="220" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;">Penerima :</td>
+                    <td width="340" style="padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;"><span>${object.x_collector}</span></td>
+                </tr>
+            % endif
+        </table>
+    </td></tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;">
+                <tr>
+                    <td style="padding: 10px 0;">
+                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>
+                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 20px;">
+            <table width="600" style="margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;">
+                <tr>
+                    <td align="center" style="padding: 10px 0;">
+                        &copy; Toserba Dua Tiga<br/>
+                        ${object.company_id.street}<br/>
+                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>
+                        Telepon : ${object.company_id.phone}<br/>
+                        <span style="white-space: pre-wrap;">${object.company_id.contact_person}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+]]>
+        </field>
+    </record>
+</data>
+</odoo>

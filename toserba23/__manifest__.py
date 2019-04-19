@@ -39,6 +39,8 @@
             - Tunjangan jabatan diatur di kontrak
             - Akses LIHAT absensi untuk petugas penggajian
         Todo:
+            - Automatic email and sms system
+            - Dasbor penagihan sebaiknya tampilkan jumlah yang belum dibayar, bukan jumlah total
             - Sistem daftar harga lebih kompleks
             - Nisa mau dibatasi ubah harga di faktur
             - pembayaran di muka untuk pembelian
@@ -50,9 +52,7 @@
             - DO line cant be deleted if not in draft status
             - DO should group same item together
             - Upload product image
-            - Dasbor persediaan 3 kolom saja
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
-            - Automatic email and sms system
             - Product duplicate should also duplicate pricelist
             - sales commission system
             - Kalo tidak ada 0,5 nya hilangkan saja komanya
@@ -117,7 +117,7 @@
     'version': '0.1',
 
     'depends': [
-        'base','sale','stock','account','purchase','sale_margin','hr_expense', 'hr_payroll', 'crm',
+        'base','mail','sale','stock','account','purchase','sale_margin','hr_expense', 'hr_payroll', 'crm',
         #'backend_theme_v11',
         #'login_user_detail',
         #'web_disable_export_delete_button',
@@ -167,6 +167,7 @@
         'views/hr_payroll_view.xml',
         'views/crm_view.xml',
         'views/sale_adv_payment_view.xml',
+        'views/company_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml', 
         'reports/invoice_proforma_document.xml',
@@ -188,6 +189,7 @@
         'reports/mass_payslip_document.xml',
         'reports/expense_sheet_document.xml',
         'reports/rma_label_document.xml',
+        'reports/email_template.xml',
         'wizard/product_label_print_wizard.xml',
     ],
     'demo': [

@@ -83,6 +83,9 @@
 			<button name="action_unlock" position="attributes">
 				<attribute name="groups">toserba23.lock_button_on_document</attribute>
 			</button>
+			<button name="action_cancel" position="before">
+				<button name="action_send_quotation" string="Kirim Penawaran" type="object" attrs="{'invisible': [('state', 'in', ['sale','done','cancel'])]}" groups="sales_team.group_sale_salesman"/>
+			</button>
 			<button name="action_cancel" position="after">
 				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['sale','done','cancel'])]}" groups="sales_team.group_sale_manager"/>
 			</button>
