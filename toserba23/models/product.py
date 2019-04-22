@@ -53,6 +53,13 @@ class Product(models.Model):
                     record.x_promo_cash = item.fixed_price
                     x_promo_cash_min=item.min_quantity
 
+    def action_view_stock_moves(self):
+        """Update stock move button to show stock.move, not stock.move.line"""
+        self.ensure_one()
+        action = self.env.ref('stock.stock_move_action').read()[0]
+        action['domain'] = [('product_id.product_tmpl_id', 'in', self.ids)]
+        return action
+
 
 class ProductProductInherited(models.Model):
     _inherit = 'product.product'
