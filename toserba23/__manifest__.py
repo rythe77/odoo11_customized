@@ -146,6 +146,7 @@
         'rma_rythe',
         'contract_benefit',
         'other_income',
+        'sms_frame',
     ],
 
     'data': [
@@ -190,6 +191,7 @@
         'reports/expense_sheet_document.xml',
         'reports/rma_label_document.xml',
         'reports/email_template.xml',
+        'reports/sms_wa_template.xml',
         'wizard/product_label_print_wizard.xml',
     ],
     'demo': [

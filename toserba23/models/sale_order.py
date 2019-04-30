@@ -62,6 +62,8 @@ class SaleOrderInherit(models.Model):
         for order in self:
             if order.partner_id.x_is_notify_so and order.partner_id.x_notification_method == "email":
                 order.action_send_email()
+            elif order.partner_id.x_is_notify_so and order.partner_id.x_notification_method == "wa":
+                order.action_send_wa()
         return vals
 
     @api.multi
@@ -72,6 +74,8 @@ class SaleOrderInherit(models.Model):
         for order in self:
             if order.partner_id.x_notification_method == "email":
                 order.action_send_email()
+            elif order.partner_id.x_notification_method == "wa":
+                order.action_send_wa()
             else:
                 raise UserError(
                     'Anda belum mengatur metode notifikasi untuk pelanggan ini.\
@@ -87,6 +91,14 @@ class SaleOrderInherit(models.Model):
             self.env['mail.template'].browse(template.id).send_mail(item.id)
             # Log a note to the sale order record
             item.message_post(body="Email notifikasi konfirmasi order sudah dikirimkan ke pelanggan")
+
+    @api.multi
+    def action_send_wa(self):
+        for item in self:
+            # Find the sms template
+            template = self.env.ref('toserba23.quotation_wa_template')
+            # Send out the sms template to the user
+            self.env['sms.template'].browse(template.id).send_sms(template.id, item.id)
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'

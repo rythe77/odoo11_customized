@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!--Quotation/Order wa template -->
+    <record id="quotation_wa_template" model="sms.template">
+        <field name="name">Quotation WA template</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'
+% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''
+Yth. ${object.partner_id.name}
+% if object.state in ('draft', 'sent'):
+Terima kasih atas orderan Anda di Toserba Dua Tiga. Berikut ini ${doc_name} untuk Anda dengan nomor *${object.name}*.
+Jika ada kekeliruan, mohon segera menghubungi kami.
+% else
+${doc_name} Anda dengan nomor *${object.name}* telah dikonfirmasi.
+Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.
+% endif
+----------
+% if object.confirmation_date:
+Tanggal Konfirmasi : ${format_tz(object.confirmation_date)}
+% endif
+% if object.payment_term_id:
+Jatuh Tempo : ${object.payment_term_id.name}
+% endif
+Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}
+% if object.use_transporter and object.transporter_id:
+Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_
+% endif
+Rincian Pesanan :
+% for line in object.order_line:
+  - ${line.product_id.name} [${line.product_uom_qty} ${line.product_uom.name} x ${format_amount(line.price_unit, line.currency_id)}]
+  % if line.discount:
+    (-${line.discount}%)
+  % endif
+% endfor
+----------
+*Total : ${format_amount(object.amount_total, object.pricelist_id.currency_id)}*
+----------
+Hormat kami,
+Toserba Dua Tiga _(${object.company_id.phone})_
+        </field>
+    </record>
+
+    <!--Delivery wa template -->
+    <record id="delivery_wa_template" model="sms.template">
+        <field name="name">Delivery WA template</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''
+Yth. ${object.partner_id.name}
+Pesanan Anda telah terkirim dengan nomor *${object.name}*.
+% if object.use_transporter and object.transporter_id:
+Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.
+% endif
+% if object.sale_id:
+Pengiriman ini untuk order ${object.sale_id.name}.
+% endif
+----------
+% if object.date_done:
+Tanggal Pengiriman : ${format_tz(object.date_done)}
+% endif
+Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}
+% if object.use_transporter and object.transporter_id:
+Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_
+% endif
+Rincian Pengiriman :
+% for line in object.move_lines:
+  - ${line.product_id.name} [${line.quantity_done} ${line.product_uom.name}]
+% endfor
+% if object.backorder_id:
+Pengiriman ini adalah backorder dari *${object.backorder_id.name}*.
+% endif
+----------
+Hormat kami,
+Toserba Dua Tiga _(${object.company_id.phone})_
+        </field>
+    </record>
+
+    <!--Invoice wa template -->
+    <record id="invoice_wa_template" model="sms.template">
+        <field name="name">Invoice WA template</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+Yth. ${object.partner_id.name}
+Berikut ini rincian faktur tagihan Anda dengan nomor *${object.number}*.
+Apabila ada kesalahan data, mohon segera menghubungi kami.
+----------
+No. Order : ${object.origin}
+% if object.date_invoice:
+Tanggal Faktur : ${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}
+% endif
+% if object.date_due:
+Tanggal Jatuh Tempo : ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}
+% endif
+Rincian Faktur :
+% for line in object.invoice_line_ids:
+  - ${line.product_id.name} [${line.quantity} ${line.uom_id.name} x ${format_amount(line.price_unit, line.currency_id)}]
+  % if line.discount:
+    (-${line.discount}%)
+  % endif
+% endfor
+----------
+Total : ${format_amount(object.amount_total, object.currency_id)}
+*Jumlah Terhutang : ${format_amount(object.residual, object.currency_id)}*
+----------
+Hormat kami,
+Toserba Dua Tiga _(${object.company_id.phone})_
+        </field>
+    </record>
+
+    <!--Payment wa template -->
+    <record id="payment_wa_template" model="sms.template">
+        <field name="name">Payment WA template</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+Yth. ${object.partner_id.name}
+Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.
+Pembayaran menggunakan ${object.journal_id.name} telah kami terima.
+----------
+Referensi Pembayaran : ${object.name}
+Total Pembayaran : ${format_amount(object.amount, object.currency_id)}
+Metode Pembayaran : ${object.journal_id.name}
+% if object.payment_date:
+Tanggal Pembayaran : ${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}
+% endif
+% if object.communication:
+Keterangan : ${object.communication}
+% endif
+% if object.x_collector:
+Penerima : ${object.x_collector}
+% endif
+----------
+Hormat kami,
+Toserba Dua Tiga _(${object.company_id.phone})_
+        </field>
+    </record>
+
+</data>
+</odoo>

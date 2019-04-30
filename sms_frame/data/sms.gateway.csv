@@ -1,0 +1,3 @@
+"id","gateway_model_name","name"
+"sms_twilio","sms.gateway.twilio","TWILIO"
+"sms_wassenger","sms.gateway.wassenger","WASSENGER"

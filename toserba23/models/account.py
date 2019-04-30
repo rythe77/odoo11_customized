@@ -32,6 +32,8 @@ class AccountInvoice(models.Model):
         for rec in self:
             if rec.partner_id.customer and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
+            elif rec.partner_id.customer and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "wa":
+                rec.action_send_wa()
         return return_val
 
 
@@ -44,6 +46,14 @@ class AccountInvoice(models.Model):
             self.env['mail.template'].browse(template.id).send_mail(item.id)
             # Log a note to the sale order record
             item.message_post(body="Email reminder tagihan sudah dikirimkan ke pelanggan")
+
+    @api.multi
+    def action_send_wa(self):
+        for item in self:
+            # Find the sms template
+            template = self.env.ref('toserba23.invoice_wa_template')
+            # Send out the sms template to the user
+            self.env['sms.template'].browse(template.id).send_sms(template.id, item.id)
 
 
 class AccountPayment(models.Model):
@@ -63,6 +73,8 @@ class AccountPayment(models.Model):
             # Send email notification to customer
             if rec.partner_id.customer and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
+            if rec.partner_id.customer and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "wa":
+                rec.action_send_wa()
         return return_val
 
     @api.multi
@@ -72,8 +84,14 @@ class AccountPayment(models.Model):
             template = self.env.ref('toserba23.payment_email_template')
             # Send out the e-mail template to the user
             self.env['mail.template'].browse(template.id).send_mail(item.id)
-            # Log a note to the sale order record
-            #item.message_post(body="Email notifikasi sudah dikirimkan ke pelanggan")
+
+    @api.multi
+    def action_send_wa(self):
+        for item in self:
+            # Find the sms template
+            template = self.env.ref('toserba23.payment_wa_template')
+            # Send out the sms template to the user
+            self.env['sms.template'].browse(template.id).send_sms(template.id, item.id)
 
 
 class account_register_payments_inherited(models.TransientModel):
