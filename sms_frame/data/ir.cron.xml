@@ -8,7 +8,7 @@
             <field name="model_id" ref="model_sms_account"/>
             <field name="state">code</field>
             <field name="code">model.check_all_messages()</field>
-            <field name="active" eval="True"/>
+            <field name="active" eval="False"/>
             <field name="user_id" ref="base.user_root" />
             <field name="interval_number">1</field>
             <field name="interval_type">hours</field>
@@ -23,7 +23,7 @@
             <field name="code">model.process_sms_queue(20)</field>
             <field name="active" eval="True"/>
             <field name="user_id" ref="base.user_root" />
-            <field name="interval_number">1</field>
+            <field name="interval_number">5</field>
             <field name="interval_type">minutes</field>
             <field name="numbercall">-1</field>
             <field name="doall" eval="False"/>

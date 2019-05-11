@@ -29,7 +29,11 @@ class StockPicking(models.Model):
             if rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
             elif rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "wa":
-                rec.action_send_wa()
+                template = self.env.ref('toserba23.delivery_wa_template')
+                self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
+            elif rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "sms":
+                template = self.env.ref('toserba23.delivery_sms_template')
+                self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
         return return_val
 
     @api.multi
@@ -46,14 +50,6 @@ class StockPicking(models.Model):
             self.env['mail.template'].browse(template.id).send_mail(item.id)
             # Log a note to the sale order record
             item.message_post(body="Email notifikasi pengiriman sudah dikirimkan ke pelanggan")
-
-    @api.multi
-    def action_send_wa(self):
-        for item in self:
-            # Find the sms template
-            template = self.env.ref('toserba23.delivery_wa_template')
-            # Send out the sms template to the user
-            self.env['sms.template'].browse(template.id).send_sms(template.id, item.id)
 
 
 class StockPickingType(models.Model):

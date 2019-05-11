@@ -74,6 +74,24 @@
       	  </field>
       </record>
 
+	  <record id="sms_account_view_form_inherit_sms_frame_zenviva" model="ir.ui.view">
+          <field name="name">sms.account.view.form.zenviva</field>
+          <field name="model">sms.account</field>
+          <field name="inherit_id" ref="sms_frame.sms_account_view_form"/>
+          <field name="arch" type="xml">
+      	      <xpath expr="//h2[@id='gatewayhook']" position="after">
+      	          <div attrs="{'invisible': [('gateway_model', '!=', 'sms.gateway.zenviva')]}">
+				      <group>
+						  <field name="zenviva_api_url"/>
+						  <field name="zenviva_userkey"/>
+						  <field name="zenviva_passkey"/>
+						  <field name="zenviva_last_check_date"/>
+					  </group>
+    	          </div>
+      	      </xpath>
+      	  </field>
+      </record>
+
       <menuitem id="sms_account_menu" name="Accounts" parent="sms_parent_menu" action="sms_account_action" sequence="10"/>
 
     </data>

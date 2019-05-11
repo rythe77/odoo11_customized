@@ -9,4 +9,5 @@ from . import sms_gateway
 from . import sms_template
 from . import sms_gateway_twilio
 from . import sms_gateway_wassenger
+from . import sms_gateway_zenviva
 from . import ir_attachment

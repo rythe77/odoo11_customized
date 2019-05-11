@@ -11,3 +11,4 @@ access_sms_template_user,sms.template.user,model_sms_template,base.group_user,1,
 access_sms_template_system,sms.template.system,model_sms_template,base.group_system,1,1,1,1
 access_sms_gateway_twilio,sms.gateway.twilio.user,model_sms_gateway_wassenger,base.group_user,1,0,0,0
 access_sms_gateway_wassenger,sms.gateway.wassenger.user,model_sms_gateway_wassenger,base.group_user,1,0,0,0
+access_sms_gateway_zenviva,sms.gateway.zenviva.user,model_sms_gateway_zenviva,base.group_user,1,0,0,0

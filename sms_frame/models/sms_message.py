@@ -65,6 +65,8 @@ class SmsMessage(models.Model):
             queued_sms.status_code = my_sms.delivary_state
             if my_sms.message_id != "":
                 queued_sms.sms_gateway_message_id = my_sms.message_id
+            if my_sms.human_read_error != "":
+                queued_sms.status_string = my_sms.human_read_error
 
             #record the message in the communication log
             self.env[queued_sms.model_id.model].browse(queued_sms.record_id).message_post(body=queued_sms.sms_content, subject="SMS")

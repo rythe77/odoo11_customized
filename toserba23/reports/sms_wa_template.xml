@@ -140,5 +140,65 @@ Toserba Dua Tiga _(${object.company_id.phone})_
         </field>
     </record>
 
+    <!--Quotation/Order sms template -->
+    <record id="quotation_sms_template" model="sms.template">
+        <field name="name">Quotation SMS template</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+Yth. ${object.partner_id.name}.
+% if object.state in ('draft', 'sent'):
+Tks atas orderan Anda di perusahaan kami.
+Slhkn tunggu beberapa saat hingga order Anda kami konfirmasi.
+% else
+Order Anda dgn no ${object.name} tlh dikonfirmasi.
+Pengiriman akan dilakukan sesuai jadwal yg tlh dijanjikan.
+% endif
+Toserba 23
+        </field>
+    </record>
+
+    <!--Delivery sms template -->
+    <record id="delivery_sms_template" model="sms.template">
+        <field name="name">Delivery SMS template</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''
+Yth. ${object.partner_id.name}.
+Pesanan Anda ${object.sale_id.name} tlh dikirim.
+% if object.use_transporter and object.transporter_id:
+Slhkn hbngi ${object.transporter_id.name} (${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''}) utk info pengiriman.
+% endif
+Toserba 23
+        </field>
+    </record>
+
+    <!--Invoice sms template -->
+    <record id="invoice_sms_template" model="sms.template">
+        <field name="name">Invoice SMS template</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+Yth. ${object.partner_id.name}.
+Fktr tagihan Anda dgn no ${object.number},
+sejml ${format_amount(object.residual, object.currency_id)},
+jth tempo pd ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}.
+Toserba 23
+        </field>
+    </record>
+
+    <!--Payment sms template -->
+    <record id="payment_sms_template" model="sms.template">
+        <field name="name">Payment SMS template</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="sms_to">${object.partner_id.mobile}</field>
+        <field name="template_body">
+Yth. ${object.partner_id.name}.
+Tks tlh menyelesaikan transaksi.
+Pembayaran menggunakan ${object.journal_id.name} sejumlah ${format_amount(object.amount, object.currency_id)} tlh kami terima.
+Toserba 23
+        </field>
+    </record>
 </data>
 </odoo>

@@ -1,0 +1,702 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sms_frame
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-10 03:28+0000\n"
+"PO-Revision-Date: 2019-05-10 15:38+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_message_view_kanban
+msgid ""
+"<br/><br/>\n"
+"\t\t\t\t      By"
+msgstr ""
+"<br/><br/>\n"
+"\t\t\t\t      By"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_number_mobile_number
+msgid "A mobile phone number or a 1-11 character alphanumeric name"
+msgstr "Nomor ponsel atau nama alfanumerik dengan jumlah karakter 1-11"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_wassenger_api_url
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_zenviva_api_url
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_api_url
+msgid "API URL"
+msgstr "API URL"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_account_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_account_gateway_id
+msgid "Account"
+msgstr "Akun"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_account_gateway_id
+msgid "Account Gateway"
+msgstr "Akun Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_name
+msgid "Account Name"
+msgstr "Nama Akun"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_twilio_account_sid
+msgid "Account SID"
+msgstr "SID Akun"
+
+#. module: sms_frame
+#: model:ir.ui.menu,name:sms_frame.sms_account_menu
+msgid "Accounts"
+msgstr "Akun"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,help:sms_frame.sms_account_action
+#: model:ir.actions.act_window,help:sms_frame.sms_account_action_twilio
+msgid "Add SMS Gateway Accounts"
+msgstr "Tambahkan Akun SMS Gateway"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_account
+msgid "Adds the Zenviva specfic gateway settings to the sms gateway accounts"
+msgstr "Tambahkan pengaturan spesifik Zenviva pada akun sms gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_model_id
+msgid "Applies to"
+msgstr "Terapkan untuk"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_twilio_auth_token
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_wassenger_api_token
+msgid "Auth Token"
+msgstr "Auth Token"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_template_body
+msgid "Body"
+msgstr "Isi"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_by_partner_id
+msgid "By"
+msgstr "Oleh"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.view_server_action_form_inherit_sms_frame
+msgid "Choose a SMS template."
+msgstr "Pilih templete SMS"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_compose_wizard
+msgid "Composing SMS wizard"
+msgstr "Wisaya sunting SMS"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_template_view_form
+msgid "Content"
+msgstr "Isi"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,help:sms_frame.sms_template_action
+msgid "Create an SMS template"
+msgstr "Buat templete SMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_create_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_create_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_null_value
+msgid "Default Value"
+msgstr "Nilai Standar"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_status_code
+msgid "Delivary State"
+msgstr "Status Pengiriman"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Delivered"
+msgstr "Terkirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_delivery_time
+msgid "Delivery Time"
+msgstr "Waktu Terkirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_device_id
+msgid "Device ID"
+msgstr "ID Perangkat"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_direction
+msgid "Direction"
+msgstr "Arah"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_display_name
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_template_view_form
+msgid "Dynamic Placeholder Generator"
+msgstr "Pembuat Placeholder Dinamik"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.view_partner_form_inherit_sms_frame
+msgid "E.164 format e.g. +61 427 671 760"
+msgstr "E.164 format e.g. +61 427 671 760"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Failed to Send"
+msgstr "Gagal Mengirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_model_object_field_id
+msgid "Field"
+msgstr "Kolom"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_copyvalue
+msgid "Final placeholder expression, to be copy-pasted in the desired template field."
+msgstr "Ekspresi placeholder akhir, akan disalin pada kolom contoh yang diinginkan."
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_sms_from
+msgid "From (Mobile)"
+msgstr "Dari (Ponsel)"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_from_mobile_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_from_mobile
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_from_mobile
+msgid "From Mobile"
+msgstr "Dari Ponsel"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_from_mobile_verified_id
+msgid "From Mobile (stored)"
+msgstr "Dari Ponsel (disimpan)"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_gateway_model
+msgid "Gateway Model"
+msgstr "Model Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_gateway_model_name
+msgid "Gateway Model Name"
+msgstr "Nama Model Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_name
+msgid "Gateway Name"
+msgstr "Nama Gateway"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_account_view_form
+msgid "Gateway Settings"
+msgstr "Pengaturan Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_id
+msgid "ID"
+msgstr "ID"
+
+#. module: sms_frame
+#: selection:sms.message,direction:0
+msgid "INBOUND"
+msgstr "INBOUND"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_lang
+msgid "Language"
+msgstr "Bahasa"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_twilio_last_check_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_wassenger_last_check_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_zenviva_last_check_date
+msgid "Last Check Date"
+msgstr "Tanggal Pengecekan Terakhir"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number___last_update
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_write_uid
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_twilio_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_wassenger_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_gateway_zenviva_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_write_date
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,help:sms_frame.sms_number_action
+msgid "List of stored mobile numbers."
+msgstr "Daftar nomor ponsel tersimpan."
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_ir_attachment_mms
+msgid "MMS"
+msgstr "MMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_attachment_ids
+msgid "MMS Attachments"
+msgstr "Lampiran MMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_media_id
+msgid "Media (MMS)"
+msgstr "Media (MMS)"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_media_filename
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_media_filename
+msgid "Media Filename"
+msgstr "Nama Berkas Media"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_media_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_media_id
+msgid "Media(MMS)"
+msgstr "Media(MMS)"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_media_ids
+msgid "Media(MMS)[Automated Actions Only]"
+msgstr "Media(MMS)[Hanya Tindakan Otomatis]"
+
+#. module: sms_frame
+#: model:ir.ui.menu,name:sms_frame.sms_message_menu
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: sms_frame
+#: model:ir.ui.menu,name:sms_frame.sms_number_menu
+msgid "Mobile Numbers"
+msgstr "Nomor Ponsel"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_model
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_model_id
+msgid "Model"
+msgstr "Model"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: sms_frame
+#: selection:sms.message,direction:0
+msgid "OUTBOUND"
+msgstr "OUTBOUND"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_lang
+msgid "Optional translation language (ISO code) to select when sending out an email. If not set, the english version will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. ${object.partner_id.lang}."
+msgstr "Terjemahan bahasa opsional (kode ISO) yang dipilih ketika mengirim email. Jika tidak diatur, versi Bahasa Inggris yang akan digunakan. Isinya seharusnya berupa ekspresi placeholder yang menyediakan bahasa yang sesuai, mis: ${object.partner_id.lang}."
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_null_value
+msgid "Optional value to use if the target field is empty"
+msgstr "Nilai optional yang digunakan jika kolom target kosong"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_zenviva_passkey
+msgid "Pass Key"
+msgstr "Pass Key"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_copyvalue
+msgid "Placeholder Expression"
+msgstr "Ekspresi Placeholder"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_from_mobile
+msgid "Placeholders are allowed here"
+msgstr "Placeholders diijinkan di sini"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_template_body
+msgid "Plain text version of the message (placeholders may be used here)"
+msgstr "Versi teks polos dari pesan (placeholders dapat digunakan di sini)"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.view_server_action_form_inherit_sms_frame
+msgid "Please set the Base Model before setting the action details."
+msgstr "Silahkan atur Model Dasar sebelum mengatur detail tindakan."
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_account_view_form_inherit_sms_frame_twilio
+msgid "Points Twilio to your odoo server"
+msgstr "Arahkan Twilio ke server odoo"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Queued"
+msgstr "Antri"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_account_view_form_inherit_sms_frame_twilio
+msgid "Quick Setup"
+msgstr "Pengaturan Cepat"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Received"
+msgstr "Diterima"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_record_id
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_record_id
+msgid "Record"
+msgstr "Catatan"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_record_name
+msgid "Record Name"
+msgstr "Nama Catatan"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_model
+msgid "Related Document Model"
+msgstr "Model Dokumen Terkait"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_status_string
+msgid "Response String"
+msgstr "Response String"
+
+#. module: sms_frame
+#: model:ir.ui.menu,name:sms_frame.sms_parent_menu
+#: model:ir.ui.view,arch_db:sms_frame.view_server_action_form_inherit_sms_frame
+msgid "SMS"
+msgstr "SMS"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,name:sms_frame.sms_message_action
+msgid "SMS / MMS Messages"
+msgstr "Pesan SMS / MMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_account_id
+msgid "SMS Account"
+msgstr "Akun SMS"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,name:sms_frame.sms_account_action_twilio
+msgid "SMS Account Twilio"
+msgstr "Akun SMS Twilio"
+
+#. module: sms_frame
+#: model:ir.actions.server,name:sms_frame.sms_check_ir_actions_server
+#: model:ir.cron,cron_name:sms_frame.sms_check
+#: model:ir.cron,name:sms_frame.sms_check
+msgid "SMS Check"
+msgstr "Cek SMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_sms_content
+msgid "SMS Content"
+msgstr "Isi SMS"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,name:sms_frame.sms_account_action
+msgid "SMS Gateway Account"
+msgstr "Akun SMS Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_sms_gateway_message_id
+msgid "SMS Gateway Message ID"
+msgstr "ID Pesan SMS Gateway"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_sms_content
+msgid "SMS Message"
+msgstr "Pesan SMS"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,help:sms_frame.sms_message_action
+#: model:ir.ui.view,arch_db:sms_frame.sms_message_view_form
+msgid "SMS Messages"
+msgstr "Pesan SMS"
+
+#. module: sms_frame
+#: model:ir.actions.server,name:sms_frame.sms_queue_check_ir_actions_server
+#: model:ir.cron,cron_name:sms_frame.sms_queue_check
+#: model:ir.cron,name:sms_frame.sms_queue_check
+msgid "SMS Queue Check"
+msgstr "Cek Antrian SMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_ir_act_server_sms_template_id
+msgid "SMS Template"
+msgstr "Templete SMS"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,name:sms_frame.sms_number_action
+msgid "SMS stored number"
+msgstr "Nomor SMS tersimpan"
+
+#. module: sms_frame
+#: model:ir.actions.act_window,name:sms_frame.sms_template_action
+msgid "SMS/MMS Templates"
+msgstr "Templete SMS/MMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_model_object_field_id
+msgid ""
+"Select target field from the related document model.\n"
+"If it is a relationship field you will be able to select a target field at the destination of the relationship."
+msgstr ""
+"Pilih kolom target dari model dokumen terkait.\n"
+"Jika berupa kolom relasi, Anda dapat memilih kolom target pada tujuan relasi."
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_compose_wizard_view_form
+msgid "Send SMS"
+msgstr "Kirim SMS"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_message_date
+msgid "Send/Receive Date"
+msgstr "Tanggal Terkirim/Terima"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_number_mobile_number
+msgid "Sender ID"
+msgstr "ID Pengirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_sms_from
+msgid "Sender mobile number (placeholders may be used here). If not set, the default value will be the author's mobile number."
+msgstr "Nomor ponsel pengirim (placeholders dapat digunakan di sini).Jika tidak diatur, nilai standarnya adalah nomor ponsel pembuat pesan."
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Sent"
+msgstr "Terkirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_sub_model_object_field_id
+msgid "Sub-field"
+msgstr "Sub-kolom"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_sub_object_id
+msgid "Sub-model"
+msgstr "Sub-model"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_sms_template_id
+msgid "Template"
+msgstr "Templete"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_name
+msgid "Template Name"
+msgstr "Nama Template"
+
+#. module: sms_frame
+#: model:ir.ui.menu,name:sms_frame.sms_template_menu
+#: model:ir.ui.view,arch_db:sms_frame.sms_template_view_form
+msgid "Templates"
+msgstr "Template"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_message_message_date
+msgid "The date and time the sms is received or sent"
+msgstr "Tanggal dan waktu sms terkirim atau diterima"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_model_id
+msgid "The kind of document with with this template can be used"
+msgstr "Jenis dokumen yang dapat digunakan dengan template ini"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Timed Out"
+msgstr "Waktu Habis"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_template_sms_to
+msgid "To (Mobile)"
+msgstr "Tujuan (Ponsel)"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_message_to_mobile
+msgid "To Mobile"
+msgstr "Ponsel Tujuan"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_compose_wizard_to_number
+msgid "To Mobile Number"
+msgstr "Nomor Ponsel Tujuan"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_sms_to
+msgid "To mobile number (placeholders may be used here)"
+msgstr "Nomor ponsel tujuan (placeholders dapat digunakan di sini)"
+
+#. module: sms_frame
+#: model:ir.ui.view,arch_db:sms_frame.sms_message_view_kanban
+msgid "To:"
+msgstr "Kepada:"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_gateway_twilio
+msgid "Twilio SMS Gateway"
+msgstr "SMS Gateway Twilio"
+
+#. module: sms_frame
+#: selection:sms.message,status_code:0
+msgid "Undelivered"
+msgstr "Tidak Terkirim"
+
+#. module: sms_frame
+#: model:ir.model.fields,field_description:sms_frame.field_sms_account_zenviva_userkey
+msgid "User Key"
+msgstr "User Key"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_gateway_wassenger
+msgid "Wassenger WA Gateway"
+msgstr "WA Gateway Wassenger"
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_sub_model_object_field_id
+msgid "When a relationship field is selected as first field, this field lets you select the target field within the destination document model (sub-model)."
+msgstr "Ketika kolom relasi dipilih sebagai kolom pertama, kolom ini memungkinkan Anda untuk memilih kolom target dari model dokumen tujuan (sub-model)."
+
+#. module: sms_frame
+#: model:ir.model.fields,help:sms_frame.field_sms_template_sub_object_id
+msgid "When a relationship field is selected as first field, this field shows the document model the relationship goes to."
+msgstr "Ketika kolom relasi dipilih sebagai kolom pertama, kolom ini menampilkan model dokumen dari kolom relasi."
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_gateway_zenviva
+msgid "Zenviva SMS Gateway"
+msgstr "SMS Gateway Zenviva"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_ir_actions_server
+msgid "ir.actions.server"
+msgstr "ir.actions.server"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_ir_attachment
+msgid "ir.attachment"
+msgstr "ir.attachment"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_gateway
+msgid "sms.gateway"
+msgstr "sms.gateway"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_message
+msgid "sms.message"
+msgstr "sms.message"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_number
+msgid "sms.number"
+msgstr "sms.number"
+
+#. module: sms_frame
+#: model:ir.model,name:sms_frame.model_sms_template
+msgid "sms.template"
+msgstr "sms.template"
