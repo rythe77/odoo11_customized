@@ -58,15 +58,18 @@ class SmsMessage(models.Model):
     def process_sms_queue(self, queue_limit):
         #queue_limit = self.env['ir.model.data'].get_object('sms_frame', 'sms_queue_check').args
         for queued_sms in self.env['sms.message'].search([('status_code','=','queued'), ('message_date','<=', datetime.today().strftime(DEFAULT_SERVER_DATETIME_FORMAT) ) ], limit=queue_limit):
-            gateway_model = queued_sms.account_id.account_gateway_id.gateway_model_name
-            my_sms = queued_sms.account_id.send_message(queued_sms.from_mobile, queued_sms.to_mobile, queued_sms.sms_content, queued_sms.model_id.model, queued_sms.record_id, queued_sms.media_id, queued_sms_message=queued_sms)
+            if queued_sms.account_id:
+                my_sms = queued_sms.account_id.send_message(queued_sms.from_mobile, queued_sms.to_mobile, queued_sms.sms_content, queued_sms.model_id.model, queued_sms.record_id, queued_sms.media_id, queued_sms_message=queued_sms)
 
-            #Mark it as sent to avoid it being sent again
-            queued_sms.status_code = my_sms.delivary_state
-            if my_sms.message_id != "":
-                queued_sms.sms_gateway_message_id = my_sms.message_id
-            if my_sms.human_read_error != "":
-                queued_sms.status_string = my_sms.human_read_error
+                #Mark it as sent to avoid it being sent again
+                queued_sms.status_code = my_sms.delivary_state
+                if my_sms.message_id != "":
+                    queued_sms.sms_gateway_message_id = my_sms.message_id
+                if my_sms.human_read_error != "":
+                    queued_sms.status_string = my_sms.human_read_error
 
-            #record the message in the communication log
-            self.env[queued_sms.model_id.model].browse(queued_sms.record_id).message_post(body=queued_sms.sms_content, subject="SMS")
+                #record the message in the communication log
+                self.env[queued_sms.model_id.model].browse(queued_sms.record_id).message_post(body=queued_sms.sms_content, subject="SMS")
+            else:
+                #Mark it as undelivered to avoid it being sent again
+                queued_sms.status_code = "UNDELIV"
