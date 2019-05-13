@@ -181,7 +181,7 @@ class SmsTemplate(models.Model):
         self.env['sms.message'].create(vals)
 
         #Turn the queue manager on
-        self.env['ir.model.data'].get_object('sms_frame', 'sms_queue_check').active = True
+        #self.env['ir.model.data'].sudo().get_object('sms_frame', 'sms_queue_check').active = True
         
     def render_template(self, template, model, res_id):
         """Render the given template text, replace mako expressions ``${expr}``
