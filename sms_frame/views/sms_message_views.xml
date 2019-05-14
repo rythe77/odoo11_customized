@@ -93,11 +93,32 @@
             </field>
         </record>
       
+        <record id="sms_message_view_filter" model="ir.ui.view">
+            <field name="name">SMS Message Search</field>
+            <field name="model">sms.message</field>
+            <field name="arch" type="xml">
+                <search string="Search SMS Message">
+                    <field name="account_id"/>
+                    <field name="model_id"/>
+                    <filter name='direction_in' string="Inbound" domain="[('direction','=','I')]"/>
+                    <filter name='direction_out' string="Outbound" domain="[('direction','=','O')]"/>
+                    <separator/>
+                    <filter name='received' string="Received" domain="[('status_code','=', 'RECEIVED')]"/>
+                    <filter name='failed' string="Failed to Send" domain="[('status_code','=', 'failed')]"/>
+                    <filter name='queued' string="Queued" domain="[('status_code','=', 'queued')]"/>
+                    <filter name='successful' string="Sent" domain="[('status_code','=', 'successful')]"/>
+                    <filter name='delivrd' string="Delivered" domain="[('status_code','=', 'DELIVRD')]"/>
+                    <filter name='expired' string="Timed Out" domain="[('status_code','=', 'EXPIRED')]"/>
+                    <filter name='undeliv' string="Undelivered" domain="[('status_code','=', 'UNDELIV')]"/>
+                </search>
+            </field>
+        </record>
+
       <record id="sms_message_action" model="ir.actions.act_window">
           <field name="name">SMS / MMS Messages</field>
           <field name="res_model">sms.message</field>
           <field name="view_type">form</field>
-          <field name="view_mode">kanban,tree,form</field>
+          <field name="view_mode">tree,form,kanban</field>
           <field name="help" type="html">
       	      <p class="oe_view_nocontent_create">SMS Messages</p>
       	  </field>

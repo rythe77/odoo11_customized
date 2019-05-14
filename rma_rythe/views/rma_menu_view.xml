@@ -299,6 +299,39 @@
 	        </form>
 	    </field>
 	</record>
+	<record model="ir.ui.view" id="rma_rma_kanban_view">
+		<field name="name">RMA-IN Kanban</field>
+		<field name="model">rma.rma</field>
+		<field name="arch" type="xml">
+			<kanban class="o_kanban_mobile">
+				<field name="partner_id"/>
+				<field name="warehouse_id"/>
+				<field name="code"/>
+				<field name="date"/>
+				<field name="state"/>
+				<templates>
+					<t t-name="kanban-box">
+						<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+							<div class="o_kanban_record_top mb16">
+								<div class="o_kanban_record_headings mt4">
+									<strong class="o_kanban_record_title"><span><t t-esc="record.partner_id.value"/></span></strong>
+								</div>
+								<strong><field name="warehouse_id"/></strong>
+							</div>
+							<div class="o_kanban_record_bottom">
+								<div class="oe_kanban_bottom_left text-muted">
+									<span><t t-esc="record.code.value"/> <t t-esc="record.date.value"/></span>
+								</div>
+								<div class="oe_kanban_bottom_right">
+									<field name="state" widget="label_selection" options="{'classes': {'draft': 'default', 'rejected': 'default', 'approved': 'processing', 'draft': 'default', 'closed': 'success'}}"/>
+								</div>
+							</div>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
 	<record id="view_rma_filter" model="ir.ui.view">
 	    <field name="name">RMA-IN Search</field>
 	    <field name="model">rma.rma</field>
@@ -331,7 +364,7 @@
 		<field name="name">RMA-IN</field>
 		<field name="res_model">rma.rma</field>
 		<field name="view_type">form</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">tree,form,kanban</field>
 		<field name="context">{'search_default_not_done': 1}</field>
 		<field name="view_ids" eval="[(5, 0, 0),
 			(0, 0, {'view_mode': 'tree', 'view_id': ref('rma_rma_tree_view')}),
