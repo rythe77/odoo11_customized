@@ -216,18 +216,25 @@
                                 </tree>
                                 <kanban class="o_kanban_mobile">
                                     <field name="product_id"/>
+                                    <field name="process_status"/>
                                     <field name="product_returned_qty"/>
+                                    <field name="product_uom"/>
+                                    <field name="rma_reason_id"/>
                                     <templates>
                                         <t t-name="kanban-box">
                                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
                                                 <div class="row">
-                                                    <div class="col-xs-10">
+                                                    <div class="col-xs-8">
                                                         <strong><span><t t-esc="record.product_id.value"/></span></strong>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <strong><span class="pull-right text-right">
+                                                        <t t-esc="record.process_status.value"/></span></strong>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-xs-2 text-muted">
-                                                        <span>Quantity: <t t-esc="record.product_returned_qty.value"/></span>
+                                                    <div class="col-xs-12 text-muted">
+                                                        <span>Quantity: <t t-esc="record.product_returned_qty.value"/><t t-esc="record.product_uom.value"/></span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
