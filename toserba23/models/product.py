@@ -18,38 +18,39 @@ class Product(models.Model):
         digits=dp.get_precision('Product Price'))
 
     #Create new custom fields
-    x_harga_grosir = fields.Float('Harga Grosir', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_bulukumbas = fields.Float('Harga Bulukumba S', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_grosir = fields.Float('Harga Grosir', compute='_copy_pricelist', readonly=True, store=True, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=True,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=True,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_bulukumbas = fields.Float('Harga Bulukumba S', compute='_copy_pricelist', readonly=True, store=True,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=True,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=True,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
 
-    #@api.depends('item_ids')
+    @api.depends('item_ids', 'list_price')
     def _copy_pricelist(self):
-        for record in self:
-            x_harga_promo_min=10000
-            x_promo_cash_min=10000
-            for item in record.item_ids:
-                if item.pricelist_id.name=="Harga promo" and item.min_quantity<x_harga_promo_min:
-                    x_harga_promo_min=item.min_quantity
-                if item.pricelist_id.name=="Promo cash" and item.min_quantity<x_promo_cash_min:
-                    x_promo_cash_min=item.min_quantity
-            grosir_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga grosir')], limit=1)
-            toko_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga toko')], limit=1)
-            bulukumba_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga bulukumba')], limit=1)
-            bulukumbas_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga bulukumba s')], limit=1)
-            promo_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga promo')], limit=1)
-            promocash_pricelist = self.env['product.pricelist'].search([('name', '=', 'Promo cash')], limit=1)
-            vals = {
-                'x_harga_grosir': record.with_context(pricelist=grosir_pricelist.id if grosir_pricelist else 47).price,
-                'x_harga_toko': record.with_context(pricelist=toko_pricelist.id if toko_pricelist else 47).price,
-                'x_harga_bulukumba': record.with_context(pricelist=bulukumba_pricelist.id if bulukumba_pricelist else 47).price,
-                'x_harga_bulukumbas': record.with_context(pricelist=bulukumbas_pricelist.id if bulukumbas_pricelist else 47).price,
-                'x_harga_promo': record.with_context(pricelist=promo_pricelist.id if promo_pricelist else 47, quantity=x_harga_promo_min).price,
-                'x_promo_cash': record.with_context(pricelist=promocash_pricelist.id if promocash_pricelist else 47, quantity=x_promo_cash_min).price,
-            }
-            record.update(vals)
+        self.ensure_one()
+        x_harga_promo_min=10000
+        x_promo_cash_min=10000
+        for item in self.item_ids:
+            if item.pricelist_id.name=="Harga promo" and item.min_quantity<x_harga_promo_min:
+                x_harga_promo_min=item.min_quantity
+            if item.pricelist_id.name=="Promo cash" and item.min_quantity<x_promo_cash_min:
+                x_promo_cash_min=item.min_quantity
+        grosir_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga grosir')], limit=1)
+        toko_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga toko')], limit=1)
+        bulukumba_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga bulukumba')], limit=1)
+        bulukumbas_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga bulukumba s')], limit=1)
+        promo_pricelist = self.env['product.pricelist'].search([('name', '=', 'Harga promo')], limit=1)
+        promocash_pricelist = self.env['product.pricelist'].search([('name', '=', 'Promo cash')], limit=1)
+        product = self.env['product.template'].browse(self._origin.id) if hasattr(self, '_origin') else self
+        vals = {
+            'x_harga_grosir': grosir_pricelist.get_product_price(product, 1.0, ''),
+            'x_harga_toko': toko_pricelist.get_product_price(product, 1.0, ''),
+            'x_harga_bulukumba': bulukumba_pricelist.get_product_price(product, 1.0, ''),
+            'x_harga_bulukumbas': bulukumbas_pricelist.get_product_price(product, 1.0, ''),
+            'x_harga_promo': promo_pricelist.get_product_price(product, x_harga_promo_min, ''),
+            'x_promo_cash': promocash_pricelist.get_product_price(product, x_promo_cash_min, ''),
+        }
+        self.update(vals)
 
     def action_view_stock_moves(self):
         """Update stock move button to show stock.move, not stock.move.line"""
