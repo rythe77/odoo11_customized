@@ -21,7 +21,8 @@
 				<field name="sequence" widget="handle"/>
 				<field name="default_code"/>
 				<field name="name"/>
-				<field name="list_price" string="Harga Umum"/>
+				<field name="list_price" string="Harga Umum" invisible="1"/>
+				<field name="x_harga_jual" string="Harga Jual"/>
 				<field name="x_harga_grosir" string="Grosir"/>
 				<field name="x_harga_toko" string="Toko"/>
 				<field name="x_harga_bulukumba" string="Bulukumba"/>
@@ -64,7 +65,8 @@
 			<field name="uom_id" position="after">
 				<field name="x_harga_toko" string="Toko" widget='monetary'/>
 				<field name="x_harga_bulukumba" string="Bulukumba"/>
-				<field name="lst_price" string="Harga Umum"/>
+				<field name="lst_price" string="Harga Umum" invisible="1"/>
+				<field name="x_harga_jual" string="Jual"/>
 				<field name="x_harga_grosir" string="Grosir" widget='monetary'/>
 				<field name="x_harga_promo" string="Promo"/>
 				<field name="x_promo_cash"/>
@@ -108,13 +110,9 @@
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
 			<div name="pricelist_item" position="before">
-				<group name="catalog_price" string="Harga Umum/Katalog">
-					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Harga Umum"/>
-				</group>
-			</div>
-			<div name="pricelist_item" position="after">
 				<group name="display_price" string="Harga Display">
 					<group>
+						<field name="x_harga_jual" string="Harga Jual" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_harga_grosir" string="Harga Grosir" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_harga_toko" string="Harga Toko" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_harga_bulukumba" string="Harga Bulukumba" widget='monetary' options="{'currency_field': 'currency_id'}"/>
@@ -124,6 +122,11 @@
 						<field name="x_harga_promo" string="Harga Promo" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_promo_cash" string="Promo Cash" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					</group>
+				</group>
+			</div>
+			<div name="pricelist_item" position="after">
+				<group name="catalog_price" string="Harga Umum/Katalog">
+					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Harga Umum"/>
 				</group>
 			</div>
 			<div name="pricelist_item" position="attributes">

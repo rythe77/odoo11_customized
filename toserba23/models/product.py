@@ -18,6 +18,7 @@ class Product(models.Model):
         digits=dp.get_precision('Product Price'))
 
     #Create new custom fields
+    x_harga_jual = fields.Float('Harga Jual', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
     x_harga_grosir = fields.Float('Harga Grosir', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
     x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
     x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
@@ -30,7 +31,9 @@ class Product(models.Model):
     def _copy_pricelist(self):
         pricelists = self.env['product.pricelist'].search([])
         for pricelist in pricelists:
-            if pricelist.name == 'Harga grosir':
+            if pricelist.name == 'Harga jual':
+                jual_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+            elif pricelist.name == 'Harga grosir':
                 grosir_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
             elif pricelist.name == 'Harga toko':
                 toko_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
@@ -45,6 +48,8 @@ class Product(models.Model):
         # product = self.env['product.template'].browse(self._origin.id) if hasattr(self, '_origin') else self
         for record in self:
             vals = {}
+            if jual_prices:
+                vals['x_harga_jual'] = jual_prices.get(record.id, 0.0)
             if grosir_prices:
                 vals['x_harga_grosir'] = grosir_prices.get(record.id, 0.0)
             if toko_prices:

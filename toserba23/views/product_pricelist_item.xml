@@ -37,6 +37,18 @@
 			<field name="min_quantity" position="after">
 				<field name="x_notes"/>
 			</field>
+			<field name="base" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+			<field name="price_discount" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+			<field name="price_surcharge" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
+			<field name="base_pricelist_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</field>
 		</field>
 	</record>
 
