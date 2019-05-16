@@ -21,7 +21,7 @@
 				<field name="sequence" widget="handle"/>
 				<field name="default_code"/>
 				<field name="name"/>
-				<field name="list_price"/>
+				<field name="list_price" string="Harga Umum"/>
 				<field name="x_harga_grosir" string="Grosir"/>
 				<field name="x_harga_toko" string="Toko"/>
 				<field name="x_harga_bulukumba" string="Bulukumba"/>
@@ -64,7 +64,7 @@
 			<field name="uom_id" position="after">
 				<field name="x_harga_toko" string="Toko" widget='monetary'/>
 				<field name="x_harga_bulukumba" string="Bulukumba"/>
-				<field name="lst_price" string="Harga jual"/>
+				<field name="lst_price" string="Harga Umum"/>
 				<field name="x_harga_grosir" string="Grosir" widget='monetary'/>
 				<field name="x_harga_promo" string="Promo"/>
 				<field name="x_promo_cash"/>
@@ -108,8 +108,8 @@
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
 			<div name="pricelist_item" position="before">
-				<group name="catalog_price" string="Harga Jual/Umum/Katalog">
-					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+				<group name="catalog_price" string="Harga Umum/Katalog">
+					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Harga Umum"/>
 				</group>
 			</div>
 			<div name="pricelist_item" position="after">
@@ -146,11 +146,11 @@
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page[@name='sales']/div/field/tree/field[@name='date_end']" position="after">
 				<field name="compute_price"/>
-				<field name="base" attrs="{'invisible':[('compute_price', '!=', 'formula')]}"/>
-				<field name="base_pricelist_id" attrs="{'invisible':['|', ('compute_price', '!=', 'formula'), ('base', '!=', 'pricelist')]}"/>
-				<field name="price_discount" attrs="{'invisible':[('compute_price', '!=', 'formula')]}"/>
-				<field name="price_round" attrs="{'invisible':[('compute_price', '!=', 'formula')]}"/>
-				<field name="price_surcharge" attrs="{'invisible':[('compute_price', '!=', 'formula')]}"/>
+				<field name="base" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
+				<field name="base_pricelist_id" attrs="{'invisible':['|', ('compute_price', '!=', 'formula'), ('base', '!=', 'pricelist')]}" groups="sales_team.group_sale_manager"/>
+				<field name="price_discount" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
+				<field name="price_round" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
+				<field name="price_surcharge" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
 			</xpath>
 		</field>
 	</record>
@@ -208,6 +208,7 @@
 		<field name="view_type">form</field>
 		<field name="view_id" ref="product_tree_price_view"/>
 		<field name="context">{"search_default_filter_to_sell":1}</field>
+		<field name="limit">25</field>
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
 				Click to define a new product.
