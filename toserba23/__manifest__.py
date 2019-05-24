@@ -38,10 +38,12 @@
             - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - Tunjangan jabatan diatur di kontrak
             - Akses LIHAT absensi untuk petugas penggajian
-        Todo:
             - Automatic email and sms system
-            - Dasbor penagihan sebaiknya tampilkan jumlah yang belum dibayar, bukan jumlah total
             - Sistem daftar harga lebih kompleks
+        Todo:
+            - real-time inventory correction system
+            - Automatic wa system
+            - Dasbor penagihan sebaiknya tampilkan jumlah yang belum dibayar, bukan jumlah total
             - Nisa mau dibatasi ubah harga di faktur
             - pembayaran di muka untuk pembelian
             - pak ilham tidak bisa lihat stok pada tanggal tertentu
@@ -53,9 +55,7 @@
             - DO should group same item together
             - Upload product image
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
-            - Product duplicate should also duplicate pricelist
             - sales commission system
-            - Kalo tidak ada 0,5 nya hilangkan saja komanya
             - Super call on method, should not list "administrator" as the document creator
         Not Todo:
             - Sales group automatically fills in based on customer

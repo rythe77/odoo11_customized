@@ -71,3 +71,11 @@ class PurchaseOrderLine(models.Model):
                 'price_total': (1-line.x_discount/100)*taxes['total_included'],
                 'price_subtotal': (1-line.x_discount/100)*taxes['total_excluded'],
             })
+
+    @api.multi
+    def _prepare_invoice_line(self, qty):
+        res=super(PurchaseOrderLine,self)._prepare_invoice_line(qty=qty)
+        res.update({
+            'discount': self.x_discount,
+        })
+        return res

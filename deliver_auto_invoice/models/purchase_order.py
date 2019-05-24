@@ -53,21 +53,41 @@ class PurchaseOrder(models.Model):
         :returns: list of created invoices
         """
         inv_obj = self.env['account.invoice']
+        precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         invoices = {}
         references = {}
+        invoices_origin = {}
+        invoices_name = {}
         for order in self:
             group_key = order.id if grouped else (order.partner_id.id, order.currency_id.id)
-            if any(line.qty_received - line.qty_invoiced > 0 for line in order.order_line):
-                inv_data = order._prepare_invoice()
-                invoice = inv_obj.create(inv_data)
-                #create invoice line using account.invoice method
-                invoice.purchase_order_change()
-                references[invoice] = order
-                invoices[group_key] = invoice
+            for line in order.order_line.sorted(key=lambda l: l.qty_received - l.qty_invoiced < 0):
+                if float_is_zero(line.qty_received - line.qty_invoiced, precision_digits=precision):
+                    continue
+                if group_key not in invoices:
+                    inv_data = order._prepare_invoice()
+                    invoice = inv_obj.create(inv_data)
+                    references[invoice] = order
+                    invoices[group_key] = invoice
+                    invoices_origin[group_key] = [invoice.origin]
+                    invoices_name[group_key] = [invoice.name]
+                elif group_key in invoices:
+                    if order.name not in invoices_origin[group_key]:
+                        invoices_origin[group_key].append(order.name)
+                    if order.partner_ref and order.partner_ref not in invoices_name[group_key]:
+                        invoices_name[group_key].append(order.partner_ref)
+
+                if line.qty_received - line.qty_invoiced > 0:
+                    line.invoice_line_create(invoices[group_key].id, line.qty_received - line.qty_invoiced)
+                elif line.qty_received - line.qty_invoiced < 0 and final:
+                    line.invoice_line_create(invoices[group_key].id, line.qty_received - line.qty_invoiced)
 
             if references.get(invoices.get(group_key)):
                 if order not in references[invoices[group_key]]:
-                    references[invoice] = references[invoice] | order
+                    references[invoices[group_key]] |= order
+
+        for group_key in invoices:
+            invoices[group_key].write({'name': ', '.join(invoices_name[group_key]),
+                                       'origin': ', '.join(invoices_origin[group_key])})
 
         if not invoices:
             raise UserError(_('There is no invoicable line.'))
@@ -76,7 +96,7 @@ class PurchaseOrder(models.Model):
             if not invoice.invoice_line_ids:
                 raise UserError(_('There is no invoicable line.'))
             # If invoice is negative, do a refund invoice instead
-            if invoice.amount_untaxed < 0:
+            if invoice.amount_total < 0:
                 invoice.type = 'in_refund'
                 for line in invoice.invoice_line_ids:
                     line.quantity = -line.quantity
@@ -87,3 +107,45 @@ class PurchaseOrder(models.Model):
                 values={'self': invoice, 'origin': references[invoice]},
                 subtype_id=self.env.ref('mail.mt_note').id)
         return [inv.id for inv in invoices.values()]
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    @api.multi
+    def _prepare_invoice_line(self, qty):
+        """
+        Prepare the dict of values to create the new invoice line for a sales order line.
+
+        :param qty: float quantity to invoice
+        """
+        self.ensure_one()
+        res = {
+            'name': self.name,
+            'sequence': self.sequence,
+            'origin': self.order_id.name,
+            'account_id': self.product_id.product_tmpl_id._get_product_accounts()['stock_input'].id,
+            'price_unit': self.price_unit,
+            'quantity': qty,
+            'uom_id': self.product_uom.id,
+            'product_id': self.product_id.id or False,
+            'account_analytic_id': self.account_analytic_id.id,
+            'analytic_tag_ids': [(6, 0, self.analytic_tag_ids.ids)],
+        }
+        return res
+
+    @api.multi
+    def invoice_line_create(self, invoice_id, qty):
+        """ Create an invoice line. The quantity to invoice can be positive (invoice) or negative (refund).
+            :param invoice_id: integer
+            :param qty: float quantity to invoice
+            :returns recordset of account.invoice.line created
+        """
+        invoice_lines = self.env['account.invoice.line']
+        precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
+        for line in self:
+            if not float_is_zero(qty, precision_digits=precision):
+                vals = line._prepare_invoice_line(qty=qty)
+                vals.update({'invoice_id': invoice_id, 'purchase_line_id': line.id})
+                invoice_lines |= self.env['account.invoice.line'].create(vals)
+        return invoice_lines

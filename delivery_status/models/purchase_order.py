@@ -28,9 +28,9 @@ class PurchaseOrder(models.Model):
             else:
                 delivery_status = 'none_delivered'
 
-            if any(float_compare(line.qty_invoiced, line.product_qty if line.product_id.purchase_method == 'purchase' else line.qty_received, precision_digits=precision) == -1 for line in order.order_line):
+            if any(float_compare(line.qty_invoiced, line.product_qty if line.product_id.purchase_method == 'purchase' else line.qty_received, precision_digits=precision) != 0 for line in order.order_line):
                 invoice_status = 'to invoice'
-            elif all(float_compare(line.qty_invoiced, line.product_qty if line.product_id.purchase_method == 'purchase' else line.qty_received, precision_digits=precision) >= 0 for line in order.order_line) and order.invoice_ids and delivery_status == 'delivered':
+            elif all(float_compare(line.qty_invoiced, line.product_qty if line.product_id.purchase_method == 'purchase' else line.qty_received, precision_digits=precision) == 0 for line in order.order_line) and order.invoice_ids and delivery_status == 'delivered':
                 invoice_status = 'invoiced'
             else:
                 invoice_status = 'no'
