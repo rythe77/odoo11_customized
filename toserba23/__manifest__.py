@@ -48,16 +48,15 @@
             - pembayaran di muka untuk pembelian
             - pak ilham tidak bisa lihat stok pada tanggal tertentu
             - sari selesaikan dokumen transfer untuk diantar belakangan, tapi tanggalnya selalu ikut tanggal selesai
-            - Mau bikin tombol retur pembayaran
             - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
             - Tanggal terjadwal di DO susah tersimpan
             - DO line cant be deleted if not in draft status
             - DO should group same item together
             - Upload product image
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
-            - sales commission system
             - Super call on method, should not list "administrator" as the document creator
         Not Todo:
+            - sales commission system
             - Sales group automatically fills in based on customer
             - Customize tree view column width
             - stock user can do backorder

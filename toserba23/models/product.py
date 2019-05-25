@@ -26,7 +26,6 @@ class Product(models.Model):
     x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
     x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
 
-    #@api.depends('item_ids', 'list_price')
     @api.multi
     def _copy_pricelist(self):
         pricelists = self.env['product.pricelist'].search([])
@@ -45,7 +44,6 @@ class Product(models.Model):
                 promo_prices = pricelist.get_products_price(self, [10000.0]*len(self), ['']*len(self))
             elif pricelist.name == 'Promo cash':
                 promocash_prices = pricelist.get_products_price(self, [10000.0] * len(self), [''] * len(self))
-        # product = self.env['product.template'].browse(self._origin.id) if hasattr(self, '_origin') else self
         for record in self:
             vals = {}
             if jual_prices:
