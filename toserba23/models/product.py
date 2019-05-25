@@ -55,7 +55,7 @@ class Product(models.Model):
                 vals['x_harga_toko'] = prices['toko_prices'].get(record.id, 0.0)
             if 'bulukumba_prices' in prices:
                 vals['x_harga_bulukumba'] = prices['bulukumba_prices'].get(record.id, 0.0)
-            if 'bulukumbas_prices':
+            if 'bulukumbas_prices' in prices:
                 vals['x_harga_bulukumbas'] = prices['bulukumbas_prices'].get(record.id, 0.0)
             if 'promo_prices' in prices:
                 vals['x_harga_promo'] = prices['promo_prices'].get(record.id, 0.0)
