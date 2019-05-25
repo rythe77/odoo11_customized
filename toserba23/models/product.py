@@ -29,37 +29,38 @@ class Product(models.Model):
     @api.multi
     def _copy_pricelist(self):
         pricelists = self.env['product.pricelist'].search([])
+        prices = {}
         for pricelist in pricelists:
             if pricelist.name == 'Harga jual':
-                jual_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+                prices.update({'jual_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga grosir':
-                grosir_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+                prices.update({'grosir_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga toko':
-                toko_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+                prices.update({'toko_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga bulukumba':
-                bulukumba_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+                prices.update({'bulukumba_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga bulukumba s':
-                bulukumbas_prices = pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))
+                prices.update({'bulukumbas_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga promo':
-                promo_prices = pricelist.get_products_price(self, [10000.0]*len(self), ['']*len(self))
+                prices.update({'promo_prices': pricelist.get_products_price(self, [10000.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Promo cash':
-                promocash_prices = pricelist.get_products_price(self, [10000.0] * len(self), [''] * len(self))
+                prices.update({'promocash_prices': pricelist.get_products_price(self, [10000.0] * len(self), [''] * len(self))})
         for record in self:
             vals = {}
-            if jual_prices:
-                vals['x_harga_jual'] = jual_prices.get(record.id, 0.0)
-            if grosir_prices:
-                vals['x_harga_grosir'] = grosir_prices.get(record.id, 0.0)
-            if toko_prices:
-                vals['x_harga_toko'] = toko_prices.get(record.id, 0.0)
-            if bulukumba_prices:
-                vals['x_harga_bulukumba'] = bulukumba_prices.get(record.id, 0.0)
-            if bulukumbas_prices:
-                vals['x_harga_bulukumbas'] = bulukumbas_prices.get(record.id, 0.0)
-            if promo_prices:
-                vals['x_harga_promo'] = promo_prices.get(record.id, 0.0)
-            if promocash_prices:
-                vals['x_promo_cash'] = promocash_prices.get(record.id, 0.0)
+            if 'jual_prices' in prices:
+                vals['x_harga_jual'] = prices['jual_prices'].get(record.id, 0.0)
+            if 'grosir_prices' in prices:
+                vals['x_harga_grosir'] = prices['grosir_prices'].get(record.id, 0.0)
+            if 'toko_prices' in prices:
+                vals['x_harga_toko'] = prices['toko_prices'].get(record.id, 0.0)
+            if 'bulukumba_prices' in prices:
+                vals['x_harga_bulukumba'] = prices['bulukumba_prices'].get(record.id, 0.0)
+            if 'bulukumbas_prices':
+                vals['x_harga_bulukumbas'] = prices['bulukumbas_prices'].get(record.id, 0.0)
+            if 'promo_prices' in prices:
+                vals['x_harga_promo'] = prices['promo_prices'].get(record.id, 0.0)
+            if 'promocash_prices' in prices:
+                vals['x_promo_cash'] = prices['promocash_prices'].get(record.id, 0.0)
             record.update(vals)
 
     def action_view_stock_moves(self):
