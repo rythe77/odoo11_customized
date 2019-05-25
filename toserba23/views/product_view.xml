@@ -150,7 +150,7 @@
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page[@name='sales']/div/field/tree/field[@name='date_end']" position="after">
 				<field name="compute_price"/>
-				<field name="x_formula_price" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
+				<field name="x_formula_price" attrs="{'invisible':[('compute_price', '!=', 'formula')]}"/>
 				<field name="base" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
 				<field name="base_pricelist_id" attrs="{'invisible':['|', ('compute_price', '!=', 'formula'), ('base', '!=', 'pricelist')]}" groups="sales_team.group_sale_manager"/>
 				<field name="price_discount" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
