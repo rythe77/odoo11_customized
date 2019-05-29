@@ -50,8 +50,6 @@
             - sari selesaikan dokumen transfer untuk diantar belakangan, tapi tanggalnya selalu ikut tanggal selesai
             - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
             - Tanggal terjadwal di DO susah tersimpan
-            - DO line cant be deleted if not in draft status
-            - DO should group same item together
             - Upload product image
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
             - Super call on method, should not list "administrator" as the document creator
