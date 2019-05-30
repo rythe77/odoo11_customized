@@ -40,6 +40,7 @@
             - Akses LIHAT absensi untuk petugas penggajian
             - Automatic email and sms system
             - Sistem daftar harga lebih kompleks
+            - Upload product image
         Todo:
             - real-time inventory correction system
             - Automatic wa system
@@ -50,7 +51,6 @@
             - sari selesaikan dokumen transfer untuk diantar belakangan, tapi tanggalnya selalu ikut tanggal selesai
             - pas simpan transfer barang, tanggal terjadwal & prioritas otomatis berubah kembali ke default
             - Tanggal terjadwal di DO susah tersimpan
-            - Upload product image
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
             - Super call on method, should not list "administrator" as the document creator
         Not Todo:

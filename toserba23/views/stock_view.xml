@@ -155,6 +155,9 @@
 			<xpath expr="//button[@name='action_cancel_draft'][2]" position="attributes">
 				<attribute name="groups">stock.group_stock_user</attribute>
 			</xpath>
+			<xpath expr="//field[@name='line_ids']" position="after">
+				<field name="x_notes" attrs="{'readonly': [('state', 'in', ['cancel','done'])]}"/>
+			</xpath>
 		</field>
 	</record>
 
