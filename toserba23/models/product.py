@@ -11,20 +11,20 @@ class Product(models.Model):
     responsible_id = fields.Many2one('res.users', string='Responsible', related='categ_id.responsible_id', default=lambda self: self.env.uid, required=True, readonly=True)
     list_price = fields.Float(
         'Sale Price', default=1.0, readonly=False, store=True,
-        digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman",
+        digits=dp.get_precision('Product Price'),
         help="Base price to compute the customer price. Sometimes called the catalog price.")
     lst_price = fields.Float(
-        'Public Price', related='list_price', groups="sales_team.group_sale_salesman",
+        'Public Price', related='list_price',
         digits=dp.get_precision('Product Price'))
 
     #Create new custom fields
-    x_harga_jual = fields.Float('Harga Jual', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_grosir = fields.Float('Harga Grosir', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_bulukumbas = fields.Float('Harga Bulukumba S', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
-    x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_harga_jual = fields.Float('Harga Jual', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'))
+    x_harga_grosir = fields.Float('Harga Grosir', compute='_copy_pricelist', readonly=True, store=False, digits=dp.get_precision('Product Price'))
+    x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
+    x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
+    x_harga_bulukumbas = fields.Float('Harga Bulukumba S', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
+    x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
+    x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
 
     @api.multi
     def _copy_pricelist(self):

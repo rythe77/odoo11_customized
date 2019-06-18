@@ -22,12 +22,12 @@
 				<field name="default_code"/>
 				<field name="name"/>
 				<field name="list_price" string="Harga Umum" invisible="1"/>
-				<field name="x_harga_jual" string="Harga Jual"/>
-				<field name="x_harga_grosir" string="Grosir"/>
-				<field name="x_harga_toko" string="Toko"/>
-				<field name="x_harga_bulukumba" string="Bulukumba"/>
-				<field name="x_harga_promo" string="Promo"/>
-				<field name="x_promo_cash"/>
+				<field name="x_harga_jual" string="Harga Jual" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_grosir" string="Grosir" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_toko" string="Toko" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_bulukumba" string="Bulukumba" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_promo" string="Promo" groups="sales_team.group_sale_salesman"/>
+				<field name="x_promo_cash" groups="sales_team.group_sale_salesman"/>
 				<field name="standard_price" groups="hide_confidential_info.view_cost_price"/>
 				<field name="qty_available"/>
 				<field name="virtual_available"/>
@@ -64,13 +64,13 @@
 				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
 			</field>
 			<field name="uom_id" position="after">
-				<field name="x_harga_toko" string="Toko" widget='monetary'/>
-				<field name="x_harga_bulukumba" string="Bulukumba"/>
-				<field name="lst_price" string="Harga Umum" invisible="1"/>
-				<field name="x_harga_jual" string="Jual"/>
-				<field name="x_harga_grosir" string="Grosir" widget='monetary'/>
-				<field name="x_harga_promo" string="Promo"/>
-				<field name="x_promo_cash"/>
+				<field name="x_harga_toko" string="Toko" widget='monetary' groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_bulukumba" string="Bulukumba" groups="sales_team.group_sale_salesman"/>
+				<field name="lst_price" string="Harga Umum" invisible="1" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_jual" string="Jual" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_grosir" string="Grosir" widget='monetary' groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_promo" string="Promo" groups="sales_team.group_sale_salesman"/>
+				<field name="x_promo_cash" groups="sales_team.group_sale_salesman"/>
 			</field>
 			<field name="barcode" position="attributes">
 				<attribute name="invisible">1</attribute>
@@ -111,7 +111,7 @@
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
 			<div name="pricelist_item" position="before">
-				<group name="display_price" string="Harga Display">
+				<group name="display_price" string="Harga Display" groups="sales_team.group_sale_salesman">
 					<group>
 						<field name="x_harga_jual" string="Harga Jual" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_harga_grosir" string="Harga Grosir" widget='monetary' options="{'currency_field': 'currency_id'}"/>
@@ -126,7 +126,7 @@
 				</group>
 			</div>
 			<div name="pricelist_item" position="after">
-				<group name="catalog_price" string="Harga Umum/Katalog">
+				<group name="catalog_price" string="Harga Umum/Katalog" groups="sales_team.group_sale_salesman">
 					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Harga Umum"/>
 				</group>
 			</div>

@@ -11,7 +11,7 @@ class ProductPricelistItem(models.Model):
     #Create new fields
     x_notes = fields.Char(
         'Other Notes', index=False)
-    x_formula_price = fields.Float('Hasil', compute='_calculate_formula', readonly=True, store=False, digits=dp.get_precision('Product Price'), groups="sales_team.group_sale_salesman")
+    x_formula_price = fields.Float('Hasil', compute='_calculate_formula', readonly=True, store=False, digits=dp.get_precision('Product Price'))
 
     @api.multi
     def _calculate_formula(self):
