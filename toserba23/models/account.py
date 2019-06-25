@@ -30,12 +30,12 @@ class AccountInvoice(models.Model):
         """
         return_val = super(AccountInvoice, self).action_invoice_open()
         for rec in self:
-            if rec.partner_id.customer and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "email":
+            if rec.partner_id.customer and rec.type == "out_invoice" and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "wa":
+            elif rec.partner_id.customer and rec.type == "out_invoice" and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "wa":
                 template = self.env.ref('toserba23.invoice_wa_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "sms":
+            elif rec.partner_id.customer and rec.type == "out_invoice" and rec.partner_id.x_is_notify_inv and rec.partner_id.x_notification_method == "sms":
                 template = self.env.ref('toserba23.invoice_sms_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
         return return_val
@@ -66,12 +66,12 @@ class AccountPayment(models.Model):
         return_val = super(AccountPayment, self).post()
         for rec in self:
             # Send email notification to customer
-            if rec.partner_id.customer and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "email":
+            if rec.partner_id.customer and rec.payment_type == "inbound" and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "wa":
+            elif rec.partner_id.customer and rec.payment_type == "inbound" and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "wa":
                 template = self.env.ref('toserba23.payment_wa_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "sms":
+            elif rec.partner_id.customer and rec.payment_type == "inbound" and rec.partner_id.x_is_notify_pay and rec.partner_id.x_notification_method == "sms":
                 template = self.env.ref('toserba23.payment_sms_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
         return return_val

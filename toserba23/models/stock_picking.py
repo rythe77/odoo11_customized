@@ -22,16 +22,16 @@ class StockPicking(models.Model):
         """
         return_val = super(StockPicking, self).action_done()
         for rec in self:
-            if not rec.sale_id and not rec.purchase_id  and not rec.rmain_id and not rec.rmaout_id\
+            if not rec.sale_id and not rec.purchase_id  and not rec.rmain_id and not rec.rmaout_id and not rec.picking_type_code == "internal"\
             and not self.env['res.users'].browse(self.env.uid).has_group('stock.group_stock_manager'):
                 raise UserError('Anda hanya diijinkan untuk memvalidasi transfer yang dibuat dari penjualan/pembelian atau RMA')
             # Send email notification to customer
-            if rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "email":
+            if rec.partner_id.customer and rec.picking_type_code == "outgoing" and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "wa":
+            elif rec.partner_id.customer and rec.picking_type_code == "outgoing" and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "wa":
                 template = self.env.ref('toserba23.delivery_wa_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
-            elif rec.partner_id.customer and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "sms":
+            elif rec.partner_id.customer and rec.picking_type_code == "outgoing" and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "sms":
                 template = self.env.ref('toserba23.delivery_sms_template')
                 self.env['sms.template'].browse(template.id).send_sms(template.id, rec.id)
         return return_val

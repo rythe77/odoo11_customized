@@ -9,7 +9,7 @@
 		file="toserba23.katalog_produk"
 		print_report_name="'Katalog Produk - %s' % (object.name)"
 		report_type="qweb-pdf"
-		groups="sales_team.group_sale_manager"
+		groups="base.group_user"
 	/>
 
 	<template id="report_product_katalogsheet">
@@ -31,32 +31,26 @@
 								</span>
 							</div>
 						</div>
-						<table class="table table-condensed table table-striped" style="border: 1px double #212121;border-radius: 10px">
-							<thead style="background-color:#212121; color:#FFFFFF">
-								<tr style="font:16px lucida-console,sans-serif;">
-									<th><strong>Nama Barang</strong></th>
-									<th><strong>Harga Jual</strong></th>
-									<th><strong>Harga Grosir</strong></th>
-									<th><strong>Harga Toko</strong></th>
-								</tr>
-							</thead>
-							<tbody class="invoice_tbody">
-								<tr t-foreach="docs" t-as="o" style="font:14px lucida-console,sans-serif;">
-									<td>
-										<span t-field="o.name"/>
-									</td>
-									<td>
-										<span t-field="o.list_price"/>
-									</td>
-									<td>
-										<span t-field="o.x_harga_grosir"/>
-									</td>
-									<td>
-										<span t-field="o.x_harga_toko"/>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<t t-foreach="docs" t-as="doc">
+							<div class="col-xs-6" style="padding:0;">
+								<table style="border-spacing:0;margin-bottom:0;height:100px;font:11px lucida-console,sans-serif !important;" class="table">
+									<tbody>
+										<tr style="width: 1in;">
+											<td style="border: 2px solid black;text-align: center; vertical-align: middle;" class="col-xs-4">
+												<img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" style="width:120px;height:120px;"/>
+											</td>
+											<td style="border: 2px solid black; text-align: center;" class="col-xs-8">
+												<span t-field="doc.name"/><br/>
+												<span t-field="doc.x_harga_toko" t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/><br/><br/>
+												<t t-if="doc.description">
+													<span t-field="doc.description" style="font:8px lucida-console,sans-serif;"/>
+												</t>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</t>
 					</div>
 				</div>
 			</t>

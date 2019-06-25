@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-17 04:39+0000\n"
-"PO-Revision-Date: 2018-10-17 12:54+0800\n"
+"POT-Creation-Date: 2019-06-25 21:53+0000\n"
+"PO-Revision-Date: 2019-06-26 05:55+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. module: rma_rythe
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_invoice_count
@@ -59,15 +59,24 @@ msgstr "Setuju"
 #. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
-#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
 #: selection:rma.rma,state:0 selection:rma.rma.line,state:0
 msgid "Approved"
 msgstr "Disetujui"
 
 #. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Are you sure you want to change to refund?"
+msgstr "Are you sure you want to change to refund?"
+
+#. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+msgid "Are you sure you want to change to replace?"
+msgstr "Are you sure you want to change to replace?"
+
+#. module: rma_rythe
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_replace_invoiced_qty
 msgid "Billed Qty"
-msgstr "Qty Difakturkan"
+msgstr "Kuantitas Tertagih"
 
 #. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.rma_product_replacement_view_form
@@ -130,6 +139,7 @@ msgid "Confirm"
 msgstr "Konfirmasi"
 
 #. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
 #: selection:rma.rmaout,state:0 selection:rma.rmaout.line,state:0
 msgid "Confirmed"
 msgstr "Dikonfirmasi"
@@ -237,8 +247,8 @@ msgstr "RMA Pelanggan"
 
 #. module: rma_rythe
 #: model:ir.ui.menu,name:rma_rythe.menu_rma_rma_line
-msgid "Customer RMA Line Service"
-msgstr "Baris Servis RMA Pelanggan"
+msgid "Customer RMA Line"
+msgstr "Baris RMA Pelanggan"
 
 #. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.invoice_line_tree_view_custom
@@ -494,6 +504,11 @@ msgid "Name"
 msgstr "Nama"
 
 #. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+msgid "No RMA-OUT"
+msgstr "RMA-OUT Belum Ada"
+
+#. module: rma_rythe
 #: selection:rma.rma,priority:0
 msgid "Normal"
 msgstr "Normal"
@@ -511,13 +526,13 @@ msgid "Number"
 msgstr "Nomor"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:694
+#: code:addons/rma_rythe/models/rma.py:699
 #, python-format
 msgid "Only a rma line with repair action can have product service"
 msgstr "Hanya baris rma dengan tindakan perbaiki yang dapat melakukan servis produk"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:677
+#: code:addons/rma_rythe/models/rma.py:682
 #, python-format
 msgid "Only a rma line with replace action can have product replacement"
 msgstr "Hanya baris rma dengan tindakan tukar yang dapat melakukan penukaran produk"
@@ -541,6 +556,12 @@ msgid "Other Information"
 msgstr "Informasi Lainnya"
 
 #. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
+#: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
+msgid "Paksa Status Batal"
+msgstr "Paksa Status Batal"
+
+#. module: rma_rythe
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_partner_id
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_partner_id
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
@@ -562,15 +583,15 @@ msgid "Phone"
 msgstr "Telepon"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:297
-#: code:addons/rma_rythe/models/rmaout.py:236
+#: code:addons/rma_rythe/models/rma.py:302
+#: code:addons/rma_rythe/models/rmaout.py:241
 #, python-format
 msgid "Picking type can not be internal"
 msgstr "Tipe transfer tidak boleh internal"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:364
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:164
+#: code:addons/rma_rythe/models/rma.py:369
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:165
 #, python-format
 msgid "Please define an accounting purchase journal for this company."
 msgstr "Silahkan atur jurnal pembelian akuntansi untuk perusahaan ini."
@@ -596,6 +617,7 @@ msgstr "Selesai"
 #. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+#: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
 #: selection:rma.rma,state:0 selection:rma.rma.line,process_status:0
 #: selection:rma.rmaout,state:0 selection:rma.rmaout.line,process_status:0
 msgid "Processing"
@@ -737,7 +759,6 @@ msgstr "Baris RMA"
 
 #. module: rma_rythe
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_date
-#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_date
 msgid "RMA Line Date"
 msgstr "Tanggal Baris RMA"
 
@@ -911,6 +932,11 @@ msgid "RMA-OUT Line"
 msgstr "Baris RMA-OUT"
 
 #. module: rma_rythe
+#: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_date
+msgid "RMA-OUT Line Date"
+msgstr "RMA-OUT Line Date"
+
+#. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
 msgid "RMA-OUT Lines"
 msgstr "Baris RMA-OUT"
@@ -955,18 +981,13 @@ msgstr "Nama Alasan"
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_line_received_qty
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_line_received_qty
 msgid "Received Qty"
-msgstr "Qty Diterima"
+msgstr "Jml Diterima"
 
 #. module: rma_rythe
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_picking_count
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_picking_count
 msgid "Receptions"
 msgstr "Penerimaan"
-
-#. module: rma_rythe
-#: model:ir.actions.act_window,help:rma_rythe.rma_rma_line_view_act
-msgid "Record and track your customers' RMA Line related to service."
-msgstr "Telusuri baris servis pelanggan Anda."
 
 #. module: rma_rythe
 #: model:ir.actions.act_window,help:rma_rythe.rma_rma_view_act
@@ -1110,7 +1131,7 @@ msgstr "Reservasi"
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
 #: model:ir.ui.view,arch_db:rma_rythe.view_rmaout_filter
 msgid "Responsible"
-msgstr "Penanggung jawab"
+msgstr "Penanggung Jawab"
 
 #. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.view_rma_filter
@@ -1219,6 +1240,11 @@ msgid "Services"
 msgstr "Servis"
 
 #. module: rma_rythe
+#: model:ir.ui.view,arch_db:rma_rythe.view_rma_line_filter
+msgid "Services Line"
+msgstr "Baris Servis"
+
+#. module: rma_rythe
 #: model:ir.ui.view,arch_db:rma_rythe.rma_rma_form_view
 #: model:ir.ui.view,arch_db:rma_rythe.rma_rmaout_form_view
 msgid "Set to Draft"
@@ -1271,7 +1297,7 @@ msgstr "Pergerakan Stock"
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rma_name
 #: model:ir.model.fields,field_description:rma_rythe.field_rma_rmaout_name
 msgid "Subject"
-msgstr "Subjek"
+msgstr "Judul"
 
 #. module: rma_rythe
 #: model:res.groups,name:rma_rythe.group_rma_supervisor
@@ -1301,9 +1327,9 @@ msgid "The serial/lot of the returned product"
 msgstr "Nomor seri/lot dari produk yang dikembalikan"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:422
-#: code:addons/rma_rythe/models/rma.py:426
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:188
+#: code:addons/rma_rythe/models/rma.py:427
+#: code:addons/rma_rythe/models/rma.py:431
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:189
 #, python-format
 msgid "There is no invoicable line."
 msgstr "Tidak ada baris yang dapat difakturkan."
@@ -1328,6 +1354,11 @@ msgid "Total service quantity will be larger than the received quantity. Please 
 msgstr "Total qty yang akan diservis lebih besar dari jumlah yang diterima. Silahkan periksan ulang jumlah yang telah Anda servis!"
 
 #. module: rma_rythe
+#: model:ir.actions.act_window,help:rma_rythe.rma_rma_line_view_act
+msgid "Track your customers' RMA Line."
+msgstr "Telusuri baris RMA pelanggan Anda."
+
+#. module: rma_rythe
 #: model:ir.model,name:rma_rythe.model_stock_picking
 msgid "Transfer"
 msgstr "Transfer"
@@ -1339,15 +1370,15 @@ msgid "Transfer Replace"
 msgstr "Transfer Penggantian"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:269
-#: code:addons/rma_rythe/models/rmaout.py:203
+#: code:addons/rma_rythe/models/rma.py:274
+#: code:addons/rma_rythe/models/rmaout.py:208
 #, python-format
 msgid "Unable to cancel RMA %s as some receptions have already been done."
 msgstr "Tidak dapat membatalkan RMA %s karena sebagian produk telah diterima."
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:272
-#: code:addons/rma_rythe/models/rmaout.py:206
+#: code:addons/rma_rythe/models/rma.py:277
+#: code:addons/rma_rythe/models/rmaout.py:211
 #, python-format
 msgid "Unable to cancel this RMA. You must first cancel related invoice."
 msgstr "Tidak dapat membatalkan RMA ini. Anda harus membatalkan faktur terkait terlebih dahulu."
@@ -1447,38 +1478,38 @@ msgid "Wizard"
 msgstr "Wisaya"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:732
+#: code:addons/rma_rythe/models/rma.py:737
 #, python-format
 msgid "You can only change repair action to replace action when the service is not done yet!"
 msgstr "Anda hanya dapat mengganti tindakan servis ke tindakan ganti jika servisnya belum dilakukan!"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:742
+#: code:addons/rma_rythe/models/rma.py:747
 #, python-format
 msgid "You can only change replace action to refund action                if all related replacement transfer is not yet created or already cancelled"
 msgstr "Anda hanya dapat mengubah tindakan ganti ke tindakan pengembalian dana                jika semua transfer terkait dengan penggantian belum dibuat atau sudah dibatalkan"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:54
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:56
 #, python-format
 msgid "You either input negative qty or qty different than the replacement plan"
 msgstr "Anda telah memasukkan qty negatif atau qty yang berbeda dari rencana penggantian"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:47
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:48
 #, python-format
 msgid "You either input negative qty or qty greater than the quantity you should receive"
 msgstr "Anda mungkin memasukkan qty negatif atau qty penerimaan total yang lebih besar dari qty yang seharusnya Anda terima"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:77
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:78
 #, python-format
 msgid "You either input negative qty or qty greater than the quantity you should refund"
 msgstr "Anda mungkin memasukkan qty negatif atau qty penerimaan total yang lebih besar dari qty yang seharusnya Anda kirim"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:43
-#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:48
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:45
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:50
 #, python-format
 msgid "You either input negative qty or qty greater than the quantity you should send"
 msgstr "Anda telah memasukkan qty negatif atau qty yang lebih besar dari yang seharusnya Anda kirim"
@@ -1496,39 +1527,39 @@ msgid "You may only create RMA-OUT for one RMA-IN at a time!"
 msgstr "Anda hanya dapat menghapus RMA-OUT untuk satu RMA-IN pada saat yang bersamaan!"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:105
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:106
 #, python-format
 msgid "You may only create receive for a single RMA-OUT at a time!"
 msgstr "Anda hanya dapat membuat penerimaan untuk satu RMA-OUT pada saat yang bersamaan!"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:113
+#: code:addons/rma_rythe/wizards/rmaout_receive_wizard.py:114
 #, python-format
 msgid "You may only create receive for already sent goods"
 msgstr "Anda hanya dapat membuat penerimaan untuk barang yang sudah dikirim"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:71
-#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:81
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:73
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:83
 #, python-format
 msgid "You may only create transfer for a single RMA-IN at a time!"
 msgstr "Anda hanya dapat membuat transfer untuk satu RMA-IN pada saat yang bersamaan!"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:83
-#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:89
+#: code:addons/rma_rythe/wizards/rmain_int_transfer_wizard.py:85
+#: code:addons/rma_rythe/wizards/rmain_send_wizard.py:91
 #, python-format
 msgid "You may only create transfer for processing lines"
 msgstr "Anda hanya dapat membuat transfer untuk baris pada status sedang proses"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rma.py:291
+#: code:addons/rma_rythe/models/rma.py:296
 #, python-format
 msgid "You must set a Customer Location for this partner %s"
 msgstr "Anda harus mengatur Lokasi Pelanggan untuk rekanan %s"
 
 #. module: rma_rythe
-#: code:addons/rma_rythe/models/rmaout.py:230
+#: code:addons/rma_rythe/models/rmaout.py:235
 #, python-format
 msgid "You must set a Supplier Location for this partner %s"
 msgstr "Anda harus mengatur Lokasi Pemasok untuk rekanan %s"

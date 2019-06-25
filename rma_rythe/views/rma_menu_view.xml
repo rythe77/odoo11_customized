@@ -386,7 +386,7 @@
 	<menuitem name="Customer RMA" id="menu_rma_rma" 
 		parent="menu_services_sale" action="rma_rma_view_act" sequence="1"/>
 
-	<!-- RMA RMA-IN Line Service Action  -->
+	<!-- RMA RMA-IN Line Action  -->
 	<record model="ir.ui.view" id="rma_rma_line_tree_view">
 	    <field name="name">RMA-IN Line Tree</field>
 	    <field name="model">rma.rma.line</field>
@@ -408,6 +408,7 @@
 	            <field name="replaced_qty"/>
 	            <field name="state" invisible="1"/>
 	            <field name="process_status"/>
+	            <field name="rmaout_line_ids"/>
 	        </tree>
 	    </field>
 	</record>
@@ -423,6 +424,9 @@
 	            <filter name='processing' string="Processing" domain="[('process_status','=', 'processing')]"/>
 	            <filter name='done' string="Done" domain="[('process_status','=', 'done')]"/>
 	            <separator/>
+	            <filter name='no_rmaout' string="No RMA-OUT" domain="[('rmaout_line_ids','=', False)]"/>
+	            <filter name='service' string="Services Line" domain="[('action','=', 'repair')]"/>
+	            <separator/>
 	            <group expand="0" string="Group By">
 	                <filter string="Partner" domain="[]" help="Partner" context="{'group_by':'rma_partner_id'}"/>
 	                <filter string="Product" domain="[]" help="Product" context="{'group_by':'product_id'}"/>
@@ -435,18 +439,18 @@
 		<field name="res_model">rma.rma.line</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">tree</field>
-		<field name="domain">[('action','=', 'repair')]</field>
-		<field name="context">{'search_default_processing': 1}</field>
+		<field name="domain">[]</field>
+		<field name="context">{'search_default_no_rmaout': 1}</field>
 		<field name="view_ids" eval="[(5, 0, 0),
 			(0, 0, {'view_mode': 'tree', 'view_id': ref('rma_rma_line_tree_view')}),
 			]"/>
 		<field name="help" type="html">
 		    <p class="oe_view_nocontent_create">
-		        Record and track your customers' RMA Line related to service.
+		        Track your customers' RMA Line.
 		    </p>
 		</field>
 	</record>
-	<menuitem name="Customer RMA Line Service" id="menu_rma_rma_line" 
+	<menuitem name="Customer RMA Line" id="menu_rma_rma_line"
 		parent="menu_services_sale" action="rma_rma_line_view_act" sequence="1"/>
 </data>
 </odoo>
