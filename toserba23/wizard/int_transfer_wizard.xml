@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_int_transfer_form" model="ir.ui.view">
+        <field name="name">Internal Transfer</field>
+        <field name="model">int.transfer.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="partner_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="source_warehouse_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="dest_warehouse_id" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <group>
+                        <field name="scheduled_date"/>
+                        <field name="int_transporter" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="vehicle"/>
+                        <field name="other_notes"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="int_transfer_line" nolabel="1">
+                        <tree editable="top" create="1">
+                            <field name="product_id"  options="{'no_create': True, 'no_open': True}"/>
+                            <field name="description"/>
+                            <field name="quantity"/>
+                            <field name="product_uom" options="{'no_create': True, 'no_open': True}"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="button_create_picking" string="Buat Transfer" type="object" class="btn-primary"/>
+                    <button string="Batal" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	<record model="ir.actions.act_window" id="act_int_transfer">
+		<field name="name">Internal Transfer Wizard</field>
+		<field name="res_model">int.transfer.wizard</field>
+        <field name="view_type">form</field>
+		<field name="view_mode">form</field>
+        <field name="view_id" ref="view_int_transfer_form"/>
+        <field name="target">new</field>
+	</record>
+    <!-- Button on inventory operation to launch Wizard for internal transfer -->
+	<menuitem id="menu_int_transfer" name="Buat Transfer Internal"
+		parent="stock.menu_stock_warehouse_mgmt"
+		action="act_int_transfer" sequence="500"
+		groups="toserba23.group_stock_supervisor"
+		/>
+</odoo>

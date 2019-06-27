@@ -190,6 +190,7 @@
         'reports/email_template.xml',
         'reports/sms_wa_template.xml',
         'wizard/product_label_print_wizard.xml',
+        'wizard/int_transfer_wizard.xml',
     ],
     'demo': [
         #'demo/demo.xml',

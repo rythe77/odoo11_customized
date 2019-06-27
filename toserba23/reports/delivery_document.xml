@@ -68,8 +68,12 @@
 									<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
 										Transfer antar gudang
 									</t>
-									<t t-if="not o.picking_type_id.code=='internal' and o.partner_id and o.partner_id.supplier and not o.partner_id.customer" name="customer_address" groups="toserba23.view_vendor">
-										Pemasok : 
+									<t t-if="not o.picking_type_id.code=='internal' and 'BS-CK-OUT' not in o.name and o.partner_id and o.partner_id.supplier and not o.partner_id.customer" name="customer_address" groups="toserba23.view_vendor">
+										Pemasok :
+										<span t-field="o.partner_id" name="partner_header"/>
+									</t>
+									<t t-if="not o.picking_type_id.code=='internal' and 'BS-CK-OUT' in o.name and o.partner_id and o.partner_id.supplier and not o.partner_id.customer" name="customer_address">
+										Pemasok :
 										<span t-field="o.partner_id" name="partner_header"/>
 									</t>
 									<t t-if="not o.picking_type_id.code=='internal' and o.partner_id and o.partner_id.customer" name="customer_address">
