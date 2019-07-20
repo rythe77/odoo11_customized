@@ -114,7 +114,7 @@
     'version': '0.1',
 
     'depends': [
-        'base','mail','sale','stock','account','purchase','sale_margin','hr_expense', 'hr_payroll', 'crm',
+        'base','mail','sale','stock','account','purchase','sale_margin','hr_expense', 'hr_payroll', 'crm', 'stock_account',
         #'backend_theme_v11',
         #'login_user_detail',
         #'web_disable_export_delete_button',
@@ -189,6 +189,7 @@
         'reports/rma_label_document.xml',
         'reports/email_template.xml',
         'reports/sms_wa_template.xml',
+        'reports/payment_document.xml',
         'wizard/product_label_print_wizard.xml',
         'wizard/int_transfer_wizard.xml',
     ],

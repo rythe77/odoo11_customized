@@ -130,6 +130,18 @@
 		</field>
 	</record>
 
+	<!-- Stock picking return wizard view -->
+	<record id="view_stock_return_picking_form_custom" model="ir.ui.view">
+		<field name="name">stock.return.picking.form.custom</field>
+		<field name="inherit_id" ref="stock_account.view_stock_return_picking_form_inherit_stock_account"/>
+		<field name="model">stock.return.picking</field>
+		<field name="arch" type="xml">
+			<field name="to_refund" position="attributes">
+				<attribute name="groups">stock.group_stock_manager</attribute>
+			</field>
+		</field>
+	</record>
+
 	<!-- Inventory adjustment list view definition -->
 	<record model="ir.ui.view" id="view_inventory_tree_custom">
 		<field name="name">stock.view_inventory_tree_custom</field>

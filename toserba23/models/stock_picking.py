@@ -85,3 +85,23 @@ class StockPickingType(models.Model):
 
     def get_action_picking_tree_very_urgent(self):
         return self._get_action('toserba23.action_picking_tree_very_urgent')
+
+class StockReturnPicking(models.TransientModel):
+    _inherit = 'stock.return.picking'
+
+    @api.model
+    def default_get(self, fields):
+        res = super(StockReturnPicking, self).default_get(fields)
+
+        if 'product_return_moves' in fields:
+            product_return_moves_update = []
+
+            for product_return_move in res['product_return_moves']:
+                for item in product_return_move:
+                    if type(item) is dict:
+                        item.update({'to_refund': True})
+                        product_return_moves_update.append((0, 0, item))
+
+            res.update({'product_return_moves': product_return_moves_update})
+
+        return res

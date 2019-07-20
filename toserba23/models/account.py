@@ -84,6 +84,11 @@ class AccountPayment(models.Model):
             # Send out the e-mail template to the user
             self.env['mail.template'].browse(template.id).send_mail(item.id)
 
+    @api.multi
+    def amount_to_text(self, amount):
+        convert_amount_in_words = amount_to_text_id.amount_to_text(amount)
+        return convert_amount_in_words
+
 
 class account_register_payments_inherited(models.TransientModel):
     _inherit = 'account.register.payments'
