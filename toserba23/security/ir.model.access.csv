@@ -35,7 +35,7 @@ base.access_ir_sequence_group_user,ir_sequence group_user,base.model_ir_sequence
 mail.access_mail_tracking_value_user,mail.tracking.value.user,mail.model_mail_tracking_value,base.group_user,1,1,1,0
 toserba23.access_payment_non_accounting,toserba23.access_payment_non_accounting,account.model_account_payment,toserba23.show_advance_payments,1,0,0,0
 hr.access_hr_employee_system_user,hr.employee system user,hr.model_hr_employee,base.group_user,1,0,0,0
-hr.access_hr_employee_user,hr.employee user,hr.model_hr_employee,hr.group_hr_user,1,0,0,0
+hr.access_hr_employee_user,hr.employee user,hr.model_hr_employee,hr.group_hr_user,1,1,1,0
 toserba23.access_hr_employee_manager,hr.employee manager,hr.model_hr_employee,hr.group_hr_manager,1,1,1,1
 hr.access_hr_department_employee,hr.department.employee,hr.model_hr_department,base.group_user,1,0,0,0
 hr.access_hr_department_user,hr.department.user,hr.model_hr_department,hr.group_hr_user,1,0,0,0

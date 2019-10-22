@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_attendance"
+		model="hr.attendance"
+		string="Cetak Absensi"
+		name="toserba23.report_custom_mass_attendance_template"
+		file="toserba23.rekap absensi"
+		print_report_name="'Absensi - %s' % (object.name)"
+		report_type="qweb-pdf"
+	/>
+
+	<template id="report_custom_mass_attendance_template">
+		<t t-call="web.html_container">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
+						Dicetak tanggal: 
+						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+					</div>
+					<div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
+						Rekapan Absensi
+					</div>
+					<div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
+					</div>
+				</div>
+			</div>
+			<t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+				<t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row">
+						<table class="table table-condensed table table-striped">
+							<thead>
+								<tr style="font:10px lucida-console,sans-serif;">
+									<th><strong>Nama Karyawan</strong></th>
+									<th><strong>Tanggal</strong></th>
+									<th><strong>Jam Masuk</strong></th>
+									<th><strong>Jam Keluar</strong></th>
+									<th><strong>Lembur (Jam)</strong></th>
+									<th><strong>Lembur Malam (Jam)</strong></th>
+								</tr>
+							</thead>
+							<tbody class="invoice_tbody">
+								<t t-set="overtime_hours_total" t-value="0"/>
+								<t t-set="overtime_hours_late_total" t-value="0"/>
+								<tr t-foreach="docs" t-as="o" style="font:10px lucida-console,sans-serif;">
+									<td>
+										<span t-field="o.employee_id"/>
+									</td>
+									<td>
+										<span t-field="o.check_in" t-field-options='{"format": "d MMM y"}'/>
+									</td>
+									<td>
+										<span t-field="o.check_in" t-field-options='{"format": "HH:mm"}'/>
+									</td>
+									<td>
+										<span t-field="o.check_out" t-field-options='{"format": "HH:mm"}'/>
+									</td>
+									<td>
+										<span t-field="o.overtime_hours"/>
+										<t t-set="overtime_hours_total" t-value="overtime_hours_total+o.overtime_hours"/>
+									</td>
+									<td>
+										<span t-field="o.overtime_hours_late"/>
+										<t t-set="overtime_hours_late_total" t-value="overtime_hours_late_total+o.overtime_hours_late"/>
+									</td>
+								</tr>
+								<tr style="font:10px lucida-console,sans-serif;">
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+									<td>
+										<strong>Total</strong>
+									</td>
+									<td>
+										<strong><span t-esc="overtime_hours_total"/></strong>
+									</td>
+									<td>
+										<strong><span t-esc="overtime_hours_late_total"/></strong>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

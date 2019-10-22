@@ -37,11 +37,11 @@
 	    <field name="arch" type="xml">
 	        <form string="RMA-OUT">
 	        <header>
-				<button name="button_confirm" string="Confirm" type="object" states="draft" class="btn-primary" groups="rma_rythe.group_rmaout_user"/>
+				<button name="button_confirm" string="Confirm" type="object" states="draft" class="btn-primary" groups="rma_rythe.group_rmaout_supervisor"/>
 				<button name="%(act_receive_rma_out)d" string="Create Receive" type="action"
 					class="btn-primary" attrs="{'invisible':[('show_button_receive_refund', '=', False)]}" groups="rma_rythe.group_rmaout_supervisor"/>
 				<button name="%(act_refund_rma_out)d" string="Create Refund" type="action"
-					class="btn-primary" attrs="{'invisible':[('show_button_receive_refund', '=', False)]}" groups="rma_rythe.group_rmaout_supervisor"/>
+					class="btn-primary" attrs="{'invisible':[('show_button_receive_refund', '=', False)]}" groups="account.group_account_invoice"/>
 				<button name="button_draft" states="rejected" string="Set to Draft" type="object" groups="rma_rythe.group_rmaout_supervisor"/>
 				<button name="button_cancel" states="draft,confirmed" string="Reject" type="object" groups="rma_rythe.group_rmaout_supervisor"/>
 				<button name="action_status" id="action_status" string="Paksa Status Batal" type="object" attrs="{'invisible': [('state', 'not in', ['processing'])]}" groups="rma_rythe.group_rmaout_manager"/>

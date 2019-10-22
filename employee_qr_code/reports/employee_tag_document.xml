@@ -12,7 +12,7 @@
 		file="employee_qr_code.print_employee_badge"
 		print_report_name="'Employee Badge - %s' % (object.name)"
 		report_type="qweb-pdf"
-		groups="hr.group_hr_manager"
+		groups="hr.group_hr_user"
 	/>
 
 	<template id="print_employee_badge">

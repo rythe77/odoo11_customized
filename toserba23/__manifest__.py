@@ -41,9 +41,21 @@
             - Automatic email and sms system
             - Sistem daftar harga lebih kompleks
             - Upload product image
+            - sistem pencatatan tindakan indisipliner
         Todo:
+            - error access rule utk sales
+            - integrasi google map ke data kontak
+            - sistem pencatatan kunjungan sales menurut google map
+            - tanggal jatuh tempo faktur mau otomatis dimunculkan ketika pembuatan faktur
+            - tampilan bagan struktur jabatan
+            - bonus prestasi karyawan menurut KPI
+            - penerapan sistem cuti di Odoo
+            - kunci SO yang sudah konfir
+            - status rekonsiliasi pembayaran
+            - history perubahan data pelanggan
+            - featured product view
             - real-time inventory correction system
-            - Automatic wa system
+            - Automatic wa notification system
             - Dasbor penagihan sebaiknya tampilkan jumlah yang belum dibayar, bukan jumlah total
             - Nisa mau dibatasi ubah harga di faktur
             - pembayaran di muka untuk pembelian
@@ -166,6 +178,7 @@
         'views/crm_view.xml',
         'views/sale_adv_payment_view.xml',
         'views/company_view.xml',
+        'views/hr_job_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml', 
         'reports/invoice_proforma_document.xml',
@@ -190,6 +203,7 @@
         'reports/email_template.xml',
         'reports/sms_wa_template.xml',
         'reports/payment_document.xml',
+        'reports/attendance_document.xml',
         'wizard/product_label_print_wizard.xml',
         'wizard/int_transfer_wizard.xml',
     ],

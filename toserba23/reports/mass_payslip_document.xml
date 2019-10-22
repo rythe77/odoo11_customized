@@ -88,6 +88,50 @@
 							</tbody>
 						</table>
 					</div>
+					<div>
+						<div class="col-xs-12">
+							<table class="table table-condensed">
+								<tr style="font:10px lucida-console,sans-serif;">
+									<td class="text-center">
+										Dibuat,
+										<br/>
+										<br/>
+										<br/>
+										<br/>
+										<ins>
+											<b>
+												(______________________)
+											</b>
+										</ins>
+									</td>
+									<td class="text-center">
+										Diperiksa,
+										<br/>
+										<br/>
+										<br/>
+										<br/>
+										<ins>
+											<b>
+												(______________________)
+											</b>
+										</ins>
+									</td>
+									<td class="text-center">
+										Disetujui,
+										<br/>
+										<br/>
+										<br/>
+										<br/>
+										<ins>
+											<b>
+												(______________________)
+											</b>
+										</ins>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
 				</div>
 			</t>
 		</t>

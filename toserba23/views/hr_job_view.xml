@@ -1,0 +1,15 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="view_hr_job_form_custom">
+		<field name="name">hr_job.view_hr_job_form_custom</field>
+		<field name="model">hr.job</field>
+		<field name="inherit_id" ref="hr.view_hr_job_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/div[3]" position="attributes">
+				<attribute name="attrs">{'invisible':0}</attribute>
+			</xpath>
+		</field>
+	</record>
+</data>
+</odoo>

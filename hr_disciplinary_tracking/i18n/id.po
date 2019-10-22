@@ -1,0 +1,392 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_disciplinary_tracking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-22 21:05+0000\n"
+"PO-Revision-Date: 2019-10-23 05:06+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_action
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Action"
+msgstr "Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.actions.act_window,name:hr_disciplinary_tracking.action_category_action_view
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.category_action_view_tree
+msgid "Action Categories"
+msgstr "Kategori Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model,name:hr_disciplinary_tracking.model_action_category
+#: model:ir.ui.menu,name:hr_disciplinary_tracking.action_category_view
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.category_action_view_form
+msgid "Action Category"
+msgstr "Kategori tindakan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_action_details
+#: model:ir.ui.menu,name:hr_disciplinary_tracking.disciplinary_action_view
+msgid "Action Details"
+msgstr "Detail Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Action Information"
+msgstr "Informasi Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: selection:disciplinary.action,state:0
+msgid "Action Validated"
+msgstr "Tindakan Divalidasi"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_attachment_ids
+msgid "Attachments"
+msgstr "Lampiran"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: hr_disciplinary_tracking
+#: selection:disciplinary.action,state:0
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_code
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_code
+msgid "Code"
+msgstr "Kode"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_create_uid
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_create_uid
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_create_date
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_create_date
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Current Month"
+msgstr "Bulan Berjalan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_date
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_department_name
+msgid "Department"
+msgstr "Departemen"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_description
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_description
+msgid "Details"
+msgstr "Detail"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model,name:hr_disciplinary_tracking.model_disciplinary_action
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_tree
+msgid "Disciplinary Action"
+msgstr "Tindakan Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.actions.act_window,name:hr_disciplinary_tracking.action_disciplinary_action_view
+msgid "Disciplinary Action View"
+msgstr "Tampilan Tindakan Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.menu,name:hr_disciplinary_tracking.disciplinary_action
+msgid "Disciplinary Actions"
+msgstr "Tindakan Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.inherit_employee_form
+msgid "Discipline"
+msgstr "Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.actions.act_window,name:hr_disciplinary_tracking.action_disciplinary_category_view
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.disciplinary_category_view_tree
+msgid "Discipline Categories"
+msgstr "Kategori Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.menu,name:hr_disciplinary_tracking.disciplinary_category_view
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.disciplinary_category_view_form
+msgid "Discipline Category"
+msgstr "Kategori Indisipliner"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Discplinary Action Search"
+msgstr "Discplinary Action Search"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_display_name
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_display_name
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Done"
+msgstr "Selesai"
+
+#. module: hr_disciplinary_tracking
+#: selection:disciplinary.action,state:0
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Draft"
+msgstr "Rancangan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model,name:hr_disciplinary_tracking.model_hr_employee
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_employee_name
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Employee Information"
+msgstr "Informasi Karyawan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,help:hr_disciplinary_tracking.field_disciplinary_action_attachment_ids
+msgid "Employee can submit any documents which supports their explanation"
+msgstr "Karyawan dapat mengajukan dokumen yang mendukung penjelasan mereka"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,help:hr_disciplinary_tracking.field_disciplinary_action_explanation
+msgid "Employee have to give Explanationto manager about the violation of discipline"
+msgstr "Karyawan harus memberikan penjelasan kepada manajer mengenai tindakan indisiplinernya"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_explanation
+msgid "Explanation by Employee"
+msgstr "Penjelasan Karyawan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Group By"
+msgstr "Dikelompokkan berdasarkan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_id
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_id
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_note
+msgid "Internal Note"
+msgstr "Catatan Internal"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_joined_date
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Joined Date"
+msgstr "Tanggal Bergabung"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category___last_update
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action___last_update
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Last Month"
+msgstr "Bulan Lalu"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_write_uid
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_write_uid
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_write_date
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_write_date
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Month"
+msgstr "Bulan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "My Indiciplinary"
+msgstr "Indisipliner Saya"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_action_category_name
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_discipline_category_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:50
+#, python-format
+msgid "New"
+msgstr "Baru"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Proceed"
+msgstr "Proses"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_read_only
+msgid "Read Only"
+msgstr "Read Only"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_discipline_reason
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Reason"
+msgstr "Alasan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model,name:hr_disciplinary_tracking.model_discipline_category
+msgid "Reason Category"
+msgstr "Kategori Alasan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_name
+msgid "Reference"
+msgstr "Referensi"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Set to Draft"
+msgstr "Set ke Rancangan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_state
+msgid "State"
+msgstr "Status"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Submit"
+msgstr "Ajukan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_suspension_letter
+msgid "Suspension Letter"
+msgstr "Surat Suspensi"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_termination_letter
+msgid "Termination Letter"
+msgstr "Surat Pemecatan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_form
+msgid "Validate Action"
+msgstr "Validasi Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: selection:disciplinary.action,state:0
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Waiting Action"
+msgstr "Menunggu Tindakan"
+
+#. module: hr_disciplinary_tracking
+#: selection:disciplinary.action,state:0
+#: model:ir.ui.view,arch_db:hr_disciplinary_tracking.employee_disciplinary_search
+msgid "Waiting Explanation"
+msgstr "Menunggu Penjelasan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_warning
+msgid "Warning"
+msgstr "Peringatan"
+
+#. module: hr_disciplinary_tracking
+#: model:ir.model.fields,field_description:hr_disciplinary_tracking.field_disciplinary_action_warning_letter
+msgid "Warning Letter"
+msgstr "Surat Peringatan"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:107
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:113
+#, python-format
+msgid "You Can not edit a Validated Action !!"
+msgstr "Anda tidak dapat mengubah tindakan yang sudah divalidasi !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:154
+#, python-format
+msgid "You have to fill up the  Action Information !!"
+msgstr "Anda harus mengisi Informasi Tindakan !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:143
+#, python-format
+msgid "You have to fill up the Suspension Letter in Action Information !!"
+msgstr "Anda harus mengisi Surat Suspensi pada Informasi Tindakan !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:147
+#, python-format
+msgid "You have to fill up the Termination Letter in  Action Information !!"
+msgstr "Anda harus mengisi Surat Pemecatan pada Informasi Tindakan !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:139
+#, python-format
+msgid "You have to fill up the Warning Letter in Action Information !!"
+msgstr "Anda harus mengisi Surat Peringatan pada Informasi Tindakan !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:135
+#, python-format
+msgid "You have to select an Action !!"
+msgstr "Anda harus mengisi kolom Tindakan !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:162
+#, python-format
+msgid "You must give an explanation !!"
+msgstr "Kolom penjelasan harus diisi !!"
+
+#. module: hr_disciplinary_tracking
+#: code:addons/hr_disciplinary_tracking/models/disciplinary_action.py:164
+#, python-format
+msgid "Your explanation must contain at least 5 words   !!"
+msgstr "Penjelasan harus sekurang-kurangnya berisi 5 kata   !!"

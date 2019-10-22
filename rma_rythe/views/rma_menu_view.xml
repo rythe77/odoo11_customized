@@ -89,12 +89,12 @@
 	    <field name="arch" type="xml">
 	        <form string="RMA">
 	        <header>
-				<button name="button_approve" string="Approve" type="object" states="draft" class="btn-primary" groups="rma_rythe.group_rma_user"/>
+				<button name="button_approve" string="Approve" type="object" states="draft" class="btn-primary" groups="rma_rythe.group_rma_supervisor"/>
 				<button name="button_create_invoice" string="Create Invoice" type="object"
-					class="btn-primary" attrs="{'invisible':[('show_button_create_invoice', '=', False)]}" groups="rma_rythe.group_rma_supervisor"/>
+					class="btn-primary" attrs="{'invisible':[('show_button_create_invoice', '=', False)]}" groups="account.group_account_invoice"/>
 				<button name="%(act_send_rma_in)d" string="Transfer Replace" type="action"
-					class="btn-primary" attrs="{'invisible':[('show_button_replace', '=', False)]}" groups="rma_rythe.group_rma_user"/>
-				<button name="%(act_transfer_rma_in)d" string="Create Transfer" states="approved,processing,closed" type="action" groups="rma_rythe.group_rma_user"/>
+					class="btn-primary" attrs="{'invisible':[('show_button_replace', '=', False)]}" groups="rma_rythe.group_rma_supervisor"/>
+				<button name="%(act_transfer_rma_in)d" string="Create Transfer" states="approved,processing,closed" type="action" groups="rma_rythe.group_rma_supervisor"/>
 				<button name="%(act_create_rma_out)d" string="Create RMA-OUT" states="approved,processing,closed" type="action" groups="rma_rythe.group_rmaout_user"/>
 				<button name="button_draft" states="rejected" string="Set to Draft" type="object" groups="rma_rythe.group_rma_supervisor"/>
 				<button name="button_cancel" states="draft,approved" string="Reject" type="object" groups="rma_rythe.group_rma_supervisor"/>

@@ -20,11 +20,18 @@
                     <div class="page">
 						<div class="oe_structure"/>
 						<div class="row">
-							<t t-call="toserba23.user_company_header"/>
-							<div class="col-xs-6 text-center mb8" style="height: 80px;">
+							<div class="col-xs-12 text-center mb8" style="height: 80px;">
 								<div style="position:relative; top:10px; col-xs-6 text-center;">
 									<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
-				                        <b>Laporan Pengeluaran</b>
+										<t t-if="o.state=='submit'">
+				                        	<b>Permintaan Dana</b>
+										</t>
+										<t t-if="o.state in ['approve', 'post', 'done']">
+				                        	<b>Laporan Pengeluaran</b>
+										</t>
+										<t t-if="o.state=='cancel'">
+				                        	<b>DITOLAK</b>
+										</t>
 									</span><br/>
 									<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.name"/></b>
 								</div>
@@ -42,8 +49,9 @@
 											<span t-if="o.responsible_id" t-field="o.responsible_id"/>
 										</td>
 										<td class="col-xs-4 text-right">
-										<t t-if="o.company_id.partner_id.city"><span t-field="o.company_id.partner_id.city"/>, </t>
-											<span t-field="o.accounting_date" t-field-options='{"format": "d MMM y"}'/>
+											<t t-if="o.company_id.partner_id.city"><span t-field="o.company_id.partner_id.city"/>, </t>
+											<t t-if="o.accounting_date"><span t-field="o.accounting_date" t-field-options='{"format": "d MMM y"}'/></t>
+											<t t-if="not o.accounting_date">________________</t>
 										</td>
 									</tr>
 								</thead>
@@ -55,7 +63,7 @@
 										<th><font color="#fff"><strong>Tanggal</strong></font></th>
 										<th><font color="#fff"><strong>Nama</strong></font></th>
 										<th class="text-center"><font color="#fff"><strong>Ref.</strong></font></th>
-										<th><font color="#fff"><strong>Harga Satuan</strong></font></th>
+										<th><font color="#fff"><strong>Harga</strong></font></th>
 										<th><font color="#fff"><strong>Pajak</strong></font></th>
 										<th class="text-center"><font color="#fff"><strong>Qty</strong></font></th>
 										<th class="text-right"><font color="#fff"><strong>Subtotal</strong></font></th>
@@ -109,7 +117,50 @@
 	                                </table>
 	                            </div>
 	                        </div>
-	                        <p>Sertifikasi jujur dan sesuai standar,<br/>(Tanggal dan tanda tangan).<br/><br/></p>
+	                        <div>
+	                            <div class="col-xs-8">
+	                                <table class="table table-condensed">
+	                                    <tr>
+	                                        <td class="text-center">
+												Disetujui,
+												<br/>
+												<br/>
+												<br/>
+												<br/>
+												<ins>
+													<b>
+														(______________________)
+													</b>
+												</ins>
+											</td>
+	                                        <td class="text-center">
+												Mengetahui,
+												<br/>
+												<br/>
+												<br/>
+												<br/>
+												<ins>
+													<b>
+														(______________________)
+													</b>
+												</ins>
+											</td>
+	                                        <td class="text-center">
+												Penerima,
+												<br/>
+												<br/>
+												<br/>
+												<br/>
+												<ins>
+													<b>
+														(______________________)
+													</b>
+												</ins>
+											</td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
 						</div>
                     </div>
                 </t>
