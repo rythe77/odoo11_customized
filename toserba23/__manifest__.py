@@ -34,20 +34,22 @@
             - Kustomisasi dokumen koreksi persediaan
             - Kustomisasi dokumen slip gaji
             - Kustomisasi dokumen transfer massal BS
-            - product purchase price and start date automatically updated when purchase order is confirmed
+            - Product purchase price and start date automatically updated when purchase order is confirmed
             - DO validation for stock user should be allowed, when qty done is equal to or less than qty todo
             - Tunjangan jabatan diatur di kontrak
             - Akses LIHAT absensi untuk petugas penggajian
             - Automatic email and sms system
             - Sistem daftar harga lebih kompleks
             - Upload product image
-            - sistem pencatatan tindakan indisipliner
+            - Sistem pencatatan tindakan indisipliner
         Todo:
+            - Purchase request module, only to socialize and install in server
+            - Employee orientation module, only to socialize and install in server
+            - sistem pencatatan yang mirip seperti tindakan indisipliner untuk pelanggan
             - error access rule utk sales
             - integrasi google map ke data kontak
             - sistem pencatatan kunjungan sales menurut google map
             - tanggal jatuh tempo faktur mau otomatis dimunculkan ketika pembuatan faktur
-            - tampilan bagan struktur jabatan
             - bonus prestasi karyawan menurut KPI
             - penerapan sistem cuti di Odoo
             - kunci SO yang sudah konfir

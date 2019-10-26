@@ -85,7 +85,7 @@ class DisciplinaryAction(models.Model):
     # Check the Action Selected
     @api.onchange('action')
     def onchange_action(self):
-        if self.action.name == 'Peringatan Tertulis':
+        if self.action.name == 'Peringatan Tertulis' or self.action.name == 'Mutasi Jabatan':
             self.warning = 1
         elif self.action.name == 'Suspensi Karyawan Selama 1 Minggu':
             self.warning = 2
@@ -93,7 +93,7 @@ class DisciplinaryAction(models.Model):
             self.warning = 3
         elif self.action.name == 'Tidak Ada Tindakan':
             self.warning = 4
-        else :
+        else:
             self.warning = 5
 
     @api.onchange('employee_name')

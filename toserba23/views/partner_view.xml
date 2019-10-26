@@ -22,7 +22,7 @@
 				<field name="x_call_freq" attrs="{'invisible': [('customer', '!=', True)]}"/>
 			</field>
 			<group name="purchase" position="after">
-				<group string="Notifikasi" name="notification">
+				<group string="Notifikasi" name="notification" attrs="{'invisible': [('customer', '!=', True)]}">
 					<field name="x_notification_method" attrs="{'invisible': [('customer', '!=', True)]}"/>
 					<field name="x_is_notify_so" string="Konfirmasi Order" attrs="{'invisible': [('customer', '!=', True)]}"/>
 					<field name="x_is_notify_do" string="Validasi Surat Jalan" attrs="{'invisible': [('customer', '!=', True)]}"/>
@@ -30,6 +30,24 @@
 					<field name="x_is_notify_pay" string="Konfirmasi Pembayaran" attrs="{'invisible': [('customer', '!=', True)]}"/>
 				</group>
 			</group>
+			<field name="vat" position="before">
+				<field name="company_register"/>
+				<field name="register_date"/>
+				<field name="is_pkp"/>
+			</field>
+			<field name="vat" position="after">
+				<field name="name_npwp"/>
+				<field name="address_npwp"/>
+			</field>
+			<field name="property_product_pricelist" position="after">
+				<field name="preferred_transporter" attrs="{'invisible': [('customer', '!=', True)]}"/>
+				<field name="interested_product" attrs="{'invisible': [('customer', '!=', True)]}"/>
+			</field>
+			<xpath expr="//form/sheet/notebook/page[@name='internal_notes']" position="after">
+				<page name="speciment" string="Spesimen">
+					<field name="sign_speciment" widget="image" options="{&quot;size&quot;: [680, 680]}" placeholder="Upload spesimen tanda tangan di sini"/>
+				</page>
+			</xpath>
 		</field>
 	</record>
     <record id="account.view_partner_property_form" model="ir.ui.view">

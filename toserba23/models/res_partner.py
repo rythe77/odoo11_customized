@@ -5,6 +5,26 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
+    #Additional data to input to customer data
+    is_pkp = fields.Boolean('Pengusaha Kena Pajak', default=False,
+        help='Centang jika perusahaan terdaftar sebagai pengusaha kena pajak')
+    name_npwp = fields.Char(string="Nama NPWP")
+    address_npwp = fields.Char(string="Alamat NPWP")
+    company_register = fields.Selection([
+        ('individual', 'Perseorangan/UD'),
+        ('firm', 'Firma'),
+        ('cv', 'CV'),
+        ('pt', 'Perseroan Terbatas'),
+        ('ptn', 'Persero/Perusahaan Daerah/Perum'),
+        ('coop', 'Koperasi'),
+        ('npo', 'Yayasan')],
+        string='Bentuk Badan Usaha',
+        help="Bentuk badan usaha yang terdaftar di administrasi pemerintahan")
+    register_date = fields.Date(string="Tanggal Pengukuhan")
+    preferred_transporter = fields.Many2one('res.partner', string='Ekspedisi Pilihan', domain=[('transporter', '=', True)])
+    interested_product = fields.Text(string='Jenis Barang yang Diambil')
+    sign_speciment = fields.Binary("Spesimen Tanda Tangan", attachment=True)
+
     #Create new fields
     x_call_freq = fields.Selection([
         ('urgent', 'Urgent'),
