@@ -1,0 +1,225 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_insurance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-01 11:11+0000\n"
+"PO-Revision-Date: 2019-11-01 19:16+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: hr_insurance
+#: selection:hr.insurance,state:0
+msgid "Active"
+msgstr "Aktif"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_note_field
+msgid "Comment"
+msgstr "Komentar"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_company_id
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_employee_insurance_percentage
+msgid "Company Percentage "
+msgstr "Persentase Perusahaan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_create_uid
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_create_date
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_date_from
+msgid "Date From"
+msgstr "Dari Tanggal"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_date_to
+msgid "Date To"
+msgstr "Sampai Tanggal"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_display_name
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: hr_insurance
+#: selection:hr.insurance,state:0
+msgid "Draft"
+msgstr "Rancangan"
+
+#. module: hr_insurance
+#: model:ir.model,name:hr_insurance.model_hr_employee
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_employee_id
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: hr_insurance
+#: model:ir.actions.act_window,name:hr_insurance.action_employee_insurance_details
+#: model:ir.ui.menu,name:hr_insurance.hr_employee_insurance_menu
+#: model:ir.ui.view,arch_db:hr_insurance.employee_insurance__details_form
+#: model:ir.ui.view,arch_db:hr_insurance.employee_insurance_details_tree
+msgid "Employee Insurance"
+msgstr "Asuransi Karyawan"
+
+#. module: hr_insurance
+#: selection:hr.insurance,state:0
+msgid "Expired"
+msgstr "Kadaluarsa"
+
+#. module: hr_insurance
+#: model:ir.ui.view,arch_db:hr_insurance.insurance_policy_details_form
+msgid "Extra Notes"
+msgstr "Catatan Tambahan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_is_fixed_period
+msgid "Fixed Period"
+msgstr "Periode Tetap"
+
+#. module: hr_insurance
+#: model:ir.model,name:hr_insurance.model_hr_insurance
+#: model:ir.ui.menu,name:hr_insurance.hr_insurance_main_menu
+msgid "HR Insurance"
+msgstr "Asuransi"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_id
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_employee_insurance
+#: model:ir.ui.view,arch_db:hr_insurance.hr_employee_insurance_form
+msgid "Insurance"
+msgstr "Asuransi"
+
+#. module: hr_insurance
+#: model:hr.salary.rule,name:hr_insurance.hr_payslip_rule_insurance
+msgid "Insurance Amount"
+msgstr "Jumlah Asuransi"
+
+#. module: hr_insurance
+#: model:ir.actions.act_window,name:hr_insurance.action_insurance_policy_management
+msgid "Insurance Policy "
+msgstr "Polis Asuransi "
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance___last_update
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_write_uid
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_write_date
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: hr_insurance
+#: selection:hr.insurance,policy_coverage:0
+msgid "Monthly"
+msgstr "Bulanan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_insurance_policy_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: hr_insurance
+#: model:ir.model,name:hr_insurance.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Slip Gaji"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_policy_id
+#: model:ir.ui.menu,name:hr_insurance.policy_management_menu
+msgid "Policy"
+msgstr "Polis"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_amount
+msgid "Policy Amount"
+msgstr "Jumlah Polis"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_policy_coverage
+msgid "Policy Coverage"
+msgstr "Jangka Waktu Polis"
+
+#. module: hr_insurance
+#: model:ir.ui.view,arch_db:hr_insurance.insurance_policy_details_form
+#: model:ir.ui.view,arch_db:hr_insurance.insurance_policy_details_tree
+msgid "Policy Details"
+msgstr "Detail Polis"
+
+#. module: hr_insurance
+#: model:ir.ui.view,arch_db:hr_insurance.employee_insurance__details_form
+msgid "Policy Period"
+msgstr "Periode Polis"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_employee_deduced_amount_per_month
+msgid "Salary deduced per month"
+msgstr "Potongan gaji bulanan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_employee_deduced_amount_per_year
+msgid "Salary deduced per year"
+msgstr "Potongan gaji tahunan"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_state
+msgid "State"
+msgstr "Status"
+
+#. module: hr_insurance
+#: model:ir.model.fields,field_description:hr_insurance.field_hr_insurance_sum_insured
+msgid "Sum Insured"
+msgstr "Jumlah Terangsurkan"
+
+#. module: hr_insurance
+#: selection:hr.insurance,policy_coverage:0
+msgid "Yearly"
+msgstr "Tahunan"
+
+#. module: hr_insurance
+#: model:ir.actions.act_window,help:hr_insurance.action_employee_insurance_details
+#: model:ir.actions.act_window,help:hr_insurance.action_insurance_policy_management
+msgid "You have'nt created any policy yet."
+msgstr "Anda belum membuat polis asuransi."
+
+#. module: hr_insurance
+#: model:ir.model,name:hr_insurance.model_insurance_policy
+msgid "insurance.policy"
+msgstr "insurance.policy"
