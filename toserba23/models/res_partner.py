@@ -6,6 +6,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
     
     #Additional data to input to customer data
+    id_number = fields.Char(string="Nomor Identitas (KTP)")
     is_pkp = fields.Boolean('Pengusaha Kena Pajak', default=False,
         help='Centang jika perusahaan terdaftar sebagai pengusaha kena pajak')
     name_npwp = fields.Char(string="Nama NPWP")

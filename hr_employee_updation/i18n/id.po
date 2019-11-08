@@ -1,0 +1,261 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_employee_updation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-07 07:14+0000\n"
+"PO-Revision-Date: 2019-11-07 15:15+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_id_attachment_id
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_passport_attachment_id
+msgid "Attachment"
+msgstr "Lampiran"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_relation
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_member_contact
+msgid "Contact No"
+msgstr "No Kontak"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_emergency_contact_number
+msgid "Contact Number"
+msgstr "Nomor Kontak"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_create_uid
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_create_date
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Daughter"
+msgstr "Anak Perempuan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_display_name
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_emergency_contact
+#: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
+msgid "Emergency Contact"
+msgstr "Kontak Darurat"
+
+#. module: hr_employee_updation
+#: model:ir.model,name:hr_employee_updation.model_hr_employee
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_employee_id
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_employee_obj
+msgid "Employee Obj"
+msgstr "Obj Karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_id_expiry_date
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_passport_expiry_date
+msgid "Expiry Date"
+msgstr "Tanggal Berakhir"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_id_expiry_date
+msgid "Expiry date of Identification ID"
+msgstr "Tanggal Berakhir ID KTP"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_passport_expiry_date
+msgid "Expiry date of Passport ID"
+msgstr "Tanggal Berakhir ID Paspor"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_fam_ids
+#: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
+msgid "Family"
+msgstr "Keluarga"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_fam_ids
+#: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
+msgid "Family Information"
+msgstr "Informasi Keluarga"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Father"
+msgstr "Bapak"
+
+#. module: hr_employee_updation
+#: model:ir.model,name:hr_employee_updation.model_hr_emergency_contact
+msgid "HR Emergency Contact"
+msgstr "HR Kontak Darurat"
+
+#. module: hr_employee_updation
+#: model:ir.actions.server,name:hr_employee_updation.employee_data_reminder_ir_actions_server
+#: model:ir.cron,cron_name:hr_employee_updation.employee_data_reminder
+#: model:ir.cron,name:hr_employee_updation.employee_data_reminder
+msgid "HR Employee Data Expiration"
+msgstr "HR Kadaluarsa Data Karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.model,name:hr_employee_updation.model_hr_employee_family
+msgid "HR Employee Family"
+msgstr "HR Keluarga Karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.ui.menu,name:hr_employee_updation.menu_hr_management
+msgid "HR Management"
+msgstr "HR Manajemen"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Husband"
+msgstr "Suami"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_id
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_employee_updation
+#: code:addons/hr_employee_updation/models/hr_employee.py:81
+#, python-format
+msgid "ID-%s Expired On %s"
+msgstr "ID-%s Berakhir Pada %s"
+
+#. module: hr_employee_updation
+#: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
+msgid "Identification ID"
+msgstr "ID KTP"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_family_employee_ref
+msgid "If family member currently is an employee of same company, then please tick this field"
+msgstr "Jika anggota keluarga saat ini adalah karyawan dari perusahaan yang sama, centang kolom ini"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_employee_ref
+msgid "Is Employee"
+msgstr "Karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_joining_date
+msgid "Joining Date"
+msgstr "Tanggal Bergabung"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact___last_update
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_write_uid
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_write_date
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_personal_mobile
+msgid "Mobile"
+msgstr "Ponsel"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Mother"
+msgstr "Ibu"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_member_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_emergency_contact_number
+msgid "Number"
+msgstr "Nomor"
+
+#. module: hr_employee_updation
+#: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
+msgid "Passport ID"
+msgstr "ID Paspor"
+
+#. module: hr_employee_updation
+#: code:addons/hr_employee_updation/models/hr_employee.py:95
+#, python-format
+msgid "Passport-%s Expired On %s"
+msgstr "Paspor-%s Berakhir Pada %s"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_emergency_contact_relation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_family_relation
+msgid "Relation with employee"
+msgstr "Hubungan dengan karyawan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_family_relation
+msgid "Relationship"
+msgstr "Status Hubungan"
+
+#. module: hr_employee_updation
+#: model:ir.ui.menu,name:hr_employee_updation.employee_report_menu
+msgid "Reports"
+msgstr "Laporan"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_family_employee_id
+msgid "Select corresponding Employee"
+msgstr "Pilih Karyawan yang sesuai"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Son"
+msgstr "Anak Laki-laki"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Wife"
+msgstr "Istri"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_passport_attachment_id
+msgid "You can attach the copy of Passport"
+msgstr "Anda dapat melampirkan salinan Paspor"
+
+#. module: hr_employee_updation
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_id_attachment_id
+msgid "You can attach the copy of your Id"
+msgstr "Anda dapat melampirkan salinan ID"

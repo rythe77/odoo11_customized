@@ -37,6 +37,7 @@ class EmployeeInsurance(models.Model):
     is_fixed_period = fields.Boolean(string='Fixed Period', default=False)
     amount = fields.Float(string='Policy Amount', required=True)
     sum_insured = fields.Float(string="Sum Insured", required=True)
+    insurance_percentage = fields.Float(string="Company Percentage")
     policy_coverage = fields.Selection([('monthly', 'Monthly'), ('yearly', 'Yearly')],
                                        required=True, default='monthly',
                                        string='Policy Coverage',)
@@ -54,7 +55,7 @@ class EmployeeInsurance(models.Model):
     def get_status(self):
         current_datetime = datetime.now()
         for i in self:
-            if self.is_fixed_period:
+            if i.is_fixed_period:
                 i.state = 'active'
             else:
                 x = datetime.strptime(i.date_from, '%Y-%m-%d')
@@ -76,7 +77,6 @@ class EmployeeInsurance(models.Model):
 class HrInsurance(models.Model):
     _inherit = 'hr.employee'
 
-    insurance_percentage = fields.Float(string="Company Percentage ")
     deduced_amount_per_month = fields.Float(string="Salary deduced per month", compute="get_deduced_amount")
     deduced_amount_per_year = fields.Float(string="Salary deduced per year", compute="get_deduced_amount")
     insurance = fields.One2many('hr.insurance', 'employee_id', string="Insurance",
@@ -89,11 +89,11 @@ class HrInsurance(models.Model):
             for ins in emp.insurance:
                 if ins.state == 'active':
                     if ins.policy_coverage == 'monthly':
-                        ins_amount = ins_amount + (ins.amount*12)
+                        ins_amount = ins_amount + ((ins.amount*12*(100-ins.insurance_percentage))/100)
                     else:
-                        ins_amount = ins_amount + ins.amount
-            emp.deduced_amount_per_year = ins_amount-((ins_amount*emp.insurance_percentage)/100)
-            emp.deduced_amount_per_month = emp.deduced_amount_per_year/12
+                        ins_amount = ins_amount + ((ins.amount*(100-ins.insurance_percentage))/100)
+            emp.deduced_amount_per_year = ins_amount
+            emp.deduced_amount_per_month = ins_amount/12
 
 
 class InsuranceRuleInput(models.Model):

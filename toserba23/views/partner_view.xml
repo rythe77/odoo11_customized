@@ -33,6 +33,7 @@
 			<field name="vat" position="before">
 				<field name="company_register"/>
 				<field name="register_date"/>
+				<field name="id_number"/>
 				<field name="is_pkp"/>
 			</field>
 			<field name="vat" position="after">

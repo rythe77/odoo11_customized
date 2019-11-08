@@ -54,40 +54,13 @@
 						</div>
 					</div>
 
-					<!-- table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
-						<thead style="font:14px lucida-console,sans-serif;">
-							<tr>
-								<td class="col-xs-4">
-									Nama : 
-									<span t-if="o.employee_id" t-field="o.employee_id"/>
-								</td>
-								<td class="col-xs-4">
-									Dari Tanggal : 
-									<span t-field="o.date_from"/>
-								</td>
-								<td class="col-xs-4 text-right">
-									Sampai Tanggal : 
-									<span t-field="o.date_to"/>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-xs-4">
-									Email : 
-									<span t-if="o.employee_id.work_email" t-field="o.employee_id.work_email"/>
-								</td>
-								<td class="col-xs-4">
-									No Identifikasi : 
-									<span t-field="o.employee_id.identification_id"/>
-								</td>
-								<td class="col-xs-4 text-right">
-									Akun Bank : 
-									<span t-field="o.employee_id.bank_account_id"/>
-								</td>
-							</tr>
-						</thead>
-					</table-->
+					<t t-set="base_days" t-value="0"/>
+					<t t-foreach="o.worked_days_line_ids" t-as="line">
+						<t t-if="line.code=='WORK100' or line.code=='Sakit'" t-set="base_days" t-value="base_days+line.number_of_days"/>
+						<t t-if="line.code=='Tinggalkan_Jam_Kerja'" t-set="base_days" t-value="base_days-round(line.number_of_hours/8-0.5)"/>
+					</t>
 
-					<table class="table table-condensed table table-striped">
+					<table class="table table-condensed table table-striped" style="font:12px lucida-console,sans-serif !important;">
 						<thead style="background-color:#212121;" >
 							<tr>
 								<th><font color="#fff"><strong>Kode</strong></font></th>
@@ -102,13 +75,7 @@
 						        <t t-if="line.code=='BASIC'">
 		                            <td><span t-field="line.code"/></td>
 		                            <td><span t-field="line.name"/></td>
-		                            <td>
-                            			<t t-foreach="o.worked_days_line_ids" t-as="worked_days">
-			                            	<t t-if="worked_days.code=='WORK100'">
-			                            		<span t-field="worked_days.number_of_days" t-options='{"widget": "float", "precision": 2}'/>
-			                            	</t>
-			                            </t>
-		                            </td>
+		                            <td><span t-esc="base_days" t-options='{"widget": "float", "precision": 0}'/></td>
 		                            <td><span t-esc="o.contract_id.wage"
 		                                      t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
 		                            <td><span t-esc="line.total"
@@ -127,11 +94,22 @@
 						</tbody>
 					</table>
 
-					<div class="col-xs-8">
-						<strong>Catatan khusus</strong> <p t-if="o.description" t-field="o.description"/>
+					<div class="col-xs-6">
+						<strong>Catatan Absensi dan Cuti</strong>
+						<table class="table table-condensed table table-striped" style="font:10px lucida-console,sans-serif !important;">
+							<tbody>
+								<tr t-foreach="o.worked_days_line_ids" t-as="worked_days">
+									<td><span t-field="worked_days.name"/></td>
+									<td>
+										<span t-field="worked_days.number_of_days" t-options='{"widget": "float", "precision": 0}'/> hari
+										(<span t-field="worked_days.number_of_hours" t-options='{"widget": "float", "precision": 1}'/> jam)
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-xs-4">
-                    	<p class="text-right"><strong>Tandatangan yang berwenang</strong></p>
+					<div class="col-xs-6">
+						<strong>Catatan khusus</strong><p t-if="o.description" t-field="o.description"/>
 					</div>
 				</div>
 			</div>

@@ -42,16 +42,23 @@
             - Sistem daftar harga lebih kompleks
             - Upload product image
             - Sistem pencatatan tindakan indisipliner
+            - Employee insurance module
+            - Sistem cuti
         Todo:
+            - Attendance monthly report for all employee
+            - Advance expense amount system
+            - Expense stockable product for internal use
+            - Notification for employee contract
+            - Sistem hutang karyawan ke perusahaan
+            - Konfirmasi slip gaji massal
             - Purchase request module, only to socialize and install in server
             - Employee orientation module, only to socialize and install in server
             - sistem pencatatan yang mirip seperti tindakan indisipliner untuk pelanggan
             - error access rule utk sales
             - integrasi google map ke data kontak
-            - sistem pencatatan kunjungan sales menurut google map
+            - sistem pencatatan kunjungan sales menurut google map, https://apps.odoo.com/apps/modules/12.0/employee_tracking_log/
             - tanggal jatuh tempo faktur mau otomatis dimunculkan ketika pembuatan faktur
             - bonus prestasi karyawan menurut KPI
-            - penerapan sistem cuti di Odoo
             - kunci SO yang sudah konfir
             - status rekonsiliasi pembayaran
             - history perubahan data pelanggan
