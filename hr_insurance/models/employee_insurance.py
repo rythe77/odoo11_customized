@@ -55,7 +55,7 @@ class EmployeeInsurance(models.Model):
     def get_status(self):
         current_datetime = datetime.now()
         for i in self:
-            if i.is_fixed_period:
+            if not i.is_fixed_period:
                 i.state = 'active'
             else:
                 x = datetime.strptime(i.date_from, '%Y-%m-%d')

@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_payment_balance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-23 05:11+0000\n"
+"PO-Revision-Date: 2019-12-23 13:12+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: account_payment_balance
+#: model:ir.model,name:account_payment_balance.model_account_payment
+msgid "Payments"
+msgstr "Pembayaran"
+
+#. module: account_payment_balance
+#: model:ir.ui.view,arch_db:account_payment_balance.add_payment_balance_filter_on_search_view
+msgid "To Apply"
+msgstr "Belum Selesai Pencocokan"
+
+#. module: account_payment_balance
+#: model:ir.ui.view,arch_db:account_payment_balance.add_payment_balance_on_customer_payment_tree_view
+#: model:ir.ui.view,arch_db:account_payment_balance.add_payment_balance_on_vendor_payment_tree_view
+msgid "Total"
+msgstr "Total"
+
+#. module: account_payment_balance
+#: model:ir.model.fields,field_description:account_payment_balance.field_account_payment_payment_balance
+msgid "Unapplied Balance"
+msgstr "Total Belum Dicocokkan"
+
+#. module: account_payment_balance
+#: model:ir.model.fields,help:account_payment_balance.field_account_payment_payment_balance
+msgid "What remains after deducting amounts already applied to close or reduce invoice balances, or reconciled with other payments."
+msgstr "Yang tersisa setelah dikurangi jumlah yang sudah dicocokkan dengan faktur, ataupun pembayaran lainnya."

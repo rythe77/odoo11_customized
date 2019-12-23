@@ -45,14 +45,15 @@
             - Employee insurance module
             - Sistem cuti
         Todo:
+            - Purchase request module, only to socialize and install in server
+            - Employee orientation module, only to socialize and install in server
+            - Handle mailing and thread so partner doesn't learn insider information
+            - allow salesman to upload customer front shop photo to odoo from applicatoin
             - Attendance monthly report for all employee
             - Advance expense amount system
             - Expense stockable product for internal use
             - Notification for employee contract
-            - Sistem hutang karyawan ke perusahaan
             - Konfirmasi slip gaji massal
-            - Purchase request module, only to socialize and install in server
-            - Employee orientation module, only to socialize and install in server
             - sistem pencatatan yang mirip seperti tindakan indisipliner untuk pelanggan
             - error access rule utk sales
             - integrasi google map ke data kontak
@@ -60,7 +61,6 @@
             - tanggal jatuh tempo faktur mau otomatis dimunculkan ketika pembuatan faktur
             - bonus prestasi karyawan menurut KPI
             - kunci SO yang sudah konfir
-            - status rekonsiliasi pembayaran
             - history perubahan data pelanggan
             - featured product view
             - real-time inventory correction system
@@ -74,6 +74,7 @@
             - Tanggal terjadwal di DO susah tersimpan
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
             - Super call on method, should not list "administrator" as the document creator
+            - Sistem hutang karyawan ke perusahaan
         Not Todo:
             - sales commission system
             - Sales group automatically fills in based on customer

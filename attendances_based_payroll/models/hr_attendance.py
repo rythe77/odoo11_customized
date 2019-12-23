@@ -90,12 +90,14 @@ class HrAttendance(models.Model):
     
     @api.multi
     def auto_check_out(self):
-        """ Automatically check out attendaces without checkout.
+        """ Automatically check out attendances without checkout.
         Should be used with scheduled action.
         """
         no_check_out_attendances = self.env['hr.attendance'].search([
             ('check_out', '=', False),
         ])
         for attendance in no_check_out_attendances:
-            #attendance.check_out=datetime.combine(date.today(), time(9,30,00))
-            attendance.check_out=datetime.now()
+            local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
+            check_in = pytz.utc.localize(
+                datetime.strptime(attendance.check_in, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local)
+            attendance.check_out = check_in.replace(hour=17, minute=30, second=00).astimezone(pytz.utc)

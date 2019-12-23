@@ -178,6 +178,11 @@
 		<field name="comment">Kunci tanggal faktur dan pembayaran</field>
 		<field name="category_id" ref="toserba23.blocking_groups_category"/>
 	</record>
+	<record id="hide_invoice_line" model="res.groups">
+		<field name="name">Sembunyikan Baris Faktur Pemasok</field>
+		<field name="comment">Sembunyikan baris faktur pemasok jika faktur terhubung dengan surat jalan</field>
+		<field name="category_id" ref="toserba23.blocking_groups_category"/>
+	</record>
 
 	<!-- Job title-based access group -->
 	<record model="ir.module.category" id="job_title_access_groups_category">
