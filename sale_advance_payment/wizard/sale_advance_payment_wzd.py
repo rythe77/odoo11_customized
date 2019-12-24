@@ -99,7 +99,6 @@ class AccountVoucherWizard(models.TransientModel):
                            'payment_date': date,
                            'amount': self[0].amount_advance,
                            'sale_id': sale.id,
-                           'name': _("Advance Payment") + " - " + sale.name,
                            'communication':
                            self[0].payment_ref or sale.name,
                            'payment_method_id': self.env.
