@@ -94,8 +94,11 @@
 		<field name="inherit_id" ref="account.invoice_supplier_form"/>
 		<field name="groups_id" eval="[(6,0, [ref('toserba23.hide_invoice_line')])]" />
 		<field name="arch" type="xml">
+			<field name="reference" position="after">
+				<field name="rmaout_count" invisible="1"/>
+			</field>
 			<field name="invoice_line_ids" position="attributes">
-				<attribute name="attrs">{'invisible':[('picking_id', '!=', [])]}</attribute>
+				<attribute name="attrs">{'invisible':['|',('picking_id', '!=', []),('rmaout_count', '!=', 0)]}</attribute>
 			</field>
 			<field name="picking_id" position="attributes">
 				<attribute name="attrs">{'invisible':1}</attribute>
@@ -154,9 +157,9 @@
 		<field name="model">account.payment</field>
 		<field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
 		<field name="arch" type="xml">
-		<field name="communication" position="after">
-			<field name="x_collector" string="Collector"/>
-		</field>
+			<field name="communication" position="after">
+				<field name="x_collector" string="Collector"/>
+			</field>
 		</field>
 	</record>
 
