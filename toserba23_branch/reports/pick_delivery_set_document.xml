@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_set_document"
+		model="stock.picking"
+		string="Set Pengaturan 1 + Surat Jalan 1 + Copy 1 (Untuk Kontan)"
+		name="toserba23_branch.report_custom_setslip"
+		file="toserba23_branch.set_document"
+		print_report_name="'Set Pengaturan + Surat Jalan - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_setslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23_branch.report_custom_picking_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document2" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<report
+		id="report_custom_set_document2"
+		model="stock.picking"
+		string="Set Pengaturan 1 + Surat Jalan 2 + Copy 1 (Untuk Kredit)"
+		name="toserba23_branch.report_custom_setslip2"
+		file="toserba23_branch.set_document2"
+		print_report_name="'Set Pengaturan + Surat Jalan 3x - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_setslip2">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23_branch.report_custom_picking_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document2" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<report
+		id="report_custom_set_document3"
+		model="stock.picking"
+		string="Set Pengaturan 1 + Copy 1 (Sendiri)"
+		name="toserba23_branch.report_custom_setslip3"
+		file="toserba23_branch.set_document3"
+		print_report_name="'Set Pengaturan + Copy - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_setslip3">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23_branch.report_custom_picking_document" t-lang="o.partner_id.lang"/>
+				<t t-call="toserba23_branch.report_custom_delivery_document2" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

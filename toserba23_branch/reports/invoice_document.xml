@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_invoice"
+		model="account.invoice"
+		string="Faktur"
+		name="toserba23_branch.report_custom_invoiceslip"
+		file="toserba23_branch.faktur"
+		print_report_name="'Faktur - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+		groups="account.group_account_invoice"
+	/>
+
+	<template id="report_custom_invoiceslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23_branch.report_custom_invoice_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_invoice_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<t t-call="toserba23_branch.company_header"/>
+					<div class="col-xs-6 text-center mb8" style="height: 80px;">
+						<div style="position:relative; top:10px; col-xs-6 text-center;">
+							<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
+								<span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')"><strong>FAKTUR</strong></span>
+								<span t-if="o.type == 'out_invoice' and o.state == 'draft'"><strong>KONSEP FAKTUR</strong></span>
+								<span t-if="o.type == 'out_invoice' and o.state == 'cancel'"><strong>FAKTUR DIBATALKAN</strong></span>
+								<span t-if="o.type == 'out_refund'"><strong>CATATAN KREDIT</strong></span>
+								<span t-if="o.type == 'in_refund'"><strong>CATATAN KREDIT PEMASOK</strong></span>
+								<span t-if="o.type == 'in_invoice'"><strong>TAGIHAN PEMASOK</strong></span>
+							</span><br/>
+							<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.number"/></b>
+						</div>
+					</div>
+
+					<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+						<thead style="font:14px lucida-console,sans-serif;">
+							<tr>
+								<td class="col-xs-4">
+									No Order : 
+									<span t-if="o.origin" t-field="o.origin"/>
+								</td>
+								<td class="col-xs-5">
+									Nama : 
+									<span t-if="o.partner_id" t-field="o.partner_id"/>
+								</td>
+								<td class="col-xs-3 text-right"><t name="td_conf_date_h">
+									<t name="td_conf_date">
+										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
+										<span t-field="o.date_invoice" t-field-options='{"format": "d MMM y"}'/>
+									</t>
+								</t></td>
+							</tr>
+							<tr>
+								<td class="col-xs-4">
+									Jatuh Tempo : 
+									<span t-if="o.date_due" t-field="o.date_due" t-field-options='{"format": "d MMM y"}'/>
+								</td>
+								<td class="col-xs-8" colspan="2">
+									<t t-if="o.partner_id">
+										Alamat : 
+										<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+										<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/>,</t>
+										<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/>,</t>
+										<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/>;</t>
+										<t t-if="o.partner_id.phone"><span t-field="o.partner_id.phone"/></t>
+									</t>
+								</td>
+							</tr>
+						</thead>
+					</table>
+
+					<!-- Is there a discount on at least one line? -->
+					<t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+
+					<table class="table table-condensed table table-striped">
+						<thead style="background-color:#212121; color:#FFFFFF">
+							<tr>
+								<th>Nama Barang</th>
+								<th class="text-right">Qty</th>
+								<th class="text-right">Harga</th>
+								<th t-if="display_discount" class="text-right">Disc.(%)</th>
+								<th class="text-right">Subtotal</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.invoice_line_ids" t-as="l">
+								<td><span t-field="l.product_id"/></td>
+								<td class="text-right">
+									<span t-field="l.quantity"/>
+									<span t-field="l.uom_id" groups="product.group_uom"/>
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_unit"/>
+								</td>
+								<td t-if="display_discount" class="text-right">
+									<span t-field="l.discount"/>
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_subtotal"
+										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div style="position:relative; float:right;" name="total">
+						<table class="table-condensed" style="min-width: 200px;max-width: 400px;">
+							<tr class="border-black">
+								<td><strong>Total</strong></td>
+								<td class="text-right">
+									<span t-field="o.amount_total"
+										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<table class="table-condensed" style="min-width: 200px;max-width: 400px;">
+						<tr>
+							<td><strong>Terbilang : </strong></td>
+							<td style="border-bottom: 2px solid black; background-color:#BCBCBC;">
+								<strong><span style="font:14px lucida-console,sans-serif !important;" t-esc="o.amount_to_text(o.amount_total)"/></strong>
+							</td>
+						</tr>
+					</table>
+					<p t-if="o.comment">
+						<span t-field="o.comment"/>
+					</p>
+					<div class="oe_structure"/>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<report
+		id="report_custom_saleorder"
+		model="sale.order"
+		string="Order Penjualan"
+		name="toserba23_branch.report_custom_saleorderslip"
+		file="toserba23_branch.order_penjualan"
+		print_report_name="'Order Penjualan - %s - %s' % (object.partner_id.name or '', object.name)"
+		report_type="qweb-pdf"
+	/>
+
+	<template id="report_custom_saleorderslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="toserba23_branch.report_custom_saleorder_document" t-lang="o.partner_id.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_saleorder_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<t t-call="toserba23_branch.company_header"/>
+					<div class="col-xs-6 text-center mb8" style="height: 80px;">
+						<div style="position:relative; top:10px; col-xs-6 text-center;">
+							<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;">
+								<t t-if="o.state not in ['draft','sent']">
+									<span t-if="o.payment_term_id.name=='Tunai' or o.payment_term_id.name=='Kontan'"><b>NOTA KONTAN</b></span>
+									<span t-if="o.payment_term_id.name!='Tunai' and o.payment_term_id.name!='Kontan'"><b>TITIPAN BARANG</b></span>
+								</t>
+								<t t-if="o.state in ['draft','sent']">
+									<span><b>PENAWARAN HARGA</b></span>
+								</t>
+							</span><br/>
+							<b><span style="font:20px lucida-console,sans-serif !important;" t-field="o.name"/></b>
+						</div>
+					</div>
+
+					<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #212121;border-radius: 10px">
+						<thead style="font:14px lucida-console,sans-serif;">
+							<tr>
+								<td class="col-xs-4">
+									Jatuh Tempo : 
+									<span t-if="o.payment_term_id" t-field="o.payment_term_id"/>
+								</td>
+								<td class="col-xs-5">
+									Nama : 
+									<span t-if="o.partner_id" t-field="o.partner_id"/>
+								</td>
+								<td class="col-xs-3 text-right"><t name="td_conf_date_h">
+									<t name="td_conf_date">
+										<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
+										<span t-field="o.confirmation_date" t-field-options='{"format": "d MMM y"}'/>
+									</t>
+								</t></td>
+							</tr>
+							<tr>
+								<td class="col-xs-4">
+									Sales : 
+									<span t-if="o.user_id.name" t-field="o.user_id.name"/>
+								</td>
+								<td class="col-xs-8" colspan="2">
+									<t t-if="o.partner_id">
+										Alamat : 
+										<t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/>,</t>
+										<t t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/>,</t>
+										<t t-if="o.partner_id.city"><span t-field="o.partner_id.city"/>,</t>
+										<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/>;</t>
+										<t t-if="o.partner_id.phone"><span t-field="o.partner_id.phone"/></t>
+									</t>
+								</td>
+							</tr>
+							<t t-if="o.use_transporter and o.transporter_id">
+								<tr>
+									<td  colspan="3" class="col-xs-12">
+										Kirim ekspedisi :
+										<span t-field="o.transporter_id.name"/>;
+										<t t-if="o.transporter_id.street"><span t-field="o.transporter_id.street"/>,</t>
+										<t t-if="o.transporter_id.street2"><span t-field="o.transporter_id.street2"/>,</t>
+										<t t-if="o.transporter_id.city"><span t-field="o.transporter_id.city"/>,</t>
+										<t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/>;</t>
+										<t t-if="o.transporter_id.phone"><span t-field="o.transporter_id.phone"/>;</t>
+										<t t-if="o.transporter_id.mobile"><span t-field="o.transporter_id.mobile"/></t>
+									</td>
+								</tr>
+							</t>
+						</thead>
+					</table>
+
+					<!-- Is there a discount on at least one line? -->
+					<t t-set="display_discount" t-value="any([l.discount for l in o.order_line])"/>
+
+					<table class="table table-condensed table table-striped">
+						<thead style="background-color:#212121; color:#FFFFFF">
+							<tr>
+								<th>Nama Barang</th>
+								<th class="text-right">Qty</th>
+								<th class="text-right">Harga</th>
+								<th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+								<th class="text-right" groups="sale.group_show_price_subtotal">Subtotal</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.order_line" t-as="order">
+								<td>
+									<span t-field="order.product_id"/>
+								</td>
+								<td class="text-right">
+									<span t-field="order.product_uom_qty"/>
+									<span t-field="order.product_uom" groups="product.group_uom"/>
+								</td>
+								<td class="text-right">
+									<span t-field="order.price_unit"/>
+								</td>
+								<td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+									<span t-field="order.discount"/>
+								</td>
+								<td class="text-right" groups="sale.group_show_price_subtotal">
+									<span t-field="order.price_subtotal"
+										t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div style="position:relative; float:right;" name="total">
+						<table class="table-condensed" style="min-width: 200px;max-width: 400px;">
+							<tr class="border-black">
+								<td><strong>Total</strong></td>
+								<td class="text-right">
+									<span t-field="o.amount_total"
+										t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<p t-field="o.note" />
+					<div class="oe_structure"/>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>

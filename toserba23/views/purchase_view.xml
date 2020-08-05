@@ -44,10 +44,6 @@
 			<xpath expr="/form/sheet/notebook" position="attributes">
 				<attribute name="groups">purchase.group_purchase_user</attribute>
 			</xpath>
-			<xpath expr="/form/div" position="attributes">
-				<attribute name="invisible">1</attribute>
-			</xpath>
-			<div class="oe_chatter" position="replace"/>
 			<xpath expr="/form/sheet/notebook/page[2]/group/group[1]" position="inside">
 				<field name="x_vehicle_notes"/>
 				<field name="x_notes"/>

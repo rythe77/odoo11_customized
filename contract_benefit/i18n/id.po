@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-05 10:39+0000\n"
-"PO-Revision-Date: 2019-01-05 18:40+0800\n"
+"POT-Creation-Date: 2020-06-29 12:29+0000\n"
+"PO-Revision-Date: 2020-06-29 20:32+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,12 +15,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. module: contract_benefit
 #: model:ir.ui.view,arch_db:contract_benefit.hr_contract_view_form_add_benefits
 msgid "<span>/ month</span>"
 msgstr "<span>/ bulan</span>"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_amount
+msgid "Basic Amount"
+msgstr "Gaji Dasar"
+
+#. module: contract_benefit
+#: model:ir.actions.act_window,name:contract_benefit.hr_benefit_view_action
+#: model:ir.ui.menu,name:contract_benefit.benefit_menu
+msgid "Benefit"
+msgstr "Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_amount
+msgid "Benefit Amount"
+msgstr "Jumlah Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.ui.view,arch_db:contract_benefit.benefit_form_view
+msgid "Benefit Form"
+msgstr "Form Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_name
+msgid "Benefit Name"
+msgstr "Nama Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.ui.view,arch_db:contract_benefit.benefit_tree_view
+msgid "Benefit Tree"
+msgstr "Tree Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_contract_benefit_id
+msgid "Benefit Type"
+msgstr "Tipe Tunjangan"
+
+#. module: contract_benefit
+#: model:ir.model,name:contract_benefit.model_hr_benefit
+msgid "Benefit structure of the payroll"
+msgstr "Struktur tunjangan gaji"
+
+#. module: contract_benefit
+#: model:ir.actions.act_window,help:contract_benefit.hr_benefit_view_action
+msgid "Create employee benefit here"
+msgstr "Buat tunjangan karyawan di sini"
+
+#. module: contract_benefit
+#: model:ir.actions.act_window,help:contract_benefit.hr_level_view_action
+msgid "Create employee level here"
+msgstr "Buat level karyawan di sini"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_create_uid
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_create_date
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_description
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_description
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_display_name
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
 
 #. module: contract_benefit
 #: model:ir.model,name:contract_benefit.model_hr_contract
@@ -33,6 +108,58 @@ msgid "Employee's monthly benefits."
 msgstr "Tunjangan jabatan karyawan."
 
 #. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_id
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_id
+msgid "ID"
+msgstr "ID"
+
+#. module: contract_benefit
+#: model:ir.ui.menu,name:contract_benefit.hr_benefit_menu
+msgid "Job Benefit"
+msgstr "Tunjangan Jabatan"
+
+#. module: contract_benefit
 #: model:ir.model.fields,field_description:contract_benefit.field_hr_contract_benefit
 msgid "Job Benefits"
 msgstr "Tunjangan Jabatan"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit___last_update
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_write_uid
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: contract_benefit
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_benefit_write_date
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: contract_benefit
+#: model:ir.actions.act_window,name:contract_benefit.hr_level_view_action
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_contract_level_id
+#: model:ir.model.fields,field_description:contract_benefit.field_hr_level_name
+#: model:ir.ui.menu,name:contract_benefit.hr_level_menu
+msgid "Level"
+msgstr "Tingkatan"
+
+#. module: contract_benefit
+#: model:ir.ui.view,arch_db:contract_benefit.level_form_view
+msgid "Level Form"
+msgstr "Form Level"
+
+#. module: contract_benefit
+#: model:ir.ui.view,arch_db:contract_benefit.level_tree_view
+msgid "Level Tree"
+msgstr "Tree Level"
+
+#. module: contract_benefit
+#: model:ir.model,name:contract_benefit.model_hr_level
+msgid "Level structure of the payroll"
+msgstr "Struktur level penggajian"

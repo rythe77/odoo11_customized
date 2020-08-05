@@ -72,7 +72,7 @@ class DisciplinaryAction(models.Model):
         return super(DisciplinaryAction, self).create(vals)
 
     # Check the user is a manager or employee
-    @api.depends('read_only')
+    #@api.depends('read_only')
     def get_user(self):
 
         res_user = self.env['res.users'].search([('id', '=', self._uid)])

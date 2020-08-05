@@ -110,7 +110,7 @@
 		<field name="inherit_id" ref="stock.view_backorder_confirmation"/>
 		<field name="arch" type="xml">
 			<button name="process" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">toserba23.group_stock_supervisor</attribute>
 			</button>
 			<button name="process_cancel_backorder" position="attributes">
 				<attribute name="groups">stock.group_stock_manager</attribute>
@@ -250,6 +250,9 @@
 				<filter name="very_urgent" string="Sangat Mendesak" domain="[('priority', '=', 3),('state', 'not in', ('done', 'cancel'))]"/>
 				<separator/>
 			</field>
+			<filter name="picking_type" position="after">
+				<filter string="Rekanan" domain="[]" context="{'group_by':'partner_id'}"/>
+			</filter>
 		</field>
 	</record>
 
@@ -278,9 +281,12 @@
 				<field name="count_picking_urgent"/>
 				<field name="count_picking_very_urgent"/>
 			</xpath>
+			<button name="get_action_picking_tree_ready" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</button>
 			<button name="get_action_picking_tree_ready" position="after">
 				<button name="get_action_picking_tree_not_done" type="object" class="btn btn-primary">
-					<span><t t-esc="record.count_picking_not_done.value"/> Belum Selesai</span>
+					<span><t t-esc="record.count_picking_not_done.value"/> Belum</span>
 				</button>
 				<button name="get_action_picking_tree_very_urgent" type="object" class="btn btn-primary">
 					<span><t t-esc="record.count_picking_very_urgent.value"/> Sangat Mendesak</span>

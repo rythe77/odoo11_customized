@@ -157,6 +157,11 @@
     <record id="hr_attendance.group_hr_attendance_manager" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('toserba23.group_fine_creation'))]"/>
     </record>
+	<record id="allow_upload_image" model="res.groups">
+		<field name="name">Akses Upload Gambar Produk</field>
+		<field name="comment">Ijinkan akses untuk upload gambar produk</field>
+		<field name="category_id" ref="toserba23.open_access_groups_category"/>
+	</record>
 
 	<!-- Blocking groups -->
 	<record model="ir.module.category" id="blocking_groups_category">

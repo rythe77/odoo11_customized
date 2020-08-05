@@ -193,7 +193,7 @@ class RmaRma(models.Model):
     @api.multi
     def action_status(self):
         for item in self:
-            item.state = 'rejected'
+            item.state = 'closed'
 
     @api.multi
     def button_draft(self):

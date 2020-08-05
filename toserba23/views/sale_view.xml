@@ -110,7 +110,7 @@
 		<field name="inherit_id" ref="limit_partner_credit.sale_order_form_view_check_credit_limit"/>
 		<field name="arch" type="xml">
 			<button name="action_confirm_limited" position="attributes">
-				<attribute name="groups">toserba23.group_sale_supervisor</attribute>
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
 			</button>
 		</field>
 	</record>
@@ -245,5 +245,11 @@
 	    action="sale.action_orders"
 	    parent="sale.sale_order_menu"
 	    sequence="2" groups="toserba23.group_sale_order_view"/>
+	<menuitem id="sale.product_menu_catalog"
+		name="Catalog"
+		action="product.product_template_action"
+		parent="sale.sale_menu_root"
+		sequence="4"
+		groups="toserba23.group_sale_order_view"/>
 </data>
 </odoo>

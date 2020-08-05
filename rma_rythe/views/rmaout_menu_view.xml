@@ -44,7 +44,7 @@
 					class="btn-primary" attrs="{'invisible':[('show_button_receive_refund', '=', False)]}" groups="account.group_account_invoice"/>
 				<button name="button_draft" states="rejected" string="Set to Draft" type="object" groups="rma_rythe.group_rmaout_supervisor"/>
 				<button name="button_cancel" states="draft,confirmed" string="Reject" type="object" groups="rma_rythe.group_rmaout_supervisor"/>
-				<button name="action_status" id="action_status" string="Paksa Status Batal" type="object" attrs="{'invisible': [('state', 'not in', ['processing'])]}" groups="rma_rythe.group_rmaout_manager"/>
+				<button name="action_status" id="action_status" string="Paksa Status Selesai" type="object" attrs="{'invisible': [('state', 'not in', ['processing', 'confirmed'])]}" groups="rma_rythe.group_rmaout_manager"/>
 	            <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,processing,closed"/>
 	            <field name="show_button_receive_refund" invisible="1"/>
 	        </header>

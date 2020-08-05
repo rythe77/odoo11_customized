@@ -13,3 +13,4 @@ from . import product_pricelist_item
 from . import product_supplierinfo
 from . import hr_payslip
 from . import res_company
+from . import hr_expense

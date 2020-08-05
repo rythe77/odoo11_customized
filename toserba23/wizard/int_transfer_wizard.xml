@@ -47,6 +47,6 @@
 	<menuitem id="menu_int_transfer" name="Buat Transfer Internal"
 		parent="stock.menu_stock_warehouse_mgmt"
 		action="act_int_transfer" sequence="500"
-		groups="toserba23.group_stock_supervisor"
+		groups="stock.group_stock_user"
 		/>
 </odoo>

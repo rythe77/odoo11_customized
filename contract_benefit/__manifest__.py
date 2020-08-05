@@ -3,7 +3,7 @@
     'name': "contract_benefit",
 
     'summary': """
-        Add benefits line to employee contract""",
+        Add benefits line to employee contract, and modify it to conform to Toserba 23 payroll structure""",
 
     'author': "Ryanto The",
     'website': "",
@@ -14,7 +14,9 @@
     'depends': ['base', 'hr_contract'],
 
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_contract_view.xml',
+        'views/hr_benefit_view.xml',
     ],
     'demo': [
         #'demo/demo.xml',

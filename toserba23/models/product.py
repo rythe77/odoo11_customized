@@ -23,7 +23,7 @@ class Product(models.Model):
     x_harga_toko = fields.Float('Harga Toko', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
     x_harga_bulukumba = fields.Float('Harga Bulukumba', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
     x_harga_bulukumbas = fields.Float('Harga Bulukumba S', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
-    x_harga_promo = fields.Float('Harga Promo', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
+    x_harga_promo = fields.Float('Harga Spesial', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
     x_promo_cash = fields.Float('Promo Cash', compute='_copy_pricelist', readonly=True, store=False,  digits=dp.get_precision('Product Price'))
 
     @api.multi
@@ -41,7 +41,7 @@ class Product(models.Model):
                 prices.update({'bulukumba_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Harga bulukumba s':
                 prices.update({'bulukumbas_prices': pricelist.get_products_price(self, [1.0]*len(self), ['']*len(self))})
-            elif pricelist.name == 'Harga promo':
+            elif pricelist.name == 'Harga spesial':
                 prices.update({'promo_prices': pricelist.get_products_price(self, [10000.0]*len(self), ['']*len(self))})
             elif pricelist.name == 'Promo cash':
                 prices.update({'promocash_prices': pricelist.get_products_price(self, [10000.0] * len(self), [''] * len(self))})

@@ -51,7 +51,7 @@
 										<td class="col-xs-4 text-right">
 											<t t-if="o.company_id.partner_id.city"><span t-field="o.company_id.partner_id.city"/>, </t>
 											<t t-if="o.accounting_date"><span t-field="o.accounting_date" t-field-options='{"format": "d MMM y"}'/></t>
-											<t t-if="not o.accounting_date">________________</t>
+											<t t-if="not o.accounting_date"><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %b %Y')"/></t>
 										</td>
 									</tr>
 								</thead>
@@ -118,23 +118,11 @@
 	                            </div>
 	                        </div>
 	                        <div>
-	                            <div class="col-xs-8">
+	                            <div class="col-xs-6">
 	                                <table class="table table-condensed">
 	                                    <tr>
 	                                        <td class="text-center">
 												Disetujui,
-												<br/>
-												<br/>
-												<br/>
-												<br/>
-												<ins>
-													<b>
-														(______________________)
-													</b>
-												</ins>
-											</td>
-	                                        <td class="text-center">
-												Mengetahui,
 												<br/>
 												<br/>
 												<br/>
@@ -156,6 +144,9 @@
 														(______________________)
 													</b>
 												</ins>
+												<div class="text-left">
+														Kontak:
+												</div>
 											</td>
 	                                    </tr>
 	                                </table>

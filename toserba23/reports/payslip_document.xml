@@ -58,6 +58,7 @@
 					<t t-foreach="o.worked_days_line_ids" t-as="line">
 						<t t-if="line.code=='WORK100' or line.code=='Sakit'" t-set="base_days" t-value="base_days+line.number_of_days"/>
 						<t t-if="line.code=='Tinggalkan_Jam_Kerja'" t-set="base_days" t-value="base_days-round(line.number_of_hours/8-0.5)"/>
+						<t t-if="line.code=='Hari_Raya'" t-set="base_days" t-value="base_days+line.number_of_days"/>
 					</t>
 
 					<table class="table table-condensed table table-striped" style="font:12px lucida-console,sans-serif !important;">

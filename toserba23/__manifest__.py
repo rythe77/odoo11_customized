@@ -45,8 +45,16 @@
             - Employee insurance module
             - Sistem cuti
         Todo:
+            - nota tanggal lama tidak boleh edit penambahan barang
+            - alert sistem ketika konfirmasi penjualan, jika ada nota yang jatuh tempo
+            - data siapa pembuat SO di faktur pelanggan
+            - Operasi Pembuangan dihilangkan dari akun kepala gudang
+            - History edit data pelanggan
+            - purchase price auto update mess, update also old price. Tikar jali M 140
+            - Admin sales : edit data pelanggan. Sup Sales : + ubah naik harga. Sales Man : + perbaiki SO jd penawaran, ubah limit kredit dan lamanya.
             - Purchase request module, only to socialize and install in server
             - Employee orientation module, only to socialize and install in server
+            - odoo user, employee, and partner mess
             - Handle mailing and thread so partner doesn't learn insider information
             - allow salesman to upload customer front shop photo to odoo from applicatoin
             - Attendance monthly report for all employee
@@ -193,6 +201,7 @@
         'reports/saleorder_document.xml', 
         'reports/invoice_proforma_document.xml',
         'reports/delivery_document.xml',
+        'reports/delivery_document_copy.xml',
         'reports/picking_document.xml',
         #'reports/picking_document_incl_supplier.xml',
         'reports/pick_delivery_set_document.xml',
@@ -216,6 +225,7 @@
         'reports/attendance_document.xml',
         'wizard/product_label_print_wizard.xml',
         'wizard/int_transfer_wizard.xml',
+        'wizard/product_image_upload_wizard.xml',
     ],
     'demo': [
         #'demo/demo.xml',

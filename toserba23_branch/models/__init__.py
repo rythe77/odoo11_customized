@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+
+from . import account
+from . import sale_order
+from . import hr_payslip
+from . import hr_attendance

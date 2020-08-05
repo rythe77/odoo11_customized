@@ -1,0 +1,62 @@
+<odoo>
+<data>
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="sale_order_form_view_custom">
+		<field name="name">sale.sale_order_form_view_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/header/button[@name='action_confirm'][2]" position="attributes">
+				<attribute name="class"></attribute>
+				<attribute name="string">Paksa Konfirmasi</attribute>
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</xpath>
+			<button name="action_draft" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<button name="action_cancel" position="attributes">
+				<attribute name="groups">sales_team.group_sale_manager</attribute>
+			</button>
+			<button name="action_cancel" position="after">
+				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['sale','done','cancel'])]}" groups="sales_team.group_sale_manager"/>
+			</button>
+			<field name="user_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+				<attribute name="options">{'no_create': True}</attribute>
+			</field>
+			<field name="team_id" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Modify confirm sale button access right definition -->
+	<record model="ir.ui.view" id="sale_order_form_view_check_credit_limit_custom">
+		<field name="name">sale.sale_order_form_view_check_credit_limit_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="limit_partner_credit.sale_order_form_view_check_credit_limit"/>
+		<field name="arch" type="xml">
+			<button name="action_confirm_limited" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman_all_leads</attribute>
+			</button>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_sales_order_filter_custom">
+		<field name="name">sale.view_sales_order_filter_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_sales_order_filter"/>
+		<field name="arch" type="xml">
+			<field name="product_id" position="after">
+				<filter string="Diorder hari ini" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Diorder kemarin" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Diorder seminggu terakhir" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Pengiriman belum selesai" name="delivery_status" domain="[('delivery_status', 'in', ('none_delivered','partially_delivered'))]"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

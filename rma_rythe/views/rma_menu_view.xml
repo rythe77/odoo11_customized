@@ -269,7 +269,7 @@
                                     	confirm="Are you sure you want to change to replace?"/>
                                     <button name="change_action_to_refund"
                                     	type="object" icon="fa-pencil-square-o" string="Change to Refund"
-                                    	attrs="{'invisible':['|', ('action', 'not in', ('replace')), ('process_status', '!=', 'processing')]}"
+                                    	attrs="{'invisible':['|', ('action', 'not in', ('replace','replace_part')), ('process_status', '!=', 'processing')]}"
                                     	groups="rma_rythe.group_rma_supervisor"
                                     	confirm="Are you sure you want to change to refund?"/>
 		                            <field name="received_qty"/>

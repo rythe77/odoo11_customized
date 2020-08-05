@@ -22,6 +22,25 @@
 			<field name="employee_id" position="attributes">
 				<attribute name="groups">toserba23.group_hr_expense_officer</attribute>
 			</field>
+			<field name="reference" position="attributes">
+				<attribute name="required">True</attribute>
+			</field>
+			<field name="description" position="attributes">
+				<attribute name="required">True</attribute>
+			</field>
+		</field>
+	</record>
+
+	<!-- Form view lock date field -->
+	<record model="ir.ui.view" id="view_hr_expense_form_view_custom2">
+		<field name="name">hr_expense.view_hr_expense_form_view_custom2</field>
+		<field name="model">hr.expense</field>
+		<field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
+		<field name="groups_id" eval="[(6,0, [ref('hr_expense.group_hr_expense_user'), ref('toserba23.group_hr_expense_officer')])]" />
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/group/group[2]/field[@name='date']" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</xpath>
 		</field>
 	</record>
 
@@ -55,6 +74,19 @@
 	                <field name="total_amount" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
 	            </group>
 			</field>
+		</field>
+	</record>
+
+	<!-- Form view lock date field -->
+	<record model="ir.ui.view" id="view_hr_expense_sheet_form_view_custom2">
+		<field name="name">hr_expense.view_hr_expense_sheet_form_view_custom2</field>
+		<field name="model">hr.expense.sheet</field>
+		<field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+		<field name="groups_id" eval="[(6,0, [ref('hr_expense.group_hr_expense_user'), ref('toserba23.group_hr_expense_officer')])]" />
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/notebook/page[2]/group/group/field[@name='accounting_date']" position="attributes">
+				<attribute name="attrs">{'readonly':1}</attribute>
+			</xpath>
 		</field>
 	</record>
 

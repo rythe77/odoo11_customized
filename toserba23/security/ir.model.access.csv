@@ -56,3 +56,4 @@ toserba23.access_account_partial_reconcile_hr_manager,account.partial.reconcile.
 toserba23.access_account_account_type_hr_manager,account.account.type.hr.manager,account.model_account_account_type,hr_payroll.group_hr_payroll_manager,1,0,0,0
 toserba23.access_account_depreciation_line_hr_manager,account.depreciation.line.hr.manager,account_asset.model_account_asset_depreciation_line,hr_payroll.group_hr_payroll_manager,1,0,0,0
 toserba23.access_account_analytic_line_hr_manager,account.analytic.line.hr.manager,analytic.model_account_analytic_line,hr_payroll.group_hr_payroll_manager,1,0,0,0
+toserba23.access_stock_move_employee,toserba23.stock.move.employee,stock.model_stock_move,base.group_user,1,0,0,0

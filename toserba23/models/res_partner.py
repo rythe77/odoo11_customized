@@ -32,7 +32,7 @@ class ResPartner(models.Model):
         ('less_urgent', 'Less Urgent'),
         ('common', 'common'),
         ('not_urgent', 'Not Urgent')],
-        string='To Call', default='not_urgent',
+        string='Kategori', default='not_urgent',
         help="Show how urgent it is to call the customer")
 
     x_notification_method = fields.Selection([
@@ -50,3 +50,9 @@ class ResPartner(models.Model):
         help='Otomatis kirimkan notifikasi ke pelanggan ketika faktur divalidasi')
     x_is_notify_pay = fields.Boolean('Konfirmasi Pembayaran', default=True,
         help='Otomatis kirimkan notifikasi ke pelanggan ketika penerimaan pembayaran dikonfirmasi')
+
+
+class ResPartnerBank(models.Model):
+    _inherit = 'res.partner.bank'
+
+    account_name = fields.Char(string="Nama Rekening")

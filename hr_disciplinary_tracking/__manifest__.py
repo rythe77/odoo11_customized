@@ -28,7 +28,7 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'category': 'Generic Modules/Human Resources',
     'website': "https://www.cybrosys.com",
-    'depends': ['base', 'mail', 'oh_employee_creation_from_user'],
+    'depends': ['base', 'mail'],
     'data': ['views/disciplinary_action.xml',
              'views/disciplinary_sequence.xml',
              'views/category_view.xml',

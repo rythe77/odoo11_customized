@@ -19,7 +19,7 @@
 		<field name="inherit_id" ref="base.view_partner_form"/>
 		<field name="arch" type="xml">
 			<field name="lang" position="after">
-				<field name="x_call_freq" attrs="{'invisible': [('customer', '!=', True)]}"/>
+				<field name="x_call_freq" string="Kategori" attrs="{'invisible': [('customer', '!=', True)]}"/>
 			</field>
 			<group name="purchase" position="after">
 				<group string="Notifikasi" name="notification" attrs="{'invisible': [('customer', '!=', True)]}">
@@ -40,6 +40,9 @@
 				<field name="name_npwp"/>
 				<field name="address_npwp"/>
 			</field>
+			<field name="property_product_pricelist" position="attributes">
+				<attribute name="string">Daftar Harga</attribute>
+			</field>
 			<field name="property_product_pricelist" position="after">
 				<field name="preferred_transporter" attrs="{'invisible': [('customer', '!=', True)]}"/>
 				<field name="interested_product" attrs="{'invisible': [('customer', '!=', True)]}"/>
@@ -55,6 +58,30 @@
         <field name="model">res.partner</field>
         <field name="groups_id" eval="[(4, ref('group_account_invoice_view'))]"/>
     </record>
+
+	<!-- Partner bank list view definition -->
+	<record model="ir.ui.view" id="partner_bank_tree_view_custom">
+		<field name="name">res.partner_bank_tree_view_custom</field>
+		<field name="model">res.partner.bank</field>
+		<field name="inherit_id" ref="base.view_partner_bank_tree"/>
+		<field name="arch" type="xml">
+			<field name="bank_name" position="after">
+				<field name="account_name"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Partner bank form view definition -->
+	<record model="ir.ui.view" id="partner_bank_form_view_custom">
+		<field name="name">res.partner_bank_form_view_custom</field>
+		<field name="model">res.partner.bank</field>
+		<field name="inherit_id" ref="base.view_partner_bank_form"/>
+		<field name="arch" type="xml">
+			<field name="bank_id" position="after">
+				<field name="account_name"/>
+			</field>
+		</field>
+	</record>
 
 	<!-- Form view invoiced button definition -->
 	<record model="ir.ui.view" id="partner_view_buttons_custom">
@@ -82,6 +109,19 @@
 				<filter name="x_call_freq" string="To Call" context="{'group_by': 'x_call_freq'}"/>
 				<separator/>
 			</filter>
+		</field>
+	</record>
+
+	<!-- Partner bank search view definition -->
+	<record model="ir.ui.view" id="partner_bank_search_view_custom">
+		<field name="name">res.partner_bank_search_view_custom</field>
+		<field name="model">res.partner.bank</field>
+		<field name="inherit_id" ref="base.view_partner_bank_search"/>
+		<field name="arch" type="xml">
+			<field name="bank_name" position="before">
+				<field name="account_name"/>
+				<field name="acc_number"/>
+			</field>
 		</field>
 	</record>
 

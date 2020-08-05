@@ -37,7 +37,7 @@ class EmployeeInsurance(models.Model):
     is_fixed_period = fields.Boolean(string='Fixed Period', default=False)
     amount = fields.Float(string='Policy Amount', required=True)
     sum_insured = fields.Float(string="Sum Insured", required=True)
-    insurance_percentage = fields.Float(string="Company Percentage")
+    insurance_percentage = fields.Float(string="Company Percentage", digits=(7, 4))
     policy_coverage = fields.Selection([('monthly', 'Monthly'), ('yearly', 'Yearly')],
                                        required=True, default='monthly',
                                        string='Policy Coverage',)

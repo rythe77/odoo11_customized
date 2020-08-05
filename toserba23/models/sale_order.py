@@ -100,6 +100,29 @@ class SaleOrderInherit(models.Model):
             # Log a note to the sale order record
             item.message_post(body="Email notifikasi konfirmasi order sudah dikirimkan ke pelanggan")
 
+    @api.multi
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        """
+        Additionally, update the following fields when the partner is changed:
+        - transporter_id
+        """
+        super(SaleOrderInherit, self).onchange_partner_id()
+        if not self.partner_id:
+            self.update({
+                'use_transporter': False,
+                'transporter_id': False,
+            })
+            return
+        values = {}
+        if self.partner_id.preferred_transporter:
+            values['use_transporter'] = True
+            values['transporter_id'] = self.partner_id.preferred_transporter.id
+        else:
+            values['use_transporter'] = False
+            values['transporter_id'] = False
+        self.update(values)
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'

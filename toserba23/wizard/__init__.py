@@ -3,3 +3,4 @@
 from . import product_label_print_wizard
 from . import product_label_wizard
 from . import int_transfer_wizard
+from . import product_image_upload_wizard

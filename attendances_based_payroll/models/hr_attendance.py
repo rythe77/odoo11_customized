@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 
 from odoo import models, fields, api, exceptions, _
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
@@ -50,7 +50,7 @@ class HrAttendance(models.Model):
                 check_out = pytz.utc.localize(datetime.strptime(attendance.check_out, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local)
                 # calculate overtime by iterating over employee weekly working schedule
                 for work_hours in attendance.employee_id.resource_calendar_id.attendance_ids:
-                    if check_in.strftime("%w") == work_hours.dayofweek:
+                    if str((int(check_in.strftime("%w")) + 6) % 7) == work_hours.dayofweek:
                         if (check_out.day - check_in.day) == 0 and check_out.hour >= work_hours.hour_to:
                             delta = check_out.hour + check_out.minute/float(60) - work_hours.hour_to
                         elif (check_out.day - check_in.day) == 1 and check_out.hour < (work_hours.hour_from - 1):
@@ -100,4 +100,63 @@ class HrAttendance(models.Model):
             local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
             check_in = pytz.utc.localize(
                 datetime.strptime(attendance.check_in, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local)
-            attendance.check_out = check_in.replace(hour=17, minute=30, second=00).astimezone(pytz.utc)
+            today = pytz.utc.localize(datetime.today()).astimezone(local)
+            if check_in.date() < today.date():
+                attendance.check_out = check_in.replace(hour=17, minute=30, second=00).astimezone(pytz.utc)
+
+    @api.multi
+    def auto_create_leaves(self, check_days, leave_type):
+        """ Automatically create leaves if no attendance and existing leave on working days. Check attendance for the last 'check_days' day(s)
+        Should be used with scheduled action.
+        """
+        # get current logged in user's timezone
+        local = pytz.timezone(self.env['res.users'].browse(self._uid).tz) or pytz.utc
+        date_from_utc = local.localize(datetime.combine(datetime.strptime(fields.Date.context_today(self), '%Y-%m-%d')-timedelta(days=check_days), time.min))\
+            .astimezone(pytz.utc).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+        active_employees = self.env['hr.employee'].search([
+            ('active', '=', True),
+        ])
+        attendances = self.env['hr.attendance'].search([
+                ('check_in', '>=', date_from_utc)
+            ])
+        leaves = self.env['hr.holidays'].search([
+                '|',
+                ('date_from', '>=', date_from_utc),
+                ('date_to', '>=', date_from_utc)
+            ])
+        leave_type = self.env['hr.holidays.status'].search([
+            ('name', 'ilike', leave_type)
+        ], limit=1)
+        for employee in active_employees:
+            # Get this employee attendances and leaves record
+            attendances_leaves = attendances.filtered(lambda emp: emp.employee_id == employee).mapped(
+                            lambda r: [
+                                pytz.utc.localize(datetime.strptime(r.check_in, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date(),
+                                pytz.utc.localize(datetime.strptime(r.check_in, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date()
+                            ] if r else []) + \
+                        leaves.filtered(lambda emp: emp.employee_id == employee).mapped(
+                             lambda r: [
+                                 pytz.utc.localize(datetime.strptime(r.date_from, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date(),
+                                 pytz.utc.localize(datetime.strptime(r.date_to, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date()
+                             ]if r else [])
+            work_days = employee.resource_calendar_id.mapped('attendance_ids')
+            for i in range(check_days):
+                date_check = (datetime.strptime(fields.Date.context_today(self), '%Y-%m-%d') - timedelta(days=i+1)).date()
+                # Check whether the date already has attendance or leave record
+                if str((int(date_check.strftime("%w")) + 6) % 7) in [week.dayofweek for week in work_days] and len(leave_type) == 1 and \
+                        not (any(attendance_leave[0] <= date_check <= attendance_leave[1] for attendance_leave in attendances_leaves)):
+                    # Create leave record
+                    work_day = work_days.filtered(lambda r: r.dayofweek == str((int(date_check.strftime("%w")) + 6) % 7))
+                    date_from = local.localize(datetime.combine(
+                        date_check, time(hour=int(work_day.hour_from), minute=int((work_day.hour_from-int(work_day.hour_from))*60)))).astimezone(pytz.utc)
+                    date_to = local.localize(datetime.combine(
+                        date_check, time(hour=int(work_day.hour_to), minute=int((work_day.hour_to-int(work_day.hour_to))*60)))).astimezone(pytz.utc)
+                    vals = {
+                        'employee_id': employee.id,
+                        'holiday_status_id': leave_type.id,
+                        'date_from': date_from,
+                        'date_to': date_to,
+                        'name': 'Cuti Otomatis',
+                        'number_of_days_temp': 1
+                    }
+                    self.env['hr.holidays'].create(vals)

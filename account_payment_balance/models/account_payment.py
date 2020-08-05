@@ -15,12 +15,9 @@ class AccountPayment(models.Model):
             for aml in payment.move_line_ids:
                 if aml.account_id.reconcile:
                     no_reconcile_line = False
-                    ids.extend([r.debit_move_id for r in aml.matched_debit_ids] if aml.credit > 0 else [r.credit_move_id for r in aml.matched_credit_ids])
+                    ids.extend([r for r in aml.matched_debit_ids] if aml.credit > 0 else [r for r in aml.matched_credit_ids])
             for ml in ids:
-                if payment.payment_type == 'inbound':
-                    total_amount += ml.debit - ml.amount_residual
-                else:
-                    total_amount += ml.credit - ml.amount_residual
+                total_amount += ml.amount
             set_amount = payment.amount - total_amount
             if set_amount > 0.0 and not no_reconcile_line:
                 payment.payment_balance = set_amount

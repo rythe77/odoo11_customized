@@ -26,7 +26,7 @@
 				<field name="x_harga_grosir" string="Grosir" groups="sales_team.group_sale_salesman"/>
 				<field name="x_harga_toko" string="Toko" groups="sales_team.group_sale_salesman"/>
 				<field name="x_harga_bulukumba" string="Bulukumba" groups="sales_team.group_sale_salesman"/>
-				<field name="x_harga_promo" string="Promo" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_promo" string="Spesial" groups="sales_team.group_sale_salesman"/>
 				<field name="x_promo_cash" groups="sales_team.group_sale_salesman"/>
 				<field name="standard_price" groups="hide_confidential_info.view_cost_price"/>
 				<field name="qty_available"/>
@@ -69,7 +69,7 @@
 				<field name="lst_price" string="Harga Umum" invisible="1" groups="sales_team.group_sale_salesman"/>
 				<field name="x_harga_jual" string="Jual" groups="sales_team.group_sale_salesman"/>
 				<field name="x_harga_grosir" string="Grosir" widget='monetary' groups="sales_team.group_sale_salesman"/>
-				<field name="x_harga_promo" string="Promo" groups="sales_team.group_sale_salesman"/>
+				<field name="x_harga_promo" string="Spesial" groups="sales_team.group_sale_salesman"/>
 				<field name="x_promo_cash" groups="sales_team.group_sale_salesman"/>
 			</field>
 			<field name="barcode" position="attributes">
@@ -110,6 +110,9 @@
 		<field name="model">product.template</field>
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
+			<page name="sales" position="attributes">
+				<attribute name="groups">sales_team.group_sale_salesman</attribute>
+			</page>
 			<div name="pricelist_item" position="before">
 				<group name="display_price" string="Harga Display" groups="sales_team.group_sale_salesman">
 					<group>
@@ -120,7 +123,7 @@
 						<field name="x_harga_bulukumbas" string="Harga Bulukumba S" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					</group>
 					<group>
-						<field name="x_harga_promo" string="Harga Promo" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						<field name="x_harga_promo" string="Harga Spesial" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 						<field name="x_promo_cash" string="Promo Cash" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					</group>
 				</group>
@@ -157,6 +160,18 @@
 				<field name="price_round" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
 				<field name="price_surcharge" attrs="{'invisible':[('compute_price', '!=', 'formula')]}" groups="sales_team.group_sale_manager"/>
 			</xpath>
+		</field>
+	</record>
+
+	<!-- Product template form view restrict invoicing tab view -->
+	<record model="ir.ui.view" id="product_template_form_view_custom_accounting">
+		<field name="name">product.product_template_form_view_custom_accounting</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="account.product_template_form_view"/>
+		<field name="arch" type="xml">
+			<page name="invoicing" position="attributes">
+				<attribute name="groups">account.group_account_manager</attribute>
+			</page>
 		</field>
 	</record>
 
@@ -286,5 +301,23 @@
 		parent="stock.menu_stock_inventory_control"
 		groups="stock.group_stock_user"
 		sequence="2" name="Product Quantity"/>
+
+	<!-- Product as main menu  -->
+	<!--menuitem id="product_menu_root"
+        name="Produk"
+        web_icon="toserba23,static/src/img/product_icon.jpeg"
+        active="True"
+        sequence="10"/>
+	<menuitem id="menu_productview" name="Produk"
+	    parent="product_menu_root"
+	    sequence="1"/>
+	<menuitem id="menu_productview_price_action"
+		action="product.product_template_action"
+		parent="product_menu_root"
+		sequence="5" name="Daftar Produk"/>
+	<menuitem id="menu_product_productview_qty_check_action"
+		action="action_product_qty_tree"
+		parent="product_menu_root"
+		sequence="10" name="Kuantitas Produk"/-->
 </data>
 </odoo>

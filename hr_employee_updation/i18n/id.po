@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-07 07:14+0000\n"
-"PO-Revision-Date: 2019-11-07 15:15+0800\n"
+"POT-Creation-Date: 2020-06-30 00:58+0000\n"
+"PO-Revision-Date: 2020-06-30 08:58+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: id\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #. module: hr_employee_updation
 #: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee_id_attachment_id
@@ -145,7 +145,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: hr_employee_updation
-#: code:addons/hr_employee_updation/models/hr_employee.py:81
+#: code:addons/hr_employee_updation/models/hr_employee.py:83
 #, python-format
 msgid "ID-%s Expired On %s"
 msgstr "ID-%s Berakhir Pada %s"
@@ -209,12 +209,17 @@ msgid "Number"
 msgstr "Nomor"
 
 #. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Other"
+msgstr "Famili Lainnya"
+
+#. module: hr_employee_updation
 #: model:ir.ui.view,arch_db:hr_employee_updation.hr_employee_inherit_form_view
 msgid "Passport ID"
 msgstr "ID Paspor"
 
 #. module: hr_employee_updation
-#: code:addons/hr_employee_updation/models/hr_employee.py:95
+#: code:addons/hr_employee_updation/models/hr_employee.py:97
 #, python-format
 msgid "Passport-%s Expired On %s"
 msgstr "Paspor-%s Berakhir Pada %s"
@@ -239,6 +244,11 @@ msgstr "Laporan"
 #: model:ir.model.fields,help:hr_employee_updation.field_hr_employee_family_employee_id
 msgid "Select corresponding Employee"
 msgstr "Pilih Karyawan yang sesuai"
+
+#. module: hr_employee_updation
+#: selection:hr.employee.family,relation:0
+msgid "Sibling"
+msgstr "Saudara Kandung"
 
 #. module: hr_employee_updation
 #: selection:hr.employee.family,relation:0

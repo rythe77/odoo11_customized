@@ -1,0 +1,122 @@
+<odoo>
+<data>
+	<!-- hr.benefit main tree view definition -->
+	<record model="ir.ui.view" id="benefit_tree_view">
+		<field name="name">hr.benefit.benefit_tree_view</field>
+		<field name="model">hr.benefit</field>
+		<field name="arch" type="xml">
+			<tree string="Benefit Tree" default_order="amount desc">
+				<field name="name"/>
+				<field name="amount"/>
+				<field name="description"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- hr.benefit main form view definition -->
+	<record model="ir.ui.view" id="benefit_form_view">
+		<field name="name">hr.benefit.benefit_form_view</field>
+		<field name="model">hr.benefit</field>
+		<field name="arch" type="xml">
+			<form string="Benefit Form">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="amount"/>
+						<field name="description"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- hr.benefit search view definition -->
+	<record model="ir.ui.view" id="benefit_search_view">
+		<field name="name">hr.benefit.benefit_search_view</field>
+		<field name="model">hr.benefit</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+			</search>
+		</field>
+	</record>
+
+	<!-- hr.level main tree view definition -->
+	<record model="ir.ui.view" id="level_tree_view">
+		<field name="name">hr.level.level_tree_view</field>
+		<field name="model">hr.level</field>
+		<field name="arch" type="xml">
+			<tree string="Level Tree" default_order="name asc">
+				<field name="name"/>
+				<field name="amount"/>
+				<field name="description"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- hr.level main form view definition -->
+	<record model="ir.ui.view" id="level_form_view">
+		<field name="name">hr.level.level_form_view</field>
+		<field name="model">hr.level</field>
+		<field name="arch" type="xml">
+			<form string="Level Form">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="amount"/>
+						<field name="description"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- hr.level search view definition -->
+	<record model="ir.ui.view" id="level_search_view">
+		<field name="name">hr.level.level_search_view</field>
+		<field name="model">hr.level</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+			</search>
+		</field>
+	</record>
+
+	<!-- hr.benefit window action -->
+	<record model="ir.actions.act_window" id="hr_benefit_view_action">
+		<field name="name">Benefit</field>
+		<field name="res_model">hr.benefit</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create employee benefit here
+			</p>
+		</field>
+	</record>
+
+	<!-- hr.level window action -->
+	<record model="ir.actions.act_window" id="hr_level_view_action">
+		<field name="name">Level</field>
+		<field name="res_model">hr.level</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create employee level here
+			</p>
+		</field>
+	</record>
+
+	<!-- menu -->
+	<menuitem id="benefit_menu" name="Benefit"
+			groups="hr_payroll.group_hr_payroll_manager"
+			parent="hr.menu_hr_root"/>
+	<menuitem id="hr_benefit_menu" name="Job Benefit" parent="benefit_menu"
+			groups="hr_payroll.group_hr_payroll_manager"
+			action="hr_benefit_view_action"/>
+	<menuitem id="hr_level_menu" name="Level" parent="benefit_menu"
+			groups="hr_payroll.group_hr_payroll_manager"
+			action="hr_level_view_action"/>
+</data>
+</odoo>

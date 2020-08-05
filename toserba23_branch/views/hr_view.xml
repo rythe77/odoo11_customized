@@ -1,0 +1,91 @@
+<odoo>
+<data>
+	<!-- hr.attendance main tree view definition -->
+	<record model="ir.ui.view" id="view_attendance_tree_add_overtime">
+		<field name="name">hr_attendance.view_attendance_tree_add_overtime</field>
+		<field name="model">hr.attendance</field>
+		<field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+		<field name="arch" type="xml">
+			<field name="check_out" position="after">
+				<field name="worked_hours"/>
+				<field name="overtime_hours"/>
+				<field name="overtime_hours_late"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- hr.payroll main tree view definition -->
+	<record model="ir.ui.view" id="view_hr_payslip_tree_reference_order">
+		<field name="name">hr_payroll.view_hr_payslip_tree_reference_order</field>
+		<field name="model">hr.payslip</field>
+		<field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+		<field name="arch" type="xml">
+			<tree position="attributes">
+				<attribute name="default_order">number desc</attribute>
+			</tree>
+			<field name="state" position="after">
+				<field name="is_paid"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- hr.payroll main form view definition -->
+	<record model="ir.ui.view" id="view_hr_payslip_form_add_overtime">
+		<field name="name">hr_payroll.view_hr_payslip_form_add_overtime</field>
+		<field name="model">hr.payslip</field>
+		<field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+		<field name="arch" type="xml">
+			<field name="number_of_hours" position="after">
+				<field name="overtime_hours"/>
+				<field name="overtime_hours_late"/>
+			</field>
+			<field name="number_of_hours" position="attributes">
+				<attribute name="invisible">0</attribute>
+			</field>
+			<notebook position="after">
+				<div>
+				    <field name="description" placeholder="Catatan lainnya (catatan ini juga akan muncul di slip gaji cetak)..."/>
+				</div>
+			</notebook>
+		</field>
+	</record>
+
+	<!-- hr.attendance main search view definition -->
+	<record model="ir.ui.view" id="view_attendance_search_additional">
+		<field name="name">hr.attendance.view_attendance_search_additional</field>
+		<field name="model">hr.attendance</field>
+		<field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
+		<field name="arch" type="xml">
+			<xpath expr="/search/filter[2]" position="attributes">
+				<attribute name="domain">[('check_in', '&gt;=', datetime.datetime.combine(context_today().replace(day=1),datetime.time(0,0,0)))]</attribute>
+			</xpath>
+			<xpath expr="/search/filter[2]" position="after">
+				<filter string="Bulan Lalu" domain="[('check_in', '&gt;=', datetime.datetime.combine((context_today()-datetime.timedelta(days=context_today().day)).replace(day=1),datetime.time(0,0,0))),('check_in', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=context_today().day),datetime.time(23,59,59)))]"/>
+			</xpath>
+			<filter name="today" position="after">
+				<filter string="For the Last Week" domain="[('check_in', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('check_in', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="For the Last 2 Weeks" domain="[('check_in', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=13),datetime.time(0,0,0))),('check_in', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+			</filter>
+		</field>
+	</record>
+
+	<!-- hr.attendance calendar view definition -->
+	<record model="ir.ui.view" id="view_attendance_calendar">
+		<field name="name">hr.attendance.view_attendance_calendar</field>
+		<field name="model">hr.attendance</field>
+		<field name="arch" type="xml">
+			<calendar string="Employee Attendances" date_start="check_in" date_stop="check_out" color="employee_id" mode="week">
+				<field name="employee_id"/>
+				<field name="overtime_hours" string="Overtime"/>
+				<field name="overtime_hours_late" string="Late Overtime"/>
+			</calendar>
+		</field>
+	</record>
+
+	<!-- hr.attendance action definition -->
+	<record id="hr_attendance.hr_attendance_action" model="ir.actions.act_window">
+		<field name="view_mode">tree,calendar,form</field>
+	</record>
+</data>
+</odoo>
