@@ -327,6 +327,11 @@
 		</field>
 	</record>
 
+	<!-- Add sale order access menu -->
+	<menuitem id="menu_sale_quotations"  name="Penawaran"
+			action="sale.action_quotations"
+			parent="account.menu_finance_receivables_documents"
+			sequence="50"/>
 	<!-- Customer menu view definition -->
 	<menuitem id="account.menu_account_customer" name="Customers"
 	    parent="account.menu_finance_receivables_master_data"

@@ -3,11 +3,6 @@ stock.access_product_template_stock_user,product.template stock user,product.mod
 purchase.access_purchase_order_stock_worker,purchase.order,purchase.model_purchase_order,stock.group_stock_user,1,0,0,0
 toserba23.access_purchase_order_stock_manager,toserba23.purchase.order,purchase.model_purchase_order,stock.group_stock_manager,1,0,0,0
 sale_stock.access_sale_order_stock_worker,sale.order stock worker,sale.model_sale_order,stock.group_stock_user,1,0,0,0
-toserba23.access_sale_order_view_only,sale.order view only,sale.model_sale_order,toserba23.group_sale_order_view,1,0,0,0
-toserba23.access_sale_order_line_view_only,sale.order.line view only,sale.model_sale_order_line,toserba23.group_sale_order_view,1,0,0,0
-toserba23.access_stock_picking_view_only,stock.picking view only,stock.model_stock_picking,toserba23.group_sale_order_view,1,0,0,0
-toserba23.access_stock_move_view_only,stock.move view only,stock.model_stock_move,toserba23.group_sale_order_view,1,0,0,0
-toserba23.access_account_invoice_view_only,account.invoice view only,account.model_account_invoice,toserba23.group_sale_order_view,1,0,0,0
 stock.access_stock_picking_user,stock.picking user,stock.model_stock_picking,stock.group_stock_user,1,1,1,0
 toserba23.access_stock_picking_salesman_all,toserba23.stock_picking salesman_all,stock.model_stock_picking,sales_team.group_sale_salesman_all_leads,1,1,1,0
 sale_stock.access_stock_picking_salesman,stock_picking salesman,stock.model_stock_picking,sales_team.group_sale_salesman,1,0,0,0

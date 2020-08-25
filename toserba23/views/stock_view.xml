@@ -383,6 +383,9 @@
 	<record model="ir.ui.menu" id="stock.menu_reordering_rules_config">
 		<field name="groups_id" eval="[(6,0,[ref('stock.group_stock_manager')])]"/>
 	</record>
+	<record model="ir.ui.menu" id="stock.menu_stock_scrap">
+		<field name="groups_id" eval="[(6,0,[ref('stock.group_stock_manager')])]"/>
+	</record>
 	<record model="ir.ui.menu" id="stock.menu_warehouse_report">
 		<field name="groups_id" eval="[(6,0,[ref('stock.group_stock_user')])]"/>
 	</record>
@@ -395,7 +398,7 @@
 	<record model="ir.ui.menu" id="stock.menu_stock_config_settings">
 		<field name="groups_id" eval="[(6,0,[ref('toserba23.view_configuration_menu')])]"/>
 	</record>
-	
+
 	<!-- Additional menu view -->
 	<menuitem id="toserba23.menu_product_category_config_stock_inherited"
 		action="product.product_category_action_form" 

@@ -1,0 +1,36 @@
+<odoo>
+<data>
+	<!-- Add notes in PO form view -->
+	<record model="ir.ui.view" id="purchase_order_form_custom">
+		<field name="name">purchase.purchase_order_form_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<button name="button_cancel" position="after">
+				<button name="action_status" id="action_status" string="Selesaikan Status" type="object" attrs="{'invisible': [('state', 'not in', ['purchase','done','cancel'])]}" groups="purchase.group_purchase_manager"/>
+			</button>
+		</field>
+	</record>
+
+	<!-- Main search view definition -->
+	<record model="ir.ui.view" id="view_purchase_order_filter_custom">
+		<field name="name">purchase.view_purchase_order_filter_custom</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="arch" type="xml">
+			<field name="create_uid" position="after">
+				<filter string="Diorder hari ini" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Diorder kemarin" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Diorder seminggu terakhir" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter string="Dikirim hari ini" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
+				<filter string="Dikirim besok" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=1),datetime.time(23,59,59)))]"/>
+				<filter string="Dikirim seminggu ke depan" domain="[('date_planned', '&gt;=', datetime.datetime.combine(context_today(),datetime.time(0,0,0))),('date_planned', '&lt;=', datetime.datetime.combine(context_today()+datetime.timedelta(days=6),datetime.time(23,59,59)))]"/>
+				<separator/>
+				<filter name="not_done" string="Belum Selesai" domain="[('invoice_status','!=', 'invoiced')]" help="Purchase order whose invoice not yet done"/>
+				<separator/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+	<!-- Open access groups -->
+	<record model="ir.module.category" id="open_access_groups_category">
+	  <field name="name">Pembukaan Akses</field>
+	  <field name="sequence">500</field>
+	</record>
+	<record id="allow_badge_scan" model="res.groups">
+		<field name="name">Akses Pindai Lencana</field>
+		<field name="comment">Ijinkan akses untuk pindai/scan lencana karyawan</field>
+		<field name="category_id" ref="toserba23_branch.open_access_groups_category"/>
+	</record>
+</data>
+</odoo>

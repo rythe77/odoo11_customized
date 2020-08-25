@@ -4,7 +4,7 @@
 	<report
 		id="report_custom_set_document"
 		model="stock.picking"
-		string="Set Pengaturan 1 + Surat Jalan 1 + Copy 1 (Untuk Kontan)"
+		string="Set Pengaturan 1 + Surat Jalan 1 + Driver 1 (Untuk Kontan)"
 		name="toserba23.report_custom_setslip"
 		file="toserba23.set_document"
 		print_report_name="'Set Pengaturan + Surat Jalan - %s - %s' % (object.partner_id.name or '', object.name)"
@@ -25,7 +25,7 @@
 	<report
 		id="report_custom_set_document2"
 		model="stock.picking"
-		string="Set Pengaturan 1 + Surat Jalan 2 + Copy 1 (Untuk Kredit)"
+		string="Set Pengaturan 1 + Surat Jalan 2 + Driver 1 (Untuk Kredit)"
 		name="toserba23.report_custom_setslip2"
 		file="toserba23.set_document2"
 		print_report_name="'Set Pengaturan + Surat Jalan 3x - %s - %s' % (object.partner_id.name or '', object.name)"
@@ -47,7 +47,7 @@
 	<report
 		id="report_custom_set_document3"
 		model="stock.picking"
-		string="Set Pengaturan 1 + Copy 1 (Sendiri)"
+		string="Set Pengaturan 1 + Driver 1 (Sendiri)"
 		name="toserba23.report_custom_setslip3"
 		file="toserba23.set_document3"
 		print_report_name="'Set Pengaturan + Copy - %s - %s' % (object.partner_id.name or '', object.name)"

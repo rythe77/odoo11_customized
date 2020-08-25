@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
 
-class SaleOrderInherit(models.Model):
-    _inherit = 'sale.order'
-    
+class PurchaseOrder(models.Model):
+    _inherit = 'purchase.order'
+
     @api.multi
     def action_status(self):
         for item in self:

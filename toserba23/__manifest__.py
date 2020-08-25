@@ -44,14 +44,13 @@
             - Sistem pencatatan tindakan indisipliner
             - Employee insurance module
             - Sistem cuti
-        Todo:
-            - nota tanggal lama tidak boleh edit penambahan barang
-            - alert sistem ketika konfirmasi penjualan, jika ada nota yang jatuh tempo
-            - data siapa pembuat SO di faktur pelanggan
-            - Operasi Pembuangan dihilangkan dari akun kepala gudang
-            - History edit data pelanggan
-            - purchase price auto update mess, update also old price. Tikar jali M 140
             - Admin sales : edit data pelanggan. Sup Sales : + ubah naik harga. Sales Man : + perbaiki SO jd penawaran, ubah limit kredit dan lamanya.
+        Todo:
+            - Log note for internal transporter
+            - Surat jalan drop ship
+            - RMA permintaan komponen
+            - data siapa pembuat SO di faktur pelanggan
+            - History edit data pelanggan
             - Purchase request module, only to socialize and install in server
             - Employee orientation module, only to socialize and install in server
             - odoo user, employee, and partner mess
@@ -63,12 +62,9 @@
             - Notification for employee contract
             - Konfirmasi slip gaji massal
             - sistem pencatatan yang mirip seperti tindakan indisipliner untuk pelanggan
-            - error access rule utk sales
             - integrasi google map ke data kontak
             - sistem pencatatan kunjungan sales menurut google map, https://apps.odoo.com/apps/modules/12.0/employee_tracking_log/
             - tanggal jatuh tempo faktur mau otomatis dimunculkan ketika pembuatan faktur
-            - bonus prestasi karyawan menurut KPI
-            - kunci SO yang sudah konfir
             - history perubahan data pelanggan
             - featured product view
             - real-time inventory correction system
@@ -84,6 +80,9 @@
             - Super call on method, should not list "administrator" as the document creator
             - Sistem hutang karyawan ke perusahaan
         Not Todo:
+            - purchase price auto update mess, update also old price. Tikar jali M 140
+            - kunci SO yg sudah konfir
+            - nota tanggal lama tidak boleh edit penambahan barang
             - sales commission system
             - Sales group automatically fills in based on customer
             - Customize tree view column width
