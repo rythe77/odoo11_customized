@@ -16,5 +16,6 @@ class StockMove(models.Model):
                 vals.update({
                     'x_vehicle_notes': sale_obj.x_vehicle_notes,
                     'x_notes': sale_obj.x_notes,
+                    'x_loading_location': sale_obj.x_loading_location,
                     })
         return vals

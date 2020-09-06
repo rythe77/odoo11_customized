@@ -69,6 +69,7 @@
 				<field name="purchase_id" attrs="{'invisible': [('purchase_id', '=', False)]}"/>
 			</field>
 			<xpath expr="/form/sheet/group/group[2]" position="inside">
+				<field name="x_loading_location"/>
 				<field name="x_vehicle_notes"/>
 				<field name="x_notes"/>
 			</xpath>

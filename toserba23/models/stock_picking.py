@@ -14,6 +14,9 @@ class StockPicking(models.Model):
     x_notes = fields.Char(
         'Other Notes', index=False,
         states={'done': [('readonly', True)], 'cancel': [('readonly', True)], 'waiting_validation': [('readonly', True)]})
+    x_loading_location = fields.Char(
+        'Lokasi Pemuatan', index=False,
+        states={'sale': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]})
 
     @api.multi
     def action_done(self):

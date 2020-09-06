@@ -168,6 +168,7 @@
 		<field name="inherit_id" ref="sale_requested_date.view_order_form_inherit_sale_stock_add_date"/>
 		<field name="arch" type="xml">
 			<field name="requested_date" position="after">
+				<field name="x_loading_location" required="1"/>
 				<field name="x_vehicle_notes"/>
 				<field name="x_notes"/>
 			</field>
