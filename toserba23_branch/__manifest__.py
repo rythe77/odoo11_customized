@@ -24,6 +24,7 @@
         'security/security.xml',
         #'security/ir.model.access.csv',
         'views/sale_view.xml',
+        'views/stock_view.xml',
         'views/purchase_view.xml',
         'views/hr_view.xml',
         'reports/master_template.xml',

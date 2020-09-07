@@ -1,0 +1,30 @@
+<odoo>
+<data>
+	<!-- Main list view definition -->
+	<record model="ir.ui.view" id="stock_picking_tree_view_custom">
+		<field name="name">product.stock_picking_tree_view_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.vpicktree"/>
+		<field name="arch" type="xml">
+			<field name="partner_id" position="before">
+				<field name="x_notes"/>
+			</field>
+		</field>
+	</record>
+
+	<!-- Main form view definition -->
+	<record model="ir.ui.view" id="stock_picking_form_view_custom">
+		<field name="name">stock.view_picking_form_custom</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/group/group[2]" position="inside">
+				<field name="x_notes"/>
+			</xpath>
+			<field name="partner_id" position="attributes">
+				<attribute name="options">{'no_create_edit': True,'no_quick_create':True,'no_create':True,'no_open':True}</attribute>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>

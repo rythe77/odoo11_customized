@@ -70,6 +70,10 @@
 								</t></td>
 							</tr>
 							<tr>
+								<td class="col-xs-12">
+									Keterangan :
+									<span t-if="o.x_notes" t-field="o.x_notes"/>
+								</td>
 								<t t-if="o.picking_type_id.code=='incoming' and o.partner_id" name="customer_address" groups="toserba23.view_vendor">
 									<td class="col-xs-12" colspan="3">
 										Alamat Pemasok : 

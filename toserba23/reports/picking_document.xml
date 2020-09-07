@@ -179,6 +179,9 @@
 					<p t-if="backorder">
 						Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia.
 					</p>
+					<p t-if="o.note">
+						<span t-field="o.note"/>
+					</p>
 				</div>
 			</div>
 		</t>

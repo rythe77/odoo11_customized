@@ -89,6 +89,12 @@
 									</t>
 								</t></td>
 							</tr>
+							<tr>
+								<td class="col-xs-12">
+									Keterangan :
+									<span t-if="o.x_notes" t-field="o.x_notes"/>
+								</td>
+							</tr>
 							<t t-if="o.int_transporter_id">
 								<tr>
 									<td  colspan="3" class="col-xs-12">
@@ -162,6 +168,9 @@
 					</p>
 					<p t-if="backorder">
 						Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia.
+					</p>
+					<p t-if="o.note">
+						<span t-field="o.note"/>
 					</p>
 				</div>
 			</div>

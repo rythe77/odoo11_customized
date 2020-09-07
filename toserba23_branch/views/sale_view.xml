@@ -42,6 +42,18 @@
 		</field>
 	</record>
 
+	<!-- Show shipping notes -->
+	<record model="ir.ui.view" id="view_order_form_inherit_sale_stock_add_date_custom">
+		<field name="name">sale_requested_date.view_order_form_inherit_sale_stock_add_date_custom</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale_requested_date.view_order_form_inherit_sale_stock_add_date"/>
+		<field name="arch" type="xml">
+			<field name="requested_date" position="after">
+				<field name="x_notes"/>
+			</field>
+		</field>
+	</record>
+
 	<!-- Main search view definition -->
 	<record model="ir.ui.view" id="view_sales_order_filter_custom">
 		<field name="name">sale.view_sales_order_filter_custom</field>

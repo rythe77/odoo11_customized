@@ -100,11 +100,11 @@
 								</t>
 								<t t-if="o.picking_type_id.code=='internal'" name="customer_address">
 									<td class="col-xs-4">
-										Kendaraan : 
+										Kendaraan :
 										<span t-if="o.x_vehicle_notes" t-field="o.x_vehicle_notes"/>
 									</td>
 									<td class="col-xs-5">
-										Keterangan : 
+										Keterangan :
 										<span t-if="o.x_notes" t-field="o.x_notes"/>
 									</td>
 									<td class="col-xs-3">
