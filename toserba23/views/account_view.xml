@@ -327,6 +327,65 @@
 		</field>
 	</record>
 
+	<!-- Add customer/supplier domain restriction -->
+	<record id="account.action_account_payments" model="ir.actions.act_window">
+		<field name="name">Pembayaran</field>
+		<field name="res_model">account.payment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,graph</field>
+		<field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer'}</field>
+		<field name="domain">[('partner_type', '=', 'customer')]</field>
+		<field name="view_id" ref="account.view_account_payment_tree"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+			  Click to register a payment
+			</p><p>
+			  Payments are used to register liquidity movements (send, collect or transfer money).
+			  You can then process those payments by your own means or by using installed facilities.
+			</p>
+		</field>
+	</record>
+	<record id="account.action_account_payments_payable" model="ir.actions.act_window">
+		<field name="name">Pembayaran</field>
+		<field name="res_model">account.payment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,graph</field>
+		<field name="context">{'default_payment_type': 'outbound', 'default_partner_type': 'supplier'}</field>
+		<field name="domain">[('partner_type', '=', 'supplier')]</field>
+		<field name="view_id" ref="account.view_account_supplier_payment_tree"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+			  Click to register a payment
+			</p><p>
+			  Payments are used to register liquidity movements (send, collect or transfer money).
+			  You can then process those payments by your own means or by using installed facilities.
+			</p>
+		</field>
+	</record>
+
+	<!-- Add view all payment list -->
+	<record id="action_account_payments_all" model="ir.actions.act_window">
+		<field name="name">Pembayaran</field>
+		<field name="res_model">account.payment</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,graph</field>
+		<field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer'}</field>
+		<field name="domain">[]</field>
+		<field name="view_id" ref="account.view_account_payment_tree"/>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+			  Click to register a payment
+			</p><p>
+			  Payments are used to register liquidity movements (send, collect or transfer money).
+			  You can then process those payments by your own means or by using installed facilities.
+			</p>
+		</field>
+	</record>
+	<menuitem id="menu_payment_all"  name="Pembayaran"
+			action="action_account_payments_all"
+			parent="account.menu_finance_entries_management"
+			sequence="10"/>
+
 	<!-- Add sale order access menu -->
 	<menuitem id="menu_sale_quotations"  name="Penawaran"
 			action="sale.action_quotations"

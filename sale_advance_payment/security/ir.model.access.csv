@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-"",,,,,,,
+sale_advance_payment.access_payment_non_accounting,sale_advance_payment.access_payment sale user,account.model_account_payment,sales_team.group_sale_salesman,1,0,0,0
