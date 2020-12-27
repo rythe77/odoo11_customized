@@ -45,7 +45,17 @@
             - Employee insurance module
             - Sistem cuti
             - Admin sales : edit data pelanggan. Sup Sales : + ubah naik harga. Sales Man : + perbaiki SO jd penawaran, ubah limit kredit dan lamanya.
+            - Sistem hutang karyawan ke perusahaan
         Todo:
+            - Faktur RMA-IN/2011/020 otomatis harga ecer
+            - Keterangan RMA-IN kalo ganti beda barang harusnya keterangannya jangan ngikut
+            - Tutup akses pembuatan karyawan
+            - Buat sequence range otomatis
+            - Eror permintaan awal PRL-IN/2009/188
+            - Buy DISC test
+            - Auto debet zenviva
+            - CT Meja Kompor Wastafel
+            - Asuransi karyawan terpisah
             - Log note for internal transporter
             - Surat jalan drop ship
             - RMA permintaan komponen
@@ -78,7 +88,6 @@
             - Tanggal terjadwal di DO susah tersimpan
             - Supervisor bisa tambah produk, khusus nama produk dan kodenya
             - Super call on method, should not list "administrator" as the document creator
-            - Sistem hutang karyawan ke perusahaan
         Not Todo:
             - purchase price auto update mess, update also old price. Tikar jali M 140
             - kunci SO yg sudah konfir

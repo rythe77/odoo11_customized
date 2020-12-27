@@ -1,0 +1,350 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ohrms_loan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-27 10:06+0000\n"
+"PO-Revision-Date: 2020-12-27 18:07+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_amount
+msgid "Amount"
+msgstr "Jumlah"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Approve"
+msgstr "Setuju"
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+msgid "Approved"
+msgstr "Disetujui"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_balance_amount
+msgid "Balance Amount"
+msgstr "Saldo"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+msgid "Canceled"
+msgstr "Dibatalkan"
+
+#. module: ohrms_loan
+#: model:ir.actions.act_window,help:ohrms_loan.action_hr_loan_request
+msgid "Click to create a new Loan request."
+msgstr "Klik untuk membuat permintaan pinjaman baru."
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Compute Installment"
+msgstr "Hitung cicilan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_create_uid
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_create_date
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_date
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_department_id
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Department"
+msgstr "Departemen"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_display_name
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+msgid "Draft"
+msgstr "Rancangan"
+
+#. module: ohrms_loan
+#: model:ir.model,name:ohrms_loan.model_hr_employee
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_employee_id
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_employee_id
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_expense_account_id
+msgid "Expense Account"
+msgstr "Akun Beban"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Group By"
+msgstr "Dikelompokkan berdasarkan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_id
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: ohrms_loan
+#: model:ir.model,name:ohrms_loan.model_hr_loan_line
+msgid "Installment Line"
+msgstr "Baris Cicilan"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Installments"
+msgstr "Cicilan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_job_position
+msgid "Job Position"
+msgstr "Jabatan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_journal_id
+msgid "Journal"
+msgstr "Jurnal"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan___last_update
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_write_uid
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_write_date
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: ohrms_loan
+#: model:hr.salary.rule,name:ohrms_loan.hr_rule_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Loan"
+msgstr "Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_emp_account_id
+msgid "Loan Account"
+msgstr "Akun Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_loan_amount
+msgid "Loan Amount"
+msgstr "Jumlah Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_employee_loan_count
+msgid "Loan Count"
+msgstr "Jumlah Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_payslip_input_loan_line_id
+msgid "Loan Installment"
+msgstr "Cicilan Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_loan_lines
+msgid "Loan Line"
+msgstr "Baris Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_name
+msgid "Loan Name"
+msgstr "Nama Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_loan_id
+msgid "Loan Ref."
+msgstr "Nomor Peminjaman"
+
+#. module: ohrms_loan
+#: model:ir.model,name:ohrms_loan.model_hr_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Loan Request"
+msgstr "Permintaan Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.actions.act_window,name:ohrms_loan.action_hr_loan_request
+#: model:ir.ui.menu,name:ohrms_loan.menu_base_hr_loan_request
+#: model:ir.ui.menu,name:ohrms_loan.menu_hr_loan_request
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_tree_view
+msgid "Loan Requests"
+msgstr "Permintaan Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.actions.act_window,name:ohrms_loan.act_hr_employee_loan_request
+#: model:ir.ui.view,arch_db:ohrms_loan.view_employee_form_loan_inherit
+msgid "Loans"
+msgstr "Pinjaman"
+
+#. module: ohrms_loan
+#: model:ir.ui.menu,name:ohrms_loan.menu_hr_loans_and_advances
+msgid "Loans And Advance"
+msgstr "Pinjaman Dan Bayar Dimuka"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "My Loans"
+msgstr "Pinjamanku"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_installment
+msgid "No Of Installments"
+msgstr "Jumlah Cicilan"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_paid
+msgid "Paid"
+msgstr "Dibayar"
+
+#. module: ohrms_loan
+#: model:ir.model,name:ohrms_loan.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Slip Gaji"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_date
+msgid "Payment Date"
+msgstr "Tanggal Pembayaran"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_payment_date
+msgid "Payment Start Date"
+msgstr "Tanggal Mulai Pembayaran"
+
+#. module: ohrms_loan
+#: model:ir.model,name:ohrms_loan.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "Input Slip Gaji"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_line_payslip_id
+msgid "Payslip Ref."
+msgstr "Nomor Slip Gaji."
+
+#. module: ohrms_loan
+#: code:addons/ohrms_loan/models/hr_loan.py:99
+#, python-format
+msgid "Please Compute installment."
+msgstr "Silahkan Hitung Cicilan."
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Refuse"
+msgstr "Tolak"
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+msgid "Refused"
+msgstr "Ditolak"
+
+#. module: ohrms_loan
+#: code:addons/ohrms_loan/models/hr_payroll.py:29
+#, python-format
+msgid "Salary Slip of %s for %s"
+msgstr "Slip Gaji %s untuk %s"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_state
+msgid "State"
+msgstr "Status"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Status"
+msgstr "Status"
+
+#. module: ohrms_loan
+#: model:ir.ui.view,arch_db:ohrms_loan.hr_loan_form_view
+msgid "Submit"
+msgstr "Ajukan"
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+msgid "Submitted"
+msgstr "Diajukan"
+
+#. module: ohrms_loan
+#: code:addons/ohrms_loan/models/hr_loan.py:73
+#, python-format
+msgid "The employee has already a pending installment."
+msgstr "Karyawan ini memiliki cicilan pinjaman yang belum lunas."
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_total_amount
+msgid "Total Amount"
+msgstr "Jumlah Total"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_total_paid_amount
+msgid "Total Paid Amount"
+msgstr "Jumlah Total Dibayar"
+
+#. module: ohrms_loan
+#: model:ir.model.fields,field_description:ohrms_loan.field_hr_loan_treasury_account_id
+msgid "Treasury Account"
+msgstr "Akun Pembayaran"
+
+#. module: ohrms_loan
+#: model:ir.actions.act_window,help:ohrms_loan.action_hr_loan_request
+msgid "Use this menu to create loan requests."
+msgstr "Gunakan menu ini untuk membuat permintaan pinjaman."
+
+#. module: ohrms_loan
+#: selection:hr.loan,state:0
+#: model:ir.ui.view,arch_db:ohrms_loan.view_loan_request_search_form
+msgid "Waiting Approval"
+msgstr "Menunggu Persetujuan"
+
+#. module: ohrms_loan
+#: code:addons/ohrms_loan/models/hr_loan.py:97
+#, python-format
+msgid "You must Define a contract for employee."
+msgstr "Anda harus membuat kontrak aktif untuk karyawan ini."

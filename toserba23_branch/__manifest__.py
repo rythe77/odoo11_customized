@@ -27,6 +27,7 @@
         'views/stock_view.xml',
         'views/purchase_view.xml',
         'views/hr_view.xml',
+        'views/hr_expense_view.xml',
         'reports/master_template.xml',
         'reports/saleorder_document.xml',
         'reports/picking_document.xml',
