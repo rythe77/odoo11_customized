@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from lxml import etree
+import json
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -35,14 +35,13 @@ class SmsGatewayZenviva(models.Model):
         params = {
             'userkey': sms_account.zenviva_userkey,
             'passkey': sms_account.zenviva_passkey,
-            'nohp': format_to,
-            'pesan': sms_content,
+            'to': format_to,
+            'message': sms_content,
         }
 
-        response = requests.request(
-            "POST",
+        response = requests.post(
             sms_account.zenviva_api_url,
-            params=params
+            data=params
         )
 
         #Analyse the response string and determine if it sent successfully other wise return a human readable error message
@@ -50,25 +49,15 @@ class SmsGatewayZenviva(models.Model):
         sms_gateway_message_id = ""
         delivary_state = "failed"
         if response:
-            root = etree.fromstring(response.text.encode("utf-8"))
-            my_elements_human = root.xpath('/response/message/status')
-            if my_elements_human[0].text == "0":
+            json_response = json.loads(response.text)
+            if json_response["status"] == "1":
                 delivary_state = "successful"
-            elif my_elements_human[0].text == "1":
+            elif json_response["status"] == "0":
                 delivary_state = "failed"
-                human_read_error = "Nomor tujuan tidak aktif"
-            elif my_elements_human[0].text == "5":
+                human_read_error = json_response["text"]
+            else:
                 delivary_state = "failed"
-                human_read_error = "Userkey / Passkey salah"
-            elif my_elements_human[0].text == "6":
-                delivary_state = "failed"
-                human_read_error = "Konten SMS rejected"
-            elif my_elements_human[0].text == "89":
-                delivary_state = "failed"
-                human_read_error = "Pengiriman SMS berulang-ulang ke satu nomor dalam satu waktu"
-            elif my_elements_human[0].text == "99":
-                delivary_state = "failed"
-                human_read_error = "Credit tidak mencukupi"
+                human_read_error = "Kode kesalahan tidak diketahui"
 
         #send a response back saying how the sending went
         my_sms_response = sms_response()
@@ -95,7 +84,7 @@ class SmsAccountZenviva(models.Model):
     _inherit = "sms.account"
     _description = "Adds the Zenviva specfic gateway settings to the sms gateway accounts"
 
-    zenviva_api_url = fields.Char(string='API URL', default="https://reguler.zenziva.net/apps/smsapi.php")
+    zenviva_api_url = fields.Char(string='API URL', default="https://console.zenziva.net/reguler/api/sendsms/")
     zenviva_userkey = fields.Char(string='User Key')
     zenviva_passkey = fields.Char(string='Pass Key')
     zenviva_last_check_date = fields.Datetime(string="Last Check Date")

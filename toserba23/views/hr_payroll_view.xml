@@ -23,6 +23,9 @@
 				    <field name="description" placeholder="Catatan lainnya (catatan ini juga akan muncul di slip gaji cetak)..."/>
 				</div>
 			</notebook>
+			<field name="employee_id" position="attributes">
+				<attribute name="options">{'no_create': True}</attribute>
+			</field>
 		</field>
 	</record>
 </data>

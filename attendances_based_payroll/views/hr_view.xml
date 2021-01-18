@@ -95,6 +95,8 @@
 				<filter string="For the Last Week" domain="[('check_in', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('check_in', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
 				<filter string="For the Last 2 Weeks" domain="[('check_in', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=13),datetime.time(0,0,0))),('check_in', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
 				<separator/>
+				<filter name="active_employee" string="Karyawan Aktif" domain="[('employee_id.active', '=', True)]"/>
+				<separator/>
 			</filter>
 		</field>
 	</record>
@@ -115,6 +117,7 @@
 	<!-- hr.attendance action definition -->
 	<record id="hr_attendance.hr_attendance_action" model="ir.actions.act_window">
 		<field name="view_mode">tree,calendar,form</field>
+        <field name="context">{"search_default_today":1, "search_default_active_employee":1}</field>
 	</record>
 </data>
 </odoo>

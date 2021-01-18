@@ -19,6 +19,9 @@
 			<field name="name" position="after">
 				<field name="origin"/>
 			</field>
+			<field name="location_dest_id" position="replace">
+				<field name="int_transporter_id"/>
+			</field>
 			<field name="partner_id" position="before">
 				<field name="x_notes"/>
 			</field>
