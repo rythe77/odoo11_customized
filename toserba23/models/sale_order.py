@@ -103,6 +103,19 @@ class SaleOrderInherit(models.Model):
             # Log a note to the sale order record
             item.message_post(body="Email notifikasi konfirmasi order sudah dikirimkan ke pelanggan")
 
+    #Send WA through WA Web manual button
+    def send_msg(self):
+        template = self.env.ref('toserba23.quotation_wa_template')
+        message = self.env['sms.template'].browse(template.id).render_template(template.template_body, template.model_id.model, self.id)
+        if message and self.partner_id.mobile:
+            message = message.replace(' ', '%20').replace('\n', '%0A')
+            return {
+                'type': 'ir.actions.act_url',
+                'url': "https://api.whatsapp.com/send?phone="+self.partner_id.mobile+"&text=" + message,
+                'target': 'new',
+                'res_id': self.id,
+            }
+
     @api.multi
     @api.onchange('partner_id')
     def onchange_partner_id(self):

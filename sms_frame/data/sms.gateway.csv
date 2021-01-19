@@ -2,3 +2,4 @@ id,gateway_model_name,name
 sms_twilio,sms.gateway.twilio,TWILIO
 sms_wassenger,sms.gateway.wassenger,WASSENGER
 sms_zenviva,sms.gateway.zenviva,ZENVIVA
+sms_zenvivawa,sms.gateway.zenvivawa,ZENVIVAWA

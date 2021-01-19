@@ -106,6 +106,10 @@
 			<button name="action_view_invoice" position="after">
 	            <button name="action_check_product_qty" string="Cek Qty Produk" type="object" class="oe_stat_button" icon="fa-building-o"/>
 			</button>
+			<!-- Add WA Web button button -->
+			<xpath expr="//button[@name='action_view_invoice']" position="before">
+				<button name="send_msg" string="Whatsapp Message" type="object" class="oe_stat_button" icon="fa-whatsapp"/>
+			</xpath>
 		</field>
 	</record>
 
