@@ -20,6 +20,7 @@
 		<field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
 		<field name="arch" type="xml">
 			<field name="employee_id" position="attributes">
+				<attribute name="options">{'no_create': True}</attribute>
 				<attribute name="groups">toserba23.group_hr_expense_officer</attribute>
 			</field>
 			<field name="reference" position="attributes">
