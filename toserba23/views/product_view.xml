@@ -9,6 +9,12 @@
 			<tree position="attributes">
 				<attribute name="colors">red:qty_available &lt;= 0</attribute>
 			</tree>
+			<field name="list_price" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="list_price" position="after">
+				<field name="x_harga_jual" string="Harga Jual" groups="sales_team.group_sale_salesman"/>
+			</field>
 		</field>
 	</record>
 
@@ -129,7 +135,7 @@
 				</group>
 			</div>
 			<div name="pricelist_item" position="after">
-				<group name="catalog_price" string="Harga Umum/Katalog" groups="sales_team.group_sale_salesman">
+				<group name="catalog_price" string="Harga Umum/Katalog" groups="sales_team.group_sale_manager">
 					<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Harga Umum"/>
 				</group>
 			</div>

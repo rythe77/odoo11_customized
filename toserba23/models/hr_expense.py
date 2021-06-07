@@ -12,3 +12,12 @@ class HrExpenseSheet(models.Model):
         for expense in self:
             if expense.total_amount > 1000000 and not expense.user_has_groups('hr_expense.group_hr_expense_manager'):
                 raise UserError("Hanya Manajer Pengeluaran yang dapat menyetujui pengeluaran lebih dari Rp 1.000.000")
+
+
+class HrExpense(models.Model):
+    _inherit = "hr.expense"
+
+    @api.multi
+    def action_force_status(self):
+        self.state = 'done'
+        return True

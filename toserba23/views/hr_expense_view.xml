@@ -19,6 +19,9 @@
 		<field name="model">hr.expense</field>
 		<field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
 		<field name="arch" type="xml">
+			<button name="view_sheet" position="after">
+				<button name="action_force_status" attrs="{'invisible': [('state', '=', 'done')]}" string="Selesaikan Status" type="object" groups="base.group_no_one"/>
+			</button>
 			<field name="employee_id" position="attributes">
 				<attribute name="options">{'no_create': True}</attribute>
 				<attribute name="groups">toserba23.group_hr_expense_officer</attribute>

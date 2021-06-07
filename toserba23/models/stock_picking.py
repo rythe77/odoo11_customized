@@ -21,13 +21,14 @@ class StockPicking(models.Model):
     @api.multi
     def action_done(self):
         """
-            Do not allow validation for non-manager if this picking is not related to SO or PO or RMA
+            Send automatic notification when stock picking is validated
         """
         return_val = super(StockPicking, self).action_done()
         for rec in self:
-            if not rec.sale_id and not rec.purchase_id  and not rec.rmain_id and not rec.rmaout_id and not rec.picking_type_code == "internal"\
-            and not self.env['res.users'].browse(self.env.uid).has_group('stock.group_stock_manager'):
-                raise UserError('Anda hanya diijinkan untuk memvalidasi transfer yang dibuat dari penjualan/pembelian atau RMA')
+            # Do not allow validation for non-manager if this picking is not related to SO or PO or RMA
+            # if not rec.sale_id and not rec.purchase_id  and not rec.rmain_id and not rec.rmaout_id and not rec.picking_type_code == "internal"\
+            # and not self.env['res.users'].browse(self.env.uid).has_group('stock.group_stock_manager'):
+            #     raise UserError('Anda hanya diijinkan untuk memvalidasi transfer yang dibuat dari penjualan/pembelian atau RMA')
             # Send email notification to customer
             if rec.partner_id.customer and rec.picking_type_code == "outgoing" and rec.partner_id.x_is_notify_do and rec.partner_id.x_notification_method == "email":
                 rec.action_send_email()

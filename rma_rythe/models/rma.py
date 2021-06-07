@@ -730,7 +730,7 @@ class RmaLine(models.Model):
     @api.multi
     def change_action_to_replace(self):
         for line in self:
-            if line.action =='repair' and line.serviced_qty == 0:
+            if line.action =='repair':
                 replace_reason = self.env['ir.model.data'].get_object_reference('rma_rythe','rma_reason1')
                 line.update({'rma_reason_id': replace_reason[1]})
             else:

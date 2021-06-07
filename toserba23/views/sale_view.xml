@@ -191,6 +191,7 @@
 				<filter string="Ordered for the last week" domain="[('date_order', '&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=6),datetime.time(0,0,0))),('date_order', '&lt;=', datetime.datetime.combine(context_today(),datetime.time(23,59,59)))]"/>
 				<separator/>
 				<filter string="Delivery not done" name="delivery_status" domain="[('delivery_status', 'in', ('none_delivered','partially_delivered'))]"/>
+				<filter string="Belum difakturkan" name="invoice_status" domain="[('invoice_status', 'in', ('no','to invoice', 'upselling'))]"/>
 				<separator/>
 			</field>
 		</field>

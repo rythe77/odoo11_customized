@@ -254,6 +254,8 @@
 				<separator/>
 				<filter string="Due today" domain="[('date_due', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
 				<filter string="Due tomorrow" domain="[('date_due', '&gt;=', (datetime.date.today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="Jatuh tempo 2 hari lagi" domain="[('date_due', '&gt;=', (datetime.date.today()+datetime.timedelta(days=2)).strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=2)).strftime('%Y-%m-%d 23:59:59'))]"/>
+				<filter string="Jatuh tempo 3 hari lagi" domain="[('date_due', '&gt;=', (datetime.date.today()+datetime.timedelta(days=3)).strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=3)).strftime('%Y-%m-%d 23:59:59'))]"/>
 				<filter string="Due for the next week" domain="[('date_due', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date_due', '&lt;=', (datetime.date.today()+datetime.timedelta(days=6)).strftime('%Y-%m-%d 23:59:59'))]"/>
 				<separator/>
 			</filter>

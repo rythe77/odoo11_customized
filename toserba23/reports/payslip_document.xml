@@ -110,7 +110,18 @@
 						</table>
 					</div>
 					<div class="col-xs-6">
-						<strong>Catatan khusus</strong><p t-if="o.description" t-field="o.description"/>
+						<strong>Catatan khusus</strong>
+						<p t-if="o.description" t-field="o.description"/>
+						<table class="table table-condensed table table-striped" style="font:10px lucida-console,sans-serif !important;">
+							<tbody>
+								<tr t-foreach="o.input_line_ids" t-as="input">
+									<t t-if="input.code=='KPI'">
+										<td><span t-field="input.name"/></td>
+										<td><span t-field="input.amount"/></td>
+									</t>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

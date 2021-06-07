@@ -47,6 +47,7 @@
             - Admin sales : edit data pelanggan. Sup Sales : + ubah naik harga. Sales Man : + perbaiki SO jd penawaran, ubah limit kredit dan lamanya.
             - Sistem hutang karyawan ke perusahaan
         Todo:
+            - Gudang RMA mestinya langsung pilih gudang BS aja
             - Faktur RMA-IN/2011/020 otomatis harga ecer
             - Keterangan RMA-IN kalo ganti beda barang harusnya keterangannya jangan ngikut
             - Tutup akses pembuatan karyawan

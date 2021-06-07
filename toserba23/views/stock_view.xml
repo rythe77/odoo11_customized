@@ -62,7 +62,7 @@
 				<attribute name="groups">stock.group_stock_user</attribute>
 			</button>
 			<button name="redo_transfer" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">toserba23.group_stock_supervisor</attribute>
 			</button>
 			<button name="redo_transfer" position="after">
 				<button name="action_force_status" attrs="{'invisible': [('state', '=', 'done')]}" string="Selesaikan Status" type="object" groups="base.group_no_one"/>
