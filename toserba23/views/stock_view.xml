@@ -129,7 +129,7 @@
 		<field name="inherit_id" ref="stock.view_overprocessed_transfer"/>
 		<field name="arch" type="xml">
 			<button name="action_confirm" position="attributes">
-				<attribute name="groups">stock.group_stock_manager</attribute>
+				<attribute name="groups">toserba23.group_stock_supervisor</attribute>
 			</button>
 		</field>
 	</record>
