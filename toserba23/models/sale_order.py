@@ -5,6 +5,7 @@ import datetime
 import pytz
 
 from odoo.addons import decimal_precision as dp
+from odoo.tools import float_compare
 from odoo.exceptions import UserError
 
 class SaleOrderInherit(models.Model):
@@ -159,6 +160,31 @@ class SaleOrderLine(models.Model):
     x_qty2_prl = fields.Float(
         compute='_get_inventory', string='Qty* PRL', store=False, readonly=True,
         digits=dp.get_precision('Product Unit of Measure'))
+
+    @api.onchange('product_uom_qty', 'product_uom', 'route_id')
+    def _onchange_product_id_check_availability(self):
+        result = super(SaleOrderLine, self)._onchange_product_id_check_availability()
+        if not self.product_id or not self.product_uom_qty or not self.product_uom:
+            self.product_packaging = False
+            return {}
+        if self.product_id.type == 'product':
+            precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
+            product = self.product_id.with_context(
+                warehouse=self.order_id.warehouse_id.id,
+                lang=self.order_id.partner_id.lang or self.env.user.lang or 'en_US'
+            )
+            product_qty = self.product_uom._compute_quantity(self.product_uom_qty, self.product_id.uom_id)
+            qty_ready = product.qty_available - product.outgoing_qty
+            if float_compare(qty_ready, product_qty, precision_digits=precision) == -1:
+                message = 'Anda akan menjual %s %s, tetapi yang siap dijual hanya sejumlah %s %s di %s.' % \
+                          (self.product_uom_qty, self.product_uom.name, qty_ready, product.uom_id.name, self.order_id.warehouse_id.name)
+                warning_mess = {
+                    'title': 'Persediaan barang tidak cukup!',
+                    'message': message
+                }
+                return {'warning': warning_mess}
+        return result
+
 
     def _get_draft_qty(self):
         for line in self:
