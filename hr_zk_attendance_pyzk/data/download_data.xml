@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+	<record forcecreate="True" id="cron_sync_time" model="ir.cron">
+		<field name="name">Sync Time</field>
+		<field eval="False" name="active" />
+		<field name="user_id" ref="base.user_root" />
+		<field name="interval_number">1</field>
+		<field name="interval_type">days</field>
+		<field name="numbercall">-1</field>
+
+		<field name="model_id" ref="hr_zk_attendance_pyzk.model_zk_machine" />
+		<field name="state">code</field>
+		<field name="code">model.cron_set_time()</field>
+	</record>
+
+	<record forcecreate="True" id="cron_download_data" model="ir.cron">
+		<field name="name">Download Data</field>
+		<field eval="False" name="active" />
+		<field name="user_id" ref="base.user_root" />
+		<field name="interval_number">2</field>
+		<field name="interval_type">hours</field>
+		<field name="numbercall">-1</field>
+		
+		<field name="model_id" ref="hr_zk_attendance_pyzk.model_zk_machine" />
+		<field name="state">code</field>
+		<field name="code">model.cron_download()</field>
+	</record>
+
+	<record forcecreate="True" id="cron_clear_attendance" model="ir.cron">
+		<field name="name">Clear ZK Machine Attendance</field>
+		<field eval="False" name="active" />
+		<field name="user_id" ref="base.user_root" />
+		<field name="interval_number">1</field>
+		<field name="interval_type">weeks</field>
+		<field name="numbercall">-1</field>
+
+		<field name="model_id" ref="hr_zk_attendance_pyzk.model_zk_machine" />
+		<field name="state">code</field>
+		<field name="code">model.cron_clear_attendance()</field>
+	</record>
+</odoo>

@@ -1,0 +1,343 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_zk_attendance_pyzk
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-17 06:53+0000\n"
+"PO-Revision-Date: 2021-07-17 14:53+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: id\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/machine_analysis.py:31
+#, python-format
+msgid "Another User with same Biometric Device ID already exists."
+msgstr "Pengguna lain dengan ID Perangkat Biometrik yang sama sudah ada."
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Are you sure you want to do this?"
+msgstr "Anda yakin ingin melakukan ini?"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_zk_after_date
+msgid "Attend Start Date"
+msgstr "Tanggal Mulai"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model,name:hr_zk_attendance_pyzk.model_hr_attendance
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_report_daily_attendance_tree
+msgid "Attendance"
+msgstr "Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.actions.act_window,name:hr_zk_attendance_pyzk.action_zk_report_daily_attendance
+msgid "Attendance Analysis"
+msgstr "Analisis Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.menu,name:hr_zk_attendance_pyzk.menu_zk_attendance_view
+msgid "Attendance log"
+msgstr "Log Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.actions.act_window,name:hr_zk_attendance_pyzk.zk_machine_action
+msgid "Attendances"
+msgstr "Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Biometric Device"
+msgstr "Peranti Biometrik"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_hr_attendance_device_id
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_hr_employee_device_id
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_device_id
+msgid "Biometric Device ID"
+msgstr "ID Peranti Biometrik"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:96
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:100
+#, python-format
+msgid "Biometric Device is Down/Unreachable."
+msgstr "Peranti Biometrik tidak dapat dijangkau"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:94
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:102
+#, python-format
+msgid "Biometric Device is Up/Reachable."
+msgstr "Peranti Biometrik dapat dijangkau"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_tree
+msgid "Biometric Machine"
+msgstr "Mesin Biometrik"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.menu,name:hr_zk_attendance_pyzk.zk_machine_menu
+msgid "Biometric Manager"
+msgstr "Manajer Biometrik"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Break In"
+msgstr "Masuk"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Break Out"
+msgstr "Keluar"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,attendance_type:0
+msgid "Card"
+msgstr "Kartu"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_attendance_type
+msgid "Category"
+msgstr "Kategori"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Check In"
+msgstr "Absen Masuk"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Check Out"
+msgstr "Absen Keluar"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Clear Data"
+msgstr "Bersihkan Data"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.actions.server,name:hr_zk_attendance_pyzk.cron_clear_attendance_ir_actions_server
+#: model:ir.cron,cron_name:hr_zk_attendance_pyzk.cron_clear_attendance
+#: model:ir.cron,name:hr_zk_attendance_pyzk.cron_clear_attendance
+msgid "Clear ZK Machine Attendance"
+msgstr "Bersihkan Mesin Absensi ZK"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:63
+#, python-format
+msgid "Connection To Device cannot be established."
+msgstr "Sambungan Ke Peranti gagal."
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_create_uid
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_create_date
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_report_daily_attendance_search
+msgid "Current Month"
+msgstr "Bulan Berjalan"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_zk_delete_after
+msgid "Delete After (days)"
+msgstr "Hapus Setelah (hari)"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,help:hr_zk_attendance_pyzk.field_zk_machine_zk_delete_after
+msgid "Delete attendance data that is more than X days old. put 0 for never delete"
+msgstr "Hapus data kehadiran yang berusia lebih dari X hari. Masukkan 0 untuk tidak pernah menghapus"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.menu,name:hr_zk_attendance_pyzk.zk_machine_sub_menu
+msgid "Device Configuration"
+msgstr "Konfigurasi Peranti"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_display_name
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.actions.server,name:hr_zk_attendance_pyzk.cron_download_data_ir_actions_server
+#: model:ir.cron,cron_name:hr_zk_attendance_pyzk.cron_download_data
+#: model:ir.cron,name:hr_zk_attendance_pyzk.cron_download_data
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Download Data"
+msgstr "Unduh Data"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model,name:hr_zk_attendance_pyzk.model_hr_employee
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_employee_id_7962
+msgid "Employee"
+msgstr "Karyawan"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,attendance_type:0
+msgid "Face"
+msgstr "Wajah"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,attendance_type:0
+msgid "Finger"
+msgstr "Sidik Jari"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_report_daily_attendance_search
+msgid "Hr Attendance Search"
+msgstr "Cari Kehadiran"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_id
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,help:hr_zk_attendance_pyzk.field_zk_machine_zk_after_date
+msgid "If provided, Attendance module will ignore records before this date."
+msgstr "Jika disediakan, modul Kehadiran akan mengabaikan rekaman sebelum tanggal ini."
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine___last_update
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_write_uid
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_write_date
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_name
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Machine IP"
+msgstr "IP Mesin"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_report_daily_attendance_search
+msgid "My Attendance"
+msgstr "Absensiku"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:200
+#, python-format
+msgid "No attendances found in Attendance Device to Download."
+msgstr "Tidak ada absensi yang dapat diunduh dari Perangkat Kehadiran."
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Overtime In"
+msgstr "Lembur Masuk"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,punch_type:0
+msgid "Overtime Out"
+msgstr "Lembur Keluar"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,attendance_type:0
+msgid "Password"
+msgstr "Sandi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_port_no
+msgid "Port No"
+msgstr "Nomor Port"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_punching_time
+msgid "Punching Time"
+msgstr "Waktu Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_punch_type
+msgid "Punching Type"
+msgstr "Tipe Absensi"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.actions.server,name:hr_zk_attendance_pyzk.cron_sync_time_ir_actions_server
+#: model:ir.cron,cron_name:hr_zk_attendance_pyzk.cron_sync_time
+#: model:ir.cron,name:hr_zk_attendance_pyzk.cron_sync_time
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Sync Time"
+msgstr "Sinkronkan Waktu"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_report_daily_attendance_search
+msgid "Today"
+msgstr "Hari Ini"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.ui.view,arch_db:hr_zk_attendance_pyzk.view_zk_machine_form
+msgid "Try connection"
+msgstr "Coba koneksi"
+
+#. module: hr_zk_attendance_pyzk
+#: selection:zk.machine.attendance,attendance_type:0
+msgid "Type_2"
+msgstr "Tipe 2"
+
+#. module: hr_zk_attendance_pyzk
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:85
+#: code:addons/hr_zk_attendance_pyzk/models/zk_machine.py:206
+#, python-format
+msgid "Unable to connect to Attendance Device. Please use Test Connection button to verify."
+msgstr "Tak bisa tersambung ke Peranti Absensi. Silakan gunakan tombol Uji Sambungan untuk memverifikasi."
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_address_id
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_attendance_address_id
+msgid "Working Address"
+msgstr "Alamat Kerja"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model.fields,field_description:hr_zk_attendance_pyzk.field_zk_machine_zk_timeout
+msgid "ZK Timeout"
+msgstr "Timeout ZK"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model,name:hr_zk_attendance_pyzk.model_zk_machine
+msgid "zk.machine"
+msgstr "zk.machine"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model,name:hr_zk_attendance_pyzk.model_zk_machine_attendance
+msgid "zk.machine.attendance"
+msgstr "zk.machine.attendance"
+
+#. module: hr_zk_attendance_pyzk
+#: model:ir.model,name:hr_zk_attendance_pyzk.model_zk_report_daily_attendance
+msgid "zk.report.daily.attendance"
+msgstr "zk.report.daily.attendance"

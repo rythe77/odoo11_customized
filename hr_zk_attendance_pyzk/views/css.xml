@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- Adds all assets in Odoo -->
+        <template id="assets_backend" name="static_resources_demo assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+		<!--These links will be called when loading your Odoo -->
+                <link rel="stylesheet" type="text/scss" href="hr_zk_attendance_pyzk/static/src/description.css"/>
+            </xpath>
+        </template>
+</odoo>
