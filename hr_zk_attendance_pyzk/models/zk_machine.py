@@ -59,7 +59,7 @@ class ZkMachine(models.Model):
             conn = zkobj.connect()
             return conn
         except Exception as e:
-            _logger.info("zk.exception.ZKNetworkError: can't reach device." + e)
+            _logger.info("zk.exception.ZKNetworkError: can't reach device.")
             raise UserError(_("Connection To Device cannot be established."))
             return False
 

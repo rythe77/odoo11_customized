@@ -30,10 +30,7 @@
         'views/zk_machine_view.xml',
         'views/zk_machine_attendance_view.xml',
         'data/download_data.xml',
-	'views/css.xml'
-
     ],
-    'images': ['static/description/banner.png'],
     'license': 'AGPL-3',
     'demo': [],
     'installable': True,
