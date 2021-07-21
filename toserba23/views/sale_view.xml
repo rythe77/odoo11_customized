@@ -238,6 +238,29 @@
 	      </p>
 	    </field>
 	</record>
+
+	<!--Sale order menu menu-->
+	<record id="action_orders" model="ir.actions.act_window">
+		<field name="name">Sales Orders</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sale.order</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+		<field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+		<field name="context">{'search_default_delivery_status': 1, 'search_default_invoice_status': 1}</field>
+		<field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Create a Quotation, the first step of a new sale.
+			</p><p>
+				Once the quotation is confirmed, it becomes a sales order.
+				You'll be able to invoice it and collect payments.
+				From the <i>Sales Orders</i> menu, you can track delivery
+				orders or services.
+			</p>
+		</field>
+	</record>
+
 	<menuitem id="sale.res_partner_menu"
 	    parent="sale.sale_order_menu"
 	    action="toserba23.action_partner_form_custom"
@@ -256,7 +279,7 @@
 	/>
 	<menuitem id="sale.menu_sale_order"
 	    name="Orders"
-	    action="sale.action_orders"
+	    action="action_orders"
 	    parent="sale.sale_order_menu"
 	    sequence="2"
 	/>

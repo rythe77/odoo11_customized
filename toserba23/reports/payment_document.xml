@@ -89,6 +89,17 @@
 									<span style="font:14px lucida-console,sans-serif !important;" t-field="o.communication"/>
 								</td>
 							</tr>
+							<tr style="font:14px lucida-console,sans-serif;">
+								<td class="col-xs-3">
+									Keterangan
+								</td>
+								<td class="col-xs-1 text-right">
+									:
+								</td>
+								<td class="col-xs-8" style="border-bottom: 2px solid black">
+									<span style="font:14px lucida-console,sans-serif !important;" t-field="o.x_collector"/>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
