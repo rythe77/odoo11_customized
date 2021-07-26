@@ -102,9 +102,6 @@
 		<field name="comment">Ijinkan akses untuk pindai/scan lencana karyawan</field>
 		<field name="category_id" ref="toserba23.open_access_groups_category"/>
 	</record>
-    <record id="hr_attendance.group_hr_attendance_user" model="res.groups">
-        <field name="implied_ids" eval="[(4, ref('toserba23.allow_badge_scan'))]"/>
-    </record>
 	<record id="view_vendor" model="res.groups">
 		<field name="name">Akses Tampilan Pemasok</field>
 		<field name="comment">Ijinkan akses info pembelian pada halaman produk</field>

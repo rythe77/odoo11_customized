@@ -241,7 +241,7 @@
 
 	<!--Sale order menu menu-->
 	<record id="action_orders" model="ir.actions.act_window">
-		<field name="name">Sales Orders</field>
+		<field name="name">Order Penjualan</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">sale.order</field>
 		<field name="view_type">form</field>
