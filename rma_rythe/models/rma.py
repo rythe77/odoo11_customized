@@ -740,7 +740,7 @@ class RmaLine(models.Model):
     @api.multi
     def change_action_to_refund(self):
         for line in self:
-            if line.action =='replace' and line.replaced_qty == 0 and line.qty_to_send == 0:
+            if (line.action =='replace' or line.action =='replace_part') and line.replaced_qty == 0 and line.qty_to_send == 0:
                 refund_reason = self.env['ir.model.data'].get_object_reference('rma_rythe','rma_reason4')
                 line.update({'rma_reason_id': refund_reason[1]})
             else:

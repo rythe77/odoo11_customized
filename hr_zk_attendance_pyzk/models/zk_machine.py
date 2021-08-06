@@ -60,7 +60,7 @@ class ZkMachine(models.Model):
             return conn
         except Exception as e:
             _logger.info("zk.exception.ZKNetworkError: can't reach device.")
-            raise UserError(_("Connection To Device cannot be established."))
+            #raise UserError(_("Connection To Device cannot be established."))
             return False
 
     @api.model
@@ -81,8 +81,8 @@ class ZkMachine(models.Model):
                 local_dt = utc_dt.astimezone(local_tz)
                 conn.set_time(local_dt)
             else:
-                raise UserError(
-                    _('Unable to connect to Attendance Device. Please use Test Connection button to verify.'))
+                _logger.info(
+                    "zk.exception.ZKNetworkError: Unable to connect to Attendance Device. Please use Test Connection button to verify.")
 
     @api.multi
     def try_connection(self):
@@ -197,10 +197,9 @@ class ZkMachine(models.Model):
                     conn.clear_attendance()
                     conn.test_voice()
                 else:
-                    raise UserError(_('No attendances found in Attendance Device to Download.'))
+                    _logger.info("zk.exception.ZKNetworkError: no attendance found in Attendance Device to Download.")
                 conn.enable_device()
                 conn.disconnect()
                 return True
             else:
-                raise UserError(
-                    _('Unable to connect to Attendance Device. Please use Test Connection button to verify.'))
+                _logger.info("zk.exception.ZKNetworkError: Unable to connect to Attendance Device. Please use Test Connection button to verify.")
