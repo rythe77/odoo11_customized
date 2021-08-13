@@ -1,0 +1,15 @@
+<odoo>
+<data>
+	<!-- LDAP installer form view -->
+	<record model="ir.ui.view" id="view_ldap_installer_form_custom">
+		<field name="name">auth_ldap_tls.view_ldap_installer_form_custom</field>
+		<field name="model">res.company.ldap</field>
+		<field name="inherit_id" ref="auth_ldap.view_ldap_installer_form"/>
+		<field name="arch" type="xml">
+			<field name="ldap_tls" position="after">
+                <field name="cacert_path"/>
+			</field>
+		</field>
+	</record>
+</data>
+</odoo>
