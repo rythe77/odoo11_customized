@@ -183,6 +183,7 @@
         'contract_benefit',
         'other_income',
         'sms_frame',
+        'ohrms_loan',
     ],
 
     'data': [
@@ -232,6 +233,7 @@
         'reports/sms_wa_template.xml',
         'reports/payment_document.xml',
         'reports/attendance_document.xml',
+        'reports/loan_document.xml',
         'wizard/product_label_print_wizard.xml',
         'wizard/int_transfer_wizard.xml',
         'wizard/product_image_upload_wizard.xml',

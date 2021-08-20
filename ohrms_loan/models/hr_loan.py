@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.tools import float_compare
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from odoo.exceptions import UserError
@@ -67,9 +68,8 @@ class HrLoan(models.Model):
 
     @api.model
     def create(self, values):
-        loan_count = self.env['hr.loan'].search_count([('employee_id', '=', values['employee_id']), ('state', '=', 'approve'),
-                                                       ('balance_amount', '!=', 0)])
-        if loan_count:
+        loans = self.env['hr.loan'].search([('employee_id', '=', values['employee_id']), ('state', '=', 'approve')])
+        if any(float_compare(balance, 0.0, precision_digits=1) != 0 for balance in loans.mapped('balance_amount')):
             raise UserError(_('The employee has already a pending installment.'))
         else:
             values['name'] = self.env['ir.sequence'].get('hr.loan.seq') or ' '
