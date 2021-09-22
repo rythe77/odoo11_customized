@@ -16,14 +16,12 @@
 		<t t-call="web.html_container">
 			<div class="header">
 				<div class="row">
-					<div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
+					<!--div class="col-xs-3 text-left" style="font:10px lucida-console,sans-serif !important;">
 						Dicetak tanggal: 
 						<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
-					</div>
-					<div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
-						Rekapan Gaji
-					</div>
-					<div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
+					</div-->
+					<div class="col-xs-12 text-center" style="font:16px lucida-console,sans-serif !important;">
+						Rekapan Gaji Karyawan Toserba 23 Periode (________________)
 					</div>
 				</div>
 			</div>
@@ -32,19 +30,24 @@
 				<div class="page">
 					<div class="oe_structure"/>
 					<div class="row">
-						<table class="table table-condensed table table-striped">
+						<table class="table table-condensed table table-striped table table-bordered">
 							<thead>
 								<tr style="font:10px lucida-console,sans-serif;">
-									<th><strong>Rujukan</strong></th>
-									<th><strong>Karyawan</strong></th>
-									<th><strong>Dari Tanggal</strong></th>
-									<th><strong>Sampai Tanggal</strong></th>
-									<th><strong>Status</strong></th>
-									<th><strong>Jumlah</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Rujukan</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Karyawan</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Gaji Kotor</strong></th>
+									<th style="background-color:#FF0000;"><strong>Potongan Pinjaman</strong></th>
+									<th style="background-color:#FF0000;"><strong>Potongan BPJS</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Tunai</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Transfer</strong></th>
+									<th style="background-color:#FEDE00;"><strong>Bersih</strong></th>
 								</tr>
 							</thead>
 							<tbody class="invoice_tbody">
 								<t t-set="payslips_amount_total" t-value="0"/>
+								<t t-set="gross_payslips_amount_total" t-value="0"/>
+								<t t-set="lo_payslips_amount_total" t-value="0"/>
+								<t t-set="insur_payslips_amount_total" t-value="0"/>
 								<tr t-foreach="docs" t-as="o" style="font:10px lucida-console,sans-serif;">
 									<td>
 										<span t-field="o.number"/>
@@ -52,16 +55,32 @@
 									<td>
 										<span t-field="o.employee_id"/>
 									</td>
-									<td>
-										<span t-field="o.date_from"/>
+									<td class="text-right">
+			                            <t t-foreach="o.line_ids" t-as="line">
+											<span t-if="line.code == 'GROSS'" t-field="line.total"
+			                                          t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+											<t t-if="line.code == 'GROSS'" t-set="gross_payslips_amount_total" t-value="gross_payslips_amount_total+line.total"/>
+			                            </t>
 									</td>
-									<td>
-										<span t-field="o.date_to"/>
+									<td class="text-right">
+			                            <t t-foreach="o.line_ids" t-as="line">
+											<span t-if="line.code == 'LO'" t-field="line.total"
+			                                          t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+											<t t-if="line.code == 'LO'" t-set="lo_payslips_amount_total" t-value="lo_payslips_amount_total+line.total"/>
+			                            </t>
 									</td>
-									<td>
-										<span t-field="o.state"/>
+									<td class="text-right">
+			                            <t t-foreach="o.line_ids" t-as="line">
+											<span t-if="line.code == 'INSUR'" t-field="line.total"
+			                                          t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+											<t t-if="line.code == 'INSUR'" t-set="insur_payslips_amount_total" t-value="insur_payslips_amount_total+line.total"/>
+			                            </t>
 									</td>
-									<td>
+									<td style="width:100px;">
+									</td>
+									<td style="width:100px;">
+									</td>
+									<td class="text-right">
 			                            <t t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
 											<span t-if="line.code == 'NET'" t-field="line.total"
 			                                          t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
@@ -74,14 +93,20 @@
 									</td>
 									<td>
 									</td>
-									<td>
+									<td class="text-right">
+										<strong><span t-esc="gross_payslips_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+									</td>
+									<td class="text-right">
+										<strong><span t-esc="lo_payslips_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+									</td>
+									<td class="text-right">
+										<strong><span t-esc="insur_payslips_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
 									</td>
 									<td>
 									</td>
 									<td>
-										<strong>Total</strong>
 									</td>
-									<td>
+									<td class="text-right">
 										<strong><span t-esc="payslips_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
 									</td>
 								</tr>
@@ -90,45 +115,57 @@
 					</div>
 					<div>
 						<div class="col-xs-12">
-							<table class="table table-condensed">
-								<tr style="font:10px lucida-console,sans-serif;">
-									<td class="text-center">
-										Dibuat,
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<ins>
-											<b>
-												(______________________)
-											</b>
-										</ins>
-									</td>
-									<td class="text-center">
-										Diperiksa,
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<ins>
-											<b>
-												(______________________)
-											</b>
-										</ins>
-									</td>
-									<td class="text-center">
-										Disetujui,
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<ins>
-											<b>
-												(______________________)
-											</b>
-										</ins>
-									</td>
-								</tr>
+							<table class="table table-borderless">
+								<tbody>
+									<tr style="font:10px lucida-console,sans-serif;">
+										<td>
+										</td>
+										<td>
+										</td>
+										<td class="text-right">
+											Makassar,
+											<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%-d %B %Y')"/>
+										</td>
+									</tr>
+									<tr style="font:10px lucida-console,sans-serif;">
+										<td class="text-center">
+											Dibuat,
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<ins>
+												<b>
+													(______________________)
+												</b>
+											</ins>
+										</td>
+										<td class="text-center">
+											Diperiksa,
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<ins>
+												<b>
+													(______________________)
+												</b>
+											</ins>
+										</td>
+										<td class="text-center">
+											Disetujui,
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<ins>
+												<b>
+													(______________________)
+												</b>
+											</ins>
+										</td>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 					</div>
