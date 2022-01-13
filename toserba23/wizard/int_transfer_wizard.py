@@ -72,7 +72,7 @@ class IntTransferWizard(models.TransientModel):
     dest_warehouse_id = fields.Many2one('stock.warehouse', string='Gudang Tujuan', required=True)
     int_transporter = fields.Many2one('int.transporter', string='Pengantaran')
     vehicle = fields.Char('Kendaraan')
-    other_notes = fields.Char('Ketarangan Lain', default="Transfer Internal")
+    other_notes = fields.Char('Keterangan Lain', default="Transfer Internal")
     int_transfer_line = fields.One2many('int.transfer.wizard.line', 'wizard_id', 'Baris')
 
     @api.model

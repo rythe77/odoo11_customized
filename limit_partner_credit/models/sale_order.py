@@ -32,7 +32,7 @@ class SaleOrderInherit(models.Model):
                 ('partner_id', '=', sale.partner_id.id),
                 ('state', '=', 'open'),
                 ('type', '=', 'out_invoice'),
-                ('date_due', '<=', today)
+                ('date_due', '<', today)
             ])
             if due_invoices:
                 invoices_due = True
