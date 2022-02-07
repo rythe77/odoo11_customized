@@ -105,19 +105,6 @@
 							</table>
 
 	                        <div class="row">
-	                            <div class="col-xs-4 pull-right">
-	                                <table class="table table-condensed">
-	                                    <tr class="border-black">
-	                                        <td><strong>Total</strong></td>
-	                                        <td class="text-right">
-	                                            <span t-field="o.total_amount"
-	                                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
-	                                        </td>
-	                                    </tr>
-	                                </table>
-	                            </div>
-	                        </div>
-	                        <div>
 	                            <div class="col-xs-6">
 	                                <table class="table table-condensed">
 	                                    <tr>
@@ -126,28 +113,29 @@
 												<br/>
 												<br/>
 												<br/>
-												<br/>
-												<ins>
-													<b>
-														(______________________)
-													</b>
-												</ins>
+												(______________________)
 											</td>
 	                                        <td class="text-center">
 												Penerima,
 												<br/>
 												<br/>
 												<br/>
-												<br/>
-												<ins>
-													<b>
-														(______________________)
-													</b>
-												</ins>
+												(______________________)
 												<div class="text-left">
 														Kontak:
 												</div>
 											</td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                            <div class="col-xs-4 pull-right">
+	                                <table class="table table-condensed">
+	                                    <tr class="border-black">
+	                                        <td><strong>Total</strong></td>
+	                                        <td class="text-right">
+	                                            <span t-field="o.total_amount"
+	                                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+	                                        </td>
 	                                    </tr>
 	                                </table>
 	                            </div>
