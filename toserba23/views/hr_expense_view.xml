@@ -106,6 +106,9 @@
 				<filter string="1 minggu terakhir" domain="[('accounting_date', '&gt;=', (datetime.date.today()-datetime.timedelta(days=6)).strftime('%Y-%m-%d')),('accounting_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59'))]"/>
 				<separator/>
 			</filter>
+			<filter name="state" position="after">
+				<filter string="Jurnal Pembayaran" domain="[]" context="{'group_by': 'bank_journal_id'}" name="journal"/>
+			</filter>
 		</field>
 	</record>
 
