@@ -79,16 +79,16 @@
 				<attribute name="groups">sales_team.group_sale_manager</attribute>
 			</field>
 			<field name="fiscal_position_id" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</field>
 			<xpath expr="/form/sheet/notebook/page/group/field[@name='amount_untaxed']" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page/group/field[@name='amount_tax']" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</xpath>
 			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='tax_id']" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</xpath>
 		</field>
 	</record>

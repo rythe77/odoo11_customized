@@ -30,19 +30,19 @@
 				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
 			</field>
 			<field name="fiscal_position_id" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</field>
 			<field name="date_approve" position="attributes">
 				<attribute name="attrs">{'invisible': [('date_approve', '=', False)]}</attribute>
 			</field>
 			<field name="amount_untaxed" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</field>
 			<field name="amount_tax" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</field>
 			<xpath expr="/form/sheet/notebook/page/field/tree/field[@name='taxes_id']" position="attributes">
-				<attribute name="groups">indonesia_template.extra_menu_view</attribute>
+				<attribute name="groups">indonesia_template.tax_menu_view</attribute>
 			</xpath>
 		</field>
 	</record>

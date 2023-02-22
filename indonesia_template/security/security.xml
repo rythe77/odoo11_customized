@@ -3,5 +3,8 @@
 		<record id="extra_menu_view" model="res.groups">
 			<field name="name">Show Also Unneeded Menu</field>
 		</record>
+		<record id="tax_menu_view" model="res.groups">
+			<field name="name">Show Tax Related Menu and Columns</field>
+		</record>
 	</data>
 </odoo>

@@ -88,12 +88,16 @@ class StockPicking(models.Model):
 
     @api.multi
     def action_transfer(self):
-        self.state = 'waiting_validation'
+        for picking in self:
+            if picking.state == 'assigned':
+                picking.state = 'waiting_validation'
         return True
 
     @api.multi
     def redo_transfer(self):
-        self.state = 'assigned'
+        for picking in self:
+            if picking.state == 'waiting_validation':
+                picking.state = 'assigned'
         return True
 
 
