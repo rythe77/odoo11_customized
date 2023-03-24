@@ -12,7 +12,7 @@ class PurchaseOrderLine(models.Model):
     @api.multi
     def _prepare_stock_moves(self, picking):
         vals = super(PurchaseOrderLine, self)._prepare_stock_moves(picking=picking)
-        if self.product_desc:
+        if self.product_desc and vals:
             vals[0].update({
                 'product_desc':self.product_desc,
             })
