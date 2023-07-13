@@ -61,7 +61,6 @@
             - Tutup akses pembuatan karyawan
             - Buat sequence range otomatis
             - Eror permintaan awal PRL-IN/2009/188
-            - Buy DISC test
             - Auto debet zenviva
             - CT Meja Kompor Wastafel
             - Asuransi karyawan terpisah

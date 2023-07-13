@@ -87,6 +87,7 @@
 
 					<!-- Is there a discount on at least one line? -->
 					<t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+					<t t-set="display_charge" t-value="any([l.invoice_line_tax_ids for l in o.invoice_line_ids])"/>
 
 					<table class="table table-condensed table table-striped">
 						<thead style="background-color:#212121; color:#FFFFFF">
@@ -95,7 +96,9 @@
 								<th class="text-right">Qty</th>
 								<th class="text-right">Harga</th>
 								<th t-if="display_discount" class="text-right">Disc.(%)</th>
-								<th class="text-right">Subtotal</th>
+								<th t-if="display_charge" class="text-right">Disc(%)</th>
+								<th class="text-right" groups="sale.group_show_price_subtotal">Subtotal</th>
+								<th class="text-right" groups="sale.group_show_price_total">Subtotal</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -111,8 +114,15 @@
 								<td t-if="display_discount" class="text-right">
 									<span t-field="l.discount"/>
 								</td>
-								<td class="text-right">
+								<td t-if="display_charge" class="text-right">
+									<span t-field="l.invoice_line_tax_ids.name"/>
+								</td>
+								<td class="text-right"  groups="sale.group_show_price_subtotal">
 									<span t-field="l.price_subtotal"
+										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+								</td>
+								<td class="text-right"  groups="sale.group_show_price_total">
+									<span t-field="l.price_total"
 										t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
 								</td>
 							</tr>

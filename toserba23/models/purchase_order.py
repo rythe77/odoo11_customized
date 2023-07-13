@@ -50,10 +50,11 @@ class PurchaseOrder(models.Model):
             # Do not add a contact as a supplier
             partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
             if partner in line.product_id.seller_ids.mapped('name'):
-                for seller_id in line.product_id.seller_ids.filtered(lambda r: r.name == partner):
-                    if seller_id.date_start and seller_id.date_start <= today and not seller_id.date_end:
+                for seller_id in line.product_id.seller_ids.filtered(lambda r: r.name == partner).sorted(key=lambda r: r.min_qty, reverse=True):
+                    if seller_id.date_start and seller_id.date_start <= today and not seller_id.date_end and line.product_qty >= seller_id.min_qty:
                         seller_id.price = line.price_unit
                         seller_id.date_start = today
+                        break
 
 
 class PurchaseOrderLine(models.Model):
