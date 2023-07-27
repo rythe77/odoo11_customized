@@ -290,22 +290,5 @@
 		sequence="4"
 	/>
 
-	<!-- Inventory menu access -->
-	<menuitem id="sale.stock_picking_type_menu"
-		parent="sale.sale_menu_root" sequence="5"
-		name="Persediaan"
-		groups="sales_team.group_sale_salesman_all_leads"
-	/>
-	<menuitem id="sale.stock_picking_type_dashboard"
-		action="stock.stock_picking_type_action"
-		parent="sale.stock_picking_type_menu" sequence="1"
-		name="Dashboard"
-	/>
-	<menuitem id="sale.stock_picking_transporter"
-		action="contact_transporter.action_partner_transporter_form"
-		parent="sale.stock_picking_type_menu" sequence="20"
-		name="Ekspedisi"
-	/>
-
 </data>
 </odoo>
