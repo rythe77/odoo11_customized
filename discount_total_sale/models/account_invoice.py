@@ -36,6 +36,7 @@ class AccountInvoiceInherit(models.Model):
         self.supply_rate()
         return True
 
+    #TODO: should use super method instead
     @api.one
     @api.depends('invoice_line_ids.price_subtotal', 'tax_line_ids.amount', 'currency_id', 'company_id', 'date_invoice')
     def _compute_amount(self):

@@ -28,11 +28,12 @@ class ResPartner(models.Model):
 
     #Create new fields
     x_call_freq = fields.Selection([
-        ('urgent', 'Urgent'),
-        ('less_urgent', 'Less Urgent'),
-        ('common', 'common'),
-        ('not_urgent', 'Not Urgent')],
-        string='Kategori', default='not_urgent',
+        ('priority', 'A - Priority'),
+        ('urgent', 'B - Urgent'),
+        ('less_urgent', 'C - Less Urgent'),
+        ('common', 'D - common'),
+        ('not_urgent', 'E - Not Urgent')],
+        string='Grade', default='common',
         help="Show how urgent it is to call the customer")
 
     x_notification_method = fields.Selection([

@@ -6,25 +6,1646 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-05 04:54+0000\n"
-"PO-Revision-Date: 2018-01-05 12:55+0800\n"
+"POT-Creation-Date: 2024-01-01 09:39+0000\n"
+"PO-Revision-Date: 2024-01-01 17:41+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"Language: id\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: toserba23
+#: model:mail.template,body_html:toserba23.quotation_email_template
+msgid ""
+"\n"
+"% set access_action = object.with_context(force_website=True).get_access_action()\n"
+"% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'\n"
+"% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'\n"
+"% set pay_sign_name =  object.get_portal_confirmation_action()\n"
+"% set access_name = is_online and object.state in ('draft', 'sent') and pay_sign_name in ('pay', 'sign') and 'Accept and %s online' % pay_sign_name or 'View %s' % doc_name\n"
+"% set access_url = is_online and object.get_mail_url() or ''\n"
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    % if object.state in ('draft', 'sent'):\n"
+"                        Terima kasih atas orderan Anda pada perusahaan kami. Berikut ini ${doc_name} untuk Anda dengan nomor <strong>${object.name}</strong>.<br/>\n"
+"                        Jika Anda merasa ada kekeliruan, mohon segera menghubungi Customer Service kami.\n"
+"                    % else\n"
+"                        ${doc_name} Anda dengan nomor <strong>${object.name}</strong> telah dikonfirmasi.<br/>\n"
+"                        Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.<br/>\n"
+"                    % endif\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor ${doc_name} :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.confirmation_date:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Konfirmasi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.confirmation_date)}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.payment_term_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jatuh Tempo :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.payment_term_id.name}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Alamat Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.partner_id.street},\n"
+"                            % if object.partner_id.street2\n"
+"                                ${object.partner_id.street2}\n"
+"                            % endif\n"
+"                        ${object.partner_id.city}\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % if object.use_transporter and object.transporter_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jasa Ekspedisi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.transporter_id.name}\n"
+"                        ( ${object.transporter_id.street},\n"
+"                        % if object.transporter_id.street2:\n"
+"                            ${object.transporter_id.street2},\n"
+"                        % endif\n"
+"                        ${object.transporter_id.city},\n"
+"                        % if object.transporter_id.phone:\n"
+"                            ${object.transporter_id.phone},\n"
+"                        % endif\n"
+"                        % if object.transporter_id.mobile:\n"
+"                            ${object.transporter_id.mobile},\n"
+"                        % endif\n"
+"                        )\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Pesanan</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"280\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"112\">Jumlah</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"168\">Harga</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.order_line:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"280\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"112\">${line.product_uom_qty} ${line.product_uom.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"168\">\n"
+"                                            ${format_amount(line.price_unit, line.currency_id)}\n"
+"                                            % if line.discount:\n"
+"                                                (-${line.discount}%)\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 15px;\">\n"
+"                        <table style=\"border-collapse: collapse;\">\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 5px 0;\">Total: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.amount_total, object.pricelist_id.currency_id)}</td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;\">\n"
+"                <tr>\n"
+"                    <td>\n"
+"                        <table style=\"padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;\">\n"
+"                            <tr>\n"
+"                                <td align=\"center\" style=\"padding: 20px 20px 20px;\">\n"
+"                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.\n"
+"                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.\n"
+"                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>\n"
+"\n"
+"                                    % if object.state not in ('draft', 'sent'):\n"
+"                                        Berikut ini akun bank resmi Toserba Dua Tiga<br/>\n"
+"                                        <span style=\"white-space: pre-wrap;\">${object.company_id.report_footer}</span>\n"
+"                                    % endif\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+msgstr ""
+"\n"
+"% set access_action = object.with_context(force_website=True).get_access_action()\n"
+"% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'\n"
+"% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'\n"
+"% set pay_sign_name =  object.get_portal_confirmation_action()\n"
+"% set access_name = is_online and object.state in ('draft', 'sent') and pay_sign_name in ('pay', 'sign') and 'Accept and %s online' % pay_sign_name or 'View %s' % doc_name\n"
+"% set access_url = is_online and object.get_mail_url() or ''\n"
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    % if object.state in ('draft', 'sent'):\n"
+"                        Terima kasih atas orderan Anda pada perusahaan kami. Berikut ini ${doc_name} untuk Anda dengan nomor <strong>${object.name}</strong>.<br/>\n"
+"                        Jika Anda merasa ada kekeliruan, mohon segera menghubungi Customer Service kami.\n"
+"                    % else\n"
+"                        ${doc_name} Anda dengan nomor <strong>${object.name}</strong> telah dikonfirmasi.<br/>\n"
+"                        Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.<br/>\n"
+"                    % endif\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor ${doc_name} :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.confirmation_date:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Konfirmasi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.confirmation_date)}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.payment_term_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jatuh Tempo :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.payment_term_id.name}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Alamat Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.partner_id.street},\n"
+"                            % if object.partner_id.street2\n"
+"                                ${object.partner_id.street2}\n"
+"                            % endif\n"
+"                        ${object.partner_id.city}\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % if object.use_transporter and object.transporter_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jasa Ekspedisi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.transporter_id.name}\n"
+"                        ( ${object.transporter_id.street},\n"
+"                        % if object.transporter_id.street2:\n"
+"                            ${object.transporter_id.street2},\n"
+"                        % endif\n"
+"                        ${object.transporter_id.city},\n"
+"                        % if object.transporter_id.phone:\n"
+"                            ${object.transporter_id.phone},\n"
+"                        % endif\n"
+"                        % if object.transporter_id.mobile:\n"
+"                            ${object.transporter_id.mobile},\n"
+"                        % endif\n"
+"                        )\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Pesanan</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"280\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"112\">Jumlah</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"168\">Harga</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.order_line:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"280\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"112\">${line.product_uom_qty} ${line.product_uom.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"168\">\n"
+"                                            ${format_amount(line.price_unit, line.currency_id)}\n"
+"                                            % if line.discount:\n"
+"                                                (-${line.discount}%)\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 15px;\">\n"
+"                        <table style=\"border-collapse: collapse;\">\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 5px 0;\">Total: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.amount_total, object.pricelist_id.currency_id)}</td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;\">\n"
+"                <tr>\n"
+"                    <td>\n"
+"                        <table style=\"padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;\">\n"
+"                            <tr>\n"
+"                                <td align=\"center\" style=\"padding: 20px 20px 20px;\">\n"
+"                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.\n"
+"                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.\n"
+"                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>\n"
+"\n"
+"                                    % if object.state not in ('draft', 'sent'):\n"
+"                                        Berikut ini akun bank resmi Toserba Dua Tiga<br/>\n"
+"                                        <span style=\"white-space: pre-wrap;\">${object.company_id.report_footer}</span>\n"
+"                                    % endif\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.quotation_wa_template
+msgid ""
+"\n"
+"% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}\n"
+"% if object.state in ('draft', 'sent'):\n"
+"Terima kasih atas orderan Anda di Toserba Dua Tiga. Berikut ini ${doc_name} untuk Anda dengan nomor *${object.name}*.\n"
+"Jika ada kekeliruan, mohon segera menghubungi kami.\n"
+"% else\n"
+"${doc_name} Anda dengan nomor *${object.name}* telah dikonfirmasi.\n"
+"Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.\n"
+"% endif\n"
+"----------\n"
+"% if object.confirmation_date:\n"
+"Tanggal Konfirmasi : ${format_tz(object.confirmation_date)}\n"
+"% endif\n"
+"% if object.payment_term_id:\n"
+"Jatuh Tempo : ${object.payment_term_id.name}\n"
+"% endif\n"
+"Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_\n"
+"% endif\n"
+"Rincian Pesanan :\n"
+"% for line in object.order_line:\n"
+"  - ${line.product_id.name} [${line.product_uom_qty} ${line.product_uom.name} x ${format_amount(line.price_unit, line.currency_id)}]\n"
+"  % if line.discount:\n"
+"    (-${line.discount}%)\n"
+"  % endif\n"
+"% endfor\n"
+"----------\n"
+"*Total : ${format_amount(object.amount_total, object.pricelist_id.currency_id)}*\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+msgstr ""
+"\n"
+"% set doc_name = 'Penawaran' if object.state in ('draft', 'sent') else 'Order'\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}\n"
+"% if object.state in ('draft', 'sent'):\n"
+"Terima kasih atas orderan Anda di Toserba Dua Tiga. Berikut ini ${doc_name} untuk Anda dengan nomor *${object.name}*.\n"
+"Jika ada kekeliruan, mohon segera menghubungi kami.\n"
+"% else\n"
+"${doc_name} Anda dengan nomor *${object.name}* telah dikonfirmasi.\n"
+"Pengiriman akan kami lakukan sesuai dengan jadwal yang telah dijanjikan.\n"
+"% endif\n"
+"----------\n"
+"% if object.confirmation_date:\n"
+"Tanggal Konfirmasi : ${format_tz(object.confirmation_date)}\n"
+"% endif\n"
+"% if object.payment_term_id:\n"
+"Jatuh Tempo : ${object.payment_term_id.name}\n"
+"% endif\n"
+"Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_\n"
+"% endif\n"
+"Rincian Pesanan :\n"
+"% for line in object.order_line:\n"
+"  - ${line.product_id.name} [${line.product_uom_qty} ${line.product_uom.name} x ${format_amount(line.price_unit, line.currency_id)}]\n"
+"  % if line.discount:\n"
+"    (-${line.discount}%)\n"
+"  % endif\n"
+"% endfor\n"
+"----------\n"
+"*Total : ${format_amount(object.amount_total, object.pricelist_id.currency_id)}*\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.delivery_wa_template
+msgid ""
+"\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}\n"
+"Pesanan Anda telah terkirim dengan nomor *${object.name}*.\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.\n"
+"% endif\n"
+"% if object.sale_id:\n"
+"Pengiriman ini untuk order ${object.sale_id.name}.\n"
+"% endif\n"
+"----------\n"
+"% if object.date_done:\n"
+"Tanggal Pengiriman : ${format_tz(object.date_done)}\n"
+"% endif\n"
+"Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_\n"
+"% endif\n"
+"Rincian Pengiriman :\n"
+"% for line in object.move_lines:\n"
+"  - ${line.product_id.name} [${line.quantity_done} ${line.product_uom.name}]\n"
+"% endfor\n"
+"% if object.backorder_id:\n"
+"Pengiriman ini adalah backorder dari *${object.backorder_id.name}*.\n"
+"% endif\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+msgstr ""
+"\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}\n"
+"Pesanan Anda telah terkirim dengan nomor *${object.name}*.\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.\n"
+"% endif\n"
+"% if object.sale_id:\n"
+"Pengiriman ini untuk order ${object.sale_id.name}.\n"
+"% endif\n"
+"----------\n"
+"% if object.date_done:\n"
+"Tanggal Pengiriman : ${format_tz(object.date_done)}\n"
+"% endif\n"
+"Alamat Pengiriman : ${object.partner_id.street}, ${object.partner_id.city}\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Jasa Ekspedisi : ${object.transporter_id.name} _(${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''})_\n"
+"% endif\n"
+"Rincian Pengiriman :\n"
+"% for line in object.move_lines:\n"
+"  - ${line.product_id.name} [${line.quantity_done} ${line.product_uom.name}]\n"
+"% endfor\n"
+"% if object.backorder_id:\n"
+"Pengiriman ini adalah backorder dari *${object.backorder_id.name}*.\n"
+"% endif\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.delivery_sms_template
+msgid ""
+"\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}.\n"
+"Pesanan Anda ${object.sale_id.name} tlh dikirim.\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Slhkn hbngi ${object.transporter_id.name} (${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''}) utk info pengiriman.\n"
+"% endif\n"
+"Toserba 23\n"
+"        "
+msgstr ""
+"\n"
+"% set phone_separator = ' / ' if object.transporter_id.phone and object.transporter_id.mobile else ''\n"
+"Yth. ${object.partner_id.name}.\n"
+"Pesanan Anda ${object.sale_id.name} tlh dikirim.\n"
+"% if object.use_transporter and object.transporter_id:\n"
+"Slhkn hbngi ${object.transporter_id.name} (${object.transporter_id.phone if object.transporter_id.phone else ''}${phone_separator}${object.transporter_id.mobile if object.transporter_id.mobile else ''}) utk info pengiriman.\n"
+"% endif\n"
+"Toserba 23\n"
+"        "
+
+#. module: toserba23
+#: model:mail.template,body_html:toserba23.delivery_email_template
+msgid ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                        Pengiriman pesanan Anda dengan nomor <strong>${object.name}</strong> telah terkirim.<br/>\n"
+"                    % if object.use_transporter and object.transporter_id:\n"
+"                        Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.\n"
+"                    % endif\n"
+"                    % if object.sale_id:\n"
+"                        Pengiriman ini adalah untuk order dengan nomor ${object.sale_id.name}.\n"
+"                    % endif\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.sale_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nomor Order :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.sale_id.name}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.date_done:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_done)}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Alamat Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.partner_id.street},\n"
+"                            % if object.partner_id.street2\n"
+"                                ${object.partner_id.street2}\n"
+"                            % endif\n"
+"                        ${object.partner_id.city}\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % if object.use_transporter and object.transporter_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jasa Ekspedisi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.transporter_id.name}\n"
+"                        ( ${object.transporter_id.street},\n"
+"                        % if object.transporter_id.street2:\n"
+"                            ${object.transporter_id.street2},\n"
+"                        % endif\n"
+"                        ${object.transporter_id.city},\n"
+"                        % if object.transporter_id.phone:\n"
+"                            ${object.transporter_id.phone},\n"
+"                        % endif\n"
+"                        % if object.transporter_id.mobile:\n"
+"                            ${object.transporter_id.mobile},\n"
+"                        % endif\n"
+"                        )\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Pengiriman</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; font-weight: bold;\" width=\"380\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; font-weight: bold;\" width=\"180\">Jumlah Terkirim</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.move_lines:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-top: 1px solid #DDDDDD;\" width=\"380\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-top: 1px solid #DDDDDD;\" width=\"180\">${line.quantity_done} ${line.product_uom.name}</td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                % if object.backorder_id:\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 15px;\">\n"
+"                        <table width=\"100%\" style=\"border-collapse: collapse;\">\n"
+"                                <tr>\n"
+"                                    <td style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                                        Pengiriman ini adalah backorder dari <strong>${object.backorder_id.name}</strong>.<br/>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+msgstr ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                        Pengiriman pesanan Anda dengan nomor <strong>${object.name}</strong> telah terkirim.<br/>\n"
+"                    % if object.use_transporter and object.transporter_id:\n"
+"                        Silahkan hubungi kontak ekspedisi di bawah untuk status pengiriman lebih lanjut.\n"
+"                    % endif\n"
+"                    % if object.sale_id:\n"
+"                        Pengiriman ini adalah untuk order dengan nomor ${object.sale_id.name}.\n"
+"                    % endif\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.sale_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nomor Order :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.sale_id.name}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.date_done:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_done)}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Alamat Pengiriman :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.partner_id.street},\n"
+"                            % if object.partner_id.street2\n"
+"                                ${object.partner_id.street2}\n"
+"                            % endif\n"
+"                        ${object.partner_id.city}\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % if object.use_transporter and object.transporter_id:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Jasa Ekspedisi :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                        ${object.transporter_id.name}\n"
+"                        ( ${object.transporter_id.street},\n"
+"                        % if object.transporter_id.street2:\n"
+"                            ${object.transporter_id.street2},\n"
+"                        % endif\n"
+"                        ${object.transporter_id.city},\n"
+"                        % if object.transporter_id.phone:\n"
+"                            ${object.transporter_id.phone},\n"
+"                        % endif\n"
+"                        % if object.transporter_id.mobile:\n"
+"                            ${object.transporter_id.mobile},\n"
+"                        % endif\n"
+"                        )\n"
+"                    </td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Pengiriman</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; font-weight: bold;\" width=\"380\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; font-weight: bold;\" width=\"180\">Jumlah Terkirim</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.move_lines:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-top: 1px solid #DDDDDD;\" width=\"380\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-top: 1px solid #DDDDDD;\" width=\"180\">${line.quantity_done} ${line.product_uom.name}</td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                % if object.backorder_id:\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 15px;\">\n"
+"                        <table width=\"100%\" style=\"border-collapse: collapse;\">\n"
+"                                <tr>\n"
+"                                    <td style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">\n"
+"                                        Pengiriman ini adalah backorder dari <strong>${object.backorder_id.name}</strong>.<br/>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+
+#. module: toserba23
+#: model:mail.template,body_html:toserba23.invoice_email_template
+msgid ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    Faktur tagihan Anda dengan nomor <strong>${object.number}</strong>,<br/>\n"
+"                    untuk order nomor <strong>${object.origin}</strong> jatuh tempo pada tanggal tersebut di bawah ini.<br/>\n"
+"                    Apabila Anda merasa ada yang tidak cocok, mohon segera menghubungi Customer Service kami.\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor Faktur :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.number}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nomor Order :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.origin}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.date_invoice:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Faktur :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.date_due:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Jatuh Tempo :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Faktur</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"280\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"112\">Jumlah</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"168\">Harga</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.invoice_line_ids:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"280\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"112\">${line.quantity} ${line.uom_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"168\">\n"
+"                                            ${format_amount(line.price_unit, line.currency_id)}\n"
+"                                            % if line.discount:\n"
+"                                                (-${line.discount}%)\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 5px;\">\n"
+"                        <table style=\"border-collapse: collapse;\">\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 5px 0;\">Total: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.amount_total, object.currency_id)}</td>\n"
+"                            </tr>\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 15px 0;\">Jumlah Terhutang: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.residual, object.currency_id)}</td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;\">\n"
+"                <tr>\n"
+"                    <td>\n"
+"                        <table style=\"padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;\">\n"
+"                            <tr>\n"
+"                                <td align=\"center\" style=\"padding: 20px 20px 20px;\">\n"
+"                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.\n"
+"                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.\n"
+"                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>\n"
+"                                    Berikut ini akun bank resmi Toserba Dua Tiga<br/>\n"
+"                                    <span style=\"white-space: pre-wrap;\">${object.company_id.report_footer}</span>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+msgstr ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    Faktur tagihan Anda dengan nomor <strong>${object.number}</strong>,<br/>\n"
+"                    untuk order nomor <strong>${object.origin}</strong> jatuh tempo pada tanggal tersebut di bawah ini.<br/>\n"
+"                    Apabila Anda merasa ada yang tidak cocok, mohon segera menghubungi Customer Service kami.\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Nomor Faktur :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.number}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nomor Order :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.origin}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Nama :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.partner_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.date_invoice:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Faktur :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.date_due:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Jatuh Tempo :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-top: 3px solid #C9C9C9; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 20px 0; font-weight: bold;\">Rincian Faktur</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 5px 0;\">\n"
+"                        <table style=\"border-collapse: collapse; color: #4F4F4F;\">\n"
+"                            <tr>\n"
+"                                <th align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"280\">Nama Barang</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"112\">Jumlah</th>\n"
+"                                <th align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD; font-weight: bold;\" width=\"168\">Harga</th>\n"
+"                            </tr>\n"
+"                            <tbody style=\"vertical-align: top; line-height: 1.6em;\">\n"
+"                                % for line in object.invoice_line_ids:\n"
+"                                    <tr>\n"
+"                                        <td align=\"left\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"280\">${line.product_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"112\">${line.quantity} ${line.uom_id.name}</td>\n"
+"                                        <td align=\"right\" style=\"padding: 10px 0; border-bottom: 1px solid #DDDDDD;\" width=\"168\">\n"
+"                                            ${format_amount(line.price_unit, line.currency_id)}\n"
+"                                            % if line.discount:\n"
+"                                                (-${line.discount}%)\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                % endfor\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"padding: 0 0 5px;\">\n"
+"                        <table style=\"border-collapse: collapse;\">\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 5px 0;\">Total: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.amount_total, object.currency_id)}</td>\n"
+"                            </tr>\n"
+"                            <tr>\n"
+"                                <td align=\"right\" width=\"392\" style=\"font-weight: bold; padding: 15px 0;\">Jumlah Terhutang: </td>\n"
+"                                <td align=\"right\" width=\"168\" style=\"padding: 5px 0;\">${format_amount(object.residual, object.currency_id)}</td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse;\">\n"
+"                <tr>\n"
+"                    <td>\n"
+"                        <table style=\"padding: 20px; border-collapse: collapse; background-color: #FBE3E4; font-size: 13px; color: #404040; line-height: 16px; letter-spacing: 0.1px; border-top: 2px solid #FBB3B4; border-bottom: 2px solid #FBB3B4;\">\n"
+"                            <tr>\n"
+"                                <td align=\"center\" style=\"padding: 20px 20px 20px;\">\n"
+"                                    Hati-hati terhadap pihak yang mengaku dari Toserba Dua Tiga, meminta data pribadi, atau meminta transfer uang.\n"
+"                                    Toserba Dua Tiga tidak pernah meminta data pribadi melalui email, dan akun bank Toserba Dua Tiga semuanya atas nama Ruslyanto The.\n"
+"                                    Email ini hanya digunakan untuk mengirimkan info pesanan maupun tagihan Anda yang terkirim otomatis dari sistem kami.<br/><br/>\n"
+"                                    Berikut ini akun bank resmi Toserba Dua Tiga<br/>\n"
+"                                    <span style=\"white-space: pre-wrap;\">${object.company_id.report_footer}</span>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+
+#. module: toserba23
+#: model:mail.template,body_html:toserba23.payment_email_template
+msgid ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.<br/>\n"
+"                    Pembayaran menggunakan ${object.journal_id.name} telah kami terima.<br/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Referensi Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Total Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_amount(object.amount, object.currency_id)}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Metode Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.journal_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.payment_date:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.communication:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Keterangan :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.communication}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.x_collector:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Penerima :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.x_collector}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+msgstr ""
+"\n"
+"<table width=\"100%\">\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; background-color: #AD0000; margin-bottom : 10px; padding: 10px; color: white; font-size: 30px;\">\n"
+"            <tr>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"                <td align=\"center\"><strong>TOSERBA DUA TIGA</strong></td>\n"
+"                <td align=\"center\">\n"
+"\t\t\t        <img style=\"max-height: 40px;\" src='https://i.imgur.com/aj5VrNu.png'/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; font-size: 16px;\">\n"
+"            <tr>\n"
+"                <td style=\"font-size: 16px; padding: 10px 0 10px; font-weight: bold; color: #4E4E4E\">\n"
+"                    Yth. ${object.partner_id.name}\n"
+"                    % if object.partner_id.parent_id:\n"
+"                        (<i>${object.partner_id.parent_id.name}</i>)\n"
+"                    % endif\n"
+"                ,</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"color: #4F4F4F\">\n"
+"                    Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.<br/>\n"
+"                    Pembayaran menggunakan ${object.journal_id.name} telah kami terima.<br/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr><td>\n"
+"        <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; color: #4F4F4F; font-size: 16px; border-bottom: 3px solid #C9C9C9;\">\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em;\">Referensi Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; vertical-align: top; line-height: 1.6em; color: #AD0000;\"><span>${object.name}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Total Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"font-weight: bold; padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_amount(object.amount, object.currency_id)}</span></td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Metode Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.journal_id.name}</span></td>\n"
+"                </tr>\n"
+"            % if object.payment_date:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Tanggal Pembayaran :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.communication:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Keterangan :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.communication}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"            % if object.x_collector:\n"
+"                <tr>\n"
+"                    <td width=\"220\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\">Penerima :</td>\n"
+"                    <td width=\"340\" style=\"padding: 10px 0; border-top: 1px solid #D9D9D9; vertical-align: top; line-height: 1.6em;\"><span>${object.x_collector}</span></td>\n"
+"                </tr>\n"
+"            % endif\n"
+"        </table>\n"
+"    </td></tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse: collapse; font-size: 13px; color: #999999;\">\n"
+"                <tr>\n"
+"                    <td style=\"padding: 10px 0;\">\n"
+"                        Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.<br/>\n"
+"                        Hubungi representatif kami jika Anda memiliki pertanyaan atau untuk info lebih lanjut.\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <tr>\n"
+"        <td style=\"padding: 10px 20px;\">\n"
+"            <table width=\"600\" style=\"margin-right: auto; margin-left: auto; padding: 10px; border-collapse:collapse; background-color: #F7F7F7; font-size:13px; color: #999999; border-top: 1px solid #DDDDDD;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"padding: 10px 0;\">\n"
+"                        &copy; Toserba Dua Tiga<br/>\n"
+"                        ${object.company_id.street}<br/>\n"
+"                        ${object.company_id.city}, ${object.company_id.state_id.name}, ${object.company_id.country_id.name}<br/>\n"
+"                        Telepon : ${object.company_id.phone}<br/>\n"
+"                        <span style=\"white-space: pre-wrap;\">${object.company_id.contact_person}</span>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</table>\n"
+"\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.invoice_wa_template
+msgid ""
+"\n"
+"Yth. ${object.partner_id.name}\n"
+"Berikut ini rincian faktur tagihan Anda dengan nomor *${object.number}*.\n"
+"Apabila ada kesalahan data, mohon segera menghubungi kami.\n"
+"----------\n"
+"No. Order : ${object.origin}\n"
+"% if object.date_invoice:\n"
+"Tanggal Faktur : ${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"% if object.date_due:\n"
+"Tanggal Jatuh Tempo : ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"Rincian Faktur :\n"
+"% for line in object.invoice_line_ids:\n"
+"  - ${line.product_id.name} [${line.quantity} ${line.uom_id.name} x ${format_amount(line.price_unit, line.currency_id)}]\n"
+"  % if line.discount:\n"
+"    (-${line.discount}%)\n"
+"  % endif\n"
+"% endfor\n"
+"----------\n"
+"Total : ${format_amount(object.amount_total, object.currency_id)}\n"
+"*Jumlah Terhutang : ${format_amount(object.residual, object.currency_id)}*\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+msgstr ""
+"\n"
+"Yth. ${object.partner_id.name}\n"
+"Berikut ini rincian faktur tagihan Anda dengan nomor *${object.number}*.\n"
+"Apabila ada kesalahan data, mohon segera menghubungi kami.\n"
+"----------\n"
+"No. Order : ${object.origin}\n"
+"% if object.date_invoice:\n"
+"Tanggal Faktur : ${format_tz(object.date_invoice+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"% if object.date_due:\n"
+"Tanggal Jatuh Tempo : ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"Rincian Faktur :\n"
+"% for line in object.invoice_line_ids:\n"
+"  - ${line.product_id.name} [${line.quantity} ${line.uom_id.name} x ${format_amount(line.price_unit, line.currency_id)}]\n"
+"  % if line.discount:\n"
+"    (-${line.discount}%)\n"
+"  % endif\n"
+"% endfor\n"
+"----------\n"
+"Total : ${format_amount(object.amount_total, object.currency_id)}\n"
+"*Jumlah Terhutang : ${format_amount(object.residual, object.currency_id)}*\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.payment_wa_template
+msgid ""
+"\n"
+"Yth. ${object.partner_id.name}\n"
+"Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.\n"
+"Pembayaran menggunakan ${object.journal_id.name} telah kami terima.\n"
+"----------\n"
+"Referensi Pembayaran : ${object.name}\n"
+"Total Pembayaran : ${format_amount(object.amount, object.currency_id)}\n"
+"Metode Pembayaran : ${object.journal_id.name}\n"
+"% if object.payment_date:\n"
+"Tanggal Pembayaran : ${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"% if object.communication:\n"
+"Keterangan : ${object.communication}\n"
+"% endif\n"
+"% if object.x_collector:\n"
+"Penerima : ${object.x_collector}\n"
+"% endif\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+msgstr ""
+"\n"
+"Yth. ${object.partner_id.name}\n"
+"Terima kasih telah menyelesaikan transaksi di Toserba Dua Tiga.\n"
+"Pembayaran menggunakan ${object.journal_id.name} telah kami terima.\n"
+"----------\n"
+"Referensi Pembayaran : ${object.name}\n"
+"Total Pembayaran : ${format_amount(object.amount, object.currency_id)}\n"
+"Metode Pembayaran : ${object.journal_id.name}\n"
+"% if object.payment_date:\n"
+"Tanggal Pembayaran : ${format_tz(object.payment_date+' 00:00:00', format='%d/%m/%Y')}\n"
+"% endif\n"
+"% if object.communication:\n"
+"Keterangan : ${object.communication}\n"
+"% endif\n"
+"% if object.x_collector:\n"
+"Penerima : ${object.x_collector}\n"
+"% endif\n"
+"----------\n"
+"Hormat kami,\n"
+"Toserba Dua Tiga _(${object.company_id.phone})_\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.quotation_sms_template
+msgid ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"% if object.state in ('draft', 'sent'):\n"
+"Tks atas orderan Anda di perusahaan kami.\n"
+"Slhkn tunggu beberapa saat hingga order Anda kami konfirmasi.\n"
+"% else\n"
+"Order Anda dgn no ${object.name} tlh dikonfirmasi.\n"
+"Pengiriman akan dilakukan sesuai jadwal yg tlh dijanjikan.\n"
+"% endif\n"
+"Toserba 23\n"
+"        "
+msgstr ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"% if object.state in ('draft', 'sent'):\n"
+"Tks atas orderan Anda di perusahaan kami.\n"
+"Slhkn tunggu beberapa saat hingga order Anda kami konfirmasi.\n"
+"% else\n"
+"Order Anda dgn no ${object.name} tlh dikonfirmasi.\n"
+"Pengiriman akan dilakukan sesuai jadwal yg tlh dijanjikan.\n"
+"% endif\n"
+"Toserba 23\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.invoice_sms_template
+msgid ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"Fktr tagihan Anda dgn no ${object.number},\n"
+"sejml ${format_amount(object.residual, object.currency_id)},\n"
+"jth tempo pd ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}.\n"
+"Toserba 23\n"
+"        "
+msgstr ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"Fktr tagihan Anda dgn no ${object.number},\n"
+"sejml ${format_amount(object.residual, object.currency_id)},\n"
+"jth tempo pd ${format_tz(object.date_due+' 00:00:00', format='%d/%m/%Y')}.\n"
+"Toserba 23\n"
+"        "
+
+#. module: toserba23
+#: model:sms.template,template_body:toserba23.payment_sms_template
+msgid ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"Tks tlh menyelesaikan transaksi.\n"
+"Pembayaran menggunakan ${object.journal_id.name} sejumlah ${format_amount(object.amount, object.currency_id)} tlh kami terima.\n"
+"Toserba 23\n"
+"        "
+msgstr ""
+"\n"
+"Yth. ${object.partner_id.name}.\n"
+"Tks tlh menyelesaikan transaksi.\n"
+"Pembayaran menggunakan ${object.journal_id.name} sejumlah ${format_amount(object.amount, object.currency_id)} tlh kami terima.\n"
+"Toserba 23\n"
+"        "
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+msgid "(Dicetak pada"
+msgstr "(Dicetak pada"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "(______________________________)"
+msgstr "(______________________________)"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "**Barang tidak digaransi"
 msgstr "**Barang tidak digaransi"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_hr_expense_sheet_filter_custom
+msgid "1 minggu terakhir"
+msgstr "1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<strong>Toserba Dua Tiga</strong>\n"
+"\t\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<strong>Toserba Dua Tiga</strong>\n"
+"\t\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t<strong>Toserba Dua Tiga</strong>\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\t<strong>Toserba Dua Tiga</strong>\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid ""
 "<b>\n"
@@ -58,6 +1679,17 @@ msgstr ""
 "\t\t\t\t\t\t\t\t\t</b>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN (DRIVER)\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN (DRIVER)\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
 msgid ""
 "<b>\n"
@@ -69,6 +1701,17 @@ msgstr ""
 "\t\t\t\t\t\t\t\t\t</b>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN INTERNAL (DRIVER)\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT JALAN INTERNAL (DRIVER)\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
 msgid ""
 "<b>\n"
@@ -77,6 +1720,17 @@ msgid ""
 msgstr ""
 "<b>\n"
 "\t\t\t\t\t\t\t\t\t\tSURAT TERIMA BARANG\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+msgid ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT TERIMA BARANG (DRIVER)\n"
+"\t\t\t\t\t\t\t\t\t</b>"
+msgstr ""
+"<b>\n"
+"\t\t\t\t\t\t\t\t\t\tSURAT TERIMA BARANG (DRIVER)\n"
 "\t\t\t\t\t\t\t\t\t</b>"
 
 #. module: toserba23
@@ -89,6 +1743,16 @@ msgstr ""
 "<b>\n"
 "\t\t\t\t\t\t\t\t\t\tTRANSFER ANTAR GUDANG\n"
 "\t\t\t\t\t\t\t\t\t</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<b>DITOLAK</b>"
+msgstr "<b>DITOLAK</b>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<b>Laporan Pengeluaran</b>"
+msgstr "<b>Laporan Pengeluaran</b>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
@@ -96,37 +1760,203 @@ msgid "<b>NOTA KONTAN</b>"
 msgstr "<b>NOTA KONTAN</b>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<b>Permintaan Dana</b>"
+msgstr "<b>Permintaan Dana</b>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "<b>TITIPAN BARANG</b>"
 msgstr "<b>TITIPAN BARANG</b>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tPenerima\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tPenerima\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "<font color=\"#000\"><strong>Jumlah Dikirim</strong></font>"
+msgstr "<font color=\"#000\"><strong>Jumlah Dikirim</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "<font color=\"#000\"><strong>Jumlah</strong></font>"
+msgstr "<font color=\"#000\"><strong>Jumlah</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "<font color=\"#000\"><strong>Keterangan Khusus</strong></font>"
+msgstr "<font color=\"#000\"><strong>Keterangan Khusus</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "<font color=\"#000\"><strong>Nama Barang</strong></font>"
+msgstr "<font color=\"#000\"><strong>Nama Barang</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Harga</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Harga</strong></font>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "<font color=\"#fff\"><strong>Jumlah Dikirim</strong></font>"
 msgstr "<font color=\"#fff\"><strong>Jumlah Dikirim</strong></font>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+#: model:ir.ui.view,arch_db:toserba23.report_custom_inventory_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "<font color=\"#fff\"><strong>Jumlah</strong></font>"
 msgstr "<font color=\"#fff\"><strong>Jumlah</strong></font>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
 msgstr "<font color=\"#fff\"><strong>Keterangan Khusus</strong></font>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "<font color=\"#fff\"><strong>Kode</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Kode</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "<font color=\"#fff\"><strong>Kuantitas</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Kuantitas</strong></font>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+#: model:ir.ui.view,arch_db:toserba23.report_custom_inventory_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
 msgstr "<font color=\"#fff\"><strong>Nama Barang</strong></font>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Nama</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Nama</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Pajak</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Pajak</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Qty</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Qty</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Ref.</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Ref.</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Subtotal</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Subtotal</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "<font color=\"#fff\"><strong>Tanggal</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Tanggal</strong></font>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "<font color=\"#fff\"><strong>Total</strong></font>"
+msgstr "<font color=\"#fff\"><strong>Total</strong></font>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.partner_view_buttons_custom
 msgid "<span class=\"o_stat_text\">Total Faktur</span>"
 msgstr "<span class=\"o_stat_text\">Total Faktur</span>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.company_header
+#: model:ir.ui.view,arch_db:toserba23.user_company_header
+msgid "<span style=\"font:12px lucida-console,sans-serif; white-space:nowrap;\"> (082393568188)</span>"
+msgstr "<span style=\"font:12px lucida-console,sans-serif; white-space:nowrap;\"> (082393568188)</span>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tKUITANSI\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tKUITANSI\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tKUITANSI PINJAMAN\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #212121; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tKUITANSI PINJAMAN\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_inventory_document
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #98AFC7; position:relative; top:-5px; color:#98AFC7\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tCEK FISIK\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; border-bottom: 1px double #98AFC7; position:relative; top:-5px; color:#98AFC7\">\n"
+"\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\tCEK FISIK\n"
+"\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t</span><br/>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
@@ -140,9 +1970,54 @@ msgstr ""
 "\t\t\t\t\t\t\t\t</span><br/>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Pengaturan Massal</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Pengaturan Massal</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+msgid ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Surat Jalan Massal</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+msgstr ""
+"<span style=\"font:25px lucida-console,sans-serif !important; position:relative; top:-5px;\">\n"
+"\t\t\t\t\t\t\t\t\t<span><b>Surat Jalan Massal</b></span>\n"
+"\t\t\t\t\t\t\t\t</span><br/>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
+msgid "<span><b>FAKTUR PROFORMA</b></span>"
+msgstr "<span><b>FAKTUR PROFORMA</b></span>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "<span><b>PENAWARAN HARGA</b></span>"
 msgstr "<span><b>PENAWARAN HARGA</b></span>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>Alamat</strong>"
+msgstr "<strong>Alamat</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Belum Dibayar</strong>"
+msgstr "<strong>Belum Dibayar</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Bersih</strong>"
+msgstr "<strong>Bersih</strong>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
@@ -155,6 +2030,21 @@ msgid "<strong>CATATAN KREDIT</strong>"
 msgstr "<strong>CATATAN KREDIT</strong>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "<strong>Catatan Absensi dan Cuti</strong>"
+msgstr "<strong>Catatan Absensi dan Cuti</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "<strong>Catatan khusus</strong>"
+msgstr "<strong>Catatan khusus</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Dokumen Sumber</strong>"
+msgstr "<strong>Dokumen Sumber</strong>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
 msgid "<strong>FAKTUR DIBATALKAN</strong>"
 msgstr "<strong>FAKTUR DIBATALKAN</strong>"
@@ -165,19 +2055,29 @@ msgid "<strong>FAKTUR</strong>"
 msgstr "<strong>FAKTUR</strong>"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
-msgid "<strong>Harga Grosir</strong>"
-msgstr "<strong>Harga Grosir</strong>"
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Gaji Kotor</strong>"
+msgstr "<strong>Gaji Kotor</strong>"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
-msgid "<strong>Harga Jual</strong>"
-msgstr "<strong>Harga Jual</strong>"
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Jam Keluar</strong>"
+msgstr "<strong>Jam Keluar</strong>"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
-msgid "<strong>Harga Toko</strong>"
-msgstr "<strong>Harga Toko</strong>"
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Jam Masuk</strong>"
+msgstr "<strong>Jam Masuk</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+msgid "<strong>Jatuh Tempo</strong>"
+msgstr "<strong>Jatuh Tempo</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+msgid "<strong>Jumlah</strong>"
+msgstr "<strong>Jumlah</strong>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
@@ -185,9 +2085,80 @@ msgid "<strong>KONSEP FAKTUR</strong>"
 msgstr "<strong>KONSEP FAKTUR</strong>"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
-msgid "<strong>Nama Barang</strong>"
-msgstr "<strong>Nama Barang</strong>"
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Karyawan</strong>"
+msgstr "<strong>Karyawan</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>Keterangan</strong>"
+msgstr "<strong>Keterangan</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Lembur (Jam)</strong>"
+msgstr "<strong>Lembur (Jam)</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Lembur Malam (Jam)</strong>"
+msgstr "<strong>Lembur Malam (Jam)</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Nama Karyawan</strong>"
+msgstr "<strong>Nama Karyawan</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>Nama</strong>"
+msgstr "<strong>Nama</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>No Telp</strong>"
+msgstr "<strong>No Telp</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Nomor</strong>"
+msgstr "<strong>Nomor</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>Ponsel</strong>"
+msgstr "<strong>Ponsel</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Potongan BPJS</strong>"
+msgstr "<strong>Potongan BPJS</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Potongan Pinjaman</strong>"
+msgstr "<strong>Potongan Pinjaman</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "<strong>Referensi Internal</strong>"
+msgstr "<strong>Referensi Internal</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Rekanan</strong>"
+msgstr "<strong>Rekanan</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Rujukan</strong>"
+msgstr "<strong>Rujukan</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Status</strong>"
+msgstr "<strong>Status</strong>"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
@@ -195,30 +2166,135 @@ msgid "<strong>TAGIHAN PEMASOK</strong>"
 msgstr "<strong>TAGIHAN PEMASOK</strong>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Tanggal Faktur</strong>"
+msgstr "<strong>Tanggal Faktur</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "<strong>Tanggal Jatuh Tempo</strong>"
+msgstr "<strong>Tanggal Jatuh Tempo</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "<strong>Tanggal</strong>"
+msgstr "<strong>Tanggal</strong>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+msgid "<strong>Terbilang : </strong>"
+msgstr "<strong>Terbilang : </strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_partner_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
 msgid "<strong>Total</strong>"
 msgstr "<strong>Total</strong>"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Transfer</strong>"
+msgstr "<strong>Transfer</strong>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "<strong>Tunai</strong>"
+msgstr "<strong>Tunai</strong>"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "A - Priority"
+msgstr "A - Prioritas"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_image_upload_wizard_description
+msgid "A precise description of the Product, used only for internal information purposes."
+msgstr "Deskripsi produk, digunakan sebagai informasi untuk keperluan internal."
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia."
 msgstr "Ada pesanan yang belum bisa dikirim, dan akan dikirim secepatnya begitu barang tersedia."
 
 #. module: toserba23
+#: model:res.groups,name:toserba23.group_account_report_access
+msgid "Akses Laporan Akuntansi"
+msgstr "Akses Laporan Akuntansi"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_account_invoice_purchase_view
+msgid "Akses Lihat Faktur Pembelian"
+msgstr "Akses Lihat Faktur Pembelian"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_account_invoice_view
+msgid "Akses Lihat Faktur Penjualan"
+msgstr "Akses Lihat Faktur Penjualan"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_fine_creation
+msgid "Akses Pencatatan Pelanggaran"
+msgstr "Akses Pencatatan Pelanggaran"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.allow_badge_scan
+msgid "Akses Pindai Lencana"
+msgstr "Akses Pindai Lencana"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.view_vendor
+msgid "Akses Tampilan Pemasok"
+msgstr "Akses Tampilan Pemasok"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.allow_upload_image
+msgid "Akses Upload Gambar Produk"
+msgstr "Akses Upload Gambar Produk"
+
+#. module: toserba23
+#: model:ir.module.category,name:toserba23.module_category_accounting_and_finance_purchase
+msgid "Akuntansi dan Keuangan (Pembelian)"
+msgstr "Akuntansi dan Keuangan (Pembelian)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_res_partner_filter_custom
+msgid "Alamat"
+msgstr "Alamat"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
 msgid "Alamat :"
 msgstr "Alamat :"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_address_npwp
+#: model:ir.model.fields,field_description:toserba23.field_res_users_address_npwp
+msgid "Alamat NPWP"
+msgstr "Alamat NPWP"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 msgid "Alamat Pemasok :"
 msgstr "Alamat Pemasok :"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 msgid "Alamat Pengiriman :"
 msgstr "Alamat Pengiriman :"
 
@@ -227,6 +2303,11 @@ msgstr "Alamat Pengiriman :"
 #: model:ir.ui.menu,name:toserba23.menu_action_pricelist_tree
 msgid "Artikel Daftar Harga"
 msgstr "Artikel Daftar Harga"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "B - Urgent"
+msgstr "B - Sangat Penting"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
@@ -239,9 +2320,39 @@ msgid "BS-PRL"
 msgstr "BS-PRL"
 
 #. module: toserba23
+#: model:ir.model,name:toserba23.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Akun Bank"
+
+#. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_category_is_warranty
 msgid "Barang Garansi"
 msgstr "Barang Garansi"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_int_transfer_line
+msgid "Baris"
+msgstr "Baris"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_int_transfer_form
+msgid "Batal"
+msgstr "Batal"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.stock_picking_type_kanban_custom
+msgid "Belum"
+msgstr "Belum"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_crm_case_opportunities_filter_custom
+msgid "Belum Ada Aktivitas"
+msgstr "Belum Ada Aktivitas"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_picking_tree_not_done
+msgid "Belum Selesai"
+msgstr "Belum Selesai"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_inventory_filter_custom
@@ -249,9 +2360,36 @@ msgid "Belum Validasi"
 msgstr "Belum Validasi"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_sales_order_filter_custom
+msgid "Belum difakturkan"
+msgstr "Belum difakturkan"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_company_register
+#: model:ir.model.fields,field_description:toserba23.field_res_users_company_register
+msgid "Bentuk Badan Usaha"
+msgstr "Bentuk Badan Usaha"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_company_register
+#: model:ir.model.fields,help:toserba23.field_res_users_company_register
+msgid "Bentuk badan usaha yang terdaftar di administrasi pemerintahan"
+msgstr "Bentuk badan usaha yang terdaftar di administrasi pemerintahan"
+
+#. module: toserba23
 #: model:res.groups,name:toserba23.block_vendor_view
-msgid "Block Vendor View"
-msgstr "Blok Tampilan Pemasok"
+msgid "Blokir Akses Pemasok"
+msgstr "Blokir Akses Pemasok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_int_transfer_form
+msgid "Buat Transfer"
+msgstr "Buat Transfer"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.menu_int_transfer
+msgid "Buat Transfer Internal"
+msgstr "Buat Transfer Internal"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
@@ -260,9 +2398,89 @@ msgid "Bulukumba"
 msgstr "Bulukumba"
 
 #. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "C - Less Urgent"
+msgstr "C - Penting"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "CV"
+msgstr "CV"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_image_upload_wizard_view
+#: model:ir.ui.view,arch_db:toserba23.product_label_print_wizard_view
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_hr_payslip_form_custom
+msgid "Catatan lainnya (catatan ini juga akan muncul di slip gaji cetak)..."
+msgstr "Catatan lainnya (catatan ini juga akan muncul di slip gaji cetak)..."
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_inventory
+msgid "Cek Fisik"
+msgstr "Cek Fisik"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_inventory_document
+msgid "Cek Fisik :"
+msgstr "Cek Fisik :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_line_tree_view_custom
+msgid "Cek Qty"
+msgstr "Cek Qty"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_form_view_custom
+msgid "Cek Qty Produk"
+msgstr "Cek Qty Produk"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_is_pkp
+#: model:ir.model.fields,help:toserba23.field_res_users_is_pkp
+msgid "Centang jika perusahaan terdaftar sebagai pengusaha kena pajak"
+msgstr "Centang jika perusahaan terdaftar sebagai pengusaha kena pajak"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_attendance
+msgid "Cetak Absensi"
+msgstr "Cetak Absensi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_label_print_wizard_view
+msgid "Cetak Label"
+msgstr "Cetak Label"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.product_label_print_wizard_action
+msgid "Cetak Label Produk"
+msgstr "Cetak Label Produk"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_not_done
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_urgent
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_very_urgent
+msgid "Click here to create a new transfer."
+msgstr "Klik di sini untuk membuat transfer baru."
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_partner_form_custom
+#: model:ir.actions.act_window,help:toserba23.action_partner_supplier_form_custom
+msgid "Click to add a contact in your address book."
+msgstr "Klik untuk menambah kontak di buku alamat Anda."
+
+#. module: toserba23
 #: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
 msgid "Click to define a new product."
 msgstr "Klik untuk menambahkan produk baru."
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_account_payments_all
+msgid "Click to register a payment"
+msgstr "Klik untuk merekam pembayaran"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_account_invoice_x_collector
@@ -276,14 +2494,77 @@ msgid "Collector"
 msgstr "Penagih"
 
 #. module: toserba23
+#: model:ir.model,name:toserba23.model_res_company
+msgid "Companies"
+msgstr "Perusahaan"
+
+#. module: toserba23
 #: model:ir.model,name:toserba23.model_res_partner
 msgid "Contact"
 msgstr "Kontak"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_company_contact_person
+msgid "Contact Person"
+msgstr "Contact Person"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_partner_tree_hide_custom
+msgid "Contacts"
+msgstr "Daftar kontak"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_cost_currency_id
+msgid "Cost Currency"
+msgstr "Cost Currency"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_type_count_picking_not_done
+msgid "Count Picking Not Done"
+msgstr "Count Picking Not Done"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_type_count_picking_urgent
+msgid "Count Picking Urgent"
+msgstr "Count Picking Urgent"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_type_count_picking_very_urgent
+msgid "Count Picking Very Urgent"
+msgstr "Count Picking Very Urgent"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_orders
+msgid "Create a Quotation, the first step of a new sale."
+msgstr "Buat penawaran, yang merupakan langkah awal dari penjualan."
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "Create a new expense.<br>"
+msgstr "Buat pengeluaran baru.<br>"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_create_uid
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_create_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_create_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_create_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
 msgid "Created for the last week"
 msgstr "Dibuat 1 minggu terakhir"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_create_date
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_create_date
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_create_date
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_create_date
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
@@ -308,6 +2589,36 @@ msgid "Current quantity of products in stock location 1.\n"
 msgstr "Jumlah produk di lokasi ini adalah 1.\n"
 
 #. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_partner_form_custom
+msgid "Customers"
+msgstr "Pelanggan"
+
+#. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "D - common"
+msgstr "D - Biasa"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Daftar Harga"
+msgstr "Daftar Harga"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.product_supplierinfo_menu
+msgid "Daftar Harga Supplier"
+msgstr "Daftar Harga Supplier"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.delivery_sms_template
+msgid "Delivery SMS template"
+msgstr "Delivery SMS template"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.delivery_wa_template
+msgid "Delivery WA template"
+msgstr "Delivery WA template"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
 msgid "Delivery for the next week"
 msgstr "Pengiriman 1 minggu ke depan"
@@ -328,17 +2639,112 @@ msgid "Delivery tomorrow"
 msgstr "Pengiriman besok"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_hr_payslip_description
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_description
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_description
+#: model:ir.ui.view,arch_db:toserba23.product_image_upload_wizard_view
+msgid "Deskripsi"
+msgstr "Deskripsi"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_int_transfer_wizard_line_description
+msgid "Deskripsi produk"
+msgstr "Deskripsi produk"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_inventory_filter_custom
 msgid "Dibatalkan"
 msgstr "Dibatalkan"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Dibayar 2 hari lalu"
+msgstr "Dibayar 2 hari lalu"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Dibayar 3 hari lalu"
+msgstr "Dibayar 3 hari lalu"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
 #: model:ir.ui.view,arch_db:toserba23.report_product_katalogsheet
 msgid "Dibuat tanggal:"
 msgstr "Dibuat tanggal:"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid ""
+"Dibuat,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+msgstr ""
+"Dibuat,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "Dicetak tanggal:"
+msgstr "Dicetak tanggal:"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid ""
+"Diperiksa,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+msgstr ""
+"Diperiksa,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Disc(%)"
+msgstr "Disc(%)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Disc.(%)"
 msgstr "Disk.(%)"
@@ -347,6 +2753,60 @@ msgstr "Disk.(%)"
 #: model:ir.model.fields,field_description:toserba23.field_purchase_order_line_x_discount
 msgid "Discount (%)"
 msgstr "Diskon(%)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid ""
+"Disetujui,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________)"
+msgstr ""
+"Disetujui,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid ""
+"Disetujui,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+msgstr ""
+"Disetujui,\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t<ins>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t(______________________)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t</b>\n"
+"\t\t\t\t\t\t\t\t\t\t\t</ins>"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_display_name
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_display_name
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_display_name
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_display_name
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "Divalidasi Oleh :"
+msgstr "Divalidasi Oleh :"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
@@ -364,9 +2824,50 @@ msgid "Due tomorrow"
 msgstr "Jatuh tempo besok"
 
 #. module: toserba23
+#: selection:res.partner,x_call_freq:0
+msgid "E - Not Urgent"
+msgstr "E - Tidak Perlu"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_preferred_transporter
+#: model:ir.model.fields,field_description:toserba23.field_res_users_preferred_transporter
+msgid "Ekspedisi Pilihan"
+msgstr "Ekspedisi Pilihan"
+
+#. module: toserba23
+#: selection:res.partner,x_notification_method:0
+msgid "Email"
+msgstr "Email"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_hr_expense
+msgid "Expense"
+msgstr "Pengeluaran"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "Laporan Pengeluaran"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "Expenses will go through these steps:"
+msgstr "Pengeluaran akan mengikuti langkah berikut:"
+
+#. module: toserba23
 #: model:ir.actions.report,name:toserba23.report_custom_invoice
 msgid "Faktur"
 msgstr "Faktur"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_invoice_proforma
+msgid "Faktur Pro Forma"
+msgstr "Faktur Pro Forma"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Firma"
+msgstr "Firma"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_virtual_available_0
@@ -390,13 +2891,45 @@ msgid "From"
 msgstr "Dari"
 
 #. module: toserba23
+#: model:res.groups,comment:toserba23.block_vendor_view
+msgid "Full blokir akses pemasok (terapkan jika akses pemasok benar-benar tidak diperlukan)"
+msgstr "Full blokir akses pemasok (terapkan jika akses pemasok benar-benar tidak diperlukan)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Global/Kategori"
+msgstr "Global/Kategori"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_call_freq
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_call_freq
+msgid "Grade"
+msgstr "Grade"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
 #: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
 msgid "Grosir"
 msgstr "Grosir"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Group By"
+msgstr "Dikelompokkan berdasarkan"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_source_warehouse_id
+msgid "Gudang Asal"
+msgstr "Gudang Asal"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_dest_warehouse_id
+msgid "Gudang Tujuan"
+msgstr "Gudang Tujuan"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Harga"
 msgstr "Harga"
@@ -409,9 +2942,16 @@ msgid "Harga Bulukumba"
 msgstr "Harga Bulukumba"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_bulukumbas
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_bulukumbas
 #: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
-msgid "Harga Display (ter-input otomatis dari pembelian minimal terkecil)"
-msgstr "Harga Display (ter-input otomatis dari pembelian minimal terkecil)"
+msgid "Harga Bulukumba S"
+msgstr "Harga Bulukumba S"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Display"
+msgstr "Harga Display"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_grosir
@@ -421,11 +2961,20 @@ msgid "Harga Grosir"
 msgstr "Harga Grosir"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_jual
+#: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_jual
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+#: model:ir.ui.view,arch_db:toserba23.product_tree_view_custom
+msgid "Harga Jual"
+msgstr "Harga Jual"
+
+#. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_promo
 #: model:ir.model.fields,field_description:toserba23.field_product_template_x_harga_promo
 #: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
-msgid "Harga Promo"
-msgstr "Harga Promo"
+msgid "Harga Spesial"
+msgstr "Harga Spesial"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_harga_toko
@@ -436,8 +2985,74 @@ msgstr "Harga Toko"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
-msgid "Harga jual"
-msgstr "Harga jual"
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Harga Umum"
+msgstr "Harga Umum"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_custom
+msgid "Harga Umum/Katalog"
+msgstr "Harga Umum/Katalog"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_hr_expense_sheet_filter_custom
+msgid "Hari ini"
+msgstr "Hari ini"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_pricelist_item_x_formula_price
+msgid "Hasil"
+msgstr "Hasil"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_id
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_id
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_id
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_id
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.view_vendor
+msgid "Ijinkan akses info pembelian pada halaman produk"
+msgstr "Ijinkan akses info pembelian pada halaman produk"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.show_unnecessary_field
+msgid "Ijinkan akses kolom yang tidak diperlukan"
+msgstr "Ijinkan akses kolom yang tidak diperlukan"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.lock_button_on_document
+msgid "Ijinkan akses kunci/buka kuncu pada dokumen"
+msgstr "Ijinkan akses kunci/buka kuncu pada dokumen"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.group_account_report_access
+msgid "Ijinkan akses laporan akuntansi, buku besar, laporan laba-rugi, dll"
+msgstr "Ijinkan akses laporan akuntansi, buku besar, laporan laba-rugi, dll"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.view_configuration_menu
+msgid "Ijinkan akses pengaturan"
+msgstr "Ijinkan akses pengaturan"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.allow_badge_scan
+msgid "Ijinkan akses untuk pindai/scan lencana karyawan"
+msgstr "Ijinkan akses untuk pindai/scan lencana karyawan"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.allow_upload_image
+msgid "Ijinkan akses untuk upload gambar produk"
+msgstr "Ijinkan akses untuk upload gambar produk"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_image
+msgid "Image"
+msgstr "Gambar"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_incoming_qty_0
@@ -451,15 +3066,98 @@ msgid "Information about a product vendor"
 msgstr "Informasi mengenai pemasok produk"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_image_upload_wizard_view
+msgid "Input deskripsi produk di sini"
+msgstr "Input deskripsi produk di sini"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_default_code
+msgid "Internal Reference"
+msgstr "Referensi internal"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.act_int_transfer
+#: model:ir.model,name:toserba23.model_int_transfer_wizard
+msgid "Internal Transfer Wizard"
+msgstr "Internal Transfer Wizard"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_int_transfer_wizard_line
+msgid "Internal Transfer Wizard Line"
+msgstr "Internal Transfer Wizard Line"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_stock_inventory
+msgid "Inventory"
+msgstr "Persediaan"
+
+#. module: toserba23
 #: model:ir.model,name:toserba23.model_account_invoice
 msgid "Invoice"
 msgstr "Faktur"
 
 #. module: toserba23
+#: model:sms.template,name:toserba23.invoice_sms_template
+msgid "Invoice SMS template"
+msgstr "Invoice SMS template"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.invoice_wa_template
+msgid "Invoice WA template"
+msgstr "Invoice WA template"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Jatuh Tempo :"
 msgstr "Jatuh Tempo :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Jatuh tempo 2 hari lagi"
+msgstr "Jatuh tempo 2 hari lagi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Jatuh tempo 3 hari lagi"
+msgstr "Jatuh tempo 3 hari lagi"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_interested_product
+#: model:ir.model.fields,field_description:toserba23.field_res_users_interested_product
+msgid "Jenis Barang yang Diambil"
+msgstr "Jenis Barang yang Diambil"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+msgid "Jual"
+msgstr "Jual"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.menu_product_product_qty_check_action_salemenu
+msgid "Jumlah Produk"
+msgstr "Jumlah Produk"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_number_of_copy
+msgid "Jumlah Rangkap"
+msgstr "Jumlah Rangkap"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_hr_expense_sheet_filter_custom
+msgid "Jurnal Pembayaran"
+msgstr "Jurnal Pembayaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "Karyawan :"
+msgstr "Karyawan :"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.katalog_menu
+msgid "Katalog"
+msgstr "Katalog"
 
 #. module: toserba23
 #: model:ir.actions.report,name:toserba23.report_product_catalog
@@ -467,31 +3165,204 @@ msgid "Katalog Produk"
 msgstr "Katalog Produk"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Kategori"
+msgstr "Kategori"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Kategori Produk"
+msgstr "Kategori Produk"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
 msgid "Keluar"
 msgstr "Keluar"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_hr_expense_sheet_filter_custom
+msgid "Kemarin"
+msgstr "Kemarin"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_vehicle
+msgid "Kendaraan"
+msgstr "Kendaraan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
 msgid "Kendaraan :"
 msgstr "Kendaraan :"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_stock_inventory_x_notes
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Keterangan"
+msgstr "Keterangan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
 msgid "Keterangan :"
 msgstr "Keterangan :"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_other_notes
+msgid "Keterangan Lain"
+msgstr "Keterangan Lain"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_form_view_custom
+msgid "Kirim Penawaran"
+msgstr "Kirim Penawaran"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Kirim ekspedisi :"
 msgstr "Kirim ekspedisi :"
 
 #. module: toserba23
-#: selection:res.partner,x_call_freq:0
-msgid "Less Urgent"
-msgstr "Penting"
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_is_notify_so
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_is_notify_so
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Konfirmasi Order"
+msgstr "Konfirmasi Order"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_is_notify_pay
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_is_notify_pay
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Konfirmasi Pembayaran"
+msgstr "Konfirmasi Pembayaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_company_form_custom
+msgid "Kontak"
+msgstr "Kontak"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid "Kontak:"
+msgstr "Kontak:"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Koperasi"
+msgstr "Koperasi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_res_partner_filter_custom
+msgid "Kota"
+msgstr "Kota"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_quantity
+msgid "Kuantitas"
+msgstr "Kuantitas"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_payment
+msgid "Kuitansi"
+msgstr "Kuitansi"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_loanslip
+msgid "Kuitansi Pinjaman"
+msgstr "Kuitansi Pinjaman"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.lock_invoice_payment_date
+msgid "Kunci Tanggal Faktur dan Pembayaran"
+msgstr "Kunci Tanggal Faktur dan Pembayaran"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.lock_price
+msgid "Kunci harga produk pada baris order penjualan"
+msgstr "Kunci harga produk pada baris order penjualan"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.lock_invoice_payment_date
+msgid "Kunci tanggal faktur dan pembayaran"
+msgstr "Kunci tanggal faktur dan pembayaran"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_product_label
+msgid "Label Produk"
+msgstr "Label Produk"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_rma_label
+msgid "Label RMA"
+msgstr "Label RMA"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_hr_expense_sheet
+msgid "Laporan Pengeluaran"
+msgstr "Laporan Pengeluaran"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard___last_update
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line___last_update
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard___last_update
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard___last_update
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_write_uid
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_write_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_write_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_write_uid
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_write_date
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_write_date
+#: model:ir.model.fields,field_description:toserba23.field_product_image_upload_wizard_write_date
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_write_date
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_hr_loan
+msgid "Loan Request"
+msgstr "Permintaan Pinjaman"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.lock_price
+msgid "Lock Price Option"
+msgstr "Lock Price Option"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_inventory_document
+msgid "Lokasi :"
+msgstr "Lokasi :"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_x_loading_location
+#: model:ir.model.fields,field_description:toserba23.field_stock_picking_x_loading_location
+msgid "Lokasi Pemuatan"
+msgstr "Lokasi Pemuatan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "Makassar,"
+msgstr "Makassar,"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
@@ -499,24 +3370,75 @@ msgid "Masuk"
 msgstr "Masuk"
 
 #. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_picking_tree_urgent
+#: model:ir.ui.view,arch_db:toserba23.stock_picking_type_kanban_custom
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Mendesak"
+msgstr "Mendesak"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_notification_method
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_notification_method
+msgid "Metode Notifikasi"
+msgstr "Metode Notifikasi"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Nama :"
 msgstr "Nama :"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Nama Barang"
 msgstr "Nama Barang"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_name_npwp
+#: model:ir.model.fields,field_description:toserba23.field_res_users_name_npwp
+msgid "Nama NPWP"
+msgstr "Nama NPWP"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_bank_account_name
+msgid "Nama Rekening"
+msgstr "Nama Rekening"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_name
+msgid "Name"
+msgstr "Nama"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "No Order :"
 msgstr "No Order :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
+msgid "No Referensi Pelanggan :"
+msgstr "No Referensi Pelanggan :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "No Transfer :"
+msgstr "No Transfer :"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_id_number
+#: model:ir.model.fields,field_description:toserba23.field_res_users_id_number
+msgid "Nomor Identitas (KTP)"
+msgstr "Nomor Identitas (KTP)"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_purchase_order_filter_custom
@@ -524,11 +3446,57 @@ msgid "Not Done"
 msgstr "Belum Selesai"
 
 #. module: toserba23
-#: selection:res.partner,x_call_freq:0
-msgid "Not Urgent"
-msgstr "Tidak Perlu"
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Notifikasi"
+msgstr "Notifikasi"
 
 #. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_partner_form_custom
+msgid ""
+"Odoo helps you easily track all activities related to\n"
+"\t        a customer: discussions, history of business opportunities,\n"
+"\t        documents, etc."
+msgstr ""
+"Odoo helps you easily track all activities related to\n"
+"\t        a customer: discussions, history of business opportunities,\n"
+"\t        documents, etc."
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_partner_supplier_form_custom
+msgid ""
+"Odoo helps you easily track all activities related to\n"
+"\t        a supplier: discussions, history of purchases,\n"
+"\t        documents, etc."
+msgstr ""
+"Odoo helps you easily track all activities related to\n"
+"\t        a supplier: discussions, history of purchases,\n"
+"\t        documents, etc."
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "Once approved, your expenses report goes to the accounting,"
+msgstr "Setelah disetujui, laporan pengeluaran Anda dilanjutkan ke akuntansi,"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_orders
+msgid ""
+"Once the quotation is confirmed, it becomes a sales order.\n"
+"\t\t\t\tYou'll be able to invoice it and collect payments.\n"
+"\t\t\t\tFrom the <i>Sales Orders</i> menu, you can track delivery\n"
+"\t\t\t\torders or services."
+msgstr ""
+"Once the quotation is confirmed, it becomes a sales order.\n"
+"\t\t\t\tYou'll be able to invoice it and collect payments.\n"
+"\t\t\t\tFrom the <i>Sales Orders</i> menu, you can track delivery\n"
+"\t\t\t\torders or services."
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_label_print_wizard_view
+msgid "Opsi untuk mencetak label dapat diatur di bawah ini."
+msgstr "Opsi untuk mencetak label dapat diatur di bawah ini."
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_orders
 #: model:ir.actions.report,name:toserba23.report_custom_saleorder
 msgid "Order Penjualan"
 msgstr "Order Penjualan"
@@ -562,6 +3530,30 @@ msgid "Other Notes"
 msgstr "Keterangan Lain"
 
 #. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_is_notify_inv
+#: model:ir.model.fields,help:toserba23.field_res_users_x_is_notify_inv
+msgid "Otomatis kirimkan notifikasi ke pelanggan ketika faktur divalidasi"
+msgstr "Otomatis kirimkan notifikasi ke pelanggan ketika faktur divalidasi"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_is_notify_so
+#: model:ir.model.fields,help:toserba23.field_res_users_x_is_notify_so
+msgid "Otomatis kirimkan notifikasi ke pelanggan ketika order dikonfirmasi"
+msgstr "Otomatis kirimkan notifikasi ke pelanggan ketika order dikonfirmasi"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_is_notify_pay
+#: model:ir.model.fields,help:toserba23.field_res_users_x_is_notify_pay
+msgid "Otomatis kirimkan notifikasi ke pelanggan ketika penerimaan pembayaran dikonfirmasi"
+msgstr "Otomatis kirimkan notifikasi ke pelanggan ketika penerimaan pembayaran dikonfirmasi"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_is_notify_do
+#: model:ir.model.fields,help:toserba23.field_res_users_x_is_notify_do
+msgid "Otomatis kirimkan notifikasi ke pelanggan ketika surat jalan divalidasi"
+msgstr "Otomatis kirimkan notifikasi ke pelanggan ketika surat jalan divalidasi"
+
+#. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_outgoing_qty_0
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_outgoing_qty_1
 msgid "Outgoing"
@@ -588,14 +3580,53 @@ msgid "Paid yesterday"
 msgstr "Dibayar kemarin"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_form_view_custom
+msgid "Paksa Konfirmasi"
+msgstr "Paksa Konfirmasi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Partner"
+msgstr "Rekanan"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Slip Gaji"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.payment_sms_template
+msgid "Payment SMS template"
+msgstr "Payment SMS template"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.payment_wa_template
+msgid "Payment WA template"
+msgstr "Payment WA template"
+
+#. module: toserba23
 #: model:ir.model,name:toserba23.model_account_payment
 msgid "Payments"
 msgstr "Pembayaran"
 
 #. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_account_payments_all
+msgid ""
+"Payments are used to register liquidity movements (send, collect or transfer money).\n"
+"\t\t\t  You can then process those payments by your own means or by using installed facilities."
+msgstr ""
+"Pembayaran yang digunakan untuk merekam likuiditas pergerakan (kirim, kumpul atau transfer uang).\n"
+"                  Anda kemudian dapat memproses pembayaran tersebut dengan cara Anda sendiri atau dengan menggunakan fasilitas terpasang."
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "Pelanggan :"
 msgstr "Pelanggan :"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Pelunasan pinjaman akan dicicil selama"
+msgstr "Pelunasan pinjaman akan dicicil selama"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_template_search_view_custom
@@ -604,9 +3635,75 @@ msgstr "Pemasok"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "Pemasok :"
 msgstr "Pemasok :"
+
+#. module: toserba23
+#: model:ir.module.category,name:toserba23.blocking_groups_category
+msgid "Pembatasan Akses"
+msgstr "Pembatasan Akses"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_account_payments_all
+#: model:ir.ui.menu,name:toserba23.menu_payment_all
+msgid "Pembayaran"
+msgstr "Pembayaran"
+
+#. module: toserba23
+#: model:ir.module.category,name:toserba23.open_access_groups_category
+msgid "Pembukaan Akses"
+msgstr "Pembukaan Akses"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_category_form_search_custom
+#: model:ir.ui.view,arch_db:toserba23.product_category_form_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_category_list_view_custom
+msgid "Penanggung Jawab"
+msgstr "Penanggung Jawab"
+
+#. module: toserba23
+#: model:ir.ui.menu,name:toserba23.menu_sale_quotations
+msgid "Penawaran"
+msgstr "Penawaran"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_hr_expense_officer
+msgid "Pencatat Pengeluaran"
+msgstr "Pencatat Pengeluaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Penerapan"
+msgstr "Penerapan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_expense_sheetslip
+msgid ""
+"Penerima,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________)"
+msgstr ""
+"Penerima,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t(______________________)"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_int_transporter
+msgid "Pengantaran"
+msgstr "Pengantaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
+#: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+msgid "Pengantaran :"
+msgstr "Pengantaran :"
 
 #. module: toserba23
 #: model:ir.actions.report,name:toserba23.report_custom_picking
@@ -614,10 +3711,59 @@ msgid "Pengaturan/Penerimaan Barang"
 msgstr "Pengaturan/Penerimaan Barang"
 
 #. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.hr_expense_actions_all_to_approve
+#: model:ir.ui.menu,name:toserba23.menu_hr_expense_all_to_approve
+msgid "Pengeluaran Akan Diajukan"
+msgstr "Pengeluaran Akan Diajukan"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
 msgid "Pengiriman ini adalah backorder dari"
 msgstr "Pengiriman ini adalah backorder dari"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_is_pkp
+#: model:ir.model.fields,field_description:toserba23.field_res_users_is_pkp
+msgid "Pengusaha Kena Pajak"
+msgstr "Pengusaha Kena Pajak"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_template_form_view_procurement_button_custom
+msgid "Pergerakan Stock"
+msgstr "Pergerakan Stock"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "Periodically, you submit expenses report to your manager,"
+msgstr "Secara periodik, Anda mengajukan laporan pengeluaran kepada manajer Anda,"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Perseorangan/UD"
+msgstr "Perseorangan/UD"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Persero/Perusahaan Daerah/Perum"
+msgstr "Persero/Perusahaan Daerah/Perum"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Perseroan Terbatas"
+msgstr "Perseroan Terbatas"
+
+#. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_res_partner_x_notification_method
+#: model:ir.model.fields,help:toserba23.field_res_users_x_notification_method
+msgid "Pilih salah satu metode notifikasi yang diinginkan pelanggan."
+msgstr "Pilih salah satu metode notifikasi yang diinginkan pelanggan."
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Pinjaman karyawan atas nama"
+msgstr "Pinjaman karyawan atas nama"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_for_qtycheck_custom
@@ -627,7 +3773,12 @@ msgstr "Prediksi"
 #. module: toserba23
 #: model:ir.model,name:toserba23.model_product_pricelist_item
 msgid "Pricelist item"
-msgstr "Artikel Daftar Harga"
+msgstr "Daftar Harga"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_print_wizard
+msgid "Print Wizard"
+msgstr "Print Wizard"
 
 #. module: toserba23
 #: model:ir.model,name:toserba23.model_product_product
@@ -654,7 +3805,7 @@ msgstr "Harga Produk"
 #: model:ir.actions.act_window,name:toserba23.action_product_qty_tree
 #: model:ir.ui.menu,name:toserba23.menu_product_product_qty_check_action
 msgid "Product Quantity"
-msgstr "Qty"
+msgstr "Jumlah Produk"
 
 #. module: toserba23
 #: model:ir.model,name:toserba23.model_product_template
@@ -662,10 +3813,19 @@ msgid "Product Template"
 msgstr "Templete produk"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
-#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
-msgid "Promo"
-msgstr "Promo"
+#: model:ir.ui.view,arch_db:toserba23.product_pricelist_item_search_view_custom
+msgid "Product/Variant"
+msgstr "Product/Variant"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_label_print_wizard_product_label_wizard
+msgid "Products"
+msgstr "Produk"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_product_id
+msgid "Produk"
+msgstr "Produk"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_promo_cash
@@ -690,20 +3850,62 @@ msgid "Purchase order whose invoice not yet done"
 msgstr "Order Pembelian yang belum difakturkan"
 
 #. module: toserba23
-#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
-#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
-msgid "Qty"
-msgstr "Jml"
+#: model:ir.model.fields,field_description:toserba23.field_product_label_wizard_qr_code
+msgid "QR Code"
+msgstr "Kode QR"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
+msgid "Qty"
+msgstr "Qty"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_line_x_qty_ckl
+msgid "Qty CKL"
+msgstr "Qty CKL"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_line_x_qty_prl
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
 msgid "Qty PRL"
 msgstr "Qty PRL"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_move_tree_custom
+msgid "Qty Pesan"
+msgstr "Qty Pesan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_line_tree_view_custom
+msgid "Qty Pesanan"
+msgstr "Qty Pesanan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_move_tree_custom
+msgid "Qty Terkirim"
+msgstr "Qty Terkirim"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_line_x_qty_on_draft
+msgid "Qty Total Penawaran"
+msgstr "Qty Total Penawaran"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
 msgid "Qty WH"
 msgstr "Qty WH"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_line_x_qty2_ckl
+msgid "Qty* CKL"
+msgstr "Qty* CKL"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_sale_order_line_x_qty2_prl
+msgid "Qty* PRL"
+msgstr "Qty* PRL"
 
 #. module: toserba23
 #: model:ir.model.fields,field_description:toserba23.field_product_product_x_qty_available_0
@@ -728,7 +3930,22 @@ msgstr "Jumlah produk yang dijadwalkan akan dikirim.\n"
 #. module: toserba23
 #: model:ir.model,name:toserba23.model_sale_order
 msgid "Quotation"
-msgstr "Penawaran"
+msgstr "Quotation"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.quotation_sms_template
+msgid "Quotation SMS template"
+msgstr "Quotation SMS template"
+
+#. module: toserba23
+#: model:sms.template,name:toserba23.quotation_wa_template
+msgid "Quotation WA template"
+msgstr "Quotation WA template"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_invoice_filter
+msgid "Referensi Pemasok"
+msgstr "Referensi Pemasok"
 
 #. module: toserba23
 #: model:ir.model,name:toserba23.model_account_register_payments
@@ -736,9 +3953,100 @@ msgid "Register payments on multiple invoices"
 msgstr "Rekam pembayaran pada beberapa faktur"
 
 #. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_partner_id
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Rekanan"
+msgstr "Rekanan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "Rekanan :"
+msgstr "Rekanan :"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_invoice_summary
+msgid "Rekap Faktur/Tagihan"
+msgstr "Rekap Faktur/Tagihan"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_invoice_partner_summary
+msgid "Rekap Faktur/Tagihan (Per Rekanan)"
+msgstr "Rekap Faktur/Tagihan (Per Rekanan)"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_partner_summary
+msgid "Rekap Rekanan"
+msgstr "Rekap Rekanan"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_attendance_template
+msgid "Rekapan Absensi"
+msgstr "Rekapan Absensi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_invoice_summarysheet
+msgid "Rekapan Faktur"
+msgstr "Rekapan Faktur"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_mass_payslip
+msgid "Rekapan Gaji"
+msgstr "Rekapan Gaji"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_mass_payslip_template
+msgid "Rekapan Gaji Karyawan Toserba 23 Periode (________________)"
+msgstr "Rekapan Gaji Karyawan Toserba 23 Periode (________________)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_partner_summarysheet
+msgid "Rekapan Rekanan Untuk:"
+msgstr "Rekapan Rekanan Untuk:"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_product_category_responsible_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Pengembalian Pengambilan"
+
+#. module: toserba23
+#: selection:res.partner,x_notification_method:0
+msgid "SMS"
+msgstr "SMS"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Sales :"
 msgstr "Sales :"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Detail Order Penjualan"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_sale_supervisor
+msgid "Sales Supervisor"
+msgstr "Sales Supervisor"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_picking_tree_very_urgent
+#: model:ir.ui.view,arch_db:toserba23.stock_picking_type_kanban_custom
+#: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
+msgid "Sangat Mendesak"
+msgstr "Sangat Mendesak"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_product_uom
+msgid "Satuan"
+msgstr "Satuan"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
@@ -754,6 +4062,39 @@ msgstr "Dijadwalkan hari ini"
 #: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
 msgid "Scheduled tomorrow"
 msgstr "Dijadwalkan besok"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.purchase_order_form_custom
+#: model:ir.ui.view,arch_db:toserba23.sale_order_form_view_custom
+#: model:ir.ui.view,arch_db:toserba23.stock_picking_form_view_custom
+#: model:ir.ui.view,arch_db:toserba23.view_hr_expense_form_view_custom
+msgid "Selesaikan Status"
+msgstr "Selesaikan Status"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.hide_invoice_line
+msgid "Sembunyikan Baris Faktur Pemasok"
+msgstr "Sembunyikan Baris Faktur Pemasok"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.hide_invoice_line
+msgid "Sembunyikan baris faktur pemasok jika faktur terhubung dengan surat jalan"
+msgstr "Sembunyikan baris faktur pemasok jika faktur terhubung dengan surat jalan"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_set_document3
+msgid "Set Pengaturan 1 + Driver 1 (Sendiri)"
+msgstr "Set Pengaturan 1 + Driver 1 (Sendiri)"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_set_document
+msgid "Set Pengaturan 1 + Surat Jalan 1 + Driver 1 (Untuk Kontan)"
+msgstr "Set Pengaturan 1 + Surat Jalan 1 + Driver 1 (Untuk Kontan)"
+
+#. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_set_document2
+msgid "Set Pengaturan 1 + Surat Jalan 2 + Driver 1 (Untuk Kredit)"
+msgstr "Set Pengaturan 1 + Surat Jalan 2 + Driver 1 (Untuk Kredit)"
 
 #. module: toserba23
 #: model:res.groups,name:toserba23.lock_button_on_document
@@ -772,6 +4113,29 @@ msgid "Show how urgent it is to call the customer"
 msgstr "Menampilkan seberapa penting untuk menghubungi pelanggan"
 
 #. module: toserba23
+#: model:ir.actions.report,name:toserba23.report_custom_payslip
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "Slip Gaji"
+msgstr "Slip Gaji"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
+#: model:ir.ui.view,arch_db:toserba23.product_tree_price_view
+msgid "Spesial"
+msgstr "Spesial"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Spesimen"
+msgstr "Spesimen"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_sign_speciment
+#: model:ir.model.fields,field_description:toserba23.field_res_users_sign_speciment
+msgid "Spesimen Tanda Tangan"
+msgstr "Spesimen Tanda Tangan"
+
+#. module: toserba23
 #: model:ir.model,name:toserba23.model_stock_move
 msgid "Stock Move"
 msgstr "Pergerakan Stock"
@@ -788,14 +4152,66 @@ msgstr "Stok PRL"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_invoice_proforma_document
 #: model:ir.ui.view,arch_db:toserba23.report_custom_saleorder_document
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #. module: toserba23
+#: model:res.groups,name:toserba23.group_hr_payroll_supervisor
+msgid "Supervisor Penggajian"
+msgstr "Supervisor Penggajian"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_stock_supervisor
+msgid "Supervisor Persediaan"
+msgstr "Supervisor Persediaan"
+
+#. module: toserba23
 #: model:ir.actions.report,name:toserba23.report_custom_delivery
+#: model:ir.ui.view,arch_db:toserba23.invoice_form_custom
+#: model:ir.ui.view,arch_db:toserba23.invoice_supplier_form_custom
 msgid "Surat Jalan"
 msgstr "Surat Jalan"
+
+#. module: toserba23
+#: model:res.groups,name:toserba23.group_account_invoice_purchase
+msgid "Tagihan Pembelian"
+msgstr "Tagihan Pembelian"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_register_date
+#: model:ir.model.fields,field_description:toserba23.field_res_users_register_date
+msgid "Tanggal Pengukuhan"
+msgstr "Tanggal Pengukuhan"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_scheduled_date
+msgid "Tanggal Terjadwal"
+msgstr "Tanggal Terjadwal"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Telah terima dari"
+msgstr "Telah terima dari"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
+msgid "Terjadwal :"
+msgstr "Terjadwal :"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "The accountant validates journal entries and reimburse you."
+msgstr "Akuntan memvalidasi ayat jurnal dan mengganti dana Anda."
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_stock_picking_type
+msgid "The operation type determines the picking view"
+msgstr "Tipe operasi menentukan tampilan pengambilan"
 
 #. module: toserba23
 #: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
@@ -803,13 +4219,26 @@ msgid "The product form contains information to simplify the sale process: price
 msgstr "Detail produk mempunyai informasi untuk menyederhanakan proses penjualan: harga, catatan pada penawaran, data akuntansi, metode pengadaan, dll."
 
 #. module: toserba23
+#: model:ir.model.fields,help:toserba23.field_product_image_upload_wizard_image
+msgid "This field holds the image used as image for the product, limited to 1024x1024px."
+msgstr "Kolom ini menyimpan gambar yang digunakan untuk varian produk, terbatas pada 1024x1024px."
+
+#. module: toserba23
+#: selection:res.partner,x_notification_method:0
+msgid "Tidak Dinotifikasi"
+msgstr "Tidak Dinotifikasi"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_account_payment_search
+msgid "Tipe Pembayaran"
+msgstr "Tipe Pembayaran"
+
+#. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_move_tree_custom
 msgid "To"
 msgstr "Kepada"
 
 #. module: toserba23
-#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_call_freq
-#: model:ir.model.fields,field_description:toserba23.field_res_users_x_call_freq
 #: model:ir.ui.view,arch_db:toserba23.view_res_partner_filter_custom
 msgid "To Call"
 msgstr "Akan Ditelpon"
@@ -821,20 +4250,80 @@ msgid "Toko"
 msgstr "Toko"
 
 #. module: toserba23
+#: model:mail.template,subject:toserba23.quotation_email_template
+msgid "Toserba Dua Tiga ${object.state in ('draft', 'sent') and 'Penawaran' or 'Order'} (No ${object.name or 'n/a' })"
+msgstr "Toserba Dua Tiga ${object.state in ('draft', 'sent') and 'Penawaran' or 'Order'} (No ${object.name or 'n/a' })"
+
+#. module: toserba23
+#: model:mail.template,subject:toserba23.invoice_email_template
+msgid "Toserba Dua Tiga Informasi Tagihan (No ${object.number or 'n/a' })"
+msgstr "Toserba Dua Tiga Informasi Tagihan (No ${object.number or 'n/a' })"
+
+#. module: toserba23
+#: model:mail.template,subject:toserba23.payment_email_template
+msgid "Toserba Dua Tiga Konfirmasi Pembayaran (No ${object.name or 'n/a' })"
+msgstr "Toserba Dua Tiga Konfirmasi Pembayaran (No ${object.name or 'n/a' })"
+
+#. module: toserba23
+#: model:mail.template,subject:toserba23.delivery_email_template
+msgid "Toserba Dua Tiga Konfirmasi Pengiriman (No ${object.name or 'n/a' })"
+msgstr "Toserba Dua Tiga Konfirmasi Pengiriman (No ${object.name or 'n/a' })"
+
+#. module: toserba23
 #: model:ir.model,name:toserba23.model_stock_picking
 msgid "Transfer"
 msgstr "Transfer"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document
+#: model:ir.ui.view,arch_db:toserba23.report_custom_delivery_document2
 #: model:ir.ui.view,arch_db:toserba23.report_custom_picking_document
+#: model:ir.ui.view,arch_db:toserba23.report_mass_custom_setslip
+#: model:ir.ui.view,arch_db:toserba23.report_mass_deliverysheet
+#: model:ir.ui.view,arch_db:toserba23.report_mass_pickingsheet
 msgid "Transfer antar gudang"
 msgstr "Transfer antar gudang"
 
 #. module: toserba23
-#: selection:res.partner,x_call_freq:0
-msgid "Urgent"
-msgstr "Sangat Penting"
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Uang sejumlah"
+msgstr "Uang sejumlah"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payment_document
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "Untuk pembayaran"
+msgstr "Untuk pembayaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_image_upload_wizard_view
+msgid "Upload Gambar"
+msgstr "Upload Gambar"
+
+#. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.product_image_upload_wizard_action
+msgid "Upload Gambar Produk"
+msgstr "Upload Gambar Produk"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Upload spesimen tanda tangan di sini"
+msgstr "Upload spesimen tanda tangan di sini"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_is_notify_inv
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_is_notify_inv
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Validasi Faktur"
+msgstr "Validasi Faktur"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_res_partner_x_is_notify_do
+#: model:ir.model.fields,field_description:toserba23.field_res_users_x_is_notify_do
+#: model:ir.ui.view,arch_db:toserba23.view_partner_form_custom
+msgid "Validasi Surat Jalan"
+msgstr "Validasi Surat Jalan"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.view_picking_internal_search_custom
@@ -859,14 +4348,19 @@ msgid "Vehicle Notes"
 msgstr "Kendaraan"
 
 #. module: toserba23
+#: model:ir.actions.act_window,name:toserba23.action_partner_supplier_form_custom
+msgid "Vendors"
+msgstr "Pemasok"
+
+#. module: toserba23
 #: model:res.groups,name:toserba23.view_configuration_menu
 msgid "View Configuration Menu"
 msgstr "Tampilkan Menu Konfigurasi"
 
 #. module: toserba23
-#: model:res.groups,name:toserba23.view_vendor
-msgid "View Vendor"
-msgstr "Tampilkan Pemasok"
+#: selection:res.partner,x_notification_method:0
+msgid "WA"
+msgstr "WA"
 
 #. module: toserba23
 #: model:ir.ui.view,arch_db:toserba23.product_product_tree_view_custom
@@ -874,11 +4368,93 @@ msgid "WH*"
 msgstr "WH*"
 
 #. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.sale_order_form_view_custom
+msgid "Whatsapp Message"
+msgstr "Whatsapp Message"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_label_print_wizard
+msgid "Wisaya Cetak Label Produk"
+msgstr "Wisaya Cetak Label Produk"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_label_wizard
+msgid "Wisaya Label Produk"
+msgstr "Wisaya Label Produk"
+
+#. module: toserba23
+#: model:ir.model.fields,field_description:toserba23.field_int_transfer_wizard_line_wizard_id
+msgid "Wisaya Transfer Internal"
+msgstr "Wisaya Transfer Internal"
+
+#. module: toserba23
+#: model:ir.model,name:toserba23.model_product_image_upload_wizard
+msgid "Wisaya Upload Gambar Produk"
+msgstr "Wisaya Upload Gambar Produk"
+
+#. module: toserba23
+#: selection:res.partner,company_register:0
+msgid "Yayasan"
+msgstr "Yayasan"
+
+#. module: toserba23
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_not_done
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_urgent
+#: model:ir.actions.act_window,help:toserba23.action_picking_tree_very_urgent
+msgid "You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker."
+msgstr "Anda dapat mengerjakannya segera atau tandai sebagai Todo untuk diproses belakangan. Gunakan scanner untuk validasi jumlah transfer dengan lebih cepat."
+
+#. module: toserba23
 #: model:ir.actions.act_window,help:toserba23.product_template_price_view_action
 msgid "You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers."
 msgstr "Anda harus menetapkan produk untuk semua yang Anda jual, apakah produk fisik maupun produk konsumsi, maupun jasa yang Anda tawarkan untuk pelanggan."
 
 #. module: toserba23
-#: selection:res.partner,x_call_freq:0
-msgid "common"
-msgstr "Biasa"
+#: model:ir.actions.act_window,help:toserba23.hr_expense_actions_all_to_approve
+msgid "You record expenses"
+msgstr "Anda merekam pengeluaran"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_loan_document
+msgid "bulan, dengan langsung pemotongan gaji di awal bulan. Pembayaran pertama pada"
+msgstr "bulan, dengan langsung pemotongan gaji di awal bulan. Pembayaran pertama pada"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid ""
+"hari\n"
+"\t\t\t\t\t\t\t\t\t\t("
+msgstr ""
+"hari\n"
+"\t\t\t\t\t\t\t\t\t\t("
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.report_custom_payslip_document
+msgid "jam)"
+msgstr "jam)"
+
+#. module: toserba23
+#: model:ir.ui.view,arch_db:toserba23.product_image_upload_wizard_view
+#: model:ir.ui.view,arch_db:toserba23.product_label_print_wizard_view
+msgid "or"
+msgstr "atau"
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.group_stock_supervisor
+msgid "the user will have access to picking validation when no backorder or processed happened."
+msgstr "the user will have access to picking validation when no backorder or processed happened."
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.group_hr_expense_officer
+msgid "the user will have read only access to all records in the sales application."
+msgstr "the user will have read only access to all records in the sales application."
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.group_hr_payroll_supervisor
+msgid "the user will have the ability to access all records."
+msgstr "the user will have the ability to access all records."
+
+#. module: toserba23
+#: model:res.groups,comment:toserba23.group_sale_supervisor
+msgid "the user will have the ability to change sale line price up and confirm SO."
+msgstr "the user will have the ability to change sale line price up and confirm SO."
