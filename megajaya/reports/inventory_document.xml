@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+	<record id="stock.action_report_inventory" model="ir.actions.report">
+		<field name="groups_id" eval="[(6,0,[ref('indonesia_template.extra_menu_view')])]"/>
+	</record>
+	<report
+		id="report_custom_inventory"
+		model="stock.inventory"
+		string="Cek Fisik"
+		name="megajaya.report_custom_inventoryslip"
+		file="megajaya.cek_fisik"
+		print_report_name="'Cek Fisik - %s' % (object.name)"
+		report_type="qweb-pdf"
+		groups="stock.group_stock_user"
+	/>
+
+	<template id="report_custom_inventoryslip">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="megajaya.report_custom_inventory_document" t-lang="user.lang"/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_custom_inventory_document">
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id"></t>
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company"></t>
+		</t>
+
+		<t t-call="indonesia_template.custom_external_layout">
+			<t t-set="o" t-value="o.with_context({'lang':user.lang})"/>
+			<div class="page">
+				<div class="oe_structure"/>
+				<div class="row">
+					<t t-call="megajaya.inventory_company_header"/>
+					<div class="col-xs-5 text-center mb8" style="height: 80px;">
+						<div style="position:relative; top:10px; col-xs-6 text-center;">
+							<span style="font:25px lucida-console,sans-serif !important; border-bottom: 1px double #98AFC7; position:relative; top:-5px; color:#98AFC7">
+								<b>
+									CEK FISIK
+								</b>
+							</span><br/>
+							<t t-if="company.partner_id.city"><span t-field="company.partner_id.city"/>, </t>
+							<span t-field="o.date" t-field-options='{"format": "d MMM y"}'/>
+						</div>
+					</div>
+					
+                    <t t-set="locations" t-value="o.line_ids.mapped('location_id')"/>
+                    <t t-foreach="locations" t-as="location">
+						<table class="table table-condensed table table-striped" style=" table-layout:fixed; border-top: 2px double #98AFC7;border-radius: 10px">
+							<thead style="font:14px lucida-console,sans-serif;">
+								<tr>
+									<td class="col-xs-9">
+										Cek Fisik : 
+										<b><span t-field="o.name"/></b>
+									</td>
+									<td class="col-xs-3">
+										Lokasi : 
+										<span t-field="location.display_name" name="location_header"/>
+									</td>
+								</tr>
+							</thead>
+						</table>
+						<table class="table table-condensed table table-striped">
+							<thead style="background-color:#98AFC7;" >
+								<tr>
+									<th><font color="#fff"><strong>Nama Barang</strong></font></th>
+									<th class="text-left"><font color="#fff"><strong>Jumlah</strong></font></th>
+								</tr>
+							</thead>
+							<tbody>
+		                        <tr t-foreach="o.line_ids.filtered(lambda line: line.location_id.id == location.id)" t-as="line">
+		                            <td><span t-field="line.product_id"/></td>
+		                            <td class="text-left"><span t-field="line.product_qty"/> <span t-field="line.product_uom_id" groups="product.group_uom"/></td>
+		                        </tr>
+							</tbody>
+						</table>
+                    </t>
+				</div>
+			</div>
+		</t>
+	</template>
+</data>
+</odoo>

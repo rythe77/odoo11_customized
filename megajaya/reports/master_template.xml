@@ -1,0 +1,36 @@
+<odoo>
+<data>
+	<template id="company_header">
+		<div class="col-xs-6" style="background-color:#212121; height: 80px; border-radius: 5px">
+			<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+				<span style="font:25px lucida-console,sans-serif !important;" t-field="company.partner_id"/><br/>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.street"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.city"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.phone"/>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;"> (082393568188)</span>
+			</div>
+		</div>
+	</template>
+	<template id="user_company_header">
+		<div class="col-xs-6 mb 16" style="background-color:#212121; height: 80px; border-radius: 5px">
+			<div style="position:absolute; top:5px; left:120px; max-height: 60px; color:#FFFFFF">
+				<span style="font:25px lucida-console,sans-serif !important;" t-esc="user.company_id.partner_id.name"/><br/>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;"> (082393568188)</span>
+			</div>
+		</div>
+	</template>
+	<template id="inventory_company_header">
+		<div class="col-xs-7" style="background-color:#98AFC7; height: 80px; border-radius: 5px">
+			<div style="position:absolute; top:5px; left:90px; max-height: 60px; color:#FFFFFF">
+				<span style="font:25px lucida-console,sans-serif !important;" t-field="company.partner_id"/><br/>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.street"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.city"></span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.phone"/>
+			</div>
+		</div>
+	</template>
+</data>
+</odoo>
