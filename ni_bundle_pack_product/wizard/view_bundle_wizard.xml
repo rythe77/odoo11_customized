@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id='ni_bundle_wizard_view_form' model='ir.ui.view'>
+            <field name="name">bundle_wizard_view_form</field>
+            <field name="model">bundle.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Contract logs">
+                    <group col="4">
+                        <field name="ni_pack_name" domain="[('ni_is_product_pack','=',True)]"/>
+                        <field name="ni_quantity"/>
+                    </group>
+                    <footer>
+                        <button name="add_pack" type="object" string="Add Pack"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

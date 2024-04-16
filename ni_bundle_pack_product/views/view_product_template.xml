@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="product_template_inherit_form" model="ir.ui.view">
+            <field name="name">product_template_inherit_form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_ok']" position="before">
+                    <field name="ni_is_product_pack"/>
+                    <label for="ni_is_product_pack"/>
+                    <br></br>
+                </xpath>
+                <xpath expr="//form/sheet/notebook" position="inside">
+                    <page string="Bundle Product" attrs="{'invisible': [('ni_is_product_pack', '=', False)]}">
+                        <field name="ni_bundle_product_ids" nolabel="1" colspan="1">
+                            <tree string="Bundle" editable="bottom">
+                                <field name="name"/>
+                                <field name="ni_quantity"/>
+                                <field name="ni_uom_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='variants']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('ni_is_product_pack','=',True)]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_search_view_inherit" model="ir.ui.view">
+            <field name="name">product_template_search_view_inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter string="Is a Pack/Bundle" name="filter_to_bundle"
+                            domain="[('ni_is_product_pack', '=', True)]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

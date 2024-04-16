@@ -1,0 +1,202 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ni_bundle_pack_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-05 09:48+0000\n"
+"PO-Revision-Date: 2024-04-05 17:55+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.ni_bundle_wizard_view_form
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.purchase_order_inherit_form
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.sale_order_inherit_form
+msgid "Add Pack"
+msgstr "Tambah Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.product_template_inherit_form
+msgid "Bundle"
+msgstr "Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.actions.act_window,name:ni_bundle_pack_product.ni_bundle_product_template_action
+#: model:ir.ui.menu,name:ni_bundle_pack_product.ni_bundle_product_menu
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.product_template_inherit_form
+msgid "Bundle Product"
+msgstr "Produk Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_product_product_ni_bundle_product_ids
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_product_template_ni_bundle_product_ids
+msgid "Bundle Products"
+msgstr "Produk Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.ni_bundle_wizard_view_form
+msgid "Cancel"
+msgstr "Batal"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.ni_bundle_wizard_view_form
+msgid "Contract logs"
+msgstr "Log Kontrak"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_create_uid
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_create_date
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_res_config_settings_discount_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.res_config_settings_view_form_product_bundling
+msgid "Discount Product"
+msgstr "Produk Diskon"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_display_name
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_id
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_product_product_ni_is_product_pack
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_product_template_ni_is_product_pack
+msgid "Is Product Pack"
+msgstr "Produk Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.product_template_search_view_inherit
+msgid "Is a Pack/Bundle"
+msgstr "Produk Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product___last_update
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard___last_update
+msgid "Last Modified on"
+msgstr "Terakhir diubah pada"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_write_uid
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Terakhir diperbarui oleh"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_write_date
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_write_date
+msgid "Last Updated on"
+msgstr "Terakhir diperbarui pada"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_ni_pack_name
+msgid "Pack"
+msgstr "Pack"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_name
+msgid "Product"
+msgstr "Produk"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_ni_product_id
+msgid "Product Id"
+msgstr "ID Produk"
+
+#. module: ni_bundle_pack_product
+#: code:addons/ni_bundle_pack_product/models/purchase_order.py:9
+#: code:addons/ni_bundle_pack_product/models/sale_order.py:9
+#, python-format
+msgid "Product Pack"
+msgstr "Produk Bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_product_template
+msgid "Product Template"
+msgstr "Templete produk"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.res_config_settings_view_form_product_bundling
+msgid "Product used for discount when adjusting product bundling price"
+msgstr "Produk yang digunakan untuk menyesuaikan harga produk bundling"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_purchase_order
+msgid "Purchase Order"
+msgstr "Order Pembelian"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_ni_quantity
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_wizard_ni_quantity
+msgid "Quantity"
+msgstr "Jumlah"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_sale_order
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stock"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,help:ni_bundle_pack_product.field_res_config_settings_discount_product
+msgid "This product will be added to adjust pricing of bundling product"
+msgstr "Produk ini akan ditambahkan pada baris order untuk menyesuaikan harga produk bundle"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model.fields,field_description:ni_bundle_pack_product.field_bundle_product_ni_uom_id
+msgid "Unit of Measure "
+msgstr "Satuan"
+
+#. module: ni_bundle_pack_product
+#: model:ir.ui.view,arch_db:ni_bundle_pack_product.res_config_settings_view_form_product_bundling
+msgid "Use this product as discount item when adjusting product bundling price"
+msgstr "Gunakan produk ini sebagai item diskon ketika menyesuaikan harga produk bundle"
+
+#. module: ni_bundle_pack_product
+#: code:addons/ni_bundle_pack_product/models/product_template.py:18
+#: code:addons/ni_bundle_pack_product/models/product_template.py:28
+#, python-format
+msgid "You cannot create the variant of the Product which is Pack!!!"
+msgstr "Anda tidak dapat membuat varian dari produk yang merupakan bundle!!!"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_bundle_product
+msgid "bundle.product"
+msgstr "bundle.product"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_bundle_wizard
+msgid "bundle.wizard"
+msgstr "bundle.wizard"
+
+#. module: ni_bundle_pack_product
+#: model:ir.model,name:ni_bundle_pack_product.model_res_config_settings
+msgid "res.config.settings"
+msgstr "res.config.settings"

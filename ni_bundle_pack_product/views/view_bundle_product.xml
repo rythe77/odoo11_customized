@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record id="ni_bundle_product_template_action" model="ir.actions.act_window">
+            <field name="name">Bundle Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{'default_ni_is_product_pack': True}</field>
+            <field name="domain">[('ni_is_product_pack','=',True)]</field>
+        </record>
+        <menuitem id="ni_bundle_product_menu"
+                  name="Bundle Product"
+                  action="ni_bundle_product_template_action"
+                  parent="sale.product_menu_catalog"
+                  sequence="3"/>
+    </data>
+</odoo>

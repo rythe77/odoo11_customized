@@ -47,6 +47,7 @@
             - Admin sales : edit data pelanggan. Sup Sales : + ubah naik harga. Sales Man : + perbaiki SO jd penawaran, ubah limit kredit dan lamanya.
             - Sistem hutang karyawan ke perusahaan
         Todo:
+            - Tampilan laporan standar akuntansi maunya langsung jadi dari odoo, tidak perlu utak atik di excel
             - Sistem faktur pajak
             - Bug ZK machine, data yg masuknya tepat di antara momen download dan hapus. datanya tidak terdownload dan malah terhapus
             - Bundle produk tidak bisa cek jml stok barang individualnya

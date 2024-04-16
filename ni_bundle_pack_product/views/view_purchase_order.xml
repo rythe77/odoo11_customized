@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="purchase_order_inherit_form" model="ir.ui.view">
+            <field name="name">purchase_order_inherit_form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page/field[@name='order_line']"
+                       position="before">
+                    <button name="get_bundle_product_list" type="object" string="Add Pack" attrs="{'invisible': [('state', 'in', ['purchase','done','cancel'])]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
