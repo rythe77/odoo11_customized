@@ -23,10 +23,7 @@ class BundleWizard(models.TransientModel):
                     'product_uom_qty': bundle_product_id.ni_quantity*self.ni_quantity,
                 })
                 sol.product_uom_change()
-                # Get individual item total price
-                individual_price += order_id.pricelist_id.get_product_price(
-                    product_id, bundle_product_id.ni_quantity, order_id.partner_id)* \
-                                    bundle_product_id.ni_quantity
+                individual_price += sol.price_unit*bundle_product_id.ni_quantity
 
             # Add discount item to adjust for price difference
             price_difference = bundling_price - individual_price
