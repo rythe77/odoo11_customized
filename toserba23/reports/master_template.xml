@@ -8,7 +8,7 @@
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.street"></span>
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.city"></span>
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.partner_id.phone"/>
-				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;"> (082393568188)</span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-field="company.contact_person"/>
 			</div>
 		</div>
 	</template>
@@ -20,7 +20,7 @@
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.street"></span>
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.city"></span>
 				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.partner_id.phone"/>
-				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;"> (082393568188)</span>
+				<span style="font:12px lucida-console,sans-serif; white-space:nowrap;" t-esc="user.company_id.contact_person"/>
 			</div>
 		</div>
 	</template>
