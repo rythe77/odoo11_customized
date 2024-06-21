@@ -116,6 +116,11 @@
 		<field name="model">product.template</field>
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
+			<xpath expr="//page[@name='notes']" position="after">
+				<page name="image" string="Gambar Produk">
+					<field name="image" widget="image"/>
+				</page>
+			</xpath>
 			<page name="sales" position="attributes">
 				<attribute name="groups">sales_team.group_sale_salesman</attribute>
 			</page>
