@@ -6,9 +6,20 @@
 		<field name="model">product.template</field>
 		<field name="inherit_id" ref="product.product_template_tree_view"/>
 		<field name="arch" type="xml">
-			<tree position="attributes">
-				<attribute name="colors">red:qty_available &lt;= 0</attribute>
-			</tree>
+			<field name="default_code" position="before">
+				<field name="sale_priority" invisible="1"/>
+				<field name="sale_type" invisible="1"/>
+			</field>
+			<field name="name" position="attributes">
+				<attribute name="options">
+					{"fg_color": "green: sale_priority=='high';#D48C8C: sale_priority=='low'"}
+				</attribute>
+			</field>
+			<field name="default_code" position="attributes">
+				<attribute name="options">
+					{"fg_color": "green: sale_type=='order';orange: sale_type=='clearance';red: sale_type=='archive'"}
+				</attribute>
+			</field>
 			<field name="list_price" position="attributes">
 				<attribute name="invisible">1</attribute>
 			</field>
@@ -23,10 +34,12 @@
 		<field name="name">product.product_tree_price_view</field>
 		<field name="model">product.template</field>
 		<field name="arch" type="xml">
-			<tree colors="red:qty_available &lt;= 0">
+			<tree decoration-info="virtual_available&gt;=0" decoration-danger="virtual_available&lt;0">
 				<field name="sequence" widget="handle"/>
-				<field name="default_code"/>
-				<field name="name"/>
+				<field name="sale_priority" invisible="1"/>
+				<field name="sale_type" invisible="1"/>
+				<field name="default_code" options="{'fg_color': 'green: sale_type==&quot;order&quot;;orange: sale_type==&quot;clearance&quot;;red: sale_type==&quot;archive&quot;'}"/>
+				<field name="name" options="{'fg_color': 'green: sale_priority==&quot;high&quot;;#D48C8C: sale_priority==&quot;low&quot;'}"/>
 				<field name="list_price" string="Harga Umum" invisible="1"/>
 				<field name="x_harga_jual" string="Harga Jual" groups="sales_team.group_sale_salesman"/>
 				<field name="x_harga_grosir" string="Grosir" groups="sales_team.group_sale_salesman"/>
@@ -50,17 +63,28 @@
 		<field name="inherit_id" ref="product.product_product_tree_view"/>
 		<field name="arch" type="xml">
 			<tree position="attributes">
-				<attribute name="colors">red:qty_available &lt;= 0</attribute>
 				<attribute name="create">false</attribute>
 				<attribute name="edit">false</attribute>
 				<attribute name="delete">false</attribute>
-				<attribute name="limit">5</attribute>
+				<attribute name="limit">10</attribute>
 			</tree>
+			<field name="name" position="attributes">
+				<attribute name="options">
+					{"fg_color": "green: sale_priority=='high';#D48C8C: sale_priority=='low'"}
+				</attribute>
+			</field>
+			<field name="default_code" position="attributes">
+				<attribute name="options">
+					{"fg_color": "green: sale_type=='order';orange: sale_type=='clearance';red: sale_type=='archive'"}
+				</attribute>
+			</field>
 			<field name="uom_id" position="replace"/>
 			<field name="lst_price" position="attributes">
 				<attribute name="invisible">1</attribute>
 			</field>
 			<field name="default_code" position="before">
+				<field name="sale_priority" invisible="1"/>
+				<field name="sale_type" invisible="1"/>
 				<field name="x_qty_available_0" string="Qty WH"/>
 				<field name="x_virtual_available_0" string="WH*"/>
 			</field>
@@ -89,20 +113,24 @@
 		<field name="name">product.product_product_tree_view_for_qtycheck_custom</field>
 		<field name="model">product.product</field>
 		<field name="arch" type="xml">
-			<tree create="false" edit="false" delete="false">
+			<tree create="false" edit="false" delete="false"
+			decoration-info="virtual_available&gt;=0" decoration-danger="virtual_available&lt;0">
+				<field name="sale_priority" invisible="1"/>
+				<field name="sale_type" invisible="1"/>
 				<field name="x_qty_available_0" string="Stok CKL"/>
 				<field name="x_incoming_qty_0" string="Masuk"/>
 				<field name="x_outgoing_qty_0" string="Keluar"/>
 				<field name="x_virtual_available_0" string="Prediksi"/>
 				<field name="x_qty_available_98" string="BS-CKL"/>
-				<field name="default_code"/>
-				<field name="name"/>
+				<field name="default_code" options="{'fg_color': 'green: sale_type==&quot;order&quot;;orange: sale_type==&quot;clearance&quot;;red: sale_type==&quot;archive&quot;'}"/>
+				<field name="name" options="{'fg_color': 'green: sale_priority==&quot;high&quot;;#D48C8C: sale_priority==&quot;low&quot;'}"/>
 				<field name="x_qty_available_99" string="BS-PRL"/>
 				<field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
 				<field name="x_qty_available_1" string="Stok PRL"/>
 				<field name="x_incoming_qty_1" string="Masuk"/>
 				<field name="x_outgoing_qty_1" string="Keluar"/>
 				<field name="x_virtual_available_1" string="Prediksi"/>
+				<field name="virtual_available" invisible="1"/>
 				<field name="product_tmpl_id" invisible="1"/>
 				<field name="active" invisible="1"/>
 				<field name="barcode" invisible="1"/>

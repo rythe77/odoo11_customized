@@ -192,6 +192,8 @@
         'other_income',
         'sms_frame',
         'ohrms_loan',
+        'sale_priority',
+        'web_tree_dynamic_colored_field',
     ],
 
     'data': [

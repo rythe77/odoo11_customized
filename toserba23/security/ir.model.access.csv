@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 stock.access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0
+stock.access_product_template_stock_supervisor,product.template stock supervisor,product.model_product_template,toserba23.group_stock_supervisor,1,1,0,0
 purchase.access_purchase_order_stock_worker,purchase.order,purchase.model_purchase_order,stock.group_stock_user,1,0,0,0
 toserba23.access_purchase_order_stock_manager,toserba23.purchase.order,purchase.model_purchase_order,stock.group_stock_manager,1,0,0,0
 sale_stock.access_sale_order_stock_worker,sale.order stock worker,sale.model_sale_order,stock.group_stock_user,1,0,0,0

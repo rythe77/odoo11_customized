@@ -1,0 +1,31 @@
+<odoo>
+<data>
+    <record id="product_template_inherit_form" model="ir.ui.view">
+        <field name="name">product_template_inherit_form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <div name="pricelist_item" position="after">
+                <group name="Sale Option" string="Sale Option" groups="sales_team.group_sale_salesman">
+                    <group>
+                        <field name="sale_priority" string="Sale Priority"/>
+                        <field name="sale_type" string="Sale Type"/>
+                    </group>
+                </group>
+            </div>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_inherit" model="ir.ui.view">
+        <field name="name">product_template_search_view_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="sale_priority" string="Sale Priority"/>
+				<field name="sale_type" string="Sale Type"/>
+			</field>
+        </field>
+    </record>
+</data>
+</odoo>
