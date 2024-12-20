@@ -8,6 +8,9 @@
                 <xpath expr="/form/sheet/notebook/page/field[@name='order_line']" position="before">
                     <button name="get_bundle_product_list" type="object" string="Add Pack" attrs="{'invisible': [('state', 'in', ['sale','done','cancel'])]}"/>
                 </xpath>
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+				    <attribute name="domain">[('sale_ok','=',True),('ni_is_product_pack','=',False)]</attribute>
+                </xpath>
             </field>
         </record>
     </data>
