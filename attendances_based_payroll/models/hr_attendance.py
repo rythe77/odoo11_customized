@@ -124,6 +124,11 @@ class HrAttendance(models.Model):
                 ('date_from', '>=', date_from_utc),
                 ('date_to', '>=', date_from_utc)
             ])
+        global_leaves = self.env['resource.calendar.leaves'].search([
+                '|',
+                ('date_from', '>=', date_from_utc),
+                ('date_to', '>=', date_from_utc)
+            ])
         leave_type = self.env['hr.holidays.status'].search([
             ('name', 'ilike', leave_type)
         ], limit=1)
@@ -138,12 +143,12 @@ class HrAttendance(models.Model):
                             lambda r: [
                                 pytz.utc.localize(datetime.strptime(r.date_from, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date(),
                                 pytz.utc.localize(datetime.strptime(r.date_to, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date()
+                            ] if r else []) + \
+                        global_leaves.mapped(
+                            lambda r: [
+                                pytz.utc.localize(datetime.strptime(r.date_from, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date(),
+                                pytz.utc.localize(datetime.strptime(r.date_to, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date()
                             ] if r else [])
-                        # leaves.filtered(lambda emp: emp.employee_id == employee).mapped(
-                        #      lambda r: [
-                        #          pytz.utc.localize(datetime.strptime(r.date_from, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date(),
-                        #          pytz.utc.localize(datetime.strptime(r.date_to, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local).date()
-                        #      ]if r else []) + \
             work_days = employee.resource_calendar_id.mapped('attendance_ids')
             for i in range(check_days):
                 date_check = (datetime.strptime(fields.Date.context_today(self), '%Y-%m-%d') - timedelta(days=i+1)).date()
