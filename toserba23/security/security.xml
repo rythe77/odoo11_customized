@@ -98,8 +98,8 @@
 	  <field name="sequence">500</field>
 	</record>
 	<record id="allow_badge_scan" model="res.groups">
-		<field name="name">Akses Pindai Lencana</field>
-		<field name="comment">Ijinkan akses untuk pindai/scan lencana karyawan</field>
+		<field name="name">Akses Absensi App</field>
+		<field name="comment">Ijinkan akses untuk absensi karyawan melalui aplikasi</field>
 		<field name="category_id" ref="toserba23.open_access_groups_category"/>
 	</record>
 	<record id="view_vendor" model="res.groups">
