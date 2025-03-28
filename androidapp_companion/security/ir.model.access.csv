@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_app_companion_user,access_app_companion_user,app_companion.model_app_companion,base.group_user,1,0,0,0
+access_app_companion_manager,access_app_companion_manager,app_companion.model_app_companion,hr.group_hr_manager,1,1,1,1
+access_banner_user,access_banner_user,app_companion.model_banner_message,base.group_user,1,0,0,0
+access_banner_manager,access_banner_manager,app_companion.model_banner_message,hr.group_hr_manager,1,1,1,1

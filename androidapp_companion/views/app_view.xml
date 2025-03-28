@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+    <menuitem id="app_menu_root"
+        name="App Companion"
+        active="True"
+        sequence="80"/>
+	<record id="app_companion_tree" model="ir.ui.view">
+	    <field name="name">app.companion.tree</field>
+	    <field name="model">app.companion</field>
+	    <field name="arch" type="xml">
+	        <tree string="App Companion">
+	            <field name="name"/>
+	            <field name="app_version"/>
+	        </tree>
+	    </field>
+	</record>
+	<record id="app_companion_form" model="ir.ui.view">
+	    <field name="name">app.companion.form</field>
+	    <field name="model">app.companion</field>
+	    <field name="arch" type="xml">
+	        <form string="App Companion">
+				<group>
+					<field name="name"/>
+					<field name="app_version"/>
+					<field name="app_link"/>
+				</group>
+				<field name="banner_messages" mode="tree">
+					<form string="Banner Messages">
+						<field name="message"/>
+					</form>
+					<tree string="Banner Messages" editable="bottom">
+						<field name="message"/>
+					</tree>
+				</field>
+	        </form>
+	    </field>
+	</record>
+	<record id="app_menu_action" model="ir.actions.act_window">
+	    <field name="name">App Companion</field>
+	    <field name="res_model">app.companion</field>
+	    <field name="view_type">form</field>
+	    <field name="view_id" ref="app_companion_tree"/>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	        Click to create an app companion.
+	      </p><p>
+	      	Create app companion to help force app update by versioning control.
+	      </p>
+	    </field>
+	</record>
+	<menuitem id="menu_app_companion" name="App Companion"
+		action="app_menu_action"
+	    parent="app_menu_root"
+		groups="hr.group_hr_manager"
+	    sequence="5" />
+</data>
+</odoo>

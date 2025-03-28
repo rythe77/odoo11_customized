@@ -17,9 +17,10 @@
     'category': 'Uncategorized',
     'version': '1.0',
 
-    'depends': ['base', 'hr_holidays'],
+    'depends': ['base', 'hr', 'hr_holidays'],
 
     'data': [
-        'views/company_view.xml'
+        'security/ir.model.access.csv',
+        'views/app_view.xml'
     ],
 }

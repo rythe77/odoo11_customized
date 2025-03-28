@@ -7,5 +7,4 @@ class BannerMessage(models.Model):
     _order = "message"
 
     message = fields.Text('Banner Message')
-    company_id = fields.Many2one('res.company',
-        change_default=True, default=lambda self: self.env['res.company']._company_default_get('androidapp_companion'))
+    app_companion_id = fields.Many2one('app.companion')
