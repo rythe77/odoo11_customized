@@ -8,7 +8,20 @@
 		<field name="arch" type="xml">
 			<field name="report_header" position="after">
 				<field name="app_version" string="App Version"/>
+				<field name="app_link" string="App Link"/>
 			</field>
+            <notebook position="inside">
+                <page string="Banner Messages">
+					<field name="banner_messages" mode="tree">
+						<form string="Banner Messages">
+							<field name="message"/>
+						</form>
+						<tree string="Banner Messages" editable="bottom">
+							<field name="message"/>
+						</tree>
+					</field>
+                </page>
+            </notebook>
 		</field>
 	</record>
 </data>
