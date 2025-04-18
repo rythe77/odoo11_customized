@@ -163,7 +163,7 @@
 					</group>
 					<group>
 						<field name="x_harga_promo" string="Harga Spesial" widget='monetary' options="{'currency_field': 'currency_id'}"/>
-						<field name="x_promo_cash" string="Promo Cash" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+						<field name="x_promo_cash" string="Cash" widget='monetary' options="{'currency_field': 'currency_id'}"/>
 					</group>
 				</group>
 			</div>
