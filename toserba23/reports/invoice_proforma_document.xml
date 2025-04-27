@@ -94,11 +94,13 @@
 					<!-- Is there a discount on at least one line? -->
 					<t t-set="display_discount" t-value="any([l.discount for l in o.order_line])"/>
 					<t t-set="display_charge" t-value="any([l.tax_id for l in o.order_line])"/>
+					<t t-set="display_desc" t-value="any([l.product_desc for l in o.order_line])"/>
 
 					<table class="table table-condensed table table-striped">
 						<thead style="background-color:#212121; color:#FFFFFF">
 							<tr>
 								<th>Nama Barang</th>
+								<th t-if="display_desc">Keterangan Khusus</th>
 								<th class="text-right">Qty</th>
 								<th class="text-right">Harga</th>
 								<th t-if="display_discount" class="text-right">Disc.(%)</th>
@@ -112,6 +114,9 @@
 								<td>
 									<t t-if="not order.product_id.categ_id.is_warranty">**</t>
 									<span t-field="order.product_id"/>
+								</td>
+								<td t-if="display_desc">
+									<span t-field="order.product_desc"/>
 								</td>
 								<td class="text-right">
 									<span t-field="order.product_uom_qty"/>
