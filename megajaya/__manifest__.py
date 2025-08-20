@@ -16,12 +16,13 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base'],
+    'depends': ['base','account'],
 
     'data': [
         #'security/ir.model.access.csv',
         'reports/master_template.xml',
         'reports/saleorder_document.xml',
         'reports/inventory_document.xml',
+        'reports/invoice_document.xml',
     ],
 }
