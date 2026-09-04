@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<data>
+    <report
+        id="report_payment_partner_summary"
+        model="account.payment"
+        string="Rekap Pembayaran (Per Rekanan)"
+        name="toserba23.report_payment_partner_summarysheet"
+        file="toserba23.report_payment_partner_summarysheet"
+        print_report_name="'Rekap - %s' % (object.name)" 
+        report_type="qweb-pdf"
+    />
+
+    <template id="report_payment_partner_summarysheet">
+        <t t-call="web.html_container">
+            <t t-call="indonesia_template.custom_external_layout" t-lang="user.lang">
+                <t t-set="docs" t-value="docs.with_context({'lang':user.lang})"/>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <t t-set="payment_partner" t-value="[]"/>
+                        <t t-foreach="docs" t-as="o">
+                            <t t-set="payment_partner" t-value="payment_partner+[o.partner_id]"/>
+                            <t t-set="currency" t-value="o.currency_id"/>
+                        </t>
+                        <t t-foreach="set(payment_partner)" t-as="partner">
+                            <div style="page-break-inside: avoid">
+                                <div>
+                                    <strong t-esc="partner.name"/>
+                                    (Dicetak pada 
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>)
+                                </div>
+                                <table class="table table-condensed table table-striped">
+                                    <thead>
+                                        <tr style="font:10px lucida-console,sans-serif;">
+                                            <th><strong>Tanggal Pembayaran</strong></th>
+                                            <th><strong>Nomor</strong></th>
+                                            <th><strong>Jurnal</strong></th>
+                                            <th><strong>Jumlah</strong></th>
+                                            <th><strong>Sisa Pembayaran</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="payment_tbody">
+                                        <t t-set="payments_amount" t-value="0"/>
+                                        <t t-set="payments_balance" t-value="0"/>
+                                        <t t-foreach="docs" t-as="o">
+                                            <t t-if="partner.id==o.partner_id.id">
+                                                <tr style="font:10px lucida-console,sans-serif;">
+                                                    <td>
+                                                        <span t-field="o.payment_date"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.journal_id"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.amount"/>
+                                                        <t t-set="payments_amount" t-value="payments_amount+o.amount"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.payment_balance"/>
+                                                        <t t-set="payments_balance" t-value="payments_balance+o.payment_balance"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                        <tr style="font:10px lucida-console,sans-serif;">
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <strong>Total</strong>
+                                            </td>
+                                            <td>
+                                                <strong><span t-esc="payments_amount" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+                                            </td>
+                                            <td>
+                                                <strong><span t-esc="payments_balance" t-esc-options='{"widget": "monetary", "display_currency": "user.company_id.currency_id"}'/></strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</data>
+</odoo>
