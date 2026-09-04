@@ -244,6 +244,8 @@
         'reports/payment_document.xml',
         'reports/attendance_document.xml',
         'reports/loan_document.xml',
+        'reports/delivery_summary.xml',
+        'reports/payment_partner_summary.xml',
         'wizard/product_label_print_wizard.xml',
         'wizard/int_transfer_wizard.xml',
         'wizard/product_image_upload_wizard.xml',
