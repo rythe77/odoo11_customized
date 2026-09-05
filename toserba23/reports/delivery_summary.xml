@@ -4,7 +4,7 @@
     <report
         id="report_delivery_summary"
         model="stock.picking"
-        string="Rekap Pengiriman"
+        string="Rekap Pengiriman/Penerimaan"
         name="toserba23.report_delivery_summarysheet"
         file="toserba23.report_delivery_summarysheet"
         print_report_name="'Rekap - %s' % (object.name)" 
@@ -20,7 +20,7 @@
                         <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
                     </div>
                     <div class="col-xs-6 text-center" style="font:16px lucida-console,sans-serif !important;">
-                        Rekapan Pengiriman
+                        Rekapan Pengiriman/Penerimaan
                     </div>
                     <div class="col-xs-3 text-center" style="font:16px lucida-console,sans-serif !important;">
                     </div>

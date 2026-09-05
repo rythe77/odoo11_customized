@@ -179,6 +179,19 @@
 		</field>
 	</record>
 
+	<!-- Sale order form view lock salesperson field -->
+	<record model="ir.ui.view" id="sale_order_form_view_lock_salesperson">
+		<field name="name">sale.sale_order_form_lock_salesperson</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="groups_id" eval="[(6,0, [ref('toserba23.lock_salesperson_field')])]"/>
+		<field name="arch" type="xml">
+			<field name="user_id" position="attributes">
+				<attribute name="attrs">{'readonly': 1}</attribute>
+			</field>
+		</field>
+	</record>
+
 	<!-- Main search view definition -->
 	<record model="ir.ui.view" id="view_sales_order_filter_custom">
 		<field name="name">sale.view_sales_order_filter_custom</field>

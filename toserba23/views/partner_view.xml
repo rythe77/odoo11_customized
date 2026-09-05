@@ -131,6 +131,19 @@
 		</field>
 	</record>
 
+	<!-- Partner form view lock salesperson field -->
+	<record model="ir.ui.view" id="partner_form_view_custom_lock_salesperson">
+		<field name="name">res.partner_form_lock_salesperson</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="groups_id" eval="[(6,0, [ref('toserba23.lock_salesperson_field')])]"/>
+		<field name="arch" type="xml">
+			<field name="user_id" position="attributes">
+				<attribute name="attrs">{'readonly': 1}</attribute>
+			</field>
+		</field>
+	</record>
+
 	<!-- Only allow customer view record rule definition -->
 	<record id="toserba23.block_vendor_view_rule" model="ir.rule">
 		<field name="name">Block vendor view</field>

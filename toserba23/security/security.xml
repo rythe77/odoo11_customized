@@ -165,6 +165,11 @@
 		<field name="comment">Kunci tanggal faktur dan pembayaran</field>
 		<field name="category_id" ref="toserba23.blocking_groups_category"/>
 	</record>
+	<record id="lock_salesperson_field" model="res.groups">
+		<field name="name">Kunci Kolom Salesperson</field>
+		<field name="comment">Kunci kolom salesperson pada tampilan rekanan dan order penjualan</field>
+		<field name="category_id" ref="toserba23.blocking_groups_category"/>
+	</record>
 	<record id="hide_invoice_line" model="res.groups">
 		<field name="name">Sembunyikan Baris Faktur Pemasok</field>
 		<field name="comment">Sembunyikan baris faktur pemasok jika faktur terhubung dengan surat jalan</field>
