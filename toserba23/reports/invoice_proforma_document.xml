@@ -159,6 +159,9 @@
 						**Barang tidak digaransi
 					</p>
 					<p t-field="o.note" />
+					<p t-if="company.report_footer">
+						<span t-field="company.report_footer"/>
+					</p>
 					<div class="oe_structure"/>
 				</div>
 			</div>
