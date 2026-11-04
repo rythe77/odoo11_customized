@@ -28,3 +28,14 @@ class ProductProduct(models.Model):
                     _('You cannot create the variant of the Product which is Pack!!!'))
 
         return res
+
+    @api.constrains('ni_is_product_pack')
+    def _check_used_as_bundle_item(self):
+        for record in self:
+            if not record.ni_is_product_pack:
+                continue
+            if self.env['bundle.product'].search_count([('name', '=', record.id)]):
+                raise ValidationError(
+                    _('Product "%s" is already used as an item of a bundle product. '
+                      'Remove it from those bundles before marking it as a bundle product.')
+                    % record.display_name)
